@@ -16,6 +16,8 @@
 
 Velyn is an iPhone photo editor with local processing and nondestructive edits. Imported originals are kept byte for byte; edits and exports are saved separately. There is no app server, photo upload, account, or advertising SDK.
 
+**[Download v1.0.0](https://github.com/H4RUming/Velyn/releases/tag/v1.0.0)** — iOS 27 or later. The release includes an unsigned IPA for signing with AltStore Classic or your own signing workflow. Apple Configurator requires an already signed IPA. See the [installation guide](Docs/Releases/INSTALL.md).
+
 ## Inside the app
 
 <table>

@@ -78,7 +78,7 @@ struct LibrarySettingsView: View {
                     NavigationLink(L10n.tr("오픈소스 모델·라이선스")) { ModelNoticesView() }
                 }
                 Section {
-                    LabeledContent("Velyn", value: "1.0")
+                    LabeledContent("Velyn", value: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "—")
                 } footer: { Text(L10n.tr("비파괴 편집·마스크·리터칭·앨범·일괄 작업·HDR JPEG/HEIC·TIFF 저장을 지원합니다.")) }
             }.font(.subheadline).scrollContentBackground(.hidden).background(LibraryStyle.background)
                 .navigationTitle(L10n.tr("설정")).navigationBarTitleDisplayMode(.inline)
