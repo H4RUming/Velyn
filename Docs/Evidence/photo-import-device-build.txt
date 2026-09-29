@@ -1,0 +1,231 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Velyn.xcodeproj -scheme Velyn -destination generic/platform=iOS -derivedDataPath .work/DeviceBuild CODE_SIGNING_ALLOWED=NO build
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+2026-09-28 17:24:01.774 xcodebuild[98514:4195443] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'Velyn' in project 'Velyn' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 <PROJECT_ROOT>/Velyn/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 9107ec0648aad251bf7638014a70cab7
+Build description path: <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/XCBuildData/9107ec0648aad251bf7638014a70cab7.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk <PROJECT_ROOT>/.work/DeviceBuild/SDKStatCaches.noindex/iphoneos27.0-24A430-6c78b3cbc238196c85e1bf6c792c5915.sdkstatcache
+    cd <PROJECT_ROOT>/Velyn.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk -o <PROJECT_ROOT>/.work/DeviceBuild/SDKStatCaches.noindex/iphoneos27.0-24A430-6c78b3cbc238196c85e1bf6c792c5915.sdkstatcache
+
+WriteAuxiliaryFile <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftConstValuesFileList (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    write-file <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftConstValuesFileList
+
+WriteAuxiliaryFile <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.LinkFileList (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    write-file <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.LinkFileList
+
+WriteAuxiliaryFile <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-OutputFileMap.json (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    write-file <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-OutputFileMap.json
+
+WriteAuxiliaryFile <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftFileList (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    write-file <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftFileList
+
+SwiftDriver Velyn normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Velyn -Onone @<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk -target arm64-apple-ios27.0 -g -module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <PROJECT_ROOT>/.work/DeviceBuild/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -F <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -emit-localized-strings -emit-localized-strings-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64 -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <PROJECT_ROOT>/.work/DeviceBuild/SDKStatCaches.noindex/iphoneos27.0-24A430-6c78b3cbc238196c85e1bf6c792c5915.sdkstatcache -output-file-map <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex -sdk-module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn_const_extract_protocols.json -Xcc -iquote -Xcc <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-generated-files.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-own-target-headers.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-all-target-headers.hmap -Xcc -iquote -Xcc <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-project-headers.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/include -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources-normal/arm64 -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources/arm64 -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-Swift.h -working-directory <PROJECT_ROOT> -experimental-emit-module-separately -disable-cmo
+
+SwiftExplicitDependencyGeneratePcm arm64 <PROJECT_ROOT>/.work/DeviceBuild/SDKExplicitPrecompiledModules/PhotosUI-2BD5P0QCTOER90MIHQE2EB9RD.pcm
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ Velyn (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    
+
+SwiftCompile normal arm64 Compiling\ PhotoLibraryImportService.swift <PROJECT_ROOT>/Velyn/Engine/Import/PhotoLibraryImportService.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Engine/Import/PhotoLibraryImportService.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile PhotoLibraryImportService.swift
+
+SwiftCompile normal arm64 Compiling\ ImportByteStream.swift <PROJECT_ROOT>/Velyn/Engine/Import/ImportByteStream.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Engine/Import/ImportByteStream.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile ImportByteStream.swift
+
+SwiftCompile normal arm64 Compiling\ PhotoLibraryPicker.swift <PROJECT_ROOT>/Velyn/Features/Import/PhotoLibraryPicker.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Features/Import/PhotoLibraryPicker.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile PhotoLibraryPicker.swift
+
+SwiftCompile normal arm64 Compiling\ SourceAsset.swift <PROJECT_ROOT>/Velyn/Engine/Domain/SourceAsset.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Engine/Domain/SourceAsset.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile SourceAsset.swift
+
+SwiftCompile normal arm64 Compiling\ ContentView.swift <PROJECT_ROOT>/Velyn/ContentView.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/ContentView.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile ContentView.swift
+
+SwiftCompile normal arm64 Compiling\ ImportStore.swift <PROJECT_ROOT>/Velyn/Features/Import/ImportStore.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Features/Import/ImportStore.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile ImportStore.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling ImportByteStream.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SourceAsset.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 Compiling\ OriginalImportService.swift <PROJECT_ROOT>/Velyn/Engine/Import/OriginalImportService.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Engine/Import/OriginalImportService.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile OriginalImportService.swift
+
+SwiftCompile normal arm64 Compiling\ ImageMetadataReader.swift <PROJECT_ROOT>/Velyn/Engine/Import/ImageMetadataReader.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Engine/Import/ImageMetadataReader.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile ImageMetadataReader.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling PhotoLibraryImportService.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ImportStore.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 Compiling\ LibraryStyle.swift <PROJECT_ROOT>/Velyn/Features/Library/LibraryStyle.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Features/Library/LibraryStyle.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile LibraryStyle.swift
+
+SwiftCompile normal arm64 Compiling\ PhotoDetailView.swift <PROJECT_ROOT>/Velyn/Features/Library/PhotoDetailView.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/Features/Library/PhotoDetailView.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile PhotoDetailView.swift
+
+SwiftCompile normal arm64 Compiling\ MyApp.swift <PROJECT_ROOT>/Velyn/MyApp.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftCompile normal arm64 <PROJECT_ROOT>/Velyn/MyApp.swift (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-SwiftPerFileCompile MyApp.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling ImageMetadataReader.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriverJobDiscovery normal arm64 Compiling MyApp.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriverJobDiscovery normal arm64 Compiling PhotoLibraryPicker.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriverJobDiscovery normal arm64 Compiling OriginalImportService.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriverJobDiscovery normal arm64 Compiling LibraryStyle.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for Velyn (in target 'Velyn' from project 'Velyn')
+
+SwiftDriver\ Compilation\ Requirements Velyn normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Velyn -Onone @<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk -target arm64-apple-ios27.0 -g -module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <PROJECT_ROOT>/.work/DeviceBuild/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -F <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -emit-localized-strings -emit-localized-strings-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64 -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <PROJECT_ROOT>/.work/DeviceBuild/SDKStatCaches.noindex/iphoneos27.0-24A430-6c78b3cbc238196c85e1bf6c792c5915.sdkstatcache -output-file-map <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex -sdk-module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn_const_extract_protocols.json -Xcc -iquote -Xcc <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-generated-files.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-own-target-headers.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-all-target-headers.hmap -Xcc -iquote -Xcc <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-project-headers.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/include -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources-normal/arm64 -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources/arm64 -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-Swift.h -working-directory <PROJECT_ROOT> -experimental-emit-module-separately -disable-cmo
+
+Copy <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.swiftmodule/arm64-apple-ios.swiftdoc <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftdoc (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftdoc <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.swiftmodule/arm64-apple-ios.swiftdoc
+
+Copy <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftsourceinfo (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftsourceinfo <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+Copy <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.swiftmodule/arm64-apple-ios.abi.json <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.abi.json (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.abi.json <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.swiftmodule/arm64-apple-ios.abi.json
+
+Copy <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.swiftmodule/arm64-apple-ios.swiftmodule <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftmodule (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftmodule <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.swiftmodule/arm64-apple-ios.swiftmodule
+
+SwiftDriverJobDiscovery normal arm64 Compiling ContentView.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriverJobDiscovery normal arm64 Compiling PhotoDetailView.swift (in target 'Velyn' from project 'Velyn')
+
+SwiftDriver\ Compilation Velyn normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Velyn -Onone @<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk -target arm64-apple-ios27.0 -g -module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path <PROJECT_ROOT>/.work/DeviceBuild/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -F <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -emit-localized-strings -emit-localized-strings-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64 -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc <PROJECT_ROOT>/.work/DeviceBuild/SDKStatCaches.noindex/iphoneos27.0-24A430-6c78b3cbc238196c85e1bf6c792c5915.sdkstatcache -output-file-map <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex -sdk-module-cache-path <PROJECT_ROOT>/.work/DeviceBuild/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file <PROJECT_ROOT>/.work/DeviceBuild/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn_const_extract_protocols.json -Xcc -iquote -Xcc <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-generated-files.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-own-target-headers.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-all-target-headers.hmap -Xcc -iquote -Xcc <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-project-headers.hmap -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/include -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources-normal/arm64 -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources/arm64 -Xcc -I<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn-Swift.h -working-directory <PROJECT_ROOT> -experimental-emit-module-separately -disable-cmo
+
+Ld <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Velyn.debug.dylib normal (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios27.0 -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -L<PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -F<PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F<PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -filelist <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.LinkFileList -install_name @rpath/Velyn.debug.dylib -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.swiftmodule -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -o <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Velyn.debug.dylib
+
+ConstructStubExecutorLinkFileList <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-ExecutorLinkFileList-normal-arm64.txt (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    construct-stub-executor-link-file-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Velyn.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'Velyn' from project 'Velyn')
+
+Ld <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Velyn normal (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios27.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L<PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -F<PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn-ExecutorLinkFileList-normal-arm64.txt <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Velyn.debug.dylib -o <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Velyn
+
+ExtractAppIntentsMetadata (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name Velyn --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.0.sdk --xcode-version 27A266a --platform-family iOS --deployment-target 27.0 --bundle-identifier devplaceholder.WLK1NVU6.Velyn --output <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app --target-triple arm64-apple-ios27.0 --binary-file <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Velyn --dependency-file <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn_dependency_info.dat --stringsdata-file <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftFileList --metadata-file-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn.DependencyMetadataFileList --static-metadata-file-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn.DependencyStaticMetadataFileList --swift-const-vals-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Objects-normal/arm64/Velyn.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-09-28 17:24:04.484 appintentsmetadataprocessor[98547:4195645] Starting appintentsmetadataprocessor export
+2026-09-28 17:24:04.485 appintentsmetadataprocessor[98547:4195645] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+CopySwiftLibs <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-swiftStdLibTool --copy --verbose --scan-executable <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Velyn.debug.dylib --scan-folder <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Frameworks --scan-folder <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/PlugIns --scan-folder <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/SystemExtensions --scan-folder <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Extensions --platform iphoneos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+ProcessInfoPlistFile <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Info.plist <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/empty-Velyn.plist (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-infoPlistUtility <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/empty-Velyn.plist -producttype com.apple.product-type.application -genpkginfo <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/assetcatalog_generated_info.plist -requiredArchitecture arm64 -o <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Info.plist
+
+AppIntentsSSUTraining (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Info.plist --temp-dir-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/ssu --bundle-id devplaceholder.WLK1NVU6.Velyn --product-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app --extracted-metadata-path <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Metadata.appintents --metadata-file-list <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/Velyn.build/Debug-iphoneos/Velyn.build/Velyn.DependencyMetadataFileList --source-file <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app/Info.plist --archive-ssu-assets
+2026-09-28 17:24:04.518 appintentsnltrainingprocessor[98548:4195646] Parsing options for appintentsnltrainingprocessor
+2026-09-28 17:24:04.518 appintentsnltrainingprocessor[98548:4195646] Starting AppIntents SSU YAML Generation
+2026-09-28 17:24:04.518 appintentsnltrainingprocessor[98548:4195646] No AppShortcuts found - Skipping.
+
+Validate <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app (in target 'Velyn' from project 'Velyn')
+    cd <PROJECT_ROOT>
+    builtin-validationUtility <PROJECT_ROOT>/.work/DeviceBuild/Build/Products/Debug-iphoneos/Velyn.app -shallow-bundle -infoplist-subpath Info.plist
+
+PruneExplicitPrecompiledModules <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules <PROJECT_ROOT>/.work/DeviceBuild/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules <PROJECT_ROOT>/.work/DeviceBuild/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+** BUILD SUCCEEDED **
+

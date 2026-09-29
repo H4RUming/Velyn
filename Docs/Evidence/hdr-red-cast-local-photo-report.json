@@ -1,0 +1,43 @@
+{
+  "derivedSDRInput" : true,
+  "dimensions" : [
+    1536,
+    2048
+  ],
+  "environment" : "macOS engine; user supplied local image; no display acceptance",
+  "exports" : [
+    {
+      "decodedAboveSDR" : 0.0477294921875,
+      "decodedPeak" : 1.8022987842559814,
+      "format" : "JPEG",
+      "gainMapPresent" : true
+    },
+    {
+      "decodedAboveSDR" : 0.04730224609375,
+      "decodedPeak" : 1.8014957904815674,
+      "format" : "HEIC",
+      "gainMapPresent" : true
+    }
+  ],
+  "inputDynamicRange" : "hdr",
+  "legacyHDR" : {
+    "aboveSDRFraction" : 0.084187825520833329,
+    "meanLuminance" : 0.39569865472761762,
+    "peak" : 1.8604434728622437,
+    "shadowFraction" : 0.018412272135416668
+  },
+  "originalPreserved" : true,
+  "previewContentHeadroom" : 1,
+  "protectedHDR" : {
+    "aboveSDRFraction" : 0.047037760416666664,
+    "meanLuminance" : 0.31633022452097764,
+    "peak" : 1.8086310625076294,
+    "shadowFraction" : 0.01885986328125
+  },
+  "sdr" : {
+    "aboveSDRFraction" : 0,
+    "meanLuminance" : 0.28504854096099924,
+    "peak" : 0.99149465560913086,
+    "shadowFraction" : 0.01885986328125
+  }
+}

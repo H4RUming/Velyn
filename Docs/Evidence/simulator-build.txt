@@ -1,0 +1,5 @@
+Recorded 2026-09-28 · Xcode 27A266a · macOS 27.0
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Velyn.xcodeproj -scheme Velyn -destination "generic/platform=iOS Simulator" -derivedDataPath .work/DerivedData CODE_SIGNING_ALLOWED=NO build
+2026-09-28 16:29:19.909 appintentsmetadataprocessor[93733:4120023] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+** BUILD SUCCEEDED **

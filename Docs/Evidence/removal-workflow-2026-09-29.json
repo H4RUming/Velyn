@@ -1,0 +1,14 @@
+{
+  "cancelDoesNotEditRecipe" : true,
+  "cancelKeepsSelection" : true,
+  "environment" : "iOS 27 Simulator; generated 1200x900 chart; programmatic workflow",
+  "error" : "",
+  "generatedPatch" : true,
+  "paintDoesNotEditRecipe" : true,
+  "paintDoesNotRenderPhoto" : true,
+  "redo" : true,
+  "reopened" : true,
+  "saved" : true,
+  "successClearsSelection" : true,
+  "undo" : true
+}

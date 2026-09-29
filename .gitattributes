@@ -1,0 +1,5 @@
+*.mlmodel binary
+*.bin binary
+*.dng binary
+*.webp binary
+*.png binary

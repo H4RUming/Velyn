@@ -1,0 +1,30 @@
+{
+  "actualHDRPixels" : true,
+  "error" : "",
+  "generated" : true,
+  "hdrPeak" : 2.676112174987793,
+  "heic" : true,
+  "jpeg" : true,
+  "neutralRGB" : [
+    [
+      0.43017578125,
+      0.43017578125,
+      0.43017578125
+    ],
+    [
+      1.0908203125,
+      1.0908203125,
+      1.0908203125
+    ],
+    [
+      2.45703125,
+      2.45703125,
+      2.45703125
+    ]
+  ],
+  "neutralRGBPassed" : true,
+  "redo" : true,
+  "saved" : true,
+  "sdrComparisonKeepsRecipe" : true,
+  "undo" : true
+}

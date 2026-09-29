@@ -1,0 +1,70 @@
+{
+  "camera" : "iPhone 15 Pro",
+  "decoderVersions" : [
+    "6.dng",
+    "7.dng",
+    "8.dng",
+    "9.dng"
+  ],
+  "dimensions" : [
+    5712,
+    4284
+  ],
+  "environment" : "macOS; actual Velyn engine; not iPhone execution",
+  "exports" : [
+    {
+      "bitsPerComponent" : 8,
+      "bytes" : 3459815,
+      "format" : "JPEG",
+      "height" : 4284,
+      "profile" : "Display P3",
+      "seconds" : 0.51894509792327881,
+      "width" : 5712
+    },
+    {
+      "bitsPerComponent" : 16,
+      "bytes" : 129685301,
+      "format" : "PNG",
+      "height" : 4284,
+      "profile" : "Display P3",
+      "seconds" : 6.8723469972610474,
+      "width" : 5712
+    },
+    {
+      "bitsPerComponent" : 8,
+      "bytes" : 4386547,
+      "format" : "HEIC",
+      "height" : 4284,
+      "profile" : "Display P3",
+      "seconds" : 0.84120500087738037,
+      "width" : 5712
+    }
+  ],
+  "exposureMeans" : [
+    0.11983251633986951,
+    0.17675525939542536,
+    0.2526386335784318
+  ],
+  "historyReopen" : true,
+  "inputBytes" : 26499319,
+  "nativeResetMatches" : true,
+  "nativeWhiteBalanceChangesPixels" : true,
+  "orientation" : 1,
+  "originalExportByteIdentical" : true,
+  "originalPreserved" : true,
+  "passed" : true,
+  "previewEV-1.0Seconds" : 0.17196297645568848,
+  "previewEV0.0Seconds" : 0.16974508762359619,
+  "previewEV1.0Seconds" : 0.17309796810150146,
+  "raw" : true,
+  "rawControls" : {
+    "highlightRecovery" : 1,
+    "localToneMap" : 100,
+    "luminanceNoise" : 0,
+    "shadowBoost" : 89.999997615814209,
+    "sharpness" : 100,
+    "temperature" : 5149.2646484375,
+    "tint" : 6.6290311813354492,
+    "toneCurve" : 100
+  }
+}

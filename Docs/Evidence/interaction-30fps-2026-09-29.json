@@ -1,0 +1,19 @@
+{
+  "comparisonMatches" : true,
+  "dragSeconds" : 1.370585167,
+  "environment" : "iOS 27 Simulator; synthetic 1200x900 chart",
+  "error" : "",
+  "finalPreviewWidth" : 1200,
+  "finalRecipeMatches" : true,
+  "framesWhileDragging" : 40,
+  "historyMatches" : true,
+  "idleDoesNotRender" : true,
+  "inputEvents" : 80,
+  "interactiveCapPassed" : true,
+  "interactiveRenderCount" : 40,
+  "minimumInteractiveIntervalMs" : 33.499959000000004,
+  "resumeMatches" : true,
+  "settleSeconds" : 0.020729000000000001,
+  "totalFrames" : 41,
+  "trailingValueMatches" : true
+}

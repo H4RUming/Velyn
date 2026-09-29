@@ -1,0 +1,35 @@
+{
+  "parameters": 1921827,
+  "checkpoint_sha256": "83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f",
+  "coreml_precision": "FLOAT16",
+  "comparisons": [
+    {
+      "input": null,
+      "max_error_ev": 0.0012377500534057617,
+      "mean_error_ev": 0.0001471765572205186,
+      "min_gain_ev": 0.11859130859375,
+      "max_gain_ev": 1.6796875
+    },
+    {
+      "input": 0.0,
+      "max_error_ev": 8.416175842285156e-05,
+      "mean_error_ev": 2.0839712306042202e-05,
+      "min_gain_ev": 0.048187255859375,
+      "max_gain_ev": 0.09326171875
+    },
+    {
+      "input": 0.5,
+      "max_error_ev": 0.0004519820213317871,
+      "mean_error_ev": 0.00022232344781514257,
+      "min_gain_ev": 0.30322265625,
+      "max_gain_ev": 0.384033203125
+    },
+    {
+      "input": 1.0,
+      "max_error_ev": 0.002101898193359375,
+      "mean_error_ev": 0.0006354652578011155,
+      "min_gain_ev": 1.755859375,
+      "max_gain_ev": 2.322265625
+    }
+  ]
+}

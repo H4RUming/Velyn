@@ -1,0 +1,27 @@
+{
+  "repository": "apple/coreml-depth-anything-v2-small",
+  "revision": "cfef6f6f2a70783dedc0bfae40cecbc2052285d3",
+  "sha256": {
+    "DepthAnythingV2SmallF16.mlpackage/Manifest.json": "2883ae290c48fe916dc5ececac03a7d847fa277165a49ef5652fa1d2b9cb55f7",
+    "DepthAnythingV2SmallF16.mlpackage/Data/com.apple.CoreML/model.mlmodel": "44ac97a3efcfd52113183fb2862ff59cd0368e9ec2e30a90a54980dd11407042",
+    "DepthAnythingV2SmallF16.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "fa60d9b6a155734f59029ebb882fd54e549bfaee3539c1a9cbd2cbbab64a0fed"
+  },
+  "aotgan": {
+    "repository": "john-rocky/Inpainting-CoreML",
+    "revision": "4720394f359ab50e7a98c73707c170466db0e4ee",
+    "file": "aotgan.mlmodel",
+    "sha256": "6090945f20e4971113457fa0bb90bca42e4569dcaf9ab7c183d2749ee4718b68"
+  },
+  "gmnet": {
+    "repository": "qtlark/GMNet",
+    "revision": "59db6aac16f8fa7071a9447e357d9e7316ce0f8c",
+    "checkpoint": "checkpoints/G_realworld.pth",
+    "checkpoint_sha256": "83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f",
+    "conversion": "Scripts/Models/convert_gain_map.py",
+    "sha256": {
+      "VelynGainMap.mlpackage/Data/com.apple.CoreML/model.mlmodel": "46a6a9217347c10667297f1962b1c3b2ae295d45f32d2a5ced4fc4d3ece0cf76",
+      "VelynGainMap.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "d85c49ce7e8861ea781a27e666056e2b8d865bda10bd5e288b1473e1c84901a6",
+      "VelynGainMap.mlpackage/Manifest.json": "b0cea4a424b84c670b7ab07455117369f3fd6d9f96342f05694ef30f8f442cd3"
+    }
+  }
+}

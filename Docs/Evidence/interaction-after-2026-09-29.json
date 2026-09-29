@@ -1,0 +1,14 @@
+{
+  "comparisonMatches" : true,
+  "dragSeconds" : 1.3659346669999999,
+  "environment" : "iOS 27 Simulator; synthetic 1200x900 chart",
+  "error" : "",
+  "finalPreviewWidth" : 1200,
+  "finalRecipeMatches" : true,
+  "framesWhileDragging" : 80,
+  "historyMatches" : true,
+  "inputEvents" : 80,
+  "resumeMatches" : true,
+  "settleSeconds" : 0.021443125,
+  "totalFrames" : 81
+}

@@ -1,0 +1,38 @@
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite OriginalImportTests started.
+◇ Test unsupportedImageNeverCommits() started.
+◇ Test classifiesProviderErrors() started.
+◇ Test browsingPreviewRespectsOrientationAndKeepsOriginal() started.
+◇ Test corruptInputNeverCommits() started.
+◇ Test heicPreservesOriginalContainer() started.
+◇ Test syntheticDNGPreservesRawBytes() started.
+◇ Test staleTransactionRecoveryAndBackupExclusion() started.
+◇ Test detectsTamperedStoredOriginal() started.
+◇ Test unreadableFileReturnsPermissionError() started.
+◇ Test rawBrowsingPreviewIsBounded() started.
+◇ Test preservesBytesAndAllOrientations(orientation:) started.
+◇ Test cancellationCleansStagingAndKeepsPreviousImport() started.
+◇ Test case passing 1 argument orientation → 1 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 2 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 3 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 4 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 5 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 6 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 7 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 8 to preservesBytesAndAllOrientations(orientation:) started.
+✔ Test classifiesProviderErrors() passed after 0.029 seconds.
+✔ Test corruptInputNeverCommits() passed after 0.029 seconds.
+✔ Test unreadableFileReturnsPermissionError() passed after 0.029 seconds.
+✔ Test unsupportedImageNeverCommits() passed after 0.029 seconds.
+✔ Test detectsTamperedStoredOriginal() passed after 0.029 seconds.
+✔ Test browsingPreviewRespectsOrientationAndKeepsOriginal() passed after 0.029 seconds.
+✔ Test staleTransactionRecoveryAndBackupExclusion() passed after 0.029 seconds.
+✔ Test preservesBytesAndAllOrientations(orientation:) with 8 test cases passed after 0.034 seconds.
+✔ Test cancellationCleansStagingAndKeepsPreviousImport() passed after 0.101 seconds.
+✔ Test heicPreservesOriginalContainer() passed after 0.101 seconds.
+✔ Test syntheticDNGPreservesRawBytes() passed after 0.207 seconds.
+✔ Test rawBrowsingPreviewIsBounded() passed after 0.403 seconds.
+✔ Suite OriginalImportTests passed after 0.403 seconds.
+✔ Test run with 12 tests in 1 suite passed after 0.403 seconds.

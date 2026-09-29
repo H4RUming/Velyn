@@ -1,0 +1,55 @@
+{
+  "camera" : "iPhone 15 Pro",
+  "decoderVersions" : [
+    "6.dng",
+    "7.dng",
+    "8.dng",
+    "9.dng"
+  ],
+  "dimensions" : [
+    5712,
+    4284
+  ],
+  "environment" : "macOS; actual Velyn engine; not iPhone execution",
+  "exports" : [
+    {
+      "bytes" : 3859121,
+      "format" : "JPEG",
+      "height" : 4284,
+      "profile" : "Display P3",
+      "seconds" : 0.56048405170440674,
+      "width" : 5712
+    },
+    {
+      "bytes" : 33921831,
+      "format" : "PNG",
+      "height" : 4284,
+      "profile" : "Display P3",
+      "seconds" : 1.7528209686279297,
+      "width" : 5712
+    },
+    {
+      "bytes" : 4979775,
+      "format" : "HEIC",
+      "height" : 4284,
+      "profile" : "Display P3",
+      "seconds" : 0.84422910213470459,
+      "width" : 5712
+    }
+  ],
+  "exposureMeans" : [
+    0.11983251633986951,
+    0.17675525939542536,
+    0.2526386335784318
+  ],
+  "historyReopen" : true,
+  "inputBytes" : 26499319,
+  "orientation" : 1,
+  "originalExportByteIdentical" : true,
+  "originalPreserved" : true,
+  "passed" : true,
+  "previewEV-1.0Seconds" : 0.28486800193786621,
+  "previewEV0.0Seconds" : 0.20288991928100586,
+  "previewEV1.0Seconds" : 0.17379200458526611,
+  "raw" : true
+}

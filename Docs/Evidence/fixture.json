@@ -1,0 +1,9 @@
+{
+  "name": "synthetic.dng",
+  "origin": "Scripts/make-test-dng.py",
+  "kind": "Synthetic CFA DNG, not ProRAW",
+  "sha256": "19d628e7ebdf9d7dd12a6dbee42aeb91c3a3cc98deb94da3539f40166b4850d2",
+  "pixelWidth": 640,
+  "pixelHeight": 480,
+  "orientation": 6
+}

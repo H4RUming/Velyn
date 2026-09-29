@@ -1,0 +1,74 @@
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite EditingTests started.
+◇ Suite OriginalImportTests started.
+◇ Test allAdjustmentsRenderAndCrop() started.
+◇ Test rawDevelopmentPersistsDecoderAndRendersNativeOrientation() started.
+◇ Test fullResolutionExportStripsGPSAndPreservesOriginal(format:) started.
+◇ Test linearExposureAndNeutralRecipe() started.
+◇ Test libraryPreviewUsesLatestSavedRevision() started.
+◇ Test preservesBytesAndAllOrientations(orientation:) started.
+◇ Test persistenceReopenAndRevisionOrdering() started.
+◇ Test invalidRecipeAndPreCancelledExportNeverWriteResult() started.
+◇ Test corruptOrFutureDocumentIsPreserved() started.
+◇ Test hslIdentityGrayAndChannelIsolation() started.
+◇ Test browsingPreviewRespectsOrientationAndKeepsOriginal() started.
+◇ Test unsupportedImageNeverCommits() started.
+◇ Test cancellationCleansStagingAndKeepsPreviousImport() started.
+◇ Test renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test presetExcludesGeometryAndPersists() started.
+◇ Test rawBrowsingPreviewIsBounded() started.
+◇ Test staleTransactionRecoveryAndBackupExclusion() started.
+◇ Test syntheticDNGPreservesRawBytes() started.
+◇ Test historyGroupsOneCommittedGestureAndSurvivesCoding() started.
+◇ Test heicPreservesOriginalContainer() started.
+◇ Test unreadableFileReturnsPermissionError() started.
+◇ Test classifiesProviderErrors() started.
+◇ Test corruptInputNeverCommits() started.
+◇ Test detectsTamperedStoredOriginal() started.
+◇ Test case passing 1 argument orientation → 1 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 2 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument format → .jpeg to fullResolutionExportStripsGPSAndPreservesOriginal(format:) started.
+◇ Test case passing 1 argument format → .heic to fullResolutionExportStripsGPSAndPreservesOriginal(format:) started.
+◇ Test case passing 1 argument orientation → 3 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 4 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 5 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 6 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 7 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 8 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 1 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 2 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 3 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 4 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 5 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 6 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 7 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 8 to renderAppliesEXIFExactlyOnce(orientation:) started.
+✔ Test preservesBytesAndAllOrientations(orientation:) with 8 test cases passed after 0.150 seconds.
+✔ Test persistenceReopenAndRevisionOrdering() passed after 0.150 seconds.
+✔ Test corruptOrFutureDocumentIsPreserved() passed after 0.150 seconds.
+✔ Test linearExposureAndNeutralRecipe() passed after 0.150 seconds.
+✔ Test unsupportedImageNeverCommits() passed after 0.150 seconds.
+✔ Test hslIdentityGrayAndChannelIsolation() passed after 0.150 seconds.
+✔ Test browsingPreviewRespectsOrientationAndKeepsOriginal() passed after 0.150 seconds.
+✔ Test fullResolutionExportStripsGPSAndPreservesOriginal(format:) with 2 test cases passed after 0.151 seconds.
+✔ Test libraryPreviewUsesLatestSavedRevision() passed after 0.151 seconds.
+✔ Test staleTransactionRecoveryAndBackupExclusion() passed after 0.151 seconds.
+✔ Test presetExcludesGeometryAndPersists() passed after 0.155 seconds.
+✔ Test historyGroupsOneCommittedGestureAndSurvivesCoding() passed after 0.155 seconds.
+✔ Test classifiesProviderErrors() passed after 0.155 seconds.
+✔ Test unreadableFileReturnsPermissionError() passed after 0.155 seconds.
+✔ Test corruptInputNeverCommits() passed after 0.155 seconds.
+✔ Test detectsTamperedStoredOriginal() passed after 0.156 seconds.
+✔ Test invalidRecipeAndPreCancelledExportNeverWriteResult() passed after 0.157 seconds.
+✔ Test renderAppliesEXIFExactlyOnce(orientation:) with 8 test cases passed after 0.159 seconds.
+✔ Test cancellationCleansStagingAndKeepsPreviousImport() passed after 0.162 seconds.
+✔ Test heicPreservesOriginalContainer() passed after 0.168 seconds.
+✔ Test allAdjustmentsRenderAndCrop() passed after 0.181 seconds.
+✔ Test syntheticDNGPreservesRawBytes() passed after 0.228 seconds.
+✔ Test rawBrowsingPreviewIsBounded() passed after 0.269 seconds.
+✔ Suite OriginalImportTests passed after 0.269 seconds.
+✔ Test rawDevelopmentPersistsDecoderAndRendersNativeOrientation() passed after 0.461 seconds.
+✔ Suite EditingTests passed after 0.461 seconds.
+✔ Test run with 24 tests in 2 suites passed after 0.462 seconds.

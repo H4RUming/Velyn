@@ -1,0 +1,24 @@
+.DS_Store
+.work/
+.build/
+.swiftpm/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+
+__pycache__/
+*.pyc
+
+# Personal signing and local product planning
+Config/Local.xcconfig
+/*.pdf
+
+# Credentials and signing artifacts
+.env
+.env.*
+*.p12
+*.p8
+*.mobileprovision
+*.provisionprofile
+*.ipa
+*.xcarchive/

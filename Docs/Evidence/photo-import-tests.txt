@@ -1,0 +1,95 @@
+Building for debugging...
+[Planning deferred tasks]
+[1 / 1]
+[7 / 18] VelynEngineTests-product
+[9 / 20] VelynEngineTests-product
+[13 / 19] VelynEngineTests-product
+[15 / 19] VelynEngineTests-product
+Build complete! (1.72초)
+Test Suite 'All tests' started at 2026-09-28 17:23:19.292.
+Test Suite 'All tests' passed at 2026-09-28 17:23:19.293.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite PhotoImportTests started.
+◇ Suite OriginalImportTests started.
+◇ Suite EditingTests started.
+◇ Test selectsRAWRegardlessOfPairOrderAndIgnoresEdits() started.
+◇ Test cancelledStreamClosesBeforeCleanupAndIgnoresLateData() started.
+◇ Test streamedBytesRemainExactAfterLateCallbacks() started.
+◇ Test photoErrorsKeepRecoveryInstructions() started.
+◇ Test classifiesProviderErrors() started.
+◇ Test rawBrowsingPreviewIsBounded() started.
+◇ Test unsupportedImageNeverCommits() started.
+◇ Test staleTransactionRecoveryAndBackupExclusion() started.
+◇ Test detectsTamperedStoredOriginal() started.
+◇ Test syntheticDNGPreservesRawBytes() started.
+◇ Test corruptInputNeverCommits() started.
+◇ Test browsingPreviewRespectsOrientationAndKeepsOriginal() started.
+◇ Test preservesBytesAndAllOrientations(orientation:) started.
+◇ Test renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test heicPreservesOriginalContainer() started.
+◇ Test cancellationCleansStagingAndKeepsPreviousImport() started.
+◇ Test invalidRecipeAndPreCancelledExportNeverWriteResult() started.
+◇ Test rawDevelopmentPersistsDecoderAndRendersNativeOrientation() started.
+◇ Test allAdjustmentsRenderAndCrop() started.
+◇ Test unreadableFileReturnsPermissionError() started.
+◇ Test libraryPreviewUsesLatestSavedRevision() started.
+◇ Test persistenceReopenAndRevisionOrdering() started.
+◇ Test corruptOrFutureDocumentIsPreserved() started.
+◇ Test presetExcludesGeometryAndPersists() started.
+◇ Test hslIdentityGrayAndChannelIsolation() started.
+◇ Test historyGroupsOneCommittedGestureAndSurvivesCoding() started.
+◇ Test fullResolutionExportStripsGPSAndPreservesOriginal(format:) started.
+◇ Test linearExposureAndNeutralRecipe() started.
+◇ Test case passing 1 argument orientation → 1 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 1 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 2 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 2 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 3 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 3 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 4 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 4 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 5 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 5 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 6 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 6 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 7 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 7 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument orientation → 8 to preservesBytesAndAllOrientations(orientation:) started.
+◇ Test case passing 1 argument orientation → 8 to renderAppliesEXIFExactlyOnce(orientation:) started.
+◇ Test case passing 1 argument format → .jpeg to fullResolutionExportStripsGPSAndPreservesOriginal(format:) started.
+◇ Test case passing 1 argument format → .heic to fullResolutionExportStripsGPSAndPreservesOriginal(format:) started.
+✔ Test classifiesProviderErrors() passed after 0.160 seconds.
+✔ Test photoErrorsKeepRecoveryInstructions() passed after 0.160 seconds.
+✔ Test selectsRAWRegardlessOfPairOrderAndIgnoresEdits() passed after 0.160 seconds.
+✔ Test corruptInputNeverCommits() passed after 0.160 seconds.
+✔ Test unsupportedImageNeverCommits() passed after 0.160 seconds.
+✔ Test detectsTamperedStoredOriginal() passed after 0.160 seconds.
+✔ Test preservesBytesAndAllOrientations(orientation:) with 8 test cases passed after 0.160 seconds.
+✔ Test staleTransactionRecoveryAndBackupExclusion() passed after 0.160 seconds.
+✔ Test browsingPreviewRespectsOrientationAndKeepsOriginal() passed after 0.160 seconds.
+✔ Test renderAppliesEXIFExactlyOnce(orientation:) with 8 test cases passed after 0.167 seconds.
+✔ Test heicPreservesOriginalContainer() passed after 0.167 seconds.
+✔ Test unreadableFileReturnsPermissionError() passed after 0.167 seconds.
+✔ Test streamedBytesRemainExactAfterLateCallbacks() passed after 0.167 seconds.
+✔ Test persistenceReopenAndRevisionOrdering() passed after 0.167 seconds.
+✔ Test hslIdentityGrayAndChannelIsolation() passed after 0.167 seconds.
+✔ Test historyGroupsOneCommittedGestureAndSurvivesCoding() passed after 0.167 seconds.
+✔ Test corruptOrFutureDocumentIsPreserved() passed after 0.167 seconds.
+✔ Test libraryPreviewUsesLatestSavedRevision() passed after 0.167 seconds.
+✔ Test presetExcludesGeometryAndPersists() passed after 0.167 seconds.
+✔ Test linearExposureAndNeutralRecipe() passed after 0.168 seconds.
+✔ Test invalidRecipeAndPreCancelledExportNeverWriteResult() passed after 0.170 seconds.
+✔ Test cancelledStreamClosesBeforeCleanupAndIgnoresLateData() passed after 0.170 seconds.
+✔ Suite PhotoImportTests passed after 0.170 seconds.
+✔ Test cancellationCleansStagingAndKeepsPreviousImport() passed after 0.174 seconds.
+✔ Test fullResolutionExportStripsGPSAndPreservesOriginal(format:) with 2 test cases passed after 0.195 seconds.
+✔ Test syntheticDNGPreservesRawBytes() passed after 0.222 seconds.
+✔ Test allAdjustmentsRenderAndCrop() passed after 0.237 seconds.
+✔ Test rawBrowsingPreviewIsBounded() passed after 0.260 seconds.
+✔ Suite OriginalImportTests passed after 0.260 seconds.
+✔ Test rawDevelopmentPersistsDecoderAndRendersNativeOrientation() passed after 0.463 seconds.
+✔ Suite EditingTests passed after 0.463 seconds.
+✔ Test run with 28 tests in 3 suites passed after 0.464 seconds.

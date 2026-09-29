@@ -1,0 +1,32 @@
+Velyn local machine learning models
+
+Depth Anything V2 Small F16
+Authors: Lihe Yang et al.; Core ML conversion published by Apple.
+Model: https://huggingface.co/apple/coreml-depth-anything-v2-small
+Revision: cfef6f6f2a70783dedc0bfae40cecbc2052285d3
+Original: https://github.com/DepthAnything/Depth-Anything-V2
+License: Apache License 2.0 (Small model). See DepthAnything-LICENSE.txt.
+Model weights are unmodified. Application preprocessing and depth effects are implemented by Velyn.
+
+AOT-GAN
+Original authors: researchmm; Core ML conversion published by john-rocky.
+Original: https://github.com/researchmm/AOT-GAN-for-Inpainting
+Conversion: https://github.com/john-rocky/Inpainting-CoreML
+Revision: 4720394f359ab50e7a98c73707c170466db0e4ee
+File: AOT-GAN-for-Inpainting-CoreML/aotgan.mlmodel
+SHA-256: 6090945f20e4971113457fa0bb90bca42e4569dcaf9ab7c183d2749ee4718b68
+Original license: Apache License 2.0. See AOT-GAN-LICENSE.txt.
+The Core ML file is a converted model; its weights are unmodified in Velyn. No sample application source is incorporated.
+Application preprocessing, crop selection and non-destructive compositing are implemented by Velyn.
+
+All models run on this device. No photograph or prompt is sent to a model provider.
+
+GMNet (real-world SDR-to-HDR gain-map prediction)
+Copyright (c) 2025 Yinuo Liao. MIT License; see GMNet-LICENSE.txt.
+Source: https://github.com/qtlark/GMNet
+Revision: 59db6aac16f8fa7071a9447e357d9e7316ce0f8c
+Checkpoint: checkpoints/G_realworld.pth
+Checkpoint SHA-256: 83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f
+Velyn converts the original weights to Core ML FP16, uses fixed input shapes,
+replaces equivalent adaptive pooling, and bounds predicted log2 gain to 0...log2(5).
+Conversion source and reproduction instructions are included in Scripts/Models.
