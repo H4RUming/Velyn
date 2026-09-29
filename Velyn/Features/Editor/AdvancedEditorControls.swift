@@ -8,7 +8,7 @@ struct AdvancedEditorControls: View {
     @State private var tone = 0
     @State private var depthParameter = 0
     @State private var gradeParameter = 0
-    @State private var maskParameter = "노출"
+    @State private var maskParameter = L10n.tr("노출")
     @State private var versionName = ""
     private var mask: LocalMask? { editor.recipe.enhancements.masks.first { $0.id == editor.activeMask } }
 
@@ -16,85 +16,85 @@ struct AdvancedEditorControls: View {
         VStack(spacing: 14) {
             switch tool {
             case .blur:
-                if editor.isAnalyzing { HStack { ProgressView(); Text("기기에서 깊이 분석 중"); Button("취소") { editor.cancelAnalysis() } } }
-                else { Button(editor.recipe.enhancements.depth == nil ? "사진 깊이 분석" : "깊이 다시 분석") { Task { await editor.estimateDepth() } }.frame(minHeight: 44) }
+                if editor.isAnalyzing { HStack { ProgressView(); Text(L10n.tr("기기에서 깊이 분석 중")); Button(L10n.tr("취소")) { editor.cancelAnalysis() } } }
+                else { Button(editor.recipe.enhancements.depth == nil ? L10n.tr("사진 깊이 분석") : L10n.tr("깊이 다시 분석")) { Task { await editor.estimateDepth() } }.frame(minHeight: 44) }
                 if let depth = editor.recipe.enhancements.depth {
-                    Button(editor.pickingDepth ? "초점 지정 취소" : "사진에서 초점 선택") { editor.chooseDepthFocus() }
-                    if editor.pickingDepth { Text("선명하게 유지할 피사체를 누르세요. 원본 구도에서 선택합니다.").font(.caption) }
-                    Picker("조절 항목",selection: $depthParameter) { Text("흐림 강도").tag(0); Text("초점 거리").tag(1); Text("선명한 범위").tag(2) }.pickerStyle(.segmented)
-                    if depthParameter == 0 { depthSlider("흐림 강도",key: \.amount,value: depth.amount,range: 0...100,defaultValue: 30) }
-                    else if depthParameter == 1 { depthSlider("초점 거리 · 0 먼 곳 / 1 가까운 곳",key: \.focus,value: depth.focus,range: 0...1,defaultValue: 0.75) }
-                    else { depthSlider("선명하게 유지할 범위",key: \.range,value: depth.range,range: 0.01...1,defaultValue: 0.15) }
-                    Button("깊이 효과 제거") { editor.mutate { $0.enhancements.depth = nil } }
+                    Button(editor.pickingDepth ? L10n.tr("초점 지정 취소") : L10n.tr("사진에서 초점 선택")) { editor.chooseDepthFocus() }
+                    if editor.pickingDepth { Text(L10n.tr("선명하게 유지할 피사체를 누르세요. 원본 구도에서 선택합니다.")).font(.caption) }
+                    Picker(L10n.tr("조절 항목"),selection: $depthParameter) { Text(L10n.tr("흐림 강도")).tag(0); Text(L10n.tr("초점 거리")).tag(1); Text(L10n.tr("선명한 범위")).tag(2) }.pickerStyle(.segmented)
+                    if depthParameter == 0 { depthSlider(L10n.tr("흐림 강도"),key: \.amount,value: depth.amount,range: 0...100,defaultValue: 30) }
+                    else if depthParameter == 1 { depthSlider(L10n.tr("초점 거리 · 0 먼 곳 / 1 가까운 곳"),key: \.focus,value: depth.focus,range: 0...1,defaultValue: 0.75) }
+                    else { depthSlider(L10n.tr("선명하게 유지할 범위"),key: \.range,value: depth.range,range: 0.01...1,defaultValue: 0.15) }
+                    Button(L10n.tr("깊이 효과 제거")) { editor.mutate { $0.enhancements.depth = nil } }
                 }
-                Text("앱에 포함된 모델로 사진의 상대적인 깊이를 추정합니다. 머리카락이나 반사면의 경계는 부정확할 수 있습니다.").font(.caption2).foregroundStyle(.secondary)
+                Text(L10n.tr("앱에 포함된 모델로 사진의 상대적인 깊이를 추정합니다. 머리카락이나 반사면의 경계는 부정확할 수 있습니다.")).font(.caption2).foregroundStyle(.secondary)
             case .curve:
-                Picker("채널", selection: $channel) { ForEach(CurveChannel.allCases, id: \.self) { Text($0.rawValue).tag($0) } }.pickerStyle(.segmented)
+                Picker(L10n.tr("채널"), selection: $channel) { ForEach(CurveChannel.allCases, id: \.self) { Text(L10n.tr($0.rawValue)).tag($0) } }.pickerStyle(.segmented)
                 PointCurveEditor(editor: editor, channel: channel).frame(height: 130)
-                HStack { Text("터치해 점 추가 · 끌어 조절 · 두 번 탭해 삭제").font(.caption2).foregroundStyle(.secondary); Spacer(); Button("초기화") { editor.mutate { $0.enhancements.curves[channel.rawValue] = nil } } }
+                HStack { Text(L10n.tr("터치해 점 추가 · 끌어 조절 · 두 번 탭해 삭제")).font(.caption2).foregroundStyle(.secondary); Spacer(); Button(L10n.tr("초기화")) { editor.mutate { $0.enhancements.curves[channel.rawValue] = nil } } }
             case .grade:
-                Picker("밝기 영역", selection: $tone) { Text("그림자").tag(0); Text("중간톤").tag(1); Text("밝은 부분").tag(2) }.pickerStyle(.segmented)
-                Picker("조절 항목",selection: $gradeParameter) { Text("색상").tag(0); Text("채도").tag(1); Text("휘도").tag(2) }.pickerStyle(.segmented)
-                if gradeParameter == 0 { gradeSlider("색상", key: \.hue, range: 0...360) }
-                else if gradeParameter == 1 { gradeSlider("채도", key: \.saturation, range: 0...100) }
-                else { gradeSlider("휘도", key: \.luminance, range: -100...100) }
+                Picker(L10n.tr("밝기 영역"), selection: $tone) { Text(L10n.tr("그림자")).tag(0); Text(L10n.tr("중간톤")).tag(1); Text(L10n.tr("밝은 부분")).tag(2) }.pickerStyle(.segmented)
+                Picker(L10n.tr("조절 항목"),selection: $gradeParameter) { Text(L10n.tr("색상")).tag(0); Text(L10n.tr("채도")).tag(1); Text(L10n.tr("휘도")).tag(2) }.pickerStyle(.segmented)
+                if gradeParameter == 0 { gradeSlider(L10n.tr("색상"), key: \.hue, range: 0...360) }
+                else if gradeParameter == 1 { gradeSlider(L10n.tr("채도"), key: \.saturation, range: 0...100) }
+                else { gradeSlider(L10n.tr("휘도"), key: \.luminance, range: -100...100) }
             case .masks:
                 HStack {
-                    Menu { ForEach(MaskKind.allCases, id: \.self) { kind in Button(kind.rawValue) { Task { await editor.addMask(kind) } } } } label: { Label("마스크 추가", systemImage: "plus") }
+                    Menu { ForEach(MaskKind.allCases, id: \.self) { kind in Button(L10n.tr(kind.rawValue)) { Task { await editor.addMask(kind) } } } } label: { Label(L10n.tr("마스크 추가"), systemImage: "plus") }
                     Spacer()
-                    if editor.isAnalyzing { ProgressView(); Button("취소") { editor.cancelAnalysis() } }
-                    if mask != nil { Button("삭제", role: .destructive) { editor.removeMask() } }
+                    if editor.isAnalyzing { ProgressView(); Button(L10n.tr("취소")) { editor.cancelAnalysis() } }
+                    if mask != nil { Button(L10n.tr("삭제"), role: .destructive) { editor.removeMask() } }
                 }.frame(minHeight: 44)
-                if editor.pickingObject { Text("하늘이나 물체 등 선택할 부분을 사진에서 누르세요.").font(.caption) }
+                if editor.pickingObject { Text(L10n.tr("하늘이나 물체 등 선택할 부분을 사진에서 누르세요.")).font(.caption) }
                 if !editor.recipe.enhancements.masks.isEmpty {
-                    Picker("마스크", selection: Binding(get: { editor.activeMask ?? editor.recipe.enhancements.masks[0].id }, set: { editor.activeMask = $0 })) {
-                        ForEach(editor.recipe.enhancements.masks) { Text($0.name).tag($0.id) }
+                    Picker(L10n.tr("마스크"), selection: Binding(get: { editor.activeMask ?? editor.recipe.enhancements.masks[0].id }, set: { editor.activeMask = $0 })) {
+                        ForEach(editor.recipe.enhancements.masks) { Text(L10n.maskName($0)).tag($0.id) }
                     }
                 }
                 if let mask {
                     maskAdjustment(mask)
-                    DisclosureGroup("선택 영역 옵션") {
-                    Toggle("선택 영역 표시",isOn: Binding(get: { editor.showMaskOverlay },set: { editor.showMaskOverlay = $0 }))
-                    if mask.kind == .object { Toggle("탭한 부분 제외",isOn: Binding(get: { editor.excludeFromMask },set: { editor.excludeFromMask = $0 })); Text("다시 탭해 선택 영역을 보완할 수 있습니다.").font(.caption2) }
+                    DisclosureGroup(L10n.tr("선택 영역 옵션")) {
+                    Toggle(L10n.tr("선택 영역 표시"),isOn: Binding(get: { editor.showMaskOverlay },set: { editor.showMaskOverlay = $0 }))
+                    if mask.kind == .object { Toggle(L10n.tr("탭한 부분 제외"),isOn: Binding(get: { editor.excludeFromMask },set: { editor.excludeFromMask = $0 })); Text(L10n.tr("다시 탭해 선택 영역을 보완할 수 있습니다.")).font(.caption2) }
                     HStack {
-                        Toggle("켜기", isOn: Binding(get: { mask.enabled }, set: { value in editor.editMask { $0.enabled = value } }))
-                        Toggle("반전", isOn: Binding(get: { mask.inverted }, set: { value in editor.editMask { $0.inverted = value } }))
+                        Toggle(L10n.tr("켜기"), isOn: Binding(get: { mask.enabled }, set: { value in editor.editMask { $0.enabled = value } }))
+                        Toggle(L10n.tr("반전"), isOn: Binding(get: { mask.inverted }, set: { value in editor.editMask { $0.inverted = value } }))
                     }.font(.caption)
-                    if mask.kind == .brush { Toggle("브러시로 영역 빼기",isOn: Binding(get: { editor.erasingBrush },set: { editor.erasingBrush = $0 })) }
-                    Text(mask.kind == .brush ? "여러 번 그어 영역을 더하거나 뺄 수 있습니다. 실행 취소로 마지막 획을 되돌립니다." : "영역은 원본 구도에서 지정합니다. 선형·방사형은 사진 위를 드래그하세요.").font(.caption2).foregroundStyle(.secondary)
+                    if mask.kind == .brush { Toggle(L10n.tr("브러시로 영역 빼기"),isOn: Binding(get: { editor.erasingBrush },set: { editor.erasingBrush = $0 })) }
+                    Text(mask.kind == .brush ? L10n.tr("여러 번 그어 영역을 더하거나 뺄 수 있습니다. 실행 취소로 마지막 획을 되돌립니다.") : L10n.tr("영역은 원본 구도에서 지정합니다. 선형·방사형은 사진 위를 드래그하세요.")).font(.caption2).foregroundStyle(.secondary)
                     }
                 }
-                DisclosureGroup("선택 모델") { Text("Apple의 선택 모델만 준비합니다. 사진은 전송하지 않으며 준비 후 기기에서 분석합니다.").font(.caption); Button("선택 모델 준비") { Task { await editor.prepareSelectionAssets() } }.disabled(editor.isAnalyzing) }
+                DisclosureGroup(L10n.tr("선택 모델")) { Text(L10n.tr("Apple의 선택 모델만 준비합니다. 사진은 전송하지 않으며 준비 후 기기에서 분석합니다.")).font(.caption); Button(L10n.tr("선택 모델 준비")) { Task { await editor.prepareSelectionAssets() } }.disabled(editor.isAnalyzing) }
             case .retouch: RemovalControls(editor: editor)
             case .versions:
-                HStack { TextField("버전 이름", text: $versionName); Button("저장") { Task { await editor.saveVersion(name: versionName); versionName = "" } }.disabled(versionName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) }
+                HStack { TextField(L10n.tr("버전 이름"), text: $versionName); Button(L10n.tr("저장")) { Task { await editor.saveVersion(name: versionName); versionName = "" } }.disabled(versionName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) }
                 ForEach(editor.versions) { version in Button { editor.restoreVersion(version) } label: { HStack { Text(version.name); Spacer(); Text(version.createdAt, style: .date).font(.caption).foregroundStyle(.secondary) }.frame(minHeight: 44) } }
             default: EmptyView()
             }
         }
     }
     @ViewBuilder private func maskAdjustment(_ mask: LocalMask) -> some View {
-        let base = ["노출","대비","채도","색온도","텍스처","경계 부드러움","강도"]
-        let parameters = base + (mask.kind == .brush ? ["브러시 크기"] : [])
-            + ([MaskKind.luminance,.color].contains(mask.kind) ? ["범위 시작","범위 끝"] : [])
-            + (mask.kind == .color ? ["대상 색상"] : []) + (mask.kind == .subject ? ["배경 흐림"] : [])
-        let selected = parameters.contains(maskParameter) ? maskParameter : "노출"
-        Picker("조절 항목",selection: Binding(get: { selected },set: { editor.finishGesture(); maskParameter = $0 })) {
+        let base = [L10n.tr("노출"),L10n.tr("대비"),L10n.tr("채도"),L10n.tr("색온도"),L10n.tr("텍스처"),L10n.tr("경계 부드러움"),L10n.tr("강도")]
+        let parameters = base + (mask.kind == .brush ? [L10n.tr("브러시 크기")] : [])
+            + ([MaskKind.luminance,.color].contains(mask.kind) ? [L10n.tr("범위 시작"),L10n.tr("범위 끝")] : [])
+            + (mask.kind == .color ? [L10n.tr("대상 색상")] : []) + (mask.kind == .subject ? [L10n.tr("배경 흐림")] : [])
+        let selected = parameters.contains(maskParameter) ? maskParameter : L10n.tr("노출")
+        Picker(L10n.tr("조절 항목"),selection: Binding(get: { selected },set: { editor.finishGesture(); maskParameter = $0 })) {
             ForEach(parameters,id: \.self) { Text($0).tag($0) }
         }
         switch selected {
-        case "대비": maskSlider("대비",key: \.contrast,range: -100...100)
-        case "채도": maskSlider("채도",key: \.saturation,range: -100...100)
-        case "색온도": maskSlider("색온도",key: \.warmth,range: -100...100)
-        case "텍스처": maskSlider("텍스처",key: \.texture,range: -100...100)
-        case "경계 부드러움": maskSlider("경계 부드러움",key: \.feather,range: 0...1,step: 0.01)
-        case "강도": maskSlider("강도",key: \.opacity,range: 0...1,step: 0.01)
-        case "브러시 크기": maskSlider("브러시 크기",key: \.radius,range: 0.005...0.3,step: 0.005)
-        case "범위 시작": maskSlider("범위 시작",key: \.lower,range: 0...mask.upper,step: 0.01)
-        case "범위 끝": maskSlider("범위 끝",key: \.upper,range: mask.lower...1,step: 0.01)
-        case "대상 색상": maskSlider("대상 색상",key: \.hue,range: 0...360)
-        case "배경 흐림": AdjustmentSlider(title: "배경 흐림",value: Binding(get: { editor.recipe[.lensBlur] },set: { editor.set(.lensBlur,$0) }),range: 0...100,step: 1,defaultValue: 0,commit: editor.finishGesture)
-        default: maskSlider("노출",key: \.exposure,range: -5...5,step: 0.05)
+        case L10n.tr("대비"): maskSlider(L10n.tr("대비"),key: \.contrast,range: -100...100)
+        case L10n.tr("채도"): maskSlider(L10n.tr("채도"),key: \.saturation,range: -100...100)
+        case L10n.tr("색온도"): maskSlider(L10n.tr("색온도"),key: \.warmth,range: -100...100)
+        case L10n.tr("텍스처"): maskSlider(L10n.tr("텍스처"),key: \.texture,range: -100...100)
+        case L10n.tr("경계 부드러움"): maskSlider(L10n.tr("경계 부드러움"),key: \.feather,range: 0...1,step: 0.01)
+        case L10n.tr("강도"): maskSlider(L10n.tr("강도"),key: \.opacity,range: 0...1,step: 0.01)
+        case L10n.tr("브러시 크기"): maskSlider(L10n.tr("브러시 크기"),key: \.radius,range: 0.005...0.3,step: 0.005)
+        case L10n.tr("범위 시작"): maskSlider(L10n.tr("범위 시작"),key: \.lower,range: 0...mask.upper,step: 0.01)
+        case L10n.tr("범위 끝"): maskSlider(L10n.tr("범위 끝"),key: \.upper,range: mask.lower...1,step: 0.01)
+        case L10n.tr("대상 색상"): maskSlider(L10n.tr("대상 색상"),key: \.hue,range: 0...360)
+        case L10n.tr("배경 흐림"): AdjustmentSlider(title: L10n.tr("배경 흐림"),value: Binding(get: { editor.recipe[.lensBlur] },set: { editor.set(.lensBlur,$0) }),range: 0...100,step: 1,defaultValue: 0,commit: editor.finishGesture)
+        default: maskSlider(L10n.tr("노출"),key: \.exposure,range: -5...5,step: 0.05)
         }
     }
     private func depthSlider(_ title: String,key: WritableKeyPath<DepthEffect,Double>,value: Double,range: ClosedRange<Double>,defaultValue: Double) -> some View {
@@ -157,9 +157,9 @@ struct PresetExchangeControls: View {
     @State private var sharing: ShareableFiles?
     var body: some View {
         VStack {
-            HStack { Button("프리셋 가져오기") { importing = true }; Spacer(); Button("프리셋 내보내기") { Task { if let url = await editor.exportPreset() { sharing = ShareableFiles(urls: [url]) } } } }.frame(minHeight: 44)
-            Text("Velyn 프리셋 파일 지원 · Lightroom XMP는 호환되지 않습니다.").font(.caption2).foregroundStyle(.secondary)
-            Menu("사용자 프리셋 관리") { ForEach(editor.presets) { preset in Button("\(preset.name) 삭제",role: .destructive) { Task { await editor.deletePreset(preset.id) } } } }
+            HStack { Button(L10n.tr("프리셋 가져오기")) { importing = true }; Spacer(); Button(L10n.tr("프리셋 내보내기")) { Task { if let url = await editor.exportPreset() { sharing = ShareableFiles(urls: [url]) } } } }.frame(minHeight: 44)
+            Text(L10n.tr("Velyn 프리셋 파일 지원 · Lightroom XMP는 호환되지 않습니다.")).font(.caption2).foregroundStyle(.secondary)
+            Menu(L10n.tr("사용자 프리셋 관리")) { ForEach(editor.presets) { preset in Button(L10n.format("%@ 삭제",preset.name),role: .destructive) { Task { await editor.deletePreset(preset.id) } } } }
         }.fileImporter(isPresented: $importing,allowedContentTypes: [.data]) { result in if case .success(let url) = result { Task { await editor.importPreset(url) } } }
             .sheet(item: $sharing,onDismiss: { sharing = nil }) { item in ActivityShareView(urls: item.urls) }
     }

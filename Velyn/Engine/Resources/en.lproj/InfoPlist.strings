@@ -1,0 +1,3 @@
+"NSCameraUsageDescription" = "Take photos and edit them on this device.";
+"NSPhotoLibraryAddUsageDescription" = "Save edited photos as new images in your photo library.";
+"NSPhotoLibraryUsageDescription" = "Import selected originals, including RAW files, for editing.";

@@ -38,7 +38,7 @@ struct PhotoThumbnail: View {
                 } else if failed {
                     VStack(spacing: 8) {
                         Image(systemName: "photo.badge.exclamationmark").font(.title3)
-                        if !fill { Text("미리보기를 표시할 수 없습니다").font(.caption) }
+                        if !fill { Text(L10n.tr("미리보기를 표시할 수 없습니다")).font(.caption) }
                     }.foregroundStyle(LibraryStyle.secondary)
                 } else {
                     ProgressView().controlSize(.small).tint(.gray)

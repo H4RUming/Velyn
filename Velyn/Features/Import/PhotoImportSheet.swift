@@ -25,25 +25,25 @@ struct PhotoImportSheet: View {
         VStack(spacing: 0) {
             HStack {
                 VStack(alignment: .leading,spacing: 4) {
-                    Text("사진 추가").font(.title3.weight(.semibold))
-                    Text("원본을 그대로 가져옵니다").font(.caption).foregroundStyle(.secondary)
+                    Text(L10n.tr("사진 추가")).font(.title3.weight(.semibold))
+                    Text(L10n.tr("원본을 그대로 가져옵니다")).font(.caption).foregroundStyle(.secondary)
                 }
                 Spacer()
                 Button { completion(nil) } label: { Image(systemName: "xmark").font(.system(size: 13,weight: .semibold)).frame(width: 32,height: 32).background(.white.opacity(0.08),in: Circle()) }
-                    .accessibilityLabel("사진 선택 닫기")
+                    .accessibilityLabel(L10n.tr("사진 선택 닫기"))
             }.padding(.horizontal,20).padding(.top,22).padding(.bottom,18)
             HStack(spacing: 10) {
-                sourceButton("파일",icon: "folder",subtitle: "PNG · WebP · RAW 등") { completion(.files) }
-                sourceButton("카메라",icon: "camera",subtitle: "새 사진 촬영") { completion(.camera) }
+                sourceButton(L10n.tr("파일"),icon: "folder",subtitle: L10n.tr("PNG · WebP · RAW 등")) { completion(.files) }
+                sourceButton(L10n.tr("카메라"),icon: "camera",subtitle: L10n.tr("새 사진 촬영")) { completion(.camera) }
             }.padding(.horizontal,16).padding(.bottom,18)
             if accessible {
                 HStack {
-                    Text("최근 사진").font(.subheadline.weight(.semibold))
+                    Text(L10n.tr("최근 사진")).font(.subheadline.weight(.semibold))
                     Spacer()
-                    Button("앨범 · 전체 보기") { showAll = true }.font(.subheadline)
+                    Button(L10n.tr("앨범 · 전체 보기")) { showAll = true }.font(.subheadline)
                 }.padding(.horizontal,20).frame(height: 40)
                 if authorization == .limited {
-                    HStack { Text("허용한 사진만 표시 중").font(.caption).foregroundStyle(.secondary); Spacer(); Button("선택 범위 변경") { showLimited = true }.font(.caption) }
+                    HStack { Text(L10n.tr("허용한 사진만 표시 중")).font(.caption).foregroundStyle(.secondary); Spacer(); Button(L10n.tr("선택 범위 변경")) { showLimited = true }.font(.caption) }
                         .padding(.horizontal,20).frame(minHeight: 36)
                 }
                 GeometryReader { geometry in
@@ -55,17 +55,17 @@ struct PhotoImportSheet: View {
                             }
                         }
                         if hasMore { ProgressView().padding().task { await loadMore() } }
-                        if photos.isEmpty && !loading { Text("표시할 사진이 없습니다").foregroundStyle(.secondary).padding(32) }
+                        if photos.isEmpty && !loading { Text(L10n.tr("표시할 사진이 없습니다")).foregroundStyle(.secondary).padding(32) }
                     }
                     .overlay { if loading && photos.isEmpty { ProgressView() } }
                 }
             } else {
                 VStack(spacing: 14) {
                     Image(systemName: "photo.on.rectangle.angled").font(.system(size: 34,weight: .light)).foregroundStyle(.secondary)
-                    Text("사진을 한눈에 골라보세요").font(.headline)
-                    Text("선택한 사진만 허용해도 됩니다.\n파일 가져오기는 사진 접근 권한 없이 사용할 수 있습니다.")
+                    Text(L10n.tr("사진을 한눈에 골라보세요")).font(.headline)
+                    Text(L10n.tr("선택한 사진만 허용해도 됩니다.\n파일 가져오기는 사진 접근 권한 없이 사용할 수 있습니다."))
                         .font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center)
-                    Button(authorization == .notDetermined ? "사진 선택 허용" : "사진 접근 설정") {
+                    Button(authorization == .notDetermined ? L10n.tr("사진 선택 허용") : L10n.tr("사진 접근 설정")) {
                         if authorization == .notDetermined {
                             Task { authorization = await PHPhotoLibrary.requestAuthorization(for: .readWrite); await reload() }
                         } else if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
@@ -78,11 +78,11 @@ struct PhotoImportSheet: View {
             if accessible {
                 HStack(spacing: 14) {
                     VStack(alignment: .leading,spacing: 3) {
-                        Text(selected.isEmpty ? "사진을 선택하세요" : "\(selected.count)장 선택됨").font(.subheadline.weight(.medium))
-                        Text("움직이는 이미지는 첫 장면을 편집합니다").font(.caption2).foregroundStyle(.secondary)
+                        Text(selected.isEmpty ? L10n.tr("사진을 선택하세요") : L10n.format("%ld장 선택됨",selected.count)).font(.subheadline.weight(.medium))
+                        Text(L10n.tr("움직이는 이미지는 첫 장면을 편집합니다")).font(.caption2).foregroundStyle(.secondary)
                     }
                     Spacer(minLength: 4)
-                    Button("추가") { completion(.selection(selected)) }
+                    Button(L10n.tr("추가")) { completion(.selection(selected)) }
                         .font(.subheadline.weight(.semibold)).padding(.horizontal,22).frame(height: 44)
                         .background(selected.isEmpty ? Color.white.opacity(0.08) : LibraryStyle.blue,in: Capsule())
                         .foregroundStyle(selected.isEmpty ? LibraryStyle.secondary : Color.white).disabled(selected.isEmpty)
@@ -121,7 +121,7 @@ struct PhotoImportSheet: View {
     private func toggle(_ id: String) {
         if selected.contains(id) { selected.removeAll { $0 == id } }
         else if selected.count < 100 { selected.append(id) }
-        else { error = "한 번에 최대 100장까지 선택할 수 있습니다." }
+        else { error = L10n.tr("한 번에 최대 100장까지 선택할 수 있습니다.") }
     }
     private func reload() async {
         guard accessible, !loading else { return }
@@ -184,7 +184,7 @@ private struct PhotoSelectionCell: View {
                         if let selectedIndex { Text(String(selectedIndex+1)).font(.system(size: 12,weight: .bold)).foregroundStyle(Color.white) }
                     }.frame(width: 25,height: 25).padding(8)
                 }
-        }.buttonStyle(.plain).accessibilityLabel("사진 \(number)")
+        }.buttonStyle(.plain).accessibilityLabel(L10n.format("사진 %ld",number))
             .accessibilityAddTraits(selectedIndex != nil ? .isSelected : [])
     }
 }

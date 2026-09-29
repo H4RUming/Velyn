@@ -15,10 +15,10 @@ struct PhotoLibraryPicker: View {
                 VStack(spacing: 0) {
                     if authorization == .limited {
                         HStack {
-                            Text("접근을 허용한 사진의 원본을 가져옵니다.")
+                            Text(L10n.tr("접근을 허용한 사진의 원본을 가져옵니다."))
                                 .font(.caption).foregroundStyle(.secondary)
                             Spacer()
-                            Button("접근할 사진 변경") { showAccessSelection = true }
+                            Button(L10n.tr("접근할 사진 변경")) { showAccessSelection = true }
                                 .font(.caption).frame(minHeight: 44)
                         }.padding(.horizontal)
                     }
@@ -28,19 +28,19 @@ struct PhotoLibraryPicker: View {
                 NavigationStack {
                     VStack(spacing: 16) {
                         if authorization == .notDetermined {
-                            ProgressView("사진 보관함 접근 확인 중")
+                            ProgressView(L10n.tr("사진 보관함 접근 확인 중"))
                         } else {
                             Image(systemName: "photo.on.rectangle").font(.largeTitle)
-                            Text("사진 보관함 접근이 필요합니다").font(.headline)
-                            Text("RAW를 포함한 사진 원본을 가져오려면 사진 접근을 허용해 주세요. 파일에서 가져오기도 사용할 수 있습니다.")
+                            Text(L10n.tr("사진 보관함 접근이 필요합니다")).font(.headline)
+                            Text(L10n.tr("RAW를 포함한 사진 원본을 가져오려면 사진 접근을 허용해 주세요. 파일에서 가져오기도 사용할 수 있습니다."))
                                 .font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center)
-                            Button("설정 열기") {
+                            Button(L10n.tr("설정 열기")) {
                                 if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
                             }.buttonStyle(.borderedProminent)
                         }
                     }.padding(24).frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .navigationTitle("사진 보관함").navigationBarTitleDisplayMode(.inline)
-                        .toolbar { ToolbarItem(placement: .cancellationAction) { Button("취소") { completion(nil) } } }
+                        .navigationTitle(L10n.tr("사진 보관함")).navigationBarTitleDisplayMode(.inline)
+                        .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L10n.tr("취소")) { completion(nil) } } }
                 }
             }
         }

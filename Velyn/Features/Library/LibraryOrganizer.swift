@@ -21,7 +21,7 @@ final class LibraryOrganizer {
     init() { service = (try? OriginalImportService.applicationRoot()).map { LibraryService(root: $0) } }
     func load() async {
         do { if let service { catalog = try await service.load() } }
-        catch { self.error = "라이브러리 분류 정보를 읽지 못했습니다. 기존 파일은 보존됩니다." }
+        catch { self.error = L10n.tr("라이브러리 분류 정보를 읽지 못했습니다. 기존 파일은 보존됩니다.") }
     }
     func matches(_ asset: SourceAsset,query: String) -> Bool {
         let entry = catalog[asset.id]
@@ -44,7 +44,7 @@ final class LibraryOrganizer {
     }
     func copy(_ asset: SourceAsset) async {
         guard let service else { return }
-        do { copiedEdits = try await service.copyEdits(from: asset); status = "색·톤 보정을 복사했습니다" } catch { self.error = error.localizedDescription }
+        do { copiedEdits = try await service.copyEdits(from: asset); status = L10n.tr("색·톤 보정을 복사했습니다") } catch { self.error = error.localizedDescription }
     }
     enum BatchAction { case paste, export, classify }
     func run(_ action: BatchAction,assets: [SourceAsset],settings: ExportSettings = ExportSettings()) {
@@ -60,7 +60,7 @@ final class LibraryOrganizer {
             let directory = FileManager.default.temporaryDirectory.appendingPathComponent("VelynBatch-\(UUID())")
             for asset in chosen {
                 if Task.isCancelled { break }
-                status = "\(done + failures.count + 1) / \(chosen.count) 처리 중"
+                status = L10n.format("%ld / %ld 처리 중",done + failures.count + 1,chosen.count)
                 do {
                     switch action {
                     case .paste: try await service.pasteEdits(copied!,to: asset)
@@ -71,8 +71,8 @@ final class LibraryOrganizer {
                 } catch is CancellationError { break }
                 catch { failures.append("\(asset.originalFilename): \(error.localizedDescription)") }
             }
-            status = "\(done)장 완료" + (Task.isCancelled ? " · 나머지 작업 취소" : "")
-            if !failures.isEmpty { error = "\(done)장 완료, \(failures.count)장 실패\n" + failures.prefix(5).joined(separator: "\n") }
+            status = L10n.format("%ld장 완료",done) + (Task.isCancelled ? L10n.tr(" · 나머지 작업 취소") : "")
+            if !failures.isEmpty { error = L10n.format("%ld장 완료, %ld장 실패\n",done,failures.count) + failures.prefix(5).joined(separator: "\n") }
             if !urls.isEmpty { sharing = ShareableFiles(urls: urls) }
         }
     }

@@ -37,57 +37,57 @@ struct EditorExportView: View {
                 VStack(alignment: .leading,spacing: 22) {
                     exportSummary
                     VStack(alignment: .leading,spacing: 12) {
-                        Text("파일 형식").font(.subheadline.weight(.semibold))
-                        Picker("파일 형식",selection: $settings.format) {
+                        Text(L10n.tr("파일 형식")).font(.subheadline.weight(.semibold))
+                        Picker(L10n.tr("파일 형식"),selection: $settings.format) {
                             ForEach(ImageFormats.exportFormats,id: \.self) { format in
-                                Text(format == .original ? "원본" : format.rawValue).tag(format)
+                                Text(format == .original ? L10n.tr("원본") : format.rawValue).tag(format)
                             }
                         }.pickerStyle(.segmented)
                         Text(settings.format.summary).font(.caption).foregroundStyle(.secondary)
                     }
                     if settings.format != .original {
                         VStack(spacing: 16) {
-                            Picker("크기",selection: $edge) {
-                                Text("전체 해상도").tag(0)
-                                Text("긴 변 2048px").tag(2048)
-                                Text("긴 변 4096px").tag(4096)
-                                Text("직접 입력").tag(-1)
+                            Picker(L10n.tr("크기"),selection: $edge) {
+                                Text(L10n.tr("전체 해상도")).tag(0)
+                                Text(L10n.tr("긴 변 2048px")).tag(2048)
+                                Text(L10n.tr("긴 변 4096px")).tag(4096)
+                                Text(L10n.tr("직접 입력")).tag(-1)
                             }.tint(.white)
                             if edge == -1 {
-                                TextField("긴 변 · 64~20,000px",text: $customEdge)
+                                TextField(L10n.tr("긴 변 · 64~20,000px"),text: $customEdge)
                                     .keyboardType(.numberPad).textFieldStyle(.roundedBorder)
                             }
                             if settings.format == .png {
                                 VStack(alignment: .leading,spacing: 6) {
-                                    Toggle("16비트 PNG",isOn: $settings.png16Bit)
-                                    Text("보정한 색과 밝기의 단계를 더 세밀하게 저장합니다. 파일 용량은 커집니다.").font(.caption).foregroundStyle(.secondary)
+                                    Toggle(L10n.tr("16비트 PNG"),isOn: $settings.png16Bit)
+                                    Text(L10n.tr("보정한 색과 밝기의 단계를 더 세밀하게 저장합니다. 파일 용량은 커집니다.")).font(.caption).foregroundStyle(.secondary)
                                 }
                             }
                             if settings.format.supportsQuality {
                                 VStack(alignment: .leading,spacing: 6) {
-                                    LabeledContent("품질",value: "\(Int(settings.quality*100))%")
-                                    Slider(value: $settings.quality,in: 0.1...1,step: 0.01).accessibilityLabel("출력 품질")
-                                    Text("품질을 낮추면 용량도 줄어듭니다.").font(.caption).foregroundStyle(.secondary)
+                                    LabeledContent(L10n.tr("품질"),value: "\(Int(settings.quality*100))%")
+                                    Slider(value: $settings.quality,in: 0.1...1,step: 0.01).accessibilityLabel(L10n.tr("출력 품질"))
+                                    Text(L10n.tr("품질을 낮추면 용량도 줄어듭니다.")).font(.caption).foregroundStyle(.secondary)
                                 }
                             }
                         }.font(.subheadline).frame(maxWidth: .infinity).padding(16)
                             .background(Color.white.opacity(0.05),in: RoundedRectangle(cornerRadius: 16))
-                        DisclosureGroup("추가 옵션") {
+                        DisclosureGroup(L10n.tr("추가 옵션")) {
                             VStack(alignment: .leading,spacing: 16) {
-                                Picker("색 공간",selection: $settings.colorSpace) {
-                                    ForEach(OutputColorSpace.allCases,id: \.self) { Text($0.rawValue).tag($0) }
+                                Picker(L10n.tr("색 공간"),selection: $settings.colorSpace) {
+                                    ForEach(OutputColorSpace.allCases,id: \.self) { Text(L10n.tr($0.rawValue)).tag($0) }
                                 }
-                                Text(settings.colorSpace == .sRGB ? "sRGB는 웹과 대부분의 화면에 적합합니다." : "Display P3는 더 넓은 색 범위를 보존합니다.")
+                                Text(settings.colorSpace == .sRGB ? L10n.tr("sRGB는 웹과 대부분의 화면에 적합합니다.") : L10n.tr("Display P3는 더 넓은 색 범위를 보존합니다."))
                                     .font(.caption).foregroundStyle(.secondary)
-                                if settings.format.supportsHDR { Toggle("HDR 저장",isOn: $settings.hdr) }
-                                TextField("워터마크 (선택)",text: $settings.watermark).textFieldStyle(.roundedBorder)
-                                Text(settings.format.preservesAlpha ? "투명 영역을 유지합니다. 위치·촬영 정보는 제거됩니다." : "투명 영역은 흰색으로 채웁니다. 위치·촬영 정보는 제거됩니다.")
+                                if settings.format.supportsHDR { Toggle(L10n.tr("HDR 저장"),isOn: $settings.hdr) }
+                                TextField(L10n.tr("워터마크 (선택)"),text: $settings.watermark).textFieldStyle(.roundedBorder)
+                                Text(settings.format.preservesAlpha ? L10n.tr("투명 영역을 유지합니다. 위치·촬영 정보는 제거됩니다.") : L10n.tr("투명 영역은 흰색으로 채웁니다. 위치·촬영 정보는 제거됩니다."))
                                     .font(.caption).foregroundStyle(.secondary)
                             }.padding(.top,14)
                         }.font(.subheadline)
                     }
                     if settings.format != .original, editor.recipe[.gamutExpansion] > 0 {
-                        Text(settings.colorSpace == .displayP3 ? "확장한 색을 Display P3로 저장합니다." : "sRGB 저장에서는 확장한 색 일부가 좁은 색역으로 변환됩니다. 추가 옵션에서 Display P3를 선택할 수 있습니다.")
+                        Text(settings.colorSpace == .displayP3 ? L10n.tr("확장한 색을 Display P3로 저장합니다.") : L10n.tr("sRGB 저장에서는 확장한 색 일부가 좁은 색역으로 변환됩니다. 추가 옵션에서 Display P3를 선택할 수 있습니다."))
                             .font(.caption).foregroundStyle(.secondary)
                     }
                     if let estimateError { Text(estimateError).font(.caption).foregroundStyle(.orange) }
@@ -97,8 +97,8 @@ struct EditorExportView: View {
             .background(LibraryStyle.background)
             .safeAreaInset(edge: .bottom) { saveActions }
             .disabled(saving)
-            .navigationTitle("사진 저장").navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("완료") { dismiss() }.disabled(saving) } }
+            .navigationTitle(L10n.tr("사진 저장")).navigationBarTitleDisplayMode(.inline)
+            .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L10n.tr("완료")) { dismiss() }.disabled(saving) } }
         }
         .preferredColorScheme(.dark).tint(LibraryStyle.blue)
         .interactiveDismissDisabled(saving)
@@ -127,12 +127,12 @@ struct EditorExportView: View {
             exportCopyURL = nil; file = nil
         }) { item in
             FileExportPicker(url: item.url) { saved in
-                if saved { message = "파일을 저장했습니다" }
+                if saved { message = L10n.tr("파일을 저장했습니다") }
                 file = nil
             }
         }
-        .alert("저장하지 못했습니다",isPresented: Binding(get: { localError != nil },set: { if !$0 { localError = nil } })) {
-            Button("확인",role: .cancel) { localError = nil }
+        .alert(L10n.tr("저장하지 못했습니다"),isPresented: Binding(get: { localError != nil },set: { if !$0 { localError = nil } })) {
+            Button(L10n.tr("확인"),role: .cancel) { localError = nil }
         } message: { Text(localError ?? "") }
     }
     private var exportSummary: some View {
@@ -147,16 +147,16 @@ struct EditorExportView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12)).accessibilityHidden(true)
             }
             VStack(alignment: .leading,spacing: 7) {
-                Text("저장 용량").font(.caption).foregroundStyle(.secondary)
+                Text(L10n.tr("저장 용량")).font(.caption).foregroundStyle(.secondary)
                 if let prepared, preparedSettings == effectiveSettings, !calculating {
                     Text(ByteCountFormatter.string(fromByteCount: prepared.byteCount,countStyle: .file))
                         .font(.system(size: 29,weight: .semibold,design: .rounded)).monospacedDigit()
                     Text("\(prepared.width) × \(prepared.height) · .\(prepared.url.pathExtension)")
                         .font(.caption).foregroundStyle(.secondary)
                 } else {
-                    HStack { if calculating { ProgressView().controlSize(.small) }; Text(calculating ? "용량 계산 중" : "—") }.font(.subheadline)
+                    HStack { if calculating { ProgressView().controlSize(.small) }; Text(calculating ? L10n.tr("용량 계산 중") : "—") }.font(.subheadline)
                 }
-                Text(settings.format == .original ? "편집 없이 원본 그대로" : (settings.format == .png && settings.png16Bit ? "16비트 · SDR" : (settings.hdr && settings.format.supportsHDR ? "HDR · SDR 호환" : "편집한 사진 · SDR")))
+                Text(settings.format == .original ? L10n.tr("편집 없이 원본 그대로") : (settings.format == .png && settings.png16Bit ? L10n.tr("16비트 · SDR") : (settings.hdr && settings.format.supportsHDR ? L10n.tr("HDR · SDR 호환") : L10n.tr("편집한 사진 · SDR"))))
                     .font(.caption2).foregroundStyle(.secondary)
             }
             Spacer(minLength: 0)
@@ -165,14 +165,14 @@ struct EditorExportView: View {
     private var saveActions: some View {
         VStack(spacing: 8) {
             Button { Task { await savePhotos() } } label: {
-                HStack { if saving { ProgressView().tint(.white) }; Label("사진에 저장",systemImage: "photo.badge.arrow.down") }
+                HStack { if saving { ProgressView().tint(.white) }; Label(L10n.tr("사진에 저장"),systemImage: "photo.badge.arrow.down") }
                     .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity).frame(height: 52)
                     .background(ready ? LibraryStyle.blue : Color.white.opacity(0.1),in: RoundedRectangle(cornerRadius: 14))
             }.buttonStyle(.plain).disabled(!ready)
             Button { Task { await saveFile() } } label: {
-                Label("파일에 저장",systemImage: "folder").font(.subheadline).frame(maxWidth: .infinity).frame(height: 42)
+                Label(L10n.tr("파일에 저장"),systemImage: "folder").font(.subheadline).frame(maxWidth: .infinity).frame(height: 42)
             }.disabled(!ready)
-            Text("기기에서 계산한 실제 파일 용량입니다.").font(.caption2).foregroundStyle(.secondary)
+            Text(L10n.tr("기기에서 계산한 실제 파일 용량입니다.")).font(.caption2).foregroundStyle(.secondary)
         }.padding(.horizontal,22).padding(.top,14).padding(.bottom,10).background(LibraryStyle.background)
     }
     private func updateEstimate() async {
@@ -180,7 +180,7 @@ struct EditorExportView: View {
         if let prepared { self.prepared = nil; await editor.discardExport(prepared.url) }
         guard !Task.isCancelled, generation == id else { return }
         preparedSettings = nil; estimateError = nil; calculating = false
-        guard let request = effectiveSettings else { estimateError = "긴 변은 64~20,000 픽셀로 입력해 주세요."; return }
+        guard let request = effectiveSettings else { estimateError = L10n.tr("긴 변은 64~20,000 픽셀로 입력해 주세요."); return }
         calculating = true
         do {
             try await Task.sleep(for: .milliseconds(550))
@@ -200,13 +200,13 @@ struct EditorExportView: View {
         guard ready, let prepared else { return }
         saving = true; defer { saving = false }
         let access = await PHPhotoLibrary.requestAuthorization(for: .addOnly)
-        guard access == .authorized || access == .limited else { localError = "사진 추가 권한을 허용하거나 파일에 저장해 주세요."; return }
+        guard access == .authorized || access == .limited else { localError = L10n.tr("사진 추가 권한을 허용하거나 파일에 저장해 주세요."); return }
         do {
             try await PHPhotoLibrary.shared().performChanges {
                 PHAssetCreationRequest.forAsset().addResource(with: .photo,fileURL: prepared.url,options: nil)
             }
-            message = "사진 앱에 저장했습니다"
-        } catch { localError = "사진 앱에 저장하지 못했습니다. 파일에 저장을 이용해 주세요." }
+            message = L10n.tr("사진 앱에 저장했습니다")
+        } catch { localError = L10n.tr("사진 앱에 저장하지 못했습니다. 파일에 저장을 이용해 주세요.") }
     }
 }
 

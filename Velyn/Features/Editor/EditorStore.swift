@@ -89,7 +89,7 @@ final class EditorStore {
             sourceDynamicRange = try await service.sourceDynamicRange()
             versions = try await service.versions()
             do { presets = try await service.presets() }
-            catch { errorMessage = "프리셋을 읽지 못했습니다. 저장한 프리셋은 보존됩니다." }
+            catch { errorMessage = L10n.tr("프리셋을 읽지 못했습니다. 저장한 프리셋은 보존됩니다.") }
             requestRender(immediate: true)
         } catch { loadFailed = true; errorMessage = error.localizedDescription }
     }
@@ -321,7 +321,7 @@ extension EditorStore {
         } catch { errorMessage = error.localizedDescription }
     }
     func addMask(_ kind: MaskKind) async {
-        guard recipe.enhancements.masks.count < 32 else { errorMessage = "한 사진에 마스크를 최대 32개 만들 수 있습니다."; return }
+        guard recipe.enhancements.masks.count < 32 else { errorMessage = L10n.tr("한 사진에 마스크를 최대 32개 만들 수 있습니다."); return }
         if kind == .object { activeMask = nil; pickingObject = true; return }
         guard let service, let document, !isAnalyzing else { return }
         isAnalyzing = true; defer { isAnalyzing = false }
@@ -372,7 +372,7 @@ extension EditorStore {
     }
     func exportPreset() async -> URL? {
         guard let service else { return nil }
-        do { return try await service.exportPreset(recipe, name: "나의 프리셋") } catch { errorMessage = error.localizedDescription; return nil }
+        do { return try await service.exportPreset(recipe, name: L10n.tr("나의 프리셋")) } catch { errorMessage = error.localizedDescription; return nil }
     }
     func deletePreset(_ id: UUID) async {
         guard let service else { return }
@@ -397,7 +397,7 @@ extension EditorStore {
     }
     func appendRemovalStroke(_ stroke: MaskStroke) {
         guard !isAnalyzing,!isComparing else { return }
-        if !removalSelection.append(stroke) { errorMessage = "선택 영역이 너무 복잡합니다. 일부 영역을 먼저 실행하거나 비워 주세요." }
+        if !removalSelection.append(stroke) { errorMessage = L10n.tr("선택 영역이 너무 복잡합니다. 일부 영역을 먼저 실행하거나 비워 주세요.") }
     }
     func runRemoval() async {
         guard let service,let document,!isAnalyzing,!isExporting,removalSelection.hasPaint else { return }
@@ -447,7 +447,7 @@ extension EditorStore {
         guard let service,let document,!isAnalyzing else { return }
         isAnalyzing = true; defer { isAnalyzing = false; analysisTask = nil }
         let previous = recipe.enhancements.masks.first { $0.id == activeMask && $0.kind == .object }
-        guard previous != nil || recipe.enhancements.masks.count < 32 else { errorMessage = "한 사진에 마스크를 최대 32개 만들 수 있습니다."; return }
+        guard previous != nil || recipe.enhancements.masks.count < 32 else { errorMessage = L10n.tr("한 사진에 마스크를 최대 32개 만들 수 있습니다."); return }
         var points = previous?.points ?? [], excluded = previous?.excludedPoints ?? []
         if excludeFromMask && previous != nil { excluded.append(point) } else { points.append(point) }
         let includePoints = points, excludePoints = excluded

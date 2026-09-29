@@ -49,7 +49,7 @@ struct EditorControls: View {
     @State private var presetName = ""
     @State private var showPresetName = false
     private let colors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .purple, .pink]
-    private let names = ["빨강", "주황", "노랑", "초록", "청록", "파랑", "보라", "자홍"]
+    private let names = [L10n.tr("빨강"), L10n.tr("주황"), L10n.tr("노랑"), L10n.tr("초록"), L10n.tr("청록"), L10n.tr("파랑"), L10n.tr("보라"), L10n.tr("자홍")]
 
     var body: some View {
         ScrollView {
@@ -58,18 +58,18 @@ struct EditorControls: View {
                 if tool == .raw { RAWDevelopmentControls(editor: editor) }
                 if tool == .hdr {
                     HDRExpansionControls(editor: editor)
-                    Toggle("HDR 편집", isOn: Binding(get: { editor.recipe.enhancements.hdr }, set: { value in editor.mutate { $0.enhancements.hdr = value } }))
+                    Toggle(L10n.tr("HDR 편집"), isOn: Binding(get: { editor.recipe.enhancements.hdr }, set: { value in editor.mutate { $0.enhancements.hdr = value } }))
                 }
                 if tool == .profile {
-                    HStack { Button("자동 화이트밸런스") { Task { await editor.autoWhiteBalance() } }; Spacer(); Button("스포이트") { editor.pickingWhiteBalance.toggle() } }.frame(minHeight: 44)
-                    Picker("프로파일", selection: Binding(get: { editor.recipe.enhancements.profile }, set: { value in editor.mutate { $0.enhancements.profile = value } })) { ForEach(PhotoProfile.allCases, id: \.self) { Text($0.rawValue).tag($0) } }
+                    HStack { Button(L10n.tr("자동 화이트밸런스")) { Task { await editor.autoWhiteBalance() } }; Spacer(); Button(L10n.tr("스포이트")) { editor.pickingWhiteBalance.toggle() } }.frame(minHeight: 44)
+                    Picker(L10n.tr("프로파일"), selection: Binding(get: { editor.recipe.enhancements.profile }, set: { value in editor.mutate { $0.enhancements.profile = value } })) { ForEach(PhotoProfile.allCases, id: \.self) { Text(L10n.tr($0.rawValue)).tag($0) } }
                 }
                 if tool == .mix { colorMixer }
                 if tool == .crop { cropOptions }
                 if tool == .presets { presetList; PresetExchangeControls(editor: editor) }
                 if let first = tool.adjustments.first {
                     let adjustment = tool.adjustments.contains(selectedAdjustment) ? selectedAdjustment : first
-                    Picker("조절 항목",selection: $selectedAdjustment) {
+                    Picker(L10n.tr("조절 항목"),selection: $selectedAdjustment) {
                         ForEach(tool.adjustments,id: \.self) { Text($0.title).tag($0) }
                     }.pickerStyle(.segmented)
                     AdjustmentSlider(title: adjustment.title,
@@ -78,12 +78,12 @@ struct EditorControls: View {
                         suffix: adjustment == .exposure ? " EV" : (adjustment == .straighten ? "°" : ""),commit: editor.finishGesture)
                 }
                 if tool == .profile {
-                    Text("색온도와 색조는 기본 현상을 기준으로 조절합니다.")
+                    Text(L10n.tr("색온도와 색조는 기본 현상을 기준으로 조절합니다."))
                         .font(.caption2).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading)
                 }
                 if tool == .detail {
-                    Button("원본 픽셀 확인") { editor.pickingDetail.toggle() }
-                    Text("확인할 위치를 사진에서 선택하면 원본 해상도로 불러옵니다.")
+                    Button(L10n.tr("원본 픽셀 확인")) { editor.pickingDetail.toggle() }
+                    Text(L10n.tr("확인할 위치를 사진에서 선택하면 원본 해상도로 불러옵니다."))
                         .font(.caption2).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading)
                 }
             }.padding(.horizontal, 20).padding(.vertical, tool == .crop ? 8 : 16)
@@ -101,10 +101,10 @@ struct EditorControls: View {
                     }.accessibilityLabel(names[index]).accessibilityAddTraits(index == band ? .isSelected : [])
                 }
             }
-            Picker("조절 항목",selection: $mixerParameter) { Text("색조").tag(0); Text("채도").tag(1); Text("휘도").tag(2) }.pickerStyle(.segmented)
-            if mixerParameter == 0 { bandSlider("색조",key: \.hue) }
-            else if mixerParameter == 1 { bandSlider("채도",key: \.saturation) }
-            else { bandSlider("휘도",key: \.luminance) }
+            Picker(L10n.tr("조절 항목"),selection: $mixerParameter) { Text(L10n.tr("색조")).tag(0); Text(L10n.tr("채도")).tag(1); Text(L10n.tr("휘도")).tag(2) }.pickerStyle(.segmented)
+            if mixerParameter == 0 { bandSlider(L10n.tr("색조"),key: \.hue) }
+            else if mixerParameter == 1 { bandSlider(L10n.tr("채도"),key: \.saturation) }
+            else { bandSlider(L10n.tr("휘도"),key: \.luminance) }
         }
     }
     private func bandSlider(_ title: String, key: WritableKeyPath<ColorBand, Double>) -> some View {
@@ -118,7 +118,7 @@ struct EditorControls: View {
                 HStack(spacing: 8) {
                     ForEach(CropAspect.allCases, id: \.self) { aspect in
                         Button { editor.changeGeometry { $0.aspect = aspect } } label: {
-                            Text(aspect.rawValue).font(.caption.weight(.medium)).padding(.horizontal, 14).frame(height: 44)
+                            Text(L10n.tr(aspect.rawValue)).font(.caption.weight(.medium)).padding(.horizontal, 14).frame(height: 44)
                                 .background(editor.recipe.aspect == aspect ? LibraryStyle.blue : LibraryStyle.raised,
                                             in: RoundedRectangle(cornerRadius: 5)).foregroundStyle(.white)
                         }
@@ -127,10 +127,10 @@ struct EditorControls: View {
             }
             HStack {
                 Button { editor.changeGeometry { $0.quarterTurns = ($0.quarterTurns + 1) % 4 } } label: {
-                    Label("90° 회전", systemImage: "rotate.right")
+                    Label(L10n.tr("90° 회전"), systemImage: "rotate.right")
                 }.frame(maxWidth: .infinity, minHeight: 44)
                 Button { editor.changeGeometry { $0.flipHorizontal.toggle() } } label: {
-                    Label("좌우 반전", systemImage: "arrow.left.and.right.righttriangle.left.righttriangle.right")
+                    Label(L10n.tr("좌우 반전"), systemImage: "arrow.left.and.right.righttriangle.left.righttriangle.right")
                 }.frame(maxWidth: .infinity, minHeight: 44)
                     .foregroundStyle(editor.recipe.flipHorizontal ? LibraryStyle.blue : .white)
             }.font(.caption)
@@ -140,7 +140,7 @@ struct EditorControls: View {
         VStack(spacing: 8) {
             ForEach(BuiltInPreset.allCases, id: \.self) { preset in
                 Button { editor.applyPreset(preset.recipe) } label: {
-                    HStack { Text(preset.rawValue); Spacer(); Image(systemName: "chevron.right").font(.caption2) }
+                    HStack { Text(L10n.tr(preset.rawValue)); Spacer(); Image(systemName: "chevron.right").font(.caption2) }
                         .padding(.horizontal, 14).frame(minHeight: 46).background(LibraryStyle.raised)
                 }.foregroundStyle(.white)
             }
@@ -149,14 +149,14 @@ struct EditorControls: View {
                     HStack { Image(systemName: "bookmark"); Text(preset.name); Spacer() }.frame(minHeight: 44)
                 }
             }
-            Button { showPresetName = true } label: { Label("현재 설정을 프리셋으로 저장", systemImage: "plus").frame(minHeight: 44) }
+            Button { showPresetName = true } label: { Label(L10n.tr("현재 설정을 프리셋으로 저장"), systemImage: "plus").frame(minHeight: 44) }
         }.font(.subheadline)
-            .alert("프리셋 저장", isPresented: $showPresetName) {
-                TextField("이름", text: $presetName)
-                Button("취소", role: .cancel) { }
-                Button("저장") { Task { await editor.savePreset(name: presetName); presetName = "" } }
+            .alert(L10n.tr("프리셋 저장"), isPresented: $showPresetName) {
+                TextField(L10n.tr("이름"), text: $presetName)
+                Button(L10n.tr("취소"), role: .cancel) { }
+                Button(L10n.tr("저장")) { Task { await editor.savePreset(name: presetName); presetName = "" } }
                     .disabled(presetName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-            } message: { Text("색과 톤 설정을 저장합니다. 자르기는 포함하지 않습니다.") }
+            } message: { Text(L10n.tr("색과 톤 설정을 저장합니다. 자르기는 포함하지 않습니다.")) }
     }
 }
 
@@ -180,20 +180,20 @@ struct AdjustmentSlider: View {
                 Button { text = String(value); showValue = true } label: {
                     Text(display).font(.system(size: 12, design: .monospaced)).foregroundStyle(value == defaultValue ? LibraryStyle.secondary : .white)
                         .frame(minWidth: 50, minHeight: 44, alignment: .trailing)
-                }.accessibilityLabel("\(title) 수치 입력")
+                }.accessibilityLabel(L10n.format("%@ 수치 입력",title))
             }
             PrecisionSlider(value: $value, range: range, step: step, title: title, display: display, commit: commit)
                 .frame(height: 32)
         }
         .alert(title, isPresented: $showValue) {
-            TextField("값", text: $text).keyboardType(.numbersAndPunctuation)
-            Button("취소", role: .cancel) { }
-            Button("적용") {
+            TextField(L10n.tr("값"), text: $text).keyboardType(.numbersAndPunctuation)
+            Button(L10n.tr("취소"), role: .cancel) { }
+            Button(L10n.tr("적용")) {
                 if let number = Double(text.replacingOccurrences(of: ",", with: ".")), number.isFinite {
                     value = min(max(number, range.lowerBound), range.upperBound); commit()
                 }
             }
-            Button("초기화") { value = defaultValue; commit() }
+            Button(L10n.tr("초기화")) { value = defaultValue; commit() }
         } message: { Text("\(range.lowerBound.formatted()) ~ \(range.upperBound.formatted())\(suffix)") }
     }
 }

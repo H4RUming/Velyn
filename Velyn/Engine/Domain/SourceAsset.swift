@@ -41,18 +41,18 @@ public enum ImportFailure: Error, LocalizedError, Sendable, Equatable {
 
     public var errorDescription: String? {
         switch self {
-        case .unsupportedFormat: "JPEG, HEIC, PNG, WebP, TIFF, GIF, BMP, AVIF, JPEG XL, JPEG 2000 또는 지원되는 RAW 파일을 선택해 주세요."
-        case .invalidImage: "사진의 형식이나 크기를 읽을 수 없습니다. 원본 파일을 확인해 주세요."
-        case .sourceUnavailable: "파일을 읽을 수 없습니다. 파일 앱에서 기기에 다운로드한 뒤 다시 선택해 주세요."
-        case .permissionDenied: "파일에 접근할 권한이 없습니다. 파일을 다시 선택해 접근을 허용해 주세요."
-        case .insufficientSpace: "원본을 보관할 공간이 부족합니다. 기기 저장 공간을 확보한 뒤 다시 시도해 주세요."
-        case .integrityMismatch: "복사한 파일이 원본과 일치하지 않습니다. 저장하지 않았습니다. 다시 시도해 주세요."
-        case .invalidProject: "저장한 작업의 무결성을 확인할 수 없습니다. 원본 파일을 다시 가져와 주세요."
-        case .storageFailure: "원본을 저장하지 못했습니다. 저장 공간과 파일 상태를 확인해 주세요."
-        case .photoAccessDenied: "사진 보관함 접근이 허용되지 않았습니다. 설정 > 앱 > Velyn > 사진에서 접근을 허용하거나 파일에서 가져오기를 이용해 주세요."
-        case .photoNotAccessible: "선택한 사진에 접근할 수 없습니다. 제한된 접근을 사용 중이라면 설정 > 앱 > Velyn > 사진에서 이 사진을 허용한 뒤 다시 선택해 주세요."
-        case .photoNeedsDownload: "원본이 iCloud에만 있습니다. 사진 앱에서 원본을 기기에 다운로드한 뒤 다시 가져와 주세요."
-        case .photoUnavailable: "사진 보관함에서 원본을 읽지 못했습니다. 사진 앱에서 원본 상태를 확인한 뒤 다시 시도해 주세요."
+        case .unsupportedFormat: L10n.tr("JPEG, HEIC, PNG, WebP, TIFF, GIF, BMP, AVIF, JPEG XL, JPEG 2000 또는 지원되는 RAW 파일을 선택해 주세요.")
+        case .invalidImage: L10n.tr("사진의 형식이나 크기를 읽을 수 없습니다. 원본 파일을 확인해 주세요.")
+        case .sourceUnavailable: L10n.tr("파일을 읽을 수 없습니다. 파일 앱에서 기기에 다운로드한 뒤 다시 선택해 주세요.")
+        case .permissionDenied: L10n.tr("파일에 접근할 권한이 없습니다. 파일을 다시 선택해 접근을 허용해 주세요.")
+        case .insufficientSpace: L10n.tr("원본을 보관할 공간이 부족합니다. 기기 저장 공간을 확보한 뒤 다시 시도해 주세요.")
+        case .integrityMismatch: L10n.tr("복사한 파일이 원본과 일치하지 않습니다. 저장하지 않았습니다. 다시 시도해 주세요.")
+        case .invalidProject: L10n.tr("저장한 작업의 무결성을 확인할 수 없습니다. 원본 파일을 다시 가져와 주세요.")
+        case .storageFailure: L10n.tr("원본을 저장하지 못했습니다. 저장 공간과 파일 상태를 확인해 주세요.")
+        case .photoAccessDenied: L10n.tr("사진 보관함 접근이 허용되지 않았습니다. 설정 > 앱 > Velyn > 사진에서 접근을 허용하거나 파일에서 가져오기를 이용해 주세요.")
+        case .photoNotAccessible: L10n.tr("선택한 사진에 접근할 수 없습니다. 제한된 접근을 사용 중이라면 설정 > 앱 > Velyn > 사진에서 이 사진을 허용한 뒤 다시 선택해 주세요.")
+        case .photoNeedsDownload: L10n.tr("원본이 iCloud에만 있습니다. 사진 앱에서 원본을 기기에 다운로드한 뒤 다시 가져와 주세요.")
+        case .photoUnavailable: L10n.tr("사진 보관함에서 원본을 읽지 못했습니다. 사진 앱에서 원본 상태를 확인한 뒤 다시 시도해 주세요.")
         }
     }
 

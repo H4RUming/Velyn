@@ -8,30 +8,30 @@ struct RemovalControls: View {
     }) }
     var body: some View {
         VStack(spacing: 8) {
-            Picker("선택 도구",selection: mode) {
-                Text("칠하기").tag(0); Text("선택 지우기").tag(1); Text("이동").tag(2)
+            Picker(L10n.tr("선택 도구"),selection: mode) {
+                Text(L10n.tr("칠하기")).tag(0); Text(L10n.tr("선택 지우기")).tag(1); Text(L10n.tr("이동")).tag(2)
             }.pickerStyle(.segmented).disabled(editor.isAnalyzing)
             HStack {
-                Text("브러시 크기").font(.caption)
+                Text(L10n.tr("브러시 크기")).font(.caption)
                 Slider(value: Binding(get: { editor.removalBrushRadius },set: { editor.removalBrushRadius = $0 }),in: 0.005...0.1)
-                    .accessibilityLabel("제거 영역 브러시 크기")
+                    .accessibilityLabel(L10n.tr("제거 영역 브러시 크기"))
             }.frame(height: 36).disabled(editor.isAnalyzing || editor.removalNavigating)
             HStack(spacing: 16) {
-                Button { editor.removalSelection.undo() } label: { Image(systemName: "arrow.uturn.backward") }.accessibilityLabel("마지막 선택 획 취소")
+                Button { editor.removalSelection.undo() } label: { Image(systemName: "arrow.uturn.backward") }.accessibilityLabel(L10n.tr("마지막 선택 획 취소"))
                     .disabled(editor.removalSelection.strokes.isEmpty || editor.isAnalyzing)
-                Button("비우기") { editor.removalSelection.clear() }.disabled(editor.removalSelection.strokes.isEmpty || editor.isAnalyzing)
-                Button("화면 맞춤") { editor.removalCanvasReset += 1 }
+                Button(L10n.tr("비우기")) { editor.removalSelection.clear() }.disabled(editor.removalSelection.strokes.isEmpty || editor.isAnalyzing)
+                Button(L10n.tr("화면 맞춤")) { editor.removalCanvasReset += 1 }
                 Spacer(minLength: 0)
                 if editor.isAnalyzing {
                     ProgressView().controlSize(.small)
-                    Button("취소") { editor.cancelAnalysis() }
+                    Button(L10n.tr("취소")) { editor.cancelAnalysis() }
                 } else {
-                    Button("실행") { Task { await editor.runRemoval() } }
+                    Button(L10n.tr("실행")) { Task { await editor.runRemoval() } }
                         .buttonStyle(.borderedProminent)
                         .disabled(!editor.removalSelection.hasPaint || editor.isRendering || editor.isComparing)
                 }
             }.font(.subheadline).frame(minHeight: 44)
-            Text(editor.isAnalyzing ? "기기에서 지운 자리를 채우는 중…" : "두 손가락으로 확대·이동 · 칠한 영역만 실행\n원본 구도에서 선택 · 결과는 상단 실행 취소로 복원")
+            Text(editor.isAnalyzing ? L10n.tr("기기에서 지운 자리를 채우는 중…") : L10n.tr("두 손가락으로 확대·이동 · 칠한 영역만 실행\n원본 구도에서 선택 · 결과는 상단 실행 취소로 복원"))
                 .font(.caption2).foregroundStyle(.secondary).frame(maxWidth: .infinity,alignment: .leading)
         }
     }
@@ -129,7 +129,7 @@ final class RemovalScrollView: UIScrollView {
         surface.addSubview(photo); surface.addSubview(overlay); addSubview(surface)
         overlay.isUserInteractionEnabled = false; overlay.alpha = 0.4
         surface.clipsToBounds = true
-        accessibilityLabel = "제거 영역 선택. 한 손가락으로 칠하고 두 손가락으로 확대하거나 이동하세요."
+        accessibilityLabel = L10n.tr("제거 영역 선택. 한 손가락으로 칠하고 두 손가락으로 확대하거나 이동하세요.")
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func layoutSubviews() {

@@ -95,8 +95,8 @@ struct HistogramView: View {
                 context.fill(path,with: .color(.white.opacity(0.55)))
             }
             VStack(alignment: .trailing,spacing: 4) {
-                Text("밝은 영역 \(analysis.highlights*100,specifier: "%.1f")%")
-                Text("어두운 영역 \(analysis.shadows*100,specifier: "%.1f")%")
+                Text(L10n.format("밝은 영역 %.1f%%",analysis.highlights*100))
+                Text(L10n.format("어두운 영역 %.1f%%",analysis.shadows*100))
             }.font(.system(size: 9,design: .monospaced)).foregroundStyle(.secondary)
         }.frame(height: 38).padding(.horizontal,16).padding(.vertical,6).background(.black)
     }

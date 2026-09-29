@@ -5,17 +5,17 @@ public enum RAWParameter: String, Codable, Sendable, CaseIterable {
     case luminanceNoise, colorNoise, sharpness, detail, highlightRecovery, lensCorrection
     public var title: String {
         switch self {
-        case .temperature: "화이트밸런스"
-        case .tint: "RAW 색조"
-        case .toneCurve: "현상 톤 커브"
-        case .shadowBoost: "현상 그림자"
-        case .localToneMap: "로컬 톤"
-        case .luminanceNoise: "RAW 밝기 노이즈"
-        case .colorNoise: "RAW 색 노이즈"
-        case .sharpness: "현상 선명도"
-        case .detail: "현상 디테일"
-        case .highlightRecovery: "하이라이트 복구"
-        case .lensCorrection: "렌즈 보정"
+        case .temperature: L10n.tr("화이트밸런스")
+        case .tint: L10n.tr("RAW 색조")
+        case .toneCurve: L10n.tr("현상 톤 커브")
+        case .shadowBoost: L10n.tr("현상 그림자")
+        case .localToneMap: L10n.tr("로컬 톤")
+        case .luminanceNoise: L10n.tr("RAW 밝기 노이즈")
+        case .colorNoise: L10n.tr("RAW 색 노이즈")
+        case .sharpness: L10n.tr("현상 선명도")
+        case .detail: L10n.tr("현상 디테일")
+        case .highlightRecovery: L10n.tr("하이라이트 복구")
+        case .lensCorrection: L10n.tr("렌즈 보정")
         }
     }
     public var range: ClosedRange<Double> {

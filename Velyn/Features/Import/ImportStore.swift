@@ -24,20 +24,20 @@ final class ImportStore {
     }
 
     func importFile(_ url: URL) {
-        start(message: "원본을 복사하고 검증하는 중입니다") { service in
+        start(message: L10n.tr("원본을 복사하고 검증하는 중입니다")) { service in
             try await service.importFile(at: url)
         }
     }
 
     func importCapture(_ url: URL) {
-        start(message: "촬영 원본을 보관하는 중입니다") { service in
+        start(message: L10n.tr("촬영 원본을 보관하는 중입니다")) { service in
             defer { try? FileManager.default.removeItem(at: url.deletingLastPathComponent()) }
             return try await service.importFile(at: url)
         }
     }
 
     func importPhoto(_ identifier: String) {
-        start(message: "사진 보관함에서 원본을 가져오는 중입니다") { service in
+        start(message: L10n.tr("사진 보관함에서 원본을 가져오는 중입니다")) { service in
             try await PhotoLibraryImportService().importPhoto(identifier: identifier, into: service)
         }
     }
@@ -53,7 +53,7 @@ final class ImportStore {
             var imported: [SourceAsset] = [], failures: [String] = []
             for (index,source) in sources.enumerated() {
                 if Task.isCancelled { break }
-                status = "\(index+1) / \(sources.count) 원본 가져오는 중"
+                status = L10n.format("%ld / %ld 원본 가져오는 중",index+1,sources.count)
                 do {
                     switch source {
                     case .file(let url): imported.append(try await service.importFile(at: url))
@@ -64,13 +64,13 @@ final class ImportStore {
             }
             await loadRecent()
             if sources.count == 1, let first = imported.first { selected = first }
-            status = "\(imported.count)장 가져옴" + (Task.isCancelled ? " · 나머지 취소" : "")
-            if !failures.isEmpty { errorMessage = "\(imported.count)장 가져옴 · \(failures.count)장 실패\n" + failures.prefix(3).joined(separator: "\n") }
+            status = L10n.format("%ld장 가져옴",imported.count) + (Task.isCancelled ? L10n.tr(" · 나머지 취소") : "")
+            if !failures.isEmpty { errorMessage = L10n.format("%ld장 가져옴 · %ld장 실패\n",imported.count,failures.count) + failures.prefix(3).joined(separator: "\n") }
         }
     }
 
     func open(_ asset: SourceAsset) {
-        start(message: "저장한 원본을 검증하는 중입니다") { service in
+        start(message: L10n.tr("저장한 원본을 검증하는 중입니다")) { service in
             try await service.verify(asset)
         }
     }
@@ -85,7 +85,7 @@ final class ImportStore {
     func cancel() {
         operation?.cancel()
         // Keep the operation active until cleanup finishes; a second import cannot race it.
-        status = "가져오기를 취소하는 중입니다"
+        status = L10n.tr("가져오기를 취소하는 중입니다")
     }
 
     func pickerFailed(_ error: Error) {
@@ -108,10 +108,10 @@ final class ImportStore {
                 guard requestID == id else { return }
                 // The service defines the commit point; do not discard an acknowledged commit.
                 selected = asset
-                status = "원본 검증을 완료했습니다"
+                status = L10n.tr("원본 검증을 완료했습니다")
                 await loadRecent()
             } catch is CancellationError {
-                if requestID == id { status = "가져오기를 취소했습니다" }
+                if requestID == id { status = L10n.tr("가져오기를 취소했습니다") }
             } catch {
                 if requestID == id {
                     status = nil

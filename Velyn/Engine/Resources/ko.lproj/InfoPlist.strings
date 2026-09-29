@@ -1,0 +1,3 @@
+"NSCameraUsageDescription" = "사진을 촬영하고 기기에서 편집합니다.";
+"NSPhotoLibraryAddUsageDescription" = "보정한 사진을 사진 앱에 새 이미지로 저장합니다.";
+"NSPhotoLibraryUsageDescription" = "선택한 사진의 RAW·HEIC·JPEG 원본을 그대로 가져와 편집합니다.";

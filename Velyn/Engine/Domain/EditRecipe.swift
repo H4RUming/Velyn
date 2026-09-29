@@ -11,43 +11,43 @@ public enum Adjustment: String, Codable, Sendable, CaseIterable {
 
     public var title: String {
         switch self {
-        case .gamutExpansion: "색역 확장"
-        case .texture: "텍스처"
-        case .dehaze: "안개 제거"
-        case .grain: "입자"
-        case .grainSize: "입자 크기"
-        case .sharpRadius: "선명도 반경"
-        case .sharpMasking: "윤곽 마스킹"
-        case .colorNoiseReduction: "색 노이즈 감소"
-        case .noiseDetail: "디테일 보존"
-        case .vignetteFeather: "비네팅 경계"
-        case .vignetteMidpoint: "비네팅 중심 범위"
-        case .perspectiveVertical: "수직 원근"
-        case .perspectiveHorizontal: "수평 원근"
-        case .lensDistortion: "렌즈 왜곡"
-        case .defringe: "색 테두리 감소"
-        case .lensBlur: "배경 흐림"
-        case .exposure: "노출"
-        case .contrast: "대비"
-        case .highlights: "하이라이트"
-        case .shadows: "그림자"
-        case .whites: "흰색 계열"
-        case .blacks: "검정 계열"
-        case .warmth: "색온도"
-        case .tint: "색조"
-        case .vibrance: "생동감"
-        case .saturation: "채도"
-        case .clarity: "명료도"
-        case .vignette: "비네팅"
-        case .sharpness: "선명하게"
-        case .noiseReduction: "노이즈 감소"
-        case .curveShadows: "어두운 영역"
-        case .curveMidtones: "중간 영역"
-        case .curveHighlights: "밝은 영역"
-        case .straighten: "수평"
-        case .cropScale: "자르기 크기"
-        case .cropX: "가로 위치"
-        case .cropY: "세로 위치"
+        case .gamutExpansion: L10n.tr("색역 확장")
+        case .texture: L10n.tr("텍스처")
+        case .dehaze: L10n.tr("안개 제거")
+        case .grain: L10n.tr("입자")
+        case .grainSize: L10n.tr("입자 크기")
+        case .sharpRadius: L10n.tr("선명도 반경")
+        case .sharpMasking: L10n.tr("윤곽 마스킹")
+        case .colorNoiseReduction: L10n.tr("색 노이즈 감소")
+        case .noiseDetail: L10n.tr("디테일 보존")
+        case .vignetteFeather: L10n.tr("비네팅 경계")
+        case .vignetteMidpoint: L10n.tr("비네팅 중심 범위")
+        case .perspectiveVertical: L10n.tr("수직 원근")
+        case .perspectiveHorizontal: L10n.tr("수평 원근")
+        case .lensDistortion: L10n.tr("렌즈 왜곡")
+        case .defringe: L10n.tr("색 테두리 감소")
+        case .lensBlur: L10n.tr("배경 흐림")
+        case .exposure: L10n.tr("노출")
+        case .contrast: L10n.tr("대비")
+        case .highlights: L10n.tr("하이라이트")
+        case .shadows: L10n.tr("그림자")
+        case .whites: L10n.tr("흰색 계열")
+        case .blacks: L10n.tr("검정 계열")
+        case .warmth: L10n.tr("색온도")
+        case .tint: L10n.tr("색조")
+        case .vibrance: L10n.tr("생동감")
+        case .saturation: L10n.tr("채도")
+        case .clarity: L10n.tr("명료도")
+        case .vignette: L10n.tr("비네팅")
+        case .sharpness: L10n.tr("선명하게")
+        case .noiseReduction: L10n.tr("노이즈 감소")
+        case .curveShadows: L10n.tr("어두운 영역")
+        case .curveMidtones: L10n.tr("중간 영역")
+        case .curveHighlights: L10n.tr("밝은 영역")
+        case .straighten: L10n.tr("수평")
+        case .cropScale: L10n.tr("자르기 크기")
+        case .cropX: L10n.tr("가로 위치")
+        case .cropY: L10n.tr("세로 위치")
         }
     }
     public var range: ClosedRange<Double> {
@@ -225,12 +225,12 @@ public enum ExportFormat: String, Codable, Sendable, CaseIterable {
     public var preservesAlpha: Bool { self == .png || self == .tiff || self == .avif || self == .original }
     public var summary: String {
         switch self {
-        case .jpeg: "공유와 호환성에 적합 · 손실 압축 · 투명 영역은 흰색"
-        case .heic: "작은 용량의 사진 · 손실 압축 · 일부 서비스에서 호환 확인 필요 · 투명 영역은 흰색"
-        case .png: "투명 배경과 그래픽에 적합 · 무손실 압축 · 사진은 용량이 커질 수 있음"
-        case .avif: "웹용 고효율 이미지 · 손실 압축 · 투명 배경 지원 · 일부 앱에서 호환 확인 필요"
-        case .tiff: "추가 편집용 · 8/16비트 · 투명 배경 지원 · 큰 용량"
-        case .original: "보정을 적용하지 않은 원본 · 기존 형식·메타데이터·애니메이션 보존"
+        case .jpeg: L10n.tr("공유와 호환성에 적합 · 손실 압축 · 투명 영역은 흰색")
+        case .heic: L10n.tr("작은 용량의 사진 · 손실 압축 · 일부 서비스에서 호환 확인 필요 · 투명 영역은 흰색")
+        case .png: L10n.tr("투명 배경과 그래픽에 적합 · 무손실 압축 · 사진은 용량이 커질 수 있음")
+        case .avif: L10n.tr("웹용 고효율 이미지 · 손실 압축 · 투명 배경 지원 · 일부 앱에서 호환 확인 필요")
+        case .tiff: L10n.tr("추가 편집용 · 8/16비트 · 투명 배경 지원 · 큰 용량")
+        case .original: L10n.tr("보정을 적용하지 않은 원본 · 기존 형식·메타데이터·애니메이션 보존")
         }
     }
 }
@@ -251,18 +251,18 @@ public enum EditorFailure: Error, LocalizedError, Sendable {
     case gainModelValidation, hdrExpansionRequiresSDR, invalidDocument, unsupportedRAW, renderFailed, exportFailed, saveFailed, noSubject, versionLimit, selectionAssetsUnavailable, modelUnavailable, removalSelection
     public var errorDescription: String? {
         switch self {
-        case .hdrExpansionRequiresSDR: "이 사진은 원본 HDR 또는 RAW 현상을 사용합니다. 밝기 지도 예측은 SDR 사진에서 사용할 수 있습니다."
-        case .gainModelValidation: "이 기기에서 HDR 예측 모델의 검증에 실패했습니다. 잘못된 밝기 지도는 저장하지 않았습니다."
-        case .removalSelection: "마스크에서 지울 영역을 지정해 주세요. 사진의 60%보다 작은 영역을 선택할 수 있습니다."
-        case .modelUnavailable: "앱에 포함된 분석 모델을 불러오지 못했습니다. 앱 설치 상태를 확인해 주세요."
-        case .selectionAssetsUnavailable: "탭 선택 모델이 준비되지 않았습니다. 마스크 패널에서 ‘선택 모델 준비’를 누르세요. 사진 분석은 기기 안에서만 실행됩니다."
-        case .noSubject: "피사체를 찾지 못했습니다. 브러시 또는 방사형 마스크를 사용해 주세요."
-        case .versionLimit: "저장한 버전은 사진당 최대 100개입니다."
-        case .invalidDocument: "편집 기록을 읽을 수 없거나 이 버전에서 지원하지 않습니다. 기존 기록은 보존됩니다."
-        case .unsupportedRAW: "이 RAW의 디코더를 사용할 수 없습니다. RAW 지원과 기기용 자산을 확인해 주세요."
-        case .renderFailed: "사진을 처리하지 못했습니다. 다시 시도해 주세요."
-        case .exportFailed: "결과 파일을 만들거나 검증하지 못했습니다. 저장 공간을 확인해 주세요."
-        case .saveFailed: "편집 내용을 저장하지 못했습니다. 저장 공간을 확인하고 다시 시도해 주세요."
+        case .hdrExpansionRequiresSDR: L10n.tr("이 사진은 원본 HDR 또는 RAW 현상을 사용합니다. 밝기 지도 예측은 SDR 사진에서 사용할 수 있습니다.")
+        case .gainModelValidation: L10n.tr("이 기기에서 HDR 예측 모델의 검증에 실패했습니다. 잘못된 밝기 지도는 저장하지 않았습니다.")
+        case .removalSelection: L10n.tr("마스크에서 지울 영역을 지정해 주세요. 사진의 60%보다 작은 영역을 선택할 수 있습니다.")
+        case .modelUnavailable: L10n.tr("앱에 포함된 분석 모델을 불러오지 못했습니다. 앱 설치 상태를 확인해 주세요.")
+        case .selectionAssetsUnavailable: L10n.tr("탭 선택 모델이 준비되지 않았습니다. 마스크 패널에서 ‘선택 모델 준비’를 누르세요. 사진 분석은 기기 안에서만 실행됩니다.")
+        case .noSubject: L10n.tr("피사체를 찾지 못했습니다. 브러시 또는 방사형 마스크를 사용해 주세요.")
+        case .versionLimit: L10n.tr("저장한 버전은 사진당 최대 100개입니다.")
+        case .invalidDocument: L10n.tr("편집 기록을 읽을 수 없거나 이 버전에서 지원하지 않습니다. 기존 기록은 보존됩니다.")
+        case .unsupportedRAW: L10n.tr("이 RAW의 디코더를 사용할 수 없습니다. RAW 지원과 기기용 자산을 확인해 주세요.")
+        case .renderFailed: L10n.tr("사진을 처리하지 못했습니다. 다시 시도해 주세요.")
+        case .exportFailed: L10n.tr("결과 파일을 만들거나 검증하지 못했습니다. 저장 공간을 확인해 주세요.")
+        case .saveFailed: L10n.tr("편집 내용을 저장하지 못했습니다. 저장 공간을 확인하고 다시 시도해 주세요.")
         }
     }
 }

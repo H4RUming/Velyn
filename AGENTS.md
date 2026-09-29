@@ -18,7 +18,7 @@ The original Korean product specification is a local-only PDF excluded from the 
 
 ## Current expanded scope (2026-09-28)
 
-The user requires photo processing to remain entirely on-device and rejects server-dependent features. Local masks, curves, grading, clone/heal, bundled depth/removal/gain-map models, SDR-to-HDR prediction, HDR/TIFF export, library organization, batch processing and camera paths are implemented. See Docs/professional-roadmap.md for exact scope and remaining work. Model preparation must remain explicit; no automatic downloads on launch/import and no photo uploads. Current automated evidence: 68 tests, synthetic simulator workflow, signed device build and update installation (latest installation and launch succeeded). These are not physical-device or Lightroom-parity acceptance.
+The user requires photo processing to remain entirely on-device and rejects server-dependent features. Local masks, curves, grading, clone/heal, bundled depth/removal/gain-map models, SDR-to-HDR prediction, HDR/TIFF export, library organization, batch processing and camera paths are implemented. See Docs/professional-roadmap.md for exact scope and remaining work. Model preparation must remain explicit; no automatic downloads on launch/import and no photo uploads. Current automated evidence: 71 tests, synthetic simulator workflow, signed device build and update installation (latest installation and launch succeeded). These are not physical-device or Lightroom-parity acceptance.
 
 ## Focused editor and export UI (2026-09-29)
 
@@ -31,3 +31,7 @@ Object removal uses a transient paint/erase selection, zoomable canvas, and expl
 RAW developer controls are sparse per-photo recipe overrides; hide controls unsupported by the file/decoder, preserve absent-key rendering, and include every override in the decoded proxy cache key. Color presets/batch paste preserve target RAW settings. PNG supports 8/16-bit output while the save-format list remains JPEG/PNG/HEIC/original. A real user DNG was checked on macOS, not as a physical-device acceptance result.
 
 Gain-map tensors use Rf, which expands to (R,0,0,1). Always broadcast R to RGB before gain curves/multiplication and normalize new stored maps. Existing R-only PNG maps must remain compatible without regeneration. Regression tests must include actual Rf/model output and neutral RGB through preview and HDR JPEG/HEIC export, not only synthetic RGB gray maps or HDR peak checks. See Docs/Evidence/hdr-red-cast-verification.md.
+
+## Localization (2026-09-29)
+
+App language is System / Korean / English, stored under `appLanguage`. Use `L10n.tr` or `L10n.format` for app text and add matching keys to both `Engine/Resources/{en,ko}.lproj/Localizable.strings`. Keep persisted enum raw values and user-entered names unchanged; localize labels at display time. Native permission and picker language follows iOS settings. See Docs/Evidence/localization-verification.md.

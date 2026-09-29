@@ -34,15 +34,15 @@ struct PhotoDetailView: View {
                                 .allowsHitTesting(!editor.isRendering && !editor.isAnalyzing)
                         } else {
                             ZoomablePhoto(image: preview.image, resetID: resetID)
-                                .accessibilityLabel("사진 미리보기. 두 손가락으로 확대할 수 있습니다.")
+                                .accessibilityLabel(L10n.tr("사진 미리보기. 두 손가락으로 확대할 수 있습니다."))
                         }
                     } else if editor.loadFailed {
-                        Button("편집 기록 다시 불러오기") { Task { await editor.load() } }
+                        Button(L10n.tr("편집 기록 다시 불러오기")) { Task { await editor.load() } }
                     } else if editor.document != nil && !editor.isRendering {
-                        Button("미리보기 다시 시도") { editor.retry() }
+                        Button(L10n.tr("미리보기 다시 시도")) { editor.retry() }
                     } else if editor.errorMessage == nil { ProgressView().tint(.white) }
                     if editor.isComparing {
-                        VStack { Text("원본").font(.caption.weight(.semibold)).padding(8).background(.black.opacity(0.7)); Spacer() }.padding(.top, 10)
+                        VStack { Text(L10n.tr("원본")).font(.caption.weight(.semibold)).padding(8).background(.black.opacity(0.7)); Spacer() }.padding(.top, 10)
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity).clipped()
                 statusBar
@@ -52,9 +52,9 @@ struct PhotoDetailView: View {
                             .frame(height: 174).disabled(editor.document == nil || editor.isExporting)
                     } else {
                         HStack {
-                            Text(tool.rawValue).font(.system(size: 12,weight: .semibold))
+                            Text(L10n.tr(tool.rawValue)).font(.system(size: 12,weight: .semibold))
                             Spacer()
-                            Button("조절로 돌아가기") { editor.finishGesture(); self.tool = .light }
+                            Button(L10n.tr("조절로 돌아가기")) { editor.finishGesture(); self.tool = .light }
                                 .font(.caption).frame(minHeight: 32)
                         }.padding(.horizontal,20).background(LibraryStyle.bar)
                         EditorControls(editor: editor,tool: tool)
@@ -70,15 +70,15 @@ struct PhotoDetailView: View {
         .sheet(isPresented: $showTools) { EditorToolSheet(hasRAW: editor.rawControls != nil) { value in editor.finishGesture(); tool = value } }
         .sheet(isPresented: $showInfo) { PhotoInformationView(asset: asset) }
         .sheet(isPresented: $showExport, onDismiss: { editor.retry() }) { EditorExportView(editor: editor) }
-        .alert("편집을 완료하지 못했습니다", isPresented: Binding(
+        .alert(L10n.tr("편집을 완료하지 못했습니다"), isPresented: Binding(
             get: { editor.errorMessage != nil && !showExport }, set: { if !$0 { editor.errorMessage = nil } }
         )) {
-            Button("확인", role: .cancel) { editor.errorMessage = nil }
-            Button("다시 시도") { Task { if editor.document == nil { await editor.load() } else { editor.retry() } } }
+            Button(L10n.tr("확인"), role: .cancel) { editor.errorMessage = nil }
+            Button(L10n.tr("다시 시도")) { Task { if editor.document == nil { await editor.load() } else { editor.retry() } } }
         } message: { Text(editor.errorMessage ?? "") }
-        .confirmationDialog("모든 보정을 초기화할까요?", isPresented: $showReset, titleVisibility: .visible) {
-            Button("보정 초기화", role: .destructive) { editor.reset() }
-        } message: { Text("원본 사진은 유지되며 실행 취소로 보정을 복원할 수 있습니다.") }
+        .confirmationDialog(L10n.tr("모든 보정을 초기화할까요?"), isPresented: $showReset, titleVisibility: .visible) {
+            Button(L10n.tr("보정 초기화"), role: .destructive) { editor.reset() }
+        } message: { Text(L10n.tr("원본 사진은 유지되며 실행 취소로 보정을 복원할 수 있습니다.")) }
         .task {
             await editor.load()
             #if DEBUG && targetEnvironment(simulator)
@@ -109,8 +109,8 @@ struct PhotoDetailView: View {
         .sheet(isPresented: Binding(get: { editor.detailPreview != nil },set: { if !$0 { editor.detailPreview = nil } })) {
             NavigationStack {
                 if let image = editor.detailPreview?.image {
-                    ZoomablePhoto(image: image,resetID: 0).background(.black).navigationTitle("원본 픽셀 · \(image.width) × \(image.height)").navigationBarTitleDisplayMode(.inline)
-                        .toolbar { ToolbarItem(placement: .confirmationAction) { Button("완료") { editor.detailPreview = nil } } }
+                    ZoomablePhoto(image: image,resetID: 0).background(.black).navigationTitle(L10n.format("원본 픽셀 · %ld × %ld",image.width,image.height)).navigationBarTitleDisplayMode(.inline)
+                        .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L10n.tr("완료")) { editor.detailPreview = nil } } }
                 }
             }.preferredColorScheme(.dark)
         }
@@ -124,49 +124,49 @@ struct PhotoDetailView: View {
     private var header: some View {
         HStack(spacing: 0) {
             Button { Task { if await editor.flush() { dismiss() } } } label: { LibraryIcon(symbol: "chevron.left") }
-                .accessibilityLabel("편집 저장 후 라이브러리로 돌아가기")
+                .accessibilityLabel(L10n.tr("편집 저장 후 라이브러리로 돌아가기"))
             Text(asset.originalFilename).font(.system(size: 12, weight: .medium)).lineLimit(1)
             Spacer(minLength: 4)
             Button { editor.undo() } label: { LibraryIcon(symbol: "arrow.uturn.backward") }
-                .disabled(!editor.canUndo).opacity(editor.canUndo ? 1 : 0.3).accessibilityLabel("실행 취소")
+                .disabled(!editor.canUndo).opacity(editor.canUndo ? 1 : 0.3).accessibilityLabel(L10n.tr("실행 취소"))
             Button { editor.redo() } label: { LibraryIcon(symbol: "arrow.uturn.forward") }
-                .disabled(!editor.canRedo).opacity(editor.canRedo ? 1 : 0.3).accessibilityLabel("다시 실행")
+                .disabled(!editor.canRedo).opacity(editor.canRedo ? 1 : 0.3).accessibilityLabel(L10n.tr("다시 실행"))
             Menu {
-                Toggle("SDR 클리핑 경고",isOn: Binding(get: { editor.showClipping },set: { editor.showClipping = $0; editor.retry() }))
-                Toggle("보정 지표",isOn: Binding(get: { editor.showHistogram },set: { editor.showHistogram = $0 }))
-                Button("자동 톤 보정") { Task { await editor.autoTone() } }
-                Button("원본 픽셀 확인") { editor.pickingDetail.toggle() }
-                Button("사진 정보", systemImage: "info.circle") { showInfo = true }
-                Button("화면 맞춤", systemImage: "arrow.down.right.and.arrow.up.left") { resetID += 1 }
-                Button("모든 보정 초기화", systemImage: "arrow.counterclockwise", role: .destructive) { showReset = true }
-            } label: { LibraryIcon(symbol: "ellipsis") }.accessibilityLabel("편집 메뉴")
+                Toggle(L10n.tr("SDR 클리핑 경고"),isOn: Binding(get: { editor.showClipping },set: { editor.showClipping = $0; editor.retry() }))
+                Toggle(L10n.tr("보정 지표"),isOn: Binding(get: { editor.showHistogram },set: { editor.showHistogram = $0 }))
+                Button(L10n.tr("자동 톤 보정")) { Task { await editor.autoTone() } }
+                Button(L10n.tr("원본 픽셀 확인")) { editor.pickingDetail.toggle() }
+                Button(L10n.tr("사진 정보"), systemImage: "info.circle") { showInfo = true }
+                Button(L10n.tr("화면 맞춤"), systemImage: "arrow.down.right.and.arrow.up.left") { resetID += 1 }
+                Button(L10n.tr("모든 보정 초기화"), systemImage: "arrow.counterclockwise", role: .destructive) { showReset = true }
+            } label: { LibraryIcon(symbol: "ellipsis") }.accessibilityLabel(L10n.tr("편집 메뉴"))
             Button { showExport = true } label: { LibraryIcon(symbol: "square.and.arrow.up") }
                 .foregroundStyle(LibraryStyle.blue).disabled(editor.document == nil || editor.isAnalyzing)
-                .accessibilityLabel("편집한 사진 내보내기")
+                .accessibilityLabel(L10n.tr("편집한 사진 내보내기"))
         }.foregroundStyle(.white).padding(.horizontal, 4).padding(.vertical, 4).background(LibraryStyle.bar)
     }
     private var statusBar: some View {
         HStack(spacing: 8) {
             if editor.isRendering { ProgressView().controlSize(.mini).tint(.gray) }
-            Text(editor.document == nil ? (editor.loadFailed ? "불러오기 실패" : "불러오는 중") : (editor.isSaving ? "저장 중" : (editor.saved ? "저장됨" : "저장 필요")))
+            Text(editor.document == nil ? (editor.loadFailed ? L10n.tr("불러오기 실패") : L10n.tr("불러오는 중")) : (editor.isSaving ? L10n.tr("저장 중") : (editor.saved ? L10n.tr("저장됨") : L10n.tr("저장 필요"))))
                 .font(.system(size: 10)).foregroundStyle(LibraryStyle.secondary)
             Spacer()
             Text((editor.document?.raw != nil ? "RAW · " : "") + (editor.displayRecipe.enhancements.hdr ? "HDR · P3" : "SDR · P3")).font(.system(size: 9, design: .monospaced)).foregroundStyle(LibraryStyle.secondary)
             Button { editor.toggleComparison() } label: {
                 HStack(spacing: 5) {
                     Image(systemName: "rectangle.on.rectangle")
-                    Text(editor.isComparing ? "보정 보기" : "원본 비교")
+                    Text(editor.isComparing ? L10n.tr("보정 보기") : L10n.tr("원본 비교"))
                 }.font(.system(size: 11)).frame(minHeight: 44)
             }.disabled(editor.document == nil)
         }.padding(.horizontal, 16).frame(height: 32).background(.black)
     }
     private var toolBar: some View {
         HStack(spacing: 0) {
-            modeButton("조절",symbol: "slider.horizontal.3",selected: tool.map { [.light,.color,.effects,.detail,.optics].contains($0) } ?? false) {
+            modeButton(L10n.tr("조절"),symbol: "slider.horizontal.3",selected: tool.map { [.light,.color,.effects,.detail,.optics].contains($0) } ?? false) {
                 editor.finishGesture(); tool = tool == .light ? nil : .light
             }
-            modeButton("자르기",symbol: "crop.rotate",selected: tool == .crop) { editor.finishGesture(); tool = .crop }
-            modeButton("도구",symbol: "square.grid.2x2",selected: tool.map { ![.light,.color,.effects,.detail,.optics,.crop].contains($0) } ?? false) { showTools = true }
+            modeButton(L10n.tr("자르기"),symbol: "crop.rotate",selected: tool == .crop) { editor.finishGesture(); tool = .crop }
+            modeButton(L10n.tr("도구"),symbol: "square.grid.2x2",selected: tool.map { ![.light,.color,.effects,.detail,.optics,.crop].contains($0) } ?? false) { showTools = true }
         }.padding(.horizontal,30).padding(.top,3).background(.black)
     }
     private func modeButton(_ title: String,symbol: String,selected: Bool,action: @escaping () -> Void) -> some View {

@@ -22,8 +22,8 @@ struct FocusedAdjustmentControls: View {
                 ScrollView(.horizontal,showsIndicators: false) {
                     HStack(spacing: 8) {
                         Button { editor.finishGesture(); Task { await editor.autoTone() } } label: {
-                            parameterIcon("자동",symbol: "wand.and.stars",active: false,modified: false)
-                        }.buttonStyle(.plain).accessibilityLabel("자동 톤 보정")
+                            parameterIcon(L10n.tr("자동"),symbol: "wand.and.stars",active: false,modified: false)
+                        }.buttonStyle(.plain).accessibilityLabel(L10n.tr("자동 톤 보정"))
                         ForEach(Self.adjustments,id: \.self) { item in
                             Button {
                                 editor.finishGesture(); selected = item
@@ -35,7 +35,7 @@ struct FocusedAdjustmentControls: View {
                     }.padding(.horizontal,16)
                 }.onAppear { proxy.scrollTo(selected,anchor: .center) }
             }.frame(height: 84)
-            AdjustmentSlider(title: selected == .gamutExpansion ? "색역 확장 · P3" : selected.title,value: Binding(get: { editor.recipe[selected] },set: { editor.set(selected,$0) }),
+            AdjustmentSlider(title: selected == .gamutExpansion ? L10n.tr("색역 확장 · P3") : selected.title,value: Binding(get: { editor.recipe[selected] },set: { editor.set(selected,$0) }),
                 range: selected.range,step: selected.step,defaultValue: selected.defaultValue,
                 suffix: selected == .exposure ? " EV" : (selected == .gamutExpansion ? "%" : ""),commit: editor.finishGesture)
                 .padding(.horizontal,24).id(selected)
@@ -102,7 +102,7 @@ struct EditorToolSheet: View {
                         Button { select(tool); dismiss() } label: {
                             HStack(spacing: 12) {
                                 Image(systemName: tool.icon).font(.title3).frame(width: 28)
-                                Text(tool.rawValue).font(.subheadline.weight(.medium))
+                                Text(L10n.tr(tool.rawValue)).font(.subheadline.weight(.medium))
                                 Spacer(minLength: 0)
                             }.foregroundStyle(.white).padding(16).frame(height: 70)
                                 .background(.white.opacity(0.06),in: RoundedRectangle(cornerRadius: 14))
@@ -110,8 +110,8 @@ struct EditorToolSheet: View {
                     }
                 }.padding(16)
             }.background(LibraryStyle.background)
-                .navigationTitle("편집 도구").navigationBarTitleDisplayMode(.inline)
-                .toolbar { ToolbarItem(placement: .confirmationAction) { Button("완료") { dismiss() } } }
+                .navigationTitle(L10n.tr("편집 도구")).navigationBarTitleDisplayMode(.inline)
+                .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L10n.tr("완료")) { dismiss() } } }
         }.preferredColorScheme(.dark).tint(LibraryStyle.blue)
             .presentationDetents([.medium,.large]).presentationDragIndicator(.visible)
     }

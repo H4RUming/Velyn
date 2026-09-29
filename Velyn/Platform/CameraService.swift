@@ -102,6 +102,6 @@ private final class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegat
 enum CameraFailure: LocalizedError {
     case unavailable,captureFailed
     var errorDescription: String? {
-        switch self { case .unavailable: "이 기기에서 카메라를 사용할 수 없습니다."; case .captureFailed: "사진 촬영에 실패했습니다. 다시 시도해 주세요." }
+        switch self { case .unavailable: L10n.tr("이 기기에서 카메라를 사용할 수 없습니다."); case .captureFailed: L10n.tr("사진 촬영에 실패했습니다. 다시 시도해 주세요.") }
     }
 }
