@@ -1,0 +1,37 @@
+{
+  "aboveSDRFraction" : 0.059507492690058478,
+  "adjustments" : {
+    "clarity" : 4,
+    "contrast" : -6,
+    "exposure" : 0.34999999999999998,
+    "highlights" : -20,
+    "shadows" : 24,
+    "vibrance" : 16,
+    "warmth" : 4
+  },
+  "assetID" : "7218D150-786E-4325-BBC4-DF12D24AC2A5",
+  "comparisonExposureEV" : -2,
+  "environment" : "macOS production engine; synthetic AI-generated SDR PNG; not RAW or device display validation",
+  "exports" : [
+    {
+      "bytes" : 920721,
+      "format" : "JPEG",
+      "hasGainMap" : true
+    },
+    {
+      "bytes" : 1134869,
+      "format" : "HEIC",
+      "hasGainMap" : true
+    }
+  ],
+  "gainVisualization" : "black=1x, white=4x; log2 scale; effective applied gain",
+  "hdrPeakChannel" : 2.3876943588256836,
+  "hdrStrength" : 0.75,
+  "height" : 1024,
+  "maximumGain" : 4,
+  "measuredPeakGain" : 2.4375000758897496,
+  "originalPreserved" : true,
+  "protectMidtones" : true,
+  "sourceSHA256" : "df684b59f5d65f1b2d8cff48c58c7f11256ece1045d054c18dcb105fec02ac3b",
+  "width" : 1536
+}
