@@ -1,0 +1,1566 @@
+{
+  "environment": "macOS CPU/CoreML/CoreImage; 512px evaluation; no physical display measurement",
+  "whiteNits": [
+    203,
+    100
+  ],
+  "variantsPerImage": 68,
+  "developmentImages": 8,
+  "validationImages": 7,
+  "frozenShortlist": [
+    "input/native1024-float/adaptive",
+    "input/flipX512-float/adaptive",
+    "input/padded512-float/adaptive"
+  ],
+  "diagnosticOnly": [
+    "input/native1024-float/none",
+    "input/flipX512-float/none",
+    "input/native512-float/none"
+  ],
+  "cnnParameters": 1861,
+  "summary": {
+    "development": {
+      "SDR": {
+        "maeEV": 0.5149159495443607,
+        "p95EV": 0.8826145529373739,
+        "puPSNR": 28.582132911551696,
+        "puSSIM": 0.9795238728912203,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 0.0,
+        "worstRegressionEV": 0.23074751116889208,
+        "improvedScenes": 0
+      },
+      "bilinear/adaptive/0.5/cap2": {
+        "maeEV": 0.40145729490030035,
+        "p95EV": 0.636197166781639,
+        "puPSNR": 32.3201390054825,
+        "puSSIM": 0.9864204022284634,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.406608524306122e-17,
+        "worstRegressionEV": 0.06634454452763877,
+        "improvedScenes": 1
+      },
+      "bilinear/adaptive/0.75/cap1.000": {
+        "maeEV": 0.3726526923471023,
+        "p95EV": 0.5956362999462492,
+        "puPSNR": 33.010008373605004,
+        "puSSIM": 0.9877763003429592,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 5.366234864181208e-17,
+        "worstRegressionEV": 0.010500582532435992,
+        "improvedScenes": 5
+      },
+      "bilinear/adaptive/0.75/cap2": {
+        "maeEV": 0.37217616581560553,
+        "p95EV": 0.5935383184128522,
+        "puPSNR": 33.09347313209506,
+        "puSSIM": 0.9880349799542676,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 5.413426721038795e-17,
+        "worstRegressionEV": 0.006501813264470191,
+        "improvedScenes": 4
+      },
+      "bilinear/adaptive/0.75/cap2.322": {
+        "maeEV": 0.37217616581560553,
+        "p95EV": 0.5935383184128522,
+        "puPSNR": 33.09347313209506,
+        "puSSIM": 0.9880349799542676,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 5.413426721038795e-17,
+        "worstRegressionEV": 0.006501813264470191,
+        "improvedScenes": 4
+      },
+      "bilinear/adaptive/1/cap2": {
+        "maeEV": 0.37334775267670406,
+        "p95EV": 0.6067389911954426,
+        "puPSNR": 32.62080520636388,
+        "puSSIM": 0.9885270482183804,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.4160249668860437e-17,
+        "worstRegressionEV": 0.09138127465313059,
+        "improvedScenes": 4
+      },
+      "bilinear/linear/0.5/cap2": {
+        "maeEV": 0.4629131146845769,
+        "p95EV": 0.6831093038024509,
+        "puPSNR": 30.7975152250104,
+        "puSSIM": 0.9865286197785972,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 2.7204758452337605e-17,
+        "worstRegressionEV": 0.14823848330854222,
+        "improvedScenes": 0
+      },
+      "bilinear/linear/0.75/cap2": {
+        "maeEV": 0.4404241443065488,
+        "p95EV": 0.6247478240306708,
+        "puPSNR": 31.84208587174823,
+        "puSSIM": 0.9882343077139738,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 2.7215353558235765e-17,
+        "worstRegressionEV": 0.12361884011178959,
+        "improvedScenes": 1
+      },
+      "bilinear/linear/1/cap2": {
+        "maeEV": 0.42792326033964,
+        "p95EV": 0.6105791437763001,
+        "puPSNR": 32.2359849219303,
+        "puSSIM": 0.988884116466562,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 2.728273760908626e-17,
+        "worstRegressionEV": 0.10535810374313781,
+        "improvedScenes": 0
+      },
+      "bilinear/none/0.5/cap2": {
+        "maeEV": 0.36498918567524763,
+        "p95EV": 0.6021773411103195,
+        "puPSNR": 32.68241742302344,
+        "puSSIM": 0.9857230948205071,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.228071251939971e-17,
+        "worstRegressionEV": 0.07173786821128375,
+        "improvedScenes": 5
+      },
+      "bilinear/none/0.75/cap1.000": {
+        "maeEV": 0.33997048263779656,
+        "p95EV": 0.5865636337063285,
+        "puPSNR": 32.59203976805502,
+        "puSSIM": 0.9866863117118043,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.15537259433042e-17,
+        "worstRegressionEV": 0.14225750702899242,
+        "improvedScenes": 5
+      },
+      "bilinear/none/0.75/cap2": {
+        "maeEV": 0.339494869573547,
+        "p95EV": 0.5848469099809035,
+        "puPSNR": 32.66434899125289,
+        "puSSIM": 0.9869693581270544,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.204914727376072e-17,
+        "worstRegressionEV": 0.14216931994923185,
+        "improvedScenes": 5
+      },
+      "bilinear/none/0.75/cap2.322": {
+        "maeEV": 0.339494869573547,
+        "p95EV": 0.5848469099809035,
+        "puPSNR": 32.66434899125289,
+        "puSSIM": 0.9869693581270544,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.204914727376072e-17,
+        "worstRegressionEV": 0.14216931994923185,
+        "improvedScenes": 5
+      },
+      "bilinear/none/1/cap2": {
+        "maeEV": 0.3513712684077914,
+        "p95EV": 0.6131252168171961,
+        "puPSNR": 32.07368949232544,
+        "puSSIM": 0.9870111435806258,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.205313253155044e-17,
+        "worstRegressionEV": 0.23528322882330796,
+        "improvedScenes": 5
+      },
+      "bilinear/offset0.1": {
+        "maeEV": 0.36768769578641336,
+        "p95EV": 0.6095396582144921,
+        "puPSNR": 32.68560597414413,
+        "puSSIM": 0.9859214236853724,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.0906838689249964e-17,
+        "worstRegressionEV": 0.06044191310424809,
+        "improvedScenes": 6
+      },
+      "bilinear/offset0.25": {
+        "maeEV": 0.4133608375538083,
+        "p95EV": 0.6318410985723769,
+        "puPSNR": 32.17050822804805,
+        "puSSIM": 0.9853018368595148,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 2.7733756213007543e-17,
+        "worstRegressionEV": 0.06898782530121067,
+        "improvedScenes": 1
+      },
+      "bilinear/offset0.4": {
+        "maeEV": 0.4574225087930739,
+        "p95EV": 0.6864882041907032,
+        "puPSNR": 30.781855574455445,
+        "puSSIM": 0.9844277236722014,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 1.6285083544349385e-17,
+        "worstRegressionEV": 0.1288400731721563,
+        "improvedScenes": 0
+      },
+      "bilinear/perceptual/0.5/cap2": {
+        "maeEV": 0.4011021962863466,
+        "p95EV": 0.6275048742147294,
+        "puPSNR": 32.34475969505451,
+        "puSSIM": 0.9859339119697698,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 5.858787513109068e-17,
+        "worstRegressionEV": 0.06634454452763877,
+        "improvedScenes": 1
+      },
+      "bilinear/perceptual/0.75/cap2": {
+        "maeEV": 0.3805710493949417,
+        "p95EV": 0.6145431984379419,
+        "puPSNR": 32.49808866988964,
+        "puSSIM": 0.9874000106526155,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 5.895514658339404e-17,
+        "worstRegressionEV": 0.07380751865384128,
+        "improvedScenes": 4
+      },
+      "bilinear/perceptual/1/cap2": {
+        "maeEV": 0.392164746160003,
+        "p95EV": 0.650747411568602,
+        "puPSNR": 31.655710398064816,
+        "puSSIM": 0.9877829598014685,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 5.823178927003882e-17,
+        "worstRegressionEV": 0.14404383717881292,
+        "improvedScenes": 3
+      },
+      "bilinear/shadow/0.5/cap2": {
+        "maeEV": 0.3825760570983332,
+        "p95EV": 0.6224657741018784,
+        "puPSNR": 32.43144445955613,
+        "puSSIM": 0.9852717912077362,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 6.254628986396989e-17,
+        "worstRegressionEV": 0.05184364352066926,
+        "improvedScenes": 4
+      },
+      "bilinear/shadow/0.75/cap2": {
+        "maeEV": 0.36385201986801285,
+        "p95EV": 0.6189904545512188,
+        "puPSNR": 32.19417672339003,
+        "puSSIM": 0.9863838995587736,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.216794877212006e-17,
+        "worstRegressionEV": 0.11226309738209428,
+        "improvedScenes": 5
+      },
+      "bilinear/shadow/1/cap2": {
+        "maeEV": 0.38137128009038107,
+        "p95EV": 0.6601206622272758,
+        "puPSNR": 31.423554279204602,
+        "puSSIM": 0.9863775863234929,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 6.188984827749461e-17,
+        "worstRegressionEV": 0.20601579255543537,
+        "improvedScenes": 5
+      },
+      "edge/adaptive/0.5/cap2": {
+        "maeEV": 0.40159275385529203,
+        "p95EV": 0.6368071358598737,
+        "puPSNR": 32.305514053882646,
+        "puSSIM": 0.9862647533047562,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 5.409199092186393e-17,
+        "worstRegressionEV": 0.06639539943909717,
+        "improvedScenes": 1
+      },
+      "edge/adaptive/0.75/cap1.000": {
+        "maeEV": 0.3728344597014602,
+        "p95EV": 0.595624554081258,
+        "puPSNR": 33.000523375894545,
+        "puSSIM": 0.9876580728614115,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.367696077139054e-17,
+        "worstRegressionEV": 0.010903638315797687,
+        "improvedScenes": 5
+      },
+      "edge/adaptive/0.75/cap2": {
+        "maeEV": 0.37241056620056945,
+        "p95EV": 0.5938618239860534,
+        "puPSNR": 33.0756078132461,
+        "puSSIM": 0.9878870026161042,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.413646352602172e-17,
+        "worstRegressionEV": 0.0072854999037408885,
+        "improvedScenes": 4
+      },
+      "edge/adaptive/0.75/cap2.322": {
+        "maeEV": 0.37241056620056945,
+        "p95EV": 0.5938618239860534,
+        "puPSNR": 33.0756078132461,
+        "puSSIM": 0.9878870026161042,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.413646352602172e-17,
+        "worstRegressionEV": 0.0072854999037408885,
+        "improvedScenes": 4
+      },
+      "edge/adaptive/1/cap2": {
+        "maeEV": 0.3735841680395747,
+        "p95EV": 0.6066291635117814,
+        "puPSNR": 32.60250988626865,
+        "puSSIM": 0.9884366292023092,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.415403074480128e-17,
+        "worstRegressionEV": 0.09163711496042026,
+        "improvedScenes": 4
+      },
+      "edge/linear/0.5/cap2": {
+        "maeEV": 0.4630810692683005,
+        "p95EV": 0.6837555693652648,
+        "puPSNR": 30.78633948759582,
+        "puSSIM": 0.9864255341326102,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 2.7228886655918583e-17,
+        "worstRegressionEV": 0.14825900382177398,
+        "improvedScenes": 0
+      },
+      "edge/linear/0.75/cap2": {
+        "maeEV": 0.4406685284644983,
+        "p95EV": 0.6253407153594422,
+        "puPSNR": 31.825362408395485,
+        "puSSIM": 0.9881445654592536,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 2.722959596502677e-17,
+        "worstRegressionEV": 0.12415089984675654,
+        "improvedScenes": 1
+      },
+      "edge/linear/1/cap2": {
+        "maeEV": 0.42817039635180154,
+        "p95EV": 0.6109866500861502,
+        "puPSNR": 32.219964914451374,
+        "puSSIM": 0.9888413309400583,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 2.7273105356619637e-17,
+        "worstRegressionEV": 0.10606751672309389,
+        "improvedScenes": 0
+      },
+      "edge/none/0.5/cap2": {
+        "maeEV": 0.3651797547817599,
+        "p95EV": 0.6029587826671892,
+        "puPSNR": 32.66000859818995,
+        "puSSIM": 0.985499094459019,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.226271467686519e-17,
+        "worstRegressionEV": 0.07173786821128375,
+        "improvedScenes": 5
+      },
+      "edge/none/0.75/cap1.000": {
+        "maeEV": 0.34028972542212754,
+        "p95EV": 0.5874260241023941,
+        "puPSNR": 32.5724908699754,
+        "puSSIM": 0.9864719400017823,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.158401929648729e-17,
+        "worstRegressionEV": 0.14225750702899242,
+        "improvedScenes": 5
+      },
+      "edge/none/0.75/cap2": {
+        "maeEV": 0.3398672960578174,
+        "p95EV": 0.5859450570347493,
+        "puPSNR": 32.636593869471824,
+        "puSSIM": 0.9867165481981675,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.206533417761349e-17,
+        "worstRegressionEV": 0.14216931994923185,
+        "improvedScenes": 5
+      },
+      "edge/none/0.75/cap2.322": {
+        "maeEV": 0.3398672960578174,
+        "p95EV": 0.5859450570347493,
+        "puPSNR": 32.636593869471824,
+        "puSSIM": 0.9867165481981675,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.206533417761349e-17,
+        "worstRegressionEV": 0.14216931994923185,
+        "improvedScenes": 5
+      },
+      "edge/none/1/cap2": {
+        "maeEV": 0.3518705358618516,
+        "p95EV": 0.6140012595124089,
+        "puPSNR": 32.045154363425915,
+        "puSSIM": 0.9867825312569773,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.208368258737392e-17,
+        "worstRegressionEV": 0.23528322882330796,
+        "improvedScenes": 5
+      },
+      "edge/offset0.1": {
+        "maeEV": 0.36790596271799625,
+        "p95EV": 0.6106736248383278,
+        "puPSNR": 32.6583010512408,
+        "puSSIM": 0.9856520244209327,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.0967501206652487e-17,
+        "worstRegressionEV": 0.06044191310424809,
+        "improvedScenes": 6
+      },
+      "edge/offset0.25": {
+        "maeEV": 0.4134710317847692,
+        "p95EV": 0.6321934986316703,
+        "puPSNR": 32.15530276802868,
+        "puSSIM": 0.985016318300208,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 2.78479198081626e-17,
+        "worstRegressionEV": 0.06901009455287038,
+        "improvedScenes": 1
+      },
+      "edge/offset0.4": {
+        "maeEV": 0.45759933471486586,
+        "p95EV": 0.687418033683509,
+        "puPSNR": 30.766225211291477,
+        "puSSIM": 0.9841424105532325,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 1.636099396050364e-17,
+        "worstRegressionEV": 0.12932805609075337,
+        "improvedScenes": 0
+      },
+      "edge/perceptual/0.5/cap2": {
+        "maeEV": 0.40125002181424907,
+        "p95EV": 0.6279134591670514,
+        "puPSNR": 32.32981899227289,
+        "puSSIM": 0.9857626613833967,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 5.858606225117677e-17,
+        "worstRegressionEV": 0.06639539943909717,
+        "improvedScenes": 1
+      },
+      "edge/perceptual/0.75/cap2": {
+        "maeEV": 0.38079839883222844,
+        "p95EV": 0.6148090835685311,
+        "puPSNR": 32.48012370724971,
+        "puSSIM": 0.987231227769703,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 5.892986813639652e-17,
+        "worstRegressionEV": 0.07380751865384128,
+        "improvedScenes": 4
+      },
+      "edge/perceptual/1/cap2": {
+        "maeEV": 0.3923680741918246,
+        "p95EV": 0.6510623681468781,
+        "puPSNR": 31.639899720588364,
+        "puSSIM": 0.9876689571299132,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 5.821345038176214e-17,
+        "worstRegressionEV": 0.14404383717881292,
+        "improvedScenes": 3
+      },
+      "edge/shadow/0.5/cap2": {
+        "maeEV": 0.3828208335374318,
+        "p95EV": 0.623295997547191,
+        "puPSNR": 32.41069145046776,
+        "puSSIM": 0.9850564480756272,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.243611983412855e-17,
+        "worstRegressionEV": 0.05184364352066926,
+        "improvedScenes": 4
+      },
+      "edge/shadow/0.75/cap2": {
+        "maeEV": 0.36425285316584644,
+        "p95EV": 0.6201160675963073,
+        "puPSNR": 32.169186120889215,
+        "puSSIM": 0.9861472551709096,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 6.217530725419267e-17,
+        "worstRegressionEV": 0.11226309738209428,
+        "improvedScenes": 5
+      },
+      "edge/shadow/1/cap2": {
+        "maeEV": 0.38185792482510517,
+        "p95EV": 0.6610595156869538,
+        "puPSNR": 31.40002693484189,
+        "puSSIM": 0.9861740638565393,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.189409362777659e-17,
+        "worstRegressionEV": 0.20744120669231328,
+        "improvedScenes": 5
+      },
+      "gamma22/adaptive": {
+        "maeEV": 0.42744467035353073,
+        "p95EV": 0.7810701574545058,
+        "puPSNR": 30.925566424847847,
+        "puSSIM": 0.9716267139027581,
+        "uvError": 0.00313549441665117,
+        "baseColorShift": 0.0023962222442526744,
+        "worstRegressionEV": 0.08618335099694552,
+        "improvedScenes": 0
+      },
+      "gamma22/full": {
+        "maeEV": 0.39866304993324675,
+        "p95EV": 0.7790506968158359,
+        "puPSNR": 30.72623202987608,
+        "puSSIM": 0.9712747578244065,
+        "uvError": 0.0031354944166511697,
+        "baseColorShift": 0.0023962222442526744,
+        "worstRegressionEV": 0.2507862738597008,
+        "improvedScenes": 5
+      },
+      "input/ensemble512-float/adaptive": {
+        "maeEV": 0.3712446349449735,
+        "p95EV": 0.5897902896414654,
+        "puPSNR": 33.15218503682365,
+        "puSSIM": 0.9883691123447862,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 5.437302807640262e-17,
+        "worstRegressionEV": 0.0021606231657192165,
+        "improvedScenes": 5
+      },
+      "input/ensemble512-float/none": {
+        "maeEV": 0.3383874132258632,
+        "p95EV": 0.5721097854177759,
+        "puPSNR": 32.747320679331075,
+        "puSSIM": 0.9886331332847498,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.282380465826248e-17,
+        "worstRegressionEV": 0.14347071851325946,
+        "improvedScenes": 5
+      },
+      "input/flipX512-float/adaptive": {
+        "maeEV": 0.37091612044752215,
+        "p95EV": 0.5896911220633625,
+        "puPSNR": 33.154805180842075,
+        "puSSIM": 0.988359575277594,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.441614724910146e-17,
+        "worstRegressionEV": 0.002101438646700926,
+        "improvedScenes": 7
+      },
+      "input/flipX512-float/none": {
+        "maeEV": 0.3379375262661177,
+        "p95EV": 0.5726963517290147,
+        "puPSNR": 32.75110344539715,
+        "puSSIM": 0.9886150670158291,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.286094953335223e-17,
+        "worstRegressionEV": 0.14361547856150325,
+        "improvedScenes": 5
+      },
+      "input/flipY512-float/adaptive": {
+        "maeEV": 0.37177054656149544,
+        "p95EV": 0.5900364930232505,
+        "puPSNR": 33.14606850469026,
+        "puSSIM": 0.9883518483729198,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.4465148462416676e-17,
+        "worstRegressionEV": 0.0023835999561847288,
+        "improvedScenes": 4
+      },
+      "input/flipY512-float/none": {
+        "maeEV": 0.3393205255474797,
+        "p95EV": 0.5723936477433158,
+        "puPSNR": 32.73231453704306,
+        "puSSIM": 0.9885814841150231,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.284074134257064e-17,
+        "worstRegressionEV": 0.1439451221360578,
+        "improvedScenes": 5
+      },
+      "input/native1024-float/adaptive": {
+        "maeEV": 0.36989993624672013,
+        "p95EV": 0.5878413173084567,
+        "puPSNR": 33.159800680859135,
+        "puSSIM": 0.9889005500289489,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 5.441287886633759e-17,
+        "worstRegressionEV": 0.0036674559935952894,
+        "improvedScenes": 6
+      },
+      "input/native1024-float/none": {
+        "maeEV": 0.3377332831254516,
+        "p95EV": 0.5708623091941838,
+        "puPSNR": 32.819913495690244,
+        "puSSIM": 0.9896031223479944,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 6.286858522094284e-17,
+        "worstRegressionEV": 0.1487923072352681,
+        "improvedScenes": 5
+      },
+      "input/native512-float/adaptive": {
+        "maeEV": 0.37121924512538496,
+        "p95EV": 0.5901551532736735,
+        "puPSNR": 33.14200666279958,
+        "puSSIM": 0.9883457451805078,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.4430568434988803e-17,
+        "worstRegressionEV": 0.002463977771454573,
+        "improvedScenes": 5
+      },
+      "input/native512-float/none": {
+        "maeEV": 0.3381898881889953,
+        "p95EV": 0.572201347946256,
+        "puPSNR": 32.743207209407025,
+        "puSSIM": 0.9885997068904412,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.285227825868092e-17,
+        "worstRegressionEV": 0.14294633780343638,
+        "improvedScenes": 5
+      },
+      "input/native512-u8/adaptive": {
+        "maeEV": 0.3712226003163005,
+        "p95EV": 0.5901845805088985,
+        "puPSNR": 33.14221333045472,
+        "puSSIM": 0.9883461315374398,
+        "uvError": 0.001041512975488398,
+        "baseColorShift": 5.4429043172460945e-17,
+        "worstRegressionEV": 0.0024583565391489426,
+        "improvedScenes": 5
+      },
+      "input/native512-u8/none": {
+        "maeEV": 0.3382004770183089,
+        "p95EV": 0.5722003875081403,
+        "puPSNR": 32.743282060441985,
+        "puSSIM": 0.9886000487896671,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.287580617068948e-17,
+        "worstRegressionEV": 0.14298014921889282,
+        "improvedScenes": 5
+      },
+      "input/padded512-float/adaptive": {
+        "maeEV": 0.3711444188722208,
+        "p95EV": 0.5901071411284701,
+        "puPSNR": 33.14175137064461,
+        "puSSIM": 0.988351775560171,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 5.442783673421283e-17,
+        "worstRegressionEV": 0.0024775390932081642,
+        "improvedScenes": 6
+      },
+      "input/padded512-float/none": {
+        "maeEV": 0.33819806483793613,
+        "p95EV": 0.5724488485776964,
+        "puPSNR": 32.74108779267981,
+        "puSSIM": 0.9886084501751271,
+        "uvError": 0.0010415129754883974,
+        "baseColorShift": 6.283163710504935e-17,
+        "worstRegressionEV": 0.14274576539149217,
+        "improvedScenes": 5
+      },
+      "learned/residual-cnn": {
+        "maeEV": 0.38311639977158196,
+        "p95EV": 0.6012585904272074,
+        "puPSNR": 31.48712542783568,
+        "puSSIM": 0.9850714236273279,
+        "uvError": 0.0010415129754883978,
+        "baseColorShift": 6.252992915564862e-17,
+        "worstRegressionEV": 0.42980161844171505,
+        "improvedScenes": 4
+      },
+      "learned/scene-scale": {
+        "maeEV": 0.3732935089057603,
+        "p95EV": 0.6407241641828993,
+        "puPSNR": 31.618310699455648,
+        "puSSIM": 0.9869616414171483,
+        "uvError": 0.0010415129754883976,
+        "baseColorShift": 6.253392441463034e-17,
+        "worstRegressionEV": 0.26888590939692414,
+        "improvedScenes": 5
+      },
+      "production/full-bilinear": {
+        "maeEV": 0.35203456702818064,
+        "p95EV": 0.6152793759229438,
+        "puPSNR": 32.0548876022732,
+        "puSSIM": 0.9867151621170234,
+        "uvError": 0.001299368425617528,
+        "baseColorShift": 0.0004238430884863809,
+        "worstRegressionEV": 0.23528322882330796,
+        "improvedScenes": 5
+      },
+      "production/full-edge": {
+        "maeEV": 0.35252645969464036,
+        "p95EV": 0.6161380683693072,
+        "puPSNR": 32.02683291169409,
+        "puSSIM": 0.9864879166258222,
+        "uvError": 0.0013005732167989353,
+        "baseColorShift": 0.0004275824089994924,
+        "worstRegressionEV": 0.23528322882330796,
+        "improvedScenes": 5
+      },
+      "production/legacy": {
+        "maeEV": 0.43876906975195207,
+        "p95EV": 0.647638715139693,
+        "puPSNR": 31.88115027063726,
+        "puSSIM": 0.9856234070061529,
+        "uvError": 0.001300356423453788,
+        "baseColorShift": 0.00044280950995371105,
+        "worstRegressionEV": 0.12151682200520397,
+        "improvedScenes": 0
+      },
+      "production/v11": {
+        "maeEV": 0.37166081011398755,
+        "p95EV": 0.6144166768352943,
+        "puPSNR": 33.05150313702569,
+        "puSSIM": 0.9852228303909591,
+        "uvError": 0.0013011507017575458,
+        "baseColorShift": 0.00044236311300583985,
+        "worstRegressionEV": 0.0,
+        "improvedScenes": 0
+      },
+      "production/v11-bilinear": {
+        "maeEV": 0.37146407688527405,
+        "p95EV": 0.6144547830060465,
+        "puPSNR": 33.071646202243315,
+        "puSSIM": 0.9853841693107678,
+        "uvError": 0.001299883734928417,
+        "baseColorShift": 0.00043914377439345303,
+        "worstRegressionEV": 6.36814783554207e-05,
+        "improvedScenes": 6
+      }
+    },
+    "validation": {
+      "SDR": {
+        "maeEV": 0.7260378503950052,
+        "p95EV": 1.3483001585856764,
+        "puPSNR": 24.960164352617912,
+        "puSSIM": 0.9688483370327736,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 0.0,
+        "worstRegressionEV": 0.27856474082003,
+        "improvedScenes": 0
+      },
+      "bilinear/adaptive/0.5/cap2": {
+        "maeEV": 0.6211391324425527,
+        "p95EV": 1.1162357064173003,
+        "puPSNR": 26.64246872933402,
+        "puSSIM": 0.97395207929587,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.069539697016923e-17,
+        "worstRegressionEV": 0.0966069051352374,
+        "improvedScenes": 0
+      },
+      "bilinear/adaptive/0.75/cap1.000": {
+        "maeEV": 0.5741662689332401,
+        "p95EV": 1.0510542551736888,
+        "puPSNR": 27.50438308020039,
+        "puSSIM": 0.9747571405399221,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.051284855433049e-17,
+        "worstRegressionEV": 0.007057090263726473,
+        "improvedScenes": 3
+      },
+      "bilinear/adaptive/0.75/cap2": {
+        "maeEV": 0.5737504947584308,
+        "p95EV": 1.0508003520792495,
+        "puPSNR": 27.555897910351387,
+        "puSSIM": 0.97492700598135,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.0738700302371377e-17,
+        "worstRegressionEV": 0.006744800169340981,
+        "improvedScenes": 3
+      },
+      "bilinear/adaptive/0.75/cap2.322": {
+        "maeEV": 0.5737504947584308,
+        "p95EV": 1.0508003520792495,
+        "puPSNR": 27.555897910351387,
+        "puSSIM": 0.97492700598135,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.0738700302371377e-17,
+        "worstRegressionEV": 0.006744800169340981,
+        "improvedScenes": 3
+      },
+      "bilinear/adaptive/1/cap2": {
+        "maeEV": 0.5292354518437785,
+        "p95EV": 1.002879659825377,
+        "puPSNR": 28.456411732657052,
+        "puSSIM": 0.9749201060278223,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.0784880538638176e-17,
+        "worstRegressionEV": -0.006739928711104515,
+        "improvedScenes": 7
+      },
+      "bilinear/linear/0.5/cap2": {
+        "maeEV": 0.6833254705891184,
+        "p95EV": 1.192177323482577,
+        "puPSNR": 25.844015880762296,
+        "puSSIM": 0.9745831167536029,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 2.597124034023096e-17,
+        "worstRegressionEV": 0.22498538670027268,
+        "improvedScenes": 0
+      },
+      "bilinear/linear/0.75/cap2": {
+        "maeEV": 0.6620455716173212,
+        "p95EV": 1.1450582227910264,
+        "puPSNR": 26.294548402151356,
+        "puSSIM": 0.9762286855732094,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 2.5972294507817407e-17,
+        "worstRegressionEV": 0.19819570964039368,
+        "improvedScenes": 0
+      },
+      "bilinear/linear/1/cap2": {
+        "maeEV": 0.6412155903429662,
+        "p95EV": 1.1118942038986617,
+        "puPSNR": 26.734304963283297,
+        "puSSIM": 0.9771217941524277,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 2.6001806724989192e-17,
+        "worstRegressionEV": 0.17140603258051512,
+        "improvedScenes": 0
+      },
+      "bilinear/none/0.5/cap2": {
+        "maeEV": 0.5692241645048906,
+        "p95EV": 1.0574388760343576,
+        "puPSNR": 27.27129036643286,
+        "puSSIM": 0.9744780609669108,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.731823638658793e-17,
+        "worstRegressionEV": 0.06793161556121025,
+        "improvedScenes": 4
+      },
+      "bilinear/none/0.75/cap1.000": {
+        "maeEV": 0.5043147347765632,
+        "p95EV": 0.9650407295639465,
+        "puPSNR": 28.440347263500364,
+        "puSSIM": 0.975285392326387,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.710029172068625e-17,
+        "worstRegressionEV": 0.04293715943624188,
+        "improvedScenes": 6
+      },
+      "bilinear/none/0.75/cap2": {
+        "maeEV": 0.5038302498449184,
+        "p95EV": 0.9643964793324512,
+        "puPSNR": 28.508308141027573,
+        "puSSIM": 0.9754660607464619,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.742016906550028e-17,
+        "worstRegressionEV": 0.042921130212019376,
+        "improvedScenes": 6
+      },
+      "bilinear/none/0.75/cap2.322": {
+        "maeEV": 0.5038302498449184,
+        "p95EV": 0.9643964793324512,
+        "puPSNR": 28.508308141027573,
+        "puSSIM": 0.9754660607464619,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.742016906550028e-17,
+        "worstRegressionEV": 0.042921130212019376,
+        "improvedScenes": 6
+      },
+      "bilinear/none/1/cap2": {
+        "maeEV": 0.4482995212423732,
+        "p95EV": 0.9012366378356955,
+        "puPSNR": 29.6332294618989,
+        "puSSIM": 0.975260888269857,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.739170064517828e-17,
+        "worstRegressionEV": 0.02626316123533312,
+        "improvedScenes": 6
+      },
+      "bilinear/offset0.1": {
+        "maeEV": 0.5609780715595077,
+        "p95EV": 1.0363021213643455,
+        "puPSNR": 27.637660914746217,
+        "puSSIM": 0.9741908421451164,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 4.948701691275407e-17,
+        "worstRegressionEV": 0.021992838373070756,
+        "improvedScenes": 5
+      },
+      "bilinear/offset0.25": {
+        "maeEV": 0.6259404098163206,
+        "p95EV": 1.1137997313190204,
+        "puPSNR": 26.668224749399915,
+        "puSSIM": 0.973564096000107,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 2.704525456831718e-17,
+        "worstRegressionEV": 0.11455747307310382,
+        "improvedScenes": 0
+      },
+      "bilinear/offset0.4": {
+        "maeEV": 0.6736963266509381,
+        "p95EV": 1.1718016444209975,
+        "puPSNR": 25.983724927062273,
+        "puSSIM": 0.9727084430967848,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 1.5706089127454436e-17,
+        "worstRegressionEV": 0.20705383731826732,
+        "improvedScenes": 0
+      },
+      "bilinear/perceptual/0.5/cap2": {
+        "maeEV": 0.6167541115580345,
+        "p95EV": 1.1111478204132719,
+        "puPSNR": 26.72124206699923,
+        "puSSIM": 0.973751731089463,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.070161133559994e-17,
+        "worstRegressionEV": 0.0966069051352374,
+        "improvedScenes": 0
+      },
+      "bilinear/perceptual/0.75/cap2": {
+        "maeEV": 0.5679627052580509,
+        "p95EV": 1.0458762172986211,
+        "puPSNR": 27.662493335519507,
+        "puSSIM": 0.9746039894612455,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.074672658060578e-17,
+        "worstRegressionEV": 0.005627987292841419,
+        "improvedScenes": 5
+      },
+      "bilinear/perceptual/1/cap2": {
+        "maeEV": 0.5230147982175394,
+        "p95EV": 0.9990277314934979,
+        "puPSNR": 28.565068434400334,
+        "puSSIM": 0.9744624769646616,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.0759769972016585e-17,
+        "worstRegressionEV": -0.008649952023779495,
+        "improvedScenes": 7
+      },
+      "bilinear/shadow/0.5/cap2": {
+        "maeEV": 0.5905567515669663,
+        "p95EV": 1.0904903935848378,
+        "puPSNR": 27.05396564866988,
+        "puSSIM": 0.9728822642728595,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.728591502242654e-17,
+        "worstRegressionEV": 0.059662930087762356,
+        "improvedScenes": 2
+      },
+      "bilinear/shadow/0.75/cap2": {
+        "maeEV": 0.5335446546932296,
+        "p95EV": 1.0137540740729853,
+        "puPSNR": 28.159800783978703,
+        "puSSIM": 0.973178676781271,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.730578356829723e-17,
+        "worstRegressionEV": 0.028212854554857947,
+        "improvedScenes": 6
+      },
+      "bilinear/shadow/1/cap2": {
+        "maeEV": 0.48476116299663186,
+        "p95EV": 0.9593514291515793,
+        "puPSNR": 29.159315285802354,
+        "puSSIM": 0.9723906253234726,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.732924733068226e-17,
+        "worstRegressionEV": 0.004521435412555008,
+        "improvedScenes": 6
+      },
+      "edge/adaptive/0.5/cap2": {
+        "maeEV": 0.6212383104405824,
+        "p95EV": 1.116410520687823,
+        "puPSNR": 26.63548639932073,
+        "puSSIM": 0.9738770088475471,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.064943540993215e-17,
+        "worstRegressionEV": 0.0967645037286291,
+        "improvedScenes": 0
+      },
+      "edge/adaptive/0.75/cap1.000": {
+        "maeEV": 0.5742157953713963,
+        "p95EV": 1.0509338354724462,
+        "puPSNR": 27.501051509432703,
+        "puSSIM": 0.9747486721912075,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.057829349506057e-17,
+        "worstRegressionEV": 0.007122301353810312,
+        "improvedScenes": 3
+      },
+      "edge/adaptive/0.75/cap2": {
+        "maeEV": 0.5738528837523303,
+        "p95EV": 1.0507176792335813,
+        "puPSNR": 27.54611829480391,
+        "puSSIM": 0.9748926120390526,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.0792955836722883e-17,
+        "worstRegressionEV": 0.006872507714348108,
+        "improvedScenes": 3
+      },
+      "edge/adaptive/0.75/cap2.322": {
+        "maeEV": 0.5738528837523303,
+        "p95EV": 1.0507176792335813,
+        "puPSNR": 27.54611829480391,
+        "puSSIM": 0.9748926120390526,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.0792955836722883e-17,
+        "worstRegressionEV": 0.006872507714348108,
+        "improvedScenes": 3
+      },
+      "edge/adaptive/1/cap2": {
+        "maeEV": 0.529310212591908,
+        "p95EV": 1.002522581776956,
+        "puPSNR": 28.447305903462105,
+        "puSSIM": 0.9749725871231837,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.074241773407466e-17,
+        "worstRegressionEV": -0.00641058374803577,
+        "improvedScenes": 7
+      },
+      "edge/linear/0.5/cap2": {
+        "maeEV": 0.6834755676466991,
+        "p95EV": 1.1924907318339322,
+        "puPSNR": 25.83695210090929,
+        "puSSIM": 0.9745076726634316,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 2.597010705620767e-17,
+        "worstRegressionEV": 0.22512456585203555,
+        "improvedScenes": 0
+      },
+      "edge/linear/0.75/cap2": {
+        "maeEV": 0.6622674484869264,
+        "p95EV": 1.1455169664942961,
+        "puPSNR": 26.284349353410846,
+        "puSSIM": 0.9761594551202943,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 2.5969040050526347e-17,
+        "worstRegressionEV": 0.19840447836803876,
+        "improvedScenes": 0
+      },
+      "edge/linear/1/cap2": {
+        "maeEV": 0.6414885943769862,
+        "p95EV": 1.1124940740570526,
+        "puPSNR": 26.723133594371685,
+        "puSSIM": 0.9770843494110286,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 2.6014584922335547e-17,
+        "worstRegressionEV": 0.17168439088404153,
+        "improvedScenes": 0
+      },
+      "edge/none/0.5/cap2": {
+        "maeEV": 0.5689978842246549,
+        "p95EV": 1.0570296854110677,
+        "puPSNR": 27.266601062841477,
+        "puSSIM": 0.9744184974746993,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.728074843408133e-17,
+        "worstRegressionEV": 0.06824689238974646,
+        "improvedScenes": 4
+      },
+      "edge/none/0.75/cap1.000": {
+        "maeEV": 0.5039253168263441,
+        "p95EV": 0.9641924223451422,
+        "puPSNR": 28.441798112492535,
+        "puSSIM": 0.9753036098950708,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.706539878316358e-17,
+        "worstRegressionEV": 0.04344843314929775,
+        "improvedScenes": 6
+      },
+      "edge/none/0.75/cap2": {
+        "maeEV": 0.5034987990381462,
+        "p95EV": 0.9635554859369807,
+        "puPSNR": 28.501403448655736,
+        "puSSIM": 0.9754490747078152,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.736732469428297e-17,
+        "worstRegressionEV": 0.04344174262748407,
+        "improvedScenes": 6
+      },
+      "edge/none/0.75/cap2.322": {
+        "maeEV": 0.5034987990381462,
+        "p95EV": 0.9635554859369807,
+        "puPSNR": 28.501403448655736,
+        "puSSIM": 0.9754490747078152,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.736732469428297e-17,
+        "worstRegressionEV": 0.04344174262748407,
+        "improvedScenes": 6
+      },
+      "edge/none/1/cap2": {
+        "maeEV": 0.4478944747926252,
+        "p95EV": 0.9000077254918668,
+        "puPSNR": 29.628251912985792,
+        "puSSIM": 0.9753320514076946,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.742076785401906e-17,
+        "worstRegressionEV": 0.027139443277975017,
+        "improvedScenes": 6
+      },
+      "edge/offset0.1": {
+        "maeEV": 0.5607286545071983,
+        "p95EV": 1.0355674195701745,
+        "puPSNR": 27.630884269431352,
+        "puSSIM": 0.974134051097329,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 4.9734904419106965e-17,
+        "worstRegressionEV": 0.0222815172432011,
+        "improvedScenes": 5
+      },
+      "edge/offset0.25": {
+        "maeEV": 0.6258773852813629,
+        "p95EV": 1.1137933833730236,
+        "puPSNR": 26.65978782712968,
+        "puSSIM": 0.9733986329612946,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 2.713010987388492e-17,
+        "worstRegressionEV": 0.11437970880874682,
+        "improvedScenes": 0
+      },
+      "edge/offset0.4": {
+        "maeEV": 0.6738113986823329,
+        "p95EV": 1.1720864060627199,
+        "puPSNR": 25.97370423961314,
+        "puSSIM": 0.9724846993989804,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 1.5720969044856547e-17,
+        "worstRegressionEV": 0.20703729369726132,
+        "improvedScenes": 0
+      },
+      "edge/perceptual/0.5/cap2": {
+        "maeEV": 0.6168392295134429,
+        "p95EV": 1.1112610077546767,
+        "puPSNR": 26.714111591074037,
+        "puSSIM": 0.9736722509916644,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.066265069832746e-17,
+        "worstRegressionEV": 0.0967645037286291,
+        "improvedScenes": 0
+      },
+      "edge/perceptual/0.75/cap2": {
+        "maeEV": 0.5680335139305382,
+        "p95EV": 1.045800147722974,
+        "puPSNR": 27.652656267653242,
+        "puSSIM": 0.9745642250964222,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.075236705259131e-17,
+        "worstRegressionEV": 0.005864385182928422,
+        "improvedScenes": 5
+      },
+      "edge/perceptual/1/cap2": {
+        "maeEV": 0.5230381771535477,
+        "p95EV": 0.9986257697057753,
+        "puPSNR": 28.55670418536044,
+        "puSSIM": 0.9745096669743744,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.079141882205752e-17,
+        "worstRegressionEV": -0.008359042014852547,
+        "improvedScenes": 7
+      },
+      "edge/shadow/0.5/cap2": {
+        "maeEV": 0.5905344568490862,
+        "p95EV": 1.0905004541862409,
+        "puPSNR": 27.047753657622483,
+        "puSSIM": 0.9727899908212752,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.725871206938671e-17,
+        "worstRegressionEV": 0.05967504318698019,
+        "improvedScenes": 2
+      },
+      "edge/shadow/0.75/cap2": {
+        "maeEV": 0.53347685098739,
+        "p95EV": 1.0137040583124912,
+        "puPSNR": 28.151121954088744,
+        "puSSIM": 0.9731148969175544,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.732974442952371e-17,
+        "worstRegressionEV": 0.0281949042654131,
+        "improvedScenes": 6
+      },
+      "edge/shadow/1/cap2": {
+        "maeEV": 0.48463524687759524,
+        "p95EV": 0.9589643754234437,
+        "puPSNR": 29.15220483246956,
+        "puSSIM": 0.9724018554158211,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.73677114386097e-17,
+        "worstRegressionEV": 0.004602225537898075,
+        "improvedScenes": 6
+      },
+      "gamma22/adaptive": {
+        "maeEV": 0.6354585871151707,
+        "p95EV": 1.197058828796159,
+        "puPSNR": 26.71507586498993,
+        "puSSIM": 0.9518120803397624,
+        "uvError": 0.006736305813905211,
+        "baseColorShift": 0.0036613538148819974,
+        "worstRegressionEV": 0.24367046304819212,
+        "improvedScenes": 2
+      },
+      "gamma22/full": {
+        "maeEV": 0.5061070706236783,
+        "p95EV": 1.0568403539327047,
+        "puPSNR": 28.52509905207443,
+        "puSSIM": 0.9530183326500984,
+        "uvError": 0.006736305813905211,
+        "baseColorShift": 0.0036613538148819974,
+        "worstRegressionEV": 0.1633834009559743,
+        "improvedScenes": 5
+      },
+      "input/ensemble512-float/adaptive": {
+        "maeEV": 0.5735691970117429,
+        "p95EV": 1.049675755243364,
+        "puPSNR": 27.583544726223018,
+        "puSSIM": 0.9751535071252316,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.111916265816826e-17,
+        "worstRegressionEV": 0.005730935115672464,
+        "improvedScenes": 2
+      },
+      "input/ensemble512-float/none": {
+        "maeEV": 0.5051042825807727,
+        "p95EV": 0.9646144091679422,
+        "puPSNR": 28.533719269294956,
+        "puSSIM": 0.9767403608936581,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.794182679018084e-17,
+        "worstRegressionEV": 0.040698403525613935,
+        "improvedScenes": 6
+      },
+      "input/flipX512-float/adaptive": {
+        "maeEV": 0.5733083334000382,
+        "p95EV": 1.0495390220907812,
+        "puPSNR": 27.58561524054323,
+        "puSSIM": 0.9751243517228202,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.1116508822486073e-17,
+        "worstRegressionEV": 0.005822753448923801,
+        "improvedScenes": 2
+      },
+      "input/flipX512-float/none": {
+        "maeEV": 0.5049716124763041,
+        "p95EV": 0.9638932977348863,
+        "puPSNR": 28.53216740333722,
+        "puSSIM": 0.9766986777251391,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.795760037192782e-17,
+        "worstRegressionEV": 0.03964484229474419,
+        "improvedScenes": 6
+      },
+      "input/flipY512-float/adaptive": {
+        "maeEV": 0.574178516004059,
+        "p95EV": 1.05052195606739,
+        "puPSNR": 27.570918941195043,
+        "puSSIM": 0.9751541731694343,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.1109485068428655e-17,
+        "worstRegressionEV": 0.005784582191800669,
+        "improvedScenes": 2
+      },
+      "input/flipY512-float/none": {
+        "maeEV": 0.5055585354942854,
+        "p95EV": 0.9663094462704842,
+        "puPSNR": 28.523009088170912,
+        "puSSIM": 0.9767151982065101,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.800820778898082e-17,
+        "worstRegressionEV": 0.04270577901504441,
+        "improvedScenes": 6
+      },
+      "input/native1024-float/adaptive": {
+        "maeEV": 0.5704098907641812,
+        "p95EV": 1.0488784917183496,
+        "puPSNR": 27.676156391497322,
+        "puSSIM": 0.9753740677480126,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.110857530137589e-17,
+        "worstRegressionEV": 0.0014772651100504186,
+        "improvedScenes": 6
+      },
+      "input/native1024-float/none": {
+        "maeEV": 0.5038758667097359,
+        "p95EV": 0.9646476550486763,
+        "puPSNR": 28.614593586678154,
+        "puSSIM": 0.9768574644417346,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.791465909287776e-17,
+        "worstRegressionEV": 0.0397371185744021,
+        "improvedScenes": 6
+      },
+      "input/native512-float/adaptive": {
+        "maeEV": 0.5732503104382004,
+        "p95EV": 1.0493066688126973,
+        "puPSNR": 27.59176475695441,
+        "puSSIM": 0.9751340986871933,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.115038252514831e-17,
+        "worstRegressionEV": 0.005594783581588603,
+        "improvedScenes": 3
+      },
+      "input/native512-float/none": {
+        "maeEV": 0.5049333795929762,
+        "p95EV": 0.9642892126842462,
+        "puPSNR": 28.539629108527038,
+        "puSSIM": 0.9767037093947403,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.795115475718442e-17,
+        "worstRegressionEV": 0.03983088952842362,
+        "improvedScenes": 6
+      },
+      "input/native512-u8/adaptive": {
+        "maeEV": 0.5732446367502809,
+        "p95EV": 1.0492991899603912,
+        "puPSNR": 27.592006749875004,
+        "puSSIM": 0.9751344973314605,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.112388208249057e-17,
+        "worstRegressionEV": 0.005589343597103724,
+        "improvedScenes": 3
+      },
+      "input/native512-u8/none": {
+        "maeEV": 0.5049294314712948,
+        "p95EV": 0.9642223976092218,
+        "puPSNR": 28.539852386506176,
+        "puSSIM": 0.9767045427826143,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.794616166901324e-17,
+        "worstRegressionEV": 0.039782703126040875,
+        "improvedScenes": 6
+      },
+      "input/padded512-float/adaptive": {
+        "maeEV": 0.5732505918099252,
+        "p95EV": 1.04926104685137,
+        "puPSNR": 27.592468979182037,
+        "puSSIM": 0.9751350987256974,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.116963419320115e-17,
+        "worstRegressionEV": 0.005489143841911459,
+        "improvedScenes": 3
+      },
+      "input/padded512-float/none": {
+        "maeEV": 0.5049855160094634,
+        "p95EV": 0.964351455501955,
+        "puPSNR": 28.53948409706378,
+        "puSSIM": 0.9767027615534614,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.791037188117151e-17,
+        "worstRegressionEV": 0.03960550498384946,
+        "improvedScenes": 6
+      },
+      "learned/residual-cnn": {
+        "maeEV": 0.46469087032778805,
+        "p95EV": 0.9089457539146429,
+        "puPSNR": 29.5972632857449,
+        "puSSIM": 0.9737502429258317,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.775417678898627e-17,
+        "worstRegressionEV": 0.23004165225202305,
+        "improvedScenes": 3
+      },
+      "learned/scene-scale": {
+        "maeEV": 0.44838784343552496,
+        "p95EV": 0.9029296883011989,
+        "puPSNR": 29.633106572861752,
+        "puSSIM": 0.9753767489037936,
+        "uvError": 0.004165197382654823,
+        "baseColorShift": 5.748864566673487e-17,
+        "worstRegressionEV": 0.028593470061024806,
+        "improvedScenes": 6
+      },
+      "production/full-bilinear": {
+        "maeEV": 0.4497795103101182,
+        "p95EV": 0.9098907590744122,
+        "puPSNR": 29.61428964593657,
+        "puSSIM": 0.9747236413968999,
+        "uvError": 0.004238148651497681,
+        "baseColorShift": 0.0003993003047230614,
+        "worstRegressionEV": 0.026314914551868962,
+        "improvedScenes": 6
+      },
+      "production/full-edge": {
+        "maeEV": 0.4493375130309311,
+        "p95EV": 0.9082818600891244,
+        "puPSNR": 29.608592148926057,
+        "puSSIM": 0.9748060898935893,
+        "uvError": 0.004241379544320796,
+        "baseColorShift": 0.00040277560027821404,
+        "worstRegressionEV": 0.02718717584546365,
+        "improvedScenes": 6
+      },
+      "production/legacy": {
+        "maeEV": 0.6599868024600317,
+        "p95EV": 1.15086106182907,
+        "puPSNR": 26.331882563782063,
+        "puSSIM": 0.9729801875846151,
+        "uvError": 0.004254928424041173,
+        "baseColorShift": 0.0004264646934102691,
+        "worstRegressionEV": 0.19544493826551101,
+        "improvedScenes": 0
+      },
+      "production/v11": {
+        "maeEV": 0.5726118445933087,
+        "p95EV": 1.0612044448133933,
+        "puPSNR": 27.55645536092479,
+        "puSSIM": 0.9717776483421975,
+        "uvError": 0.004258980994248317,
+        "baseColorShift": 0.0004345222500575995,
+        "worstRegressionEV": 0.0,
+        "improvedScenes": 0
+      },
+      "production/v11-bilinear": {
+        "maeEV": 0.572692191363093,
+        "p95EV": 1.0616127080567568,
+        "puPSNR": 27.563057980008686,
+        "puSSIM": 0.971827709090383,
+        "uvError": 0.004257568528235327,
+        "baseColorShift": 0.000432032610615724,
+        "worstRegressionEV": 0.00043307308646833853,
+        "improvedScenes": 2
+      }
+    }
+  },
+  "inputTimingSeconds": {
+    "native512-u8": 0.8444439528005508,
+    "native512-float": 0.8333343665998352,
+    "native1024-float": 3.792125177732669,
+    "padded512-float": 1.3501399304664423,
+    "flipY512-float": 0.809420872067858,
+    "flipX512-float": 0.888357399799376,
+    "ensemble512-float": 2.5311126384670692
+  },
+  "codec": {
+    "jpeg": {
+      "files": 37,
+      "meanHDRMAE": 0.033813194444767804,
+      "worstHDRMAE": 0.05946528389919101,
+      "meanSDRMAE": 0.0319866528409715
+    },
+    "heic": {
+      "files": 37,
+      "meanHDRMAE": 0.0210369538907466,
+      "worstHDRMAE": 0.04618452241991492,
+      "meanSDRMAE": 0.019360041379862775
+    }
+  },
+  "representationLimits": [
+    {
+      "id": "DJI_1_0226_D",
+      "group": "development",
+      "scalarGain5xMAEFloor": 0.0,
+      "signedQuarterTo8xMAEFloor": 0.0,
+      "negativeReferenceGainFraction": 0.0,
+      "referenceGainAbove5xFraction": 0.0,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "DJI_1_0616_D",
+      "group": "development",
+      "scalarGain5xMAEFloor": 0.0,
+      "signedQuarterTo8xMAEFloor": 0.0,
+      "negativeReferenceGainFraction": 0.0,
+      "referenceGainAbove5xFraction": 0.0,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "DJI_1_0927_D",
+      "group": "development",
+      "scalarGain5xMAEFloor": 0.0,
+      "signedQuarterTo8xMAEFloor": 0.0,
+      "negativeReferenceGainFraction": 0.0,
+      "referenceGainAbove5xFraction": 0.0,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "apple",
+      "group": "development",
+      "scalarGain5xMAEFloor": 3.544581778889938e-11,
+      "signedQuarterTo8xMAEFloor": 0.0,
+      "negativeReferenceGainFraction": 0.0,
+      "referenceGainAbove5xFraction": 0.0,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "holdout-01",
+      "group": "development",
+      "scalarGain5xMAEFloor": 0.001204517003297127,
+      "signedQuarterTo8xMAEFloor": 0.0,
+      "negativeReferenceGainFraction": 0.011676080907089754,
+      "referenceGainAbove5xFraction": 0.0027048635627362214,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "holdout-02",
+      "group": "development",
+      "scalarGain5xMAEFloor": 0.0004736082182524441,
+      "signedQuarterTo8xMAEFloor": 5.2580759197598446e-06,
+      "negativeReferenceGainFraction": 0.0,
+      "referenceGainAbove5xFraction": 0.0028498067210293164,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "holdout-03",
+      "group": "development",
+      "scalarGain5xMAEFloor": 0.0005928467601570583,
+      "signedQuarterTo8xMAEFloor": 1.1544975964655031e-05,
+      "negativeReferenceGainFraction": 0.0,
+      "referenceGainAbove5xFraction": 0.0022862421338259915,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "sunset",
+      "group": "development",
+      "scalarGain5xMAEFloor": 0.0,
+      "signedQuarterTo8xMAEFloor": 0.0,
+      "negativeReferenceGainFraction": 0.0,
+      "referenceGainAbove5xFraction": 0.0,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "validation-04",
+      "group": "validation",
+      "scalarGain5xMAEFloor": 0.003411317480303997,
+      "signedQuarterTo8xMAEFloor": 1.0308841406813449e-05,
+      "negativeReferenceGainFraction": 0.0,
+      "referenceGainAbove5xFraction": 0.013067990673178428,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "validation-05",
+      "group": "validation",
+      "scalarGain5xMAEFloor": 0.006110992382814576,
+      "signedQuarterTo8xMAEFloor": 0.0011756711016605592,
+      "negativeReferenceGainFraction": 0.02741014488886517,
+      "referenceGainAbove5xFraction": 0.006057048322971423,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "validation-06",
+      "group": "validation",
+      "scalarGain5xMAEFloor": 0.009130916756316112,
+      "signedQuarterTo8xMAEFloor": 0.00038312661688705453,
+      "negativeReferenceGainFraction": 0.028825567675214495,
+      "referenceGainAbove5xFraction": 0.010080139242601403,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "validation-07",
+      "group": "validation",
+      "scalarGain5xMAEFloor": 0.17783503384262794,
+      "signedQuarterTo8xMAEFloor": 0.001116695495310459,
+      "negativeReferenceGainFraction": 0.276189783870437,
+      "referenceGainAbove5xFraction": 0.025289722272172507,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "validation-08",
+      "group": "validation",
+      "scalarGain5xMAEFloor": 5.258561232987154e-05,
+      "signedQuarterTo8xMAEFloor": 0.0,
+      "negativeReferenceGainFraction": 5.381096975054772e-05,
+      "referenceGainAbove5xFraction": 0.0001998693162163201,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "validation-09",
+      "group": "validation",
+      "scalarGain5xMAEFloor": 0.04006697468809187,
+      "signedQuarterTo8xMAEFloor": 4.2716495391793534e-06,
+      "negativeReferenceGainFraction": 0.2570648569262839,
+      "referenceGainAbove5xFraction": 0.0028839776388099297,
+      "referenceBeyondPU21Fraction": 0.0
+    },
+    {
+      "id": "validation-10",
+      "group": "validation",
+      "scalarGain5xMAEFloor": 0.00024024114045677713,
+      "signedQuarterTo8xMAEFloor": 0.0,
+      "negativeReferenceGainFraction": 0.004197816458374475,
+      "referenceGainAbove5xFraction": 6.206449064800971e-05,
+      "referenceBeyondPU21Fraction": 0.0
+    }
+  ],
+  "syntheticSignedRoundtrip": {
+    "jpeg": {
+      "leftGain": 0.4999311566352844,
+      "rightGain": 3.998197317123413,
+      "maxNeutralChannelSpread": 2.86102294921875e-06
+    },
+    "heic": {
+      "leftGain": 0.49997538328170776,
+      "rightGain": 3.9986114501953125,
+      "maxNeutralChannelSpread": 2.384185791015625e-07
+    }
+  },
+  "limitations": [
+    "Small convenience sample; validation and part of development share a source repository.",
+    "Learned development scores are leave-one-image-out; validation uses weights fit on all eight development images.",
+    "512px evaluation and sampled Python candidates are not full-resolution production validation.",
+    "No physical-device display, thermal, or NPU acceptance.",
+    "No candidate was deployed or published in an app release."
+  ]
+}
