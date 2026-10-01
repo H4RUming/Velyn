@@ -488,6 +488,7 @@ extension EditorStore {
                 result.strength = previous.strength
                 result.maximumBoostEV = previous.maximumBoostEV
                 result.protectMidtones = previous.protectMidtones
+                result.maximumDimmingEV = previous.maximumDimmingEV
             }
             mutate { $0.enhancements.hdrExpansion = result; $0.enhancements.hdr = true }
         } catch is CancellationError { } catch { errorMessage = error.localizedDescription }

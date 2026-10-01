@@ -65,3 +65,54 @@ The 68 variants include actual production renders, sampled postprocessing, six P
 - [PU21 reference implementation](https://github.com/gfxdisp/pu21): banding_glare encoding, BSD-3-Clause. Preserve its notice in any port.
 - [GMNet](https://github.com/qtlark/GMNet): existing pinned MIT-licensed implementation and checkpoint.
 - [Evaluation pitfalls](https://arxiv.org/abs/2108.08713): objective improvement is not proof of perceived HDR quality.
+
+## Signed gain models (DITM and HDRUNet)
+
+This later experiment reuses all 15 scenes above. None is a fresh holdout now.
+It evaluates published checkpoints, without training on the reference images.
+The candidates are research inputs; neither replaces the bundled GMNet.
+
+```sh
+# Explicit developer download. Without --download this only verifies local files.
+python Scripts/HDR/prepare_signed_models.py .work/signed-models --download
+python Scripts/HDR/compare_signed_models.py .work/signed-models \
+  /private/tmp/hdr-experiments /private/tmp/current-ne1024 .work/signed-comparison
+swiftc -O -parse-as-library $(rg --files Velyn/Engine -g '*.swift') \
+  Scripts/HDR/roundtrip_signed.swift -o .work/signed-roundtrip
+.work/signed-roundtrip /private/tmp/hdr-experiments .work/signed-comparison \
+  /private/tmp/signed-roundtrip
+python Scripts/HDR/measure_signed_roundtrip.py /private/tmp/signed-roundtrip \
+  .work/signed-comparison .work/signed-roundtrip-results.json
+python Scripts/HDR/summarize_signed.py .work/signed-comparison/comparison.json \
+  .work/signed-roundtrip-results.json Docs/Evidence/hdr-signed-model-results.json
+```
+
+`current-ne1024` is a fresh `prepare.swift` run using `VelynGainMap1024.mlpackage`.
+It must match the fixture IDs and dimensions. The comparison checks pinned source,
+weight and license hashes in `signed-model-sources.json` before executing the
+external code. Downloads use official GitHub raw URLs at fixed commits. DITM's
+checkpoint includes NumPy scalar metadata; loading uses `weights_only=True` with
+only its known scalar types allowlisted. Keep both MIT notices with the downloaded
+files. Cached predictions are keyed by the exact preprocessed input tensor.
+
+DITM predicts linear HDR normalized to 1,000 nits in its official test code.
+The comparison assumes 203-nit SDR white. HDRUNet predicts **nonlinear** HDR:
+its paper explicitly describes gamma-corrected targets. The experiment tests
+extended sRGB and a 2.24 power curve as transfer assumptions. Raw output treated
+as linear is retained only as a diagnostic, not a fair primary comparison.
+HDRUNet has no verified absolute nit calibration for these camera photos.
+
+The signed variants bound log2 gain to −2…log2(5). An optional median anchor
+uses only SDR midtones; it never looks at reference HDR. Attenuation-only variants
+add 25%, 50% or 100% of the negative correction to the current GMNet output.
+The scalar gain preserves source RGB ratios. RGB denoising/detail predictions
+are not applied by that path.
+
+`roundtrip_signed.swift` uses the app's actual numeric PNG storage, history,
+preview and export. It records rejected exports when ImageIO omits a gain map;
+it does not count those files as successful HDR. Eager ImageIO decoding followed
+by an explicit Core Graphics float bitmap avoids a macOS 27 Core Image direct
+readback crash encountered during this experiment. This workaround is confined
+to the research reader, not the app. Use a new output directory for each run.
+
+[Signed model findings and limitations](../../Docs/Evidence/hdr-signed-model-verification.md).

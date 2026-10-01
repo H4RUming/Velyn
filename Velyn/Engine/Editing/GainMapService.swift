@@ -154,6 +154,36 @@ extension EditingService {
         return id
     }
 
+    /// Store a locally produced scalar log2 gain field without losing attenuation.
+    /// The caller must align it to the pre-geometry SDR recipe used for prediction.
+    /// No experimental model is selected or downloaded by this entry point.
+    func storeSignedHDRExpansion(logGains: [Float], width: Int, height: Int, recipe: EditRecipe) throws -> HDRExpansion {
+        try Task.checkCancellation()
+        guard recipe.isValid, width > 0, height > 0, width <= 2048, height <= 2048,
+              logGains.count == width*height else { throw EditorFailure.invalidDocument }
+        guard try sourceDynamicRange() == .sdr else { throw EditorFailure.hdrExpansionRequiresSDR }
+        let encoding = GainMapEncoding.signedLog2V1
+        var samples = [Float](); samples.reserveCapacity(logGains.count)
+        for (index,value) in logGains.enumerated() {
+            if index % 16384 == 0 { try Task.checkCancellation() }
+            guard value.isFinite else { throw EditorFailure.renderFailed }
+            samples.append(Float(encoding.encode(ev:Double(value))))
+        }
+        let map = CIImage(bitmapData:samples.withUnsafeBytes { Data($0) },bytesPerRow:width*4,
+                          size:CGSize(width:width,height:height),format:.Rf,colorSpace:nil)
+        let id = try storeGainMap(map)
+        var expansion = HDRExpansion(resourceID:id)
+        expansion.gainMapEncoding = encoding
+        expansion.maximumDimmingEV = 2
+        expansion.maximumBoostEV = log2(5)
+        expansion.strength = 1
+        expansion.protectMidtones = false
+        expansion.protectionBlend = 0
+        expansion.edgeAwareUpsampling = true
+        expansion.predictionFingerprint = recipe.gainPredictionFingerprint
+        return expansion
+    }
+
     /// Only for a newly generated result that has never been committed to history.
     public func discardUncommittedGainMap(_ expansion: HDRExpansion) {
         try? FileManager.default.removeItem(at: package.appendingPathComponent("masks/\(expansion.resourceID).png"))
@@ -174,7 +204,8 @@ struct GainMapPipeline {
     }
 
     static func apply(_ image: CIImage, map: CIImage, expansion: HDRExpansion) -> CIImage {
-        guard expansion.strength > 0, expansion.maximumBoostEV > 0 else { return image }
+        guard expansion.strength > 0,
+              expansion.maximumBoostEV > 0 || expansion.effectiveMaximumDimmingEV > 0 else { return image }
         var resized = scalarMap(map).transformed(by: CGAffineTransform(scaleX: image.extent.width/map.extent.width,
                                                            y: image.extent.height/map.extent.height))
             .transformed(by: CGAffineTransform(translationX: image.extent.minX,y: image.extent.minY))
@@ -201,11 +232,23 @@ struct GainMapPipeline {
             }
             let gate = luminance.applyingFilter("CIColorCurves",parameters: ["inputCurvesData": protection.withUnsafeBytes { Data($0) },
                 "inputCurvesDomain": CIVector(x: 0,y: 1),"inputColorSpace": RenderPipeline.linearSpace])
-            resized = resized.applyingFilter("CIMultiplyCompositing",parameters: [kCIInputBackgroundImageKey: gate])
+            if let encoding = expansion.gainMapEncoding {
+                // Protection moves signed EV toward zero, not toward the darkest encoded sample.
+                let neutral = CGFloat(encoding.neutralSample)
+                let unchanged = CIImage(color: CIColor(red:neutral,green:neutral,blue:neutral,colorSpace:RenderPipeline.linearSpace)!)
+                    .cropped(to:image.extent)
+                resized = resized.applyingFilter("CIBlendWithMask",parameters: [
+                    kCIInputBackgroundImageKey:unchanged,kCIInputMaskImageKey:gate])
+            } else {
+                resized = resized.applyingFilter("CIMultiplyCompositing",parameters: [kCIInputBackgroundImageKey: gate])
+            }
         }
         var table = [Float]()
         for i in 0..<1024 {
-            let gain = Float(exp2(min(Double(i)/1023 * log2(5) * expansion.strength, expansion.maximumBoostEV)))
+            let sample = Double(i)/1023
+            let ev = expansion.gainMapEncoding?.decode(sample:sample) ?? sample*log2(5)
+            let adjustedEV = max(-expansion.effectiveMaximumDimmingEV,min(ev*expansion.strength,expansion.maximumBoostEV))
+            let gain = Float(exp2(adjustedEV))
             table += [gain,gain,gain]
         }
         let gain = resized.applyingFilter("CIColorCurves", parameters: [

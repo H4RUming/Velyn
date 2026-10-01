@@ -1,0 +1,45 @@
+{
+  "purpose": "Explicit local research only; these models are not bundled or downloaded by the app. Both repositories are MIT licensed.",
+  "files": [
+    {
+      "path": "ditm.py",
+      "url": "https://raw.githubusercontent.com/SayedNadim/ITM25/c34be980c56856f013ccf1e23168c11bd3a42e1a/models/team07_ditm.py",
+      "sha256": "13f4d66262f8a90af2a70e8d5bef93da5e2e36d0a788766f95bde9a0b2d25704"
+    },
+    {
+      "path": "model_layers.py",
+      "url": "https://raw.githubusercontent.com/SayedNadim/ITM25/c34be980c56856f013ccf1e23168c11bd3a42e1a/models/model_layers.py",
+      "sha256": "e53ef6473f5266e276ad94f63a7e89c6083584aaefb8d04540a9a88afdc20fcb"
+    },
+    {
+      "path": "team07_ditm.pth",
+      "url": "https://raw.githubusercontent.com/SayedNadim/ITM25/c34be980c56856f013ccf1e23168c11bd3a42e1a/model_zoo/team07_ditm.pth",
+      "sha256": "d0fa81d7edf31d6ae7b7c424595d262b49d273edb3bb6bcc2d5008660bf2b925"
+    },
+    {
+      "path": "DITM-LICENSE",
+      "url": "https://raw.githubusercontent.com/SayedNadim/ITM25/c34be980c56856f013ccf1e23168c11bd3a42e1a/LICENSE",
+      "sha256": "81032fbef39a967bdc9dc7f5aaaa3b65fe589c931c0cd38c473ecdf493b0e17a"
+    },
+    {
+      "path": "hdrunet/codes/models/modules/UNet_arch.py",
+      "url": "https://raw.githubusercontent.com/chxy95/HDRUNet/e9bd4b90a27d7531a38b8c97db05feb368b96dc2/codes/models/modules/UNet_arch.py",
+      "sha256": "c8071c3f3a490f1244af120dae0e1f8aaa44db126f9acfb08114f7890cd04619"
+    },
+    {
+      "path": "hdrunet/codes/models/modules/arch_util.py",
+      "url": "https://raw.githubusercontent.com/chxy95/HDRUNet/e9bd4b90a27d7531a38b8c97db05feb368b96dc2/codes/models/modules/arch_util.py",
+      "sha256": "3cbfe68a571b6f65c06169a5110710c55581461bc2db5c96a244dff8984ac39e"
+    },
+    {
+      "path": "hdrunet/pretrained_models/pretrained_model.pth",
+      "url": "https://raw.githubusercontent.com/chxy95/HDRUNet/e9bd4b90a27d7531a38b8c97db05feb368b96dc2/pretrained_models/pretrained_model.pth",
+      "sha256": "bf0d5a89754eb6fe5f043ea11feacc1f6c6214d370134b9a5b1239bf158c5c92"
+    },
+    {
+      "path": "hdrunet/LICENSE",
+      "url": "https://raw.githubusercontent.com/chxy95/HDRUNet/e9bd4b90a27d7531a38b8c97db05feb368b96dc2/LICENSE",
+      "sha256": "3471dda495234729e023e2ce6a30008f5d4d9f8ac04c4c4edb0de97008ba55bc"
+    }
+  ]
+}

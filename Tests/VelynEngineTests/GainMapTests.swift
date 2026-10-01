@@ -6,6 +6,144 @@ import ImageIO
 @testable import VelynEngine
 
 struct GainMapTests {
+    @Test func signedEncodingPreservesLegacyAndValidatesCaps() throws {
+        let old = Data("{\"resourceID\":\"\(UUID().uuidString)\",\"strength\":0.75,\"maximumBoostEV\":2}".utf8)
+        var expansion = try JSONDecoder().decode(HDRExpansion.self,from:old)
+        #expect(expansion.gainMapEncoding == nil && expansion.effectiveMaximumDimmingEV == 0)
+        let encoding = GainMapEncoding.signedLog2V1
+        for ev in [-2.0,-1,0,1,log2(5)] { #expect(abs(encoding.decode(sample:encoding.encode(ev:ev))-ev) < 1e-12) }
+        #expect(encoding.encode(ev:-10) == 0 && encoding.encode(ev:10) == 1)
+        expansion.gainMapEncoding = encoding
+        #expect(expansion.effectiveMaximumDimmingEV == 2)
+        expansion.maximumDimmingEV = 0.5
+        #expect(try JSONDecoder().decode(HDRExpansion.self,from:JSONEncoder().encode(expansion)) == expansion)
+        for invalid in [-0.1,2.1,Double.nan,Double.infinity] {
+            expansion.maximumDimmingEV = invalid; #expect(!expansion.isValid)
+        }
+    }
+
+    @Test func signedRfGainPreservesColorAlphaAndProtectsTowardZeroEV() {
+        let rect = CGRect(x:0,y:0,width:4,height:4)
+        let encoding = GainMapEncoding.signedLog2V1
+        func map(_ ev:Double) -> CIImage {
+            let samples = [Float](repeating:Float(encoding.encode(ev:ev)),count:16)
+            return CIImage(bitmapData:samples.withUnsafeBytes { Data($0) },bytesPerRow:16,size:rect.size,format:.Rf,colorSpace:nil)
+        }
+        var expansion = HDRExpansion(resourceID:UUID())
+        expansion.gainMapEncoding = encoding; expansion.strength = 1; expansion.maximumBoostEV = log2(5)
+        expansion.protectMidtones = false
+        let source = CIImage(color:CIColor(red:0.8,green:0.4,blue:0.2,alpha:0.5,colorSpace:RenderPipeline.linearSpace)!).cropped(to:rect)
+        let before = pixel(source)
+        for ev in [-2.0,-1,0,1,2] {
+            let result = pixel(GainMapPipeline.apply(source,map:map(ev),expansion:expansion))
+            for c in 0..<3 { #expect(abs(result[c]-before[c]*Float(exp2(ev))) < 0.002) }
+            #expect(abs(result[3]-before[3]) < 0.001)
+        }
+        expansion.maximumBoostEV = 0
+        #expect(abs(pixel(GainMapPipeline.apply(source,map:map(-1),expansion:expansion))[0]-before[0]/2) < 0.002)
+        expansion.maximumBoostEV = 2; expansion.maximumDimmingEV = 0
+        #expect(abs(pixel(GainMapPipeline.apply(source,map:map(-1),expansion:expansion))[0]-before[0]) < 0.002)
+        #expect(abs(pixel(GainMapPipeline.apply(source,map:map(1),expansion:expansion))[0]-before[0]*2) < 0.002)
+        expansion.maximumDimmingEV = 2; expansion.strength = 0
+        #expect(pixel(GainMapPipeline.apply(source,map:map(-1),expansion:expansion)) == before)
+        expansion.strength = 1; expansion.protectMidtones = true
+        for blend in [0.0,1.0] {
+            expansion.protectionBlend = blend
+            for level in [0.01,0.1,0.5,1] {
+                let gray = CIImage(color:CIColor(red:level,green:level,blue:level,colorSpace:RenderPipeline.linearSpace)!).cropped(to:rect)
+                #expect(abs(pixel(GainMapPipeline.apply(gray,map:map(0),expansion:expansion))[0]-Float(level)) < 0.001)
+                let protected = pixel(GainMapPipeline.apply(gray,map:map(-1),expansion:expansion))[0]
+                let expected = Float(level*exp2(-GainMapTonePolicy.protection(luminance:level,blend:blend)))
+                #expect(abs(protected-expected) < 0.002)
+            }
+        }
+    }
+
+
+    @Test(arguments:[ExportFormat.jpeg,.heic]) func signedMapPersistsAndRoundTripsBothGainDirections(format:ExportFormat) async throws {
+        let (base,projects,asset,service) = try await fixture(); defer { try? FileManager.default.removeItem(at:base) }
+        var document = try await service.load()
+        var recipe = EditRecipe()
+        let values = (0..<(24*18)).map { $0 % 24 < 12 ? Float(-1) : Float(2) }
+        let expansion = try await service.storeSignedHDRExpansion(logGains:values,width:24,height:18,recipe:recipe)
+        #expect(expansion.gainMapEncoding == .signedLog2V1 && expansion.isValid)
+        #expect(expansion.predictionFingerprint == recipe.gainPredictionFingerprint)
+        recipe.enhancements.hdrExpansion = expansion; recipe.enhancements.hdr = true
+        let stored = try #require(await service.maskResources(recipe)[expansion.resourceID])
+        #expect(abs(pixel(stored,x:2,y:2)[0]-Float(GainMapEncoding.signedLog2V1.encode(ev:-1))) < 0.0001)
+        let hdr = try await service.processed(document,recipe:recipe,maxPixelSize:nil)
+        #expect(abs(pixel(hdr,x:30,y:150)[0]-0.5) < 0.005)
+        #expect(abs(pixel(hdr,x:210,y:150)[0]-4) < 0.005)
+        let preview = try await service.render(document,recipe:recipe)
+        for (x,expected) in [(30.0,Float(0.5)),(210.0,Float(4))] {
+            let p = pixel(CIImage(cgImage:preview.image),x:x,y:150)
+            #expect(abs(p[0]-expected) < 0.01)
+            #expect(abs(p[0]-p[1]) < 0.005 && abs(p[0]-p[2]) < 0.005)
+        }
+        var rotatedRecipe = recipe; rotatedRecipe.quarterTurns = 1; rotatedRecipe.aspect = .square
+        let rotated = try await service.processed(document,recipe:rotatedRecipe,maxPixelSize:nil)
+        let expected = RenderPipeline.geometry(hdr,recipe:rotatedRecipe)
+        #expect(rotated.extent == expected.extent)
+        for x in [20.0,90,160] { for y in [20.0,90,160] {
+            #expect(abs(pixel(rotated,x:x,y:y)[0]-pixel(expected,x:x,y:y)[0]) < 0.002)
+        } }
+        document.history.commit(recipe); document.revision += 1; try await service.save(document)
+        let reopened = try await EditingService(root:projects,asset:asset).load()
+        #expect(reopened.history.current == recipe)
+        var history = reopened.history; history.undo(); #expect(history.current.enhancements.hdrExpansion == nil)
+        history.redo(); #expect(history.current == recipe)
+        var settings = ExportSettings(); settings.quality = 1; settings.hdr = true; settings.format = format
+        let url = try await service.export(reopened,settings:settings,directory:base)
+        let source = try #require(CGImageSourceCreateWithURL(url as CFURL,nil))
+        #expect(CGImageSourceCopyAuxiliaryDataInfoAtIndex(source,0,kCGImageAuxiliaryDataTypeHDRGainMap) != nil || CGImageSourceCopyAuxiliaryDataInfoAtIndex(source,0,kCGImageAuxiliaryDataTypeISOGainMap) != nil)
+        let decoded = try #require(CIImage(contentsOf:url,options:[.expandToHDR:true]))
+        let fallback = try #require(CIImage(contentsOf:url,options:[.expandToHDR:false,.toneMapHDRtoSDR:false]))
+        for (x,expected) in [(30.0,Float(0.5)),(210.0,Float(4))] {
+            let p = pixel(decoded,x:x,y:150)
+            #expect(abs(p[0]-expected) < 0.04)
+            #expect(abs(p[0]-p[1]) < 0.02 && abs(p[0]-p[2]) < 0.02)
+            #expect(abs(pixel(fallback,x:x,y:150)[0]-1) < 0.015)
+        }
+        _ = try await OriginalImportService(root:projects).verify(asset)
+    }
+
+    @Test func signedStorageRejectsInvalidOrCancelledPredictionsWithoutResources() async throws {
+        let (base,projects,asset,service) = try await fixture(); defer { try? FileManager.default.removeItem(at:base) }
+        for (values,w,h) in [([Float.nan],1,1),([Float.infinity],1,1),([0],0,1),([0],2,1),([0],Int.max,1)] {
+            await #expect(throws:EditorFailure.self) { try await service.storeSignedHDRExpansion(logGains:values,width:w,height:h,recipe:EditRecipe()) }
+        }
+        let task = Task {
+            withUnsafeCurrentTask { $0?.cancel() }
+            return try await service.storeSignedHDRExpansion(logGains:[0],width:1,height:1,recipe:EditRecipe())
+        }
+        await #expect(throws:CancellationError.self) { try await task.value }
+        let masks = projects.appendingPathComponent("\(asset.id)/masks")
+        #expect((try? FileManager.default.contentsOfDirectory(atPath:masks.path).count) ?? 0 == 0)
+    }
+
+    @Test(arguments:[ExportFormat.jpeg,.heic]) func dimmingOnlyExportNeverSilentlyDropsTheMap(format:ExportFormat) async throws {
+        let (base,projects,asset,service) = try await fixture(); defer { try? FileManager.default.removeItem(at:base) }
+        var document = try await service.load(),recipe = EditRecipe()
+        let expansion = try await service.storeSignedHDRExpansion(logGains:[-1],width:1,height:1,recipe:recipe)
+        recipe.enhancements.hdrExpansion = expansion; recipe.enhancements.hdr = true
+        document.history.commit(recipe); document.revision += 1; try await service.save(document)
+        let directory = base.appendingPathComponent("exports")
+        var settings = ExportSettings(); settings.hdr = true; settings.format = format
+        do {
+            let url = try await service.export(document,settings:settings,directory:directory)
+            let source = try #require(CGImageSourceCreateWithURL(url as CFURL,nil))
+            #expect(CGImageSourceCopyAuxiliaryDataInfoAtIndex(source,0,kCGImageAuxiliaryDataTypeHDRGainMap) != nil || CGImageSourceCopyAuxiliaryDataInfoAtIndex(source,0,kCGImageAuxiliaryDataTypeISOGainMap) != nil)
+            let hdr = try #require(CIImage(contentsOf:url,options:[.expandToHDR:true]))
+            #expect(abs(pixel(hdr,x:100,y:150)[0]-0.5) < 0.03)
+        } catch EditorFailure.exportFailed {
+            // Current macOS encoder omits the map when all output fits in SDR.
+            // A future encoder may support it; either preserve the edit or fail cleanly.
+            #expect(try FileManager.default.contentsOfDirectory(atPath:directory.path).isEmpty)
+        }
+        #expect(try await EditingService(root:projects,asset:asset).load().history.current == recipe)
+        _ = try await OriginalImportService(root:projects).verify(asset)
+    }
+
     @Test func acceleratorCalibrationRejectsSilentDriftAndWrongGeometry() throws {
         for size in [512,1024] { for pattern in 0..<2 {
             let output = try MLMultiArray(shape:[1,1,NSNumber(value:size),NSNumber(value:size)],dataType:.float32)

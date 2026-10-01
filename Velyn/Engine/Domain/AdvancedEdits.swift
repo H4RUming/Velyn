@@ -87,20 +87,35 @@ public struct RetouchPatch: Codable, Sendable, Equatable, Identifiable {
 }
 public enum SourceDynamicRange: String, Sendable { case sdr, hdr, raw }
 
-/// Stored samples encode log2 gain / log2(5). UUID resources belong to this photo only.
+/// Versioned numeric PNG encoding; omitted metadata retains the original positive-only map.
+public enum GainMapEncoding: String, Codable, Sendable {
+    case signedLog2V1
+    public var minimumEV: Double { -2 }
+    public var maximumEV: Double { log2(5) }
+    public var neutralSample: Double { -minimumEV / (maximumEV-minimumEV) }
+    public func encode(ev: Double) -> Double { min(1,max(0,(ev-minimumEV)/(maximumEV-minimumEV))) }
+    public func decode(sample: Double) -> Double { min(1,max(0,sample))*(maximumEV-minimumEV)+minimumEV }
+}
+
+/// UUID resources belong to this photo only. Nil encoding means log2 gain / log2(5).
 public struct HDRExpansion: Codable, Sendable, Equatable {
     public var predictionFingerprint: String?
     /// Nil retains the pre-1.1 tone curve and bilinear map sampling.
     public var protectionBlend: Double?
     public var edgeAwareUpsampling: Bool?
     public var protectMidtones: Bool?
+    public var gainMapEncoding: GainMapEncoding?
+    /// Optional attenuation cap for signed maps. Older positive maps never dim.
+    public var maximumDimmingEV: Double?
     public var resourceID: UUID
     public var strength = 0.75
     public var maximumBoostEV = 2.0
     public init(resourceID: UUID) { self.resourceID = resourceID; self.protectMidtones = true }
+    public var effectiveMaximumDimmingEV: Double { gainMapEncoding == nil ? 0 : maximumDimmingEV ?? 2 }
     public var isValid: Bool {
         strength.isFinite && (0...1).contains(strength) && maximumBoostEV.isFinite && (0...log2(5)).contains(maximumBoostEV) &&
-        (protectionBlend.map { $0.isFinite && (0...1).contains($0) } ?? true)
+        (protectionBlend.map { $0.isFinite && (0...1).contains($0) } ?? true) &&
+        (maximumDimmingEV.map { $0.isFinite && (0...2).contains($0) } ?? true)
     }
 }
 

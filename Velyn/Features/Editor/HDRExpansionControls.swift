@@ -29,20 +29,37 @@ struct HDRExpansionControls: View {
                     if expansion.protectionBlend == nil {
                         Text(L10n.tr("자동 톤 보호를 적용하려면 밝기 지도를 다시 예측하세요.")).font(.caption2).foregroundStyle(.secondary)
                     }
-                    Picker(L10n.tr("조절 항목"),selection: $parameter) { Text(L10n.tr("확장 강도")).tag(0); Text(L10n.tr("최대 밝기")).tag(1) }.pickerStyle(.segmented)
+                    Picker(L10n.tr("조절 항목"),selection: $parameter) {
+                        Text(L10n.tr("확장 강도")).tag(0); Text(L10n.tr("최대 밝기")).tag(1)
+                        if expansion.gainMapEncoding != nil { Text(L10n.tr("감광 한도")).tag(2) }
+                    }.pickerStyle(.segmented)
                     if parameter == 0 { AdjustmentSlider(title: L10n.tr("HDR 확장 강도"), value: Binding(
                         get: { (editor.recipe.enhancements.hdrExpansion?.strength ?? 0.75)*100 },
                         set: { value in editor.mutate({ $0.enhancements.hdrExpansion?.strength = value/100 }, commit: false) }),
                         range: 0...100, step: 1, defaultValue: 75, suffix: "%", commit: editor.finishGesture) }
+                    else if parameter == 2, expansion.gainMapEncoding != nil {
+                        AdjustmentSlider(title:L10n.tr("최대 감광"),value:Binding(
+                            get:{editor.recipe.enhancements.hdrExpansion?.effectiveMaximumDimmingEV ?? 0},
+                            set:{value in editor.mutate({$0.enhancements.hdrExpansion?.maximumDimmingEV = value},commit:false)}),
+                            range:0...2,step:0.05,defaultValue:2,suffix:" EV",commit:editor.finishGesture)
+                    }
                     else { AdjustmentSlider(title: L10n.tr("최대 밝기 배율"), value: Binding(
                         get: { exp2(editor.recipe.enhancements.hdrExpansion?.maximumBoostEV ?? 2) },
                         set: { value in editor.mutate({ $0.enhancements.hdrExpansion?.maximumBoostEV = log2(value) }, commit: false) }),
                         range: 1...5, step: 0.1, defaultValue: 4, suffix: "×", commit: editor.finishGesture) }
                     Toggle(L10n.tr("중간톤 보호"),isOn: Binding(get: { editor.recipe.enhancements.hdrExpansion?.protectMidtones == true },set: { value in editor.mutate { $0.enhancements.hdrExpansion?.protectMidtones = value } })).font(.caption)
                     if expansion.protectMidtones == true { Text(L10n.tr("어두운 부분과 중간 밝기는 유지하고 밝은 영역을 중심으로 확장합니다.")).font(.caption2).foregroundStyle(.secondary) }
+                    if expansion.gainMapEncoding != nil {
+                        Text(L10n.tr("밝히기와 어둡게 하기를 함께 적용합니다. 감광 한도를 0으로 설정하면 어둡게 하는 효과를 끕니다.")).font(.caption2).foregroundStyle(.secondary)
+                    }
                     HStack {
                         Button(L10n.tr("톤 유지")) { editor.mutate { $0.enhancements.hdrExpansion?.strength = 0.75; $0.enhancements.hdrExpansion?.maximumBoostEV = 2; $0.enhancements.hdrExpansion?.protectMidtones = true } }
-                        Button(L10n.tr("모델 예측 그대로")) { editor.mutate { $0.enhancements.hdrExpansion?.strength = 1; $0.enhancements.hdrExpansion?.maximumBoostEV = log2(5); $0.enhancements.hdrExpansion?.protectMidtones = false } }
+                        Button(L10n.tr("모델 예측 그대로")) { editor.mutate {
+                            $0.enhancements.hdrExpansion?.strength = 1
+                            $0.enhancements.hdrExpansion?.maximumBoostEV = log2(5)
+                            $0.enhancements.hdrExpansion?.protectMidtones = false
+                            if $0.enhancements.hdrExpansion?.gainMapEncoding != nil { $0.enhancements.hdrExpansion?.maximumDimmingEV = 2 }
+                        } }
                     }.font(.caption).buttonStyle(.bordered)
 
                     Button(L10n.tr("밝기 지도 제거")) { editor.mutate { $0.enhancements.hdrExpansion = nil; $0.enhancements.hdr = false } }
@@ -55,6 +72,9 @@ struct HDRExpansionControls: View {
                 Text(range == .raw ? L10n.tr("RAW 현상의 HDR 범위를 사용합니다.") : L10n.tr("사진에 포함된 HDR 정보를 사용합니다."))
                     .font(.caption2).foregroundStyle(.secondary)
             }
+        }
+        .onChange(of: editor.recipe.enhancements.hdrExpansion?.gainMapEncoding) { _, encoding in
+            if encoding == nil && parameter == 2 { parameter = 0 }
         }
         .task(id: editor.recipe) {
             let snapshot = editor.recipe

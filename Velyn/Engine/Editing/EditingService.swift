@@ -168,6 +168,17 @@ public actor EditingService {
               (info[kCGImagePropertyOrientation as String] as? Int ?? 1) == 1,
               info[kCGImagePropertyGPSDictionary as String] == nil,
               info[kCGImagePropertyProfileName as String] != nil else { throw EditorFailure.exportFailed }
+        if settings.hdr, let expansion = recipe.enhancements.hdrExpansion,
+           expansion.gainMapEncoding != nil, expansion.strength > 0,
+           expansion.maximumBoostEV > 0 || expansion.effectiveMaximumDimmingEV > 0 {
+            // ImageIO can silently omit the auxiliary map for dimming-dominant
+            // outputs. Do not publish the untouched SDR base as a successful HDR edit.
+            let primary = CGImageSourceGetPrimaryImageIndex(source)
+            guard CGImageSourceCopyAuxiliaryDataInfoAtIndex(source,primary,kCGImageAuxiliaryDataTypeHDRGainMap) != nil ||
+                  CGImageSourceCopyAuxiliaryDataInfoAtIndex(source,primary,kCGImageAuxiliaryDataTypeISOGainMap) != nil else {
+                throw EditorFailure.exportFailed
+            }
+        }
         try FileManager.default.moveItem(at: temporary, to: final)
         if Task.isCancelled { try? FileManager.default.removeItem(at: final); throw CancellationError() }
         return final
