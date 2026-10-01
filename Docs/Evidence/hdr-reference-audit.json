@@ -1,0 +1,39 @@
+{
+  "app-default": {
+    "gainCorrelation": 0.9276583663493216,
+    "meanAbsoluteLuminanceErrorEV": 0.14015400583314544,
+    "meanGainEV": 0.09899036603442668,
+    "meanLuminanceRatio": 0.8990789397957663,
+    "p95AbsoluteLuminanceErrorEV": 0.22273142595990425,
+    "referenceMeanGainEV": 0.23783345279121687
+  },
+  "environment": "macOS engine; one real local HDR/SDR pair; no display measurements",
+  "model-full": {
+    "gainCorrelation": 0.8856709604277133,
+    "meanAbsoluteLuminanceErrorEV": 0.302478221851734,
+    "meanGainEV": 0.5390315770265048,
+    "meanLuminanceRatio": 1.2506843224143447,
+    "p95AbsoluteLuminanceErrorEV": 0.4353931326949495,
+    "referenceMeanGainEV": 0.23783345279121687
+  },
+  "nativeHeadroom": 8,
+  "originalPreserved": true,
+  "SDR": {
+    "gainCorrelation": 0,
+    "meanAbsoluteLuminanceErrorEV": 0.2378334527912156,
+    "meanGainEV": 0,
+    "meanLuminanceRatio": 0.8069932758935582,
+    "p95AbsoluteLuminanceErrorEV": 0.5227158507269959,
+    "referenceMeanGainEV": 0.23783345279121687
+  },
+  "sample": "One user-provided native HDR JPEG; paired embedded SDR base; photo and tensors excluded from repository",
+  "sampling": "256 px long edge, linear sRGB luminance; EV errors exclude SDR/reference luminance <= 0.01",
+  "modelConversion": {
+    "environment": "macOS CPU; original PyTorch weights and CPU Core ML; identical photo tensors",
+    "meanAbsoluteErrorEV": 0.0009826786117628217,
+    "maxAbsoluteErrorEV": 0.009405136108398438,
+    "p99AbsoluteErrorEV": 0.00454912841320038,
+    "referenceMinEV": 0.02376488968729973,
+    "referenceMaxEV": 1.2465431690216064
+  }
+}

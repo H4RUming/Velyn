@@ -7,9 +7,9 @@ struct ContentView: View {
     @State private var organizer = LibraryOrganizer()
     @State private var showOrganizer = false
     @State private var showBatchExport = false
-    @State private var albumName = ""
-    @State private var showAlbumName = false
     @State private var showTrashConfirm = false
+    @State private var pendingTrashIDs = Set<UUID>()
+    @State private var showAddToAlbum = false
     @State private var showFiles = false
     @State private var showCamera = false
     @State private var cameraSelection: Result<URL,Error>?
@@ -42,6 +42,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 header
+                collectionBar
                 libraryToolbar
                 if showSearch { searchField }
                 if store.recent.isEmpty {
@@ -52,10 +53,8 @@ struct ContentView: View {
                     photoGrid(width: geometry.size.width)
                 }
                 if store.isWorking { progress }
-                if organizer.isWorking { HStack { ProgressView(); Text(organizer.status ?? L10n.tr("처리 중")).font(.caption); Spacer(); Button(L10n.tr("취소")) { organizer.cancel() } }.padding() }
-                else if let status = organizer.status ?? store.status { Text(status).font(.caption2).foregroundStyle(.secondary).padding(5) }
-                if organizer.selecting { selectionBar }
-                bottomBar
+                operationStatus
+                if organizer.selecting { selectionBar } else { bottomBar }
             }
             .background(LibraryStyle.background)
         }
@@ -88,9 +87,17 @@ struct ContentView: View {
         message: { Text(store.errorMessage ?? "") }
         .sheet(item: Binding(get: { organizer.sharing },set: { organizer.sharing = $0 })) { item in ActivityShareView(urls: item.urls) }
         .sheet(isPresented: $showOrganizer) { LibraryOrganizationView(organizer: organizer) }
+        .sheet(isPresented: $showAddToAlbum) { AddToAlbumView(organizer: organizer) }
         .sheet(isPresented: $showBatchExport) { BatchExportOptionsView(count: organizer.selectedIDs.count) { settings in organizer.run(.export,assets: photos,settings: settings) } }
-        .alert(L10n.tr("라이브러리 작업"),isPresented: Binding(get: { organizer.error != nil },set: { if !$0 { organizer.error = nil } })) { Button(L10n.tr("확인")) { organizer.error = nil } } message: { Text(organizer.error ?? "") }
-        .confirmationDialog(L10n.tr("선택한 사진을 휴지통으로 옮길까요?"),isPresented: $showTrashConfirm,titleVisibility: .visible) { Button(L10n.tr("휴지통으로 이동"),role: .destructive) { Task { await organizer.update(trash: true) } } } message: { Text(L10n.tr("사진 앱의 원본은 유지됩니다. 앱 휴지통에서 복원할 수 있습니다.")) }
+        .alert(L10n.tr("라이브러리 작업"),isPresented: Binding(get: { organizer.error != nil && !showOrganizer && !showAddToAlbum },set: { if !$0 { organizer.error = nil } })) { Button(L10n.tr("확인")) { organizer.error = nil } } message: { Text(organizer.error ?? "") }
+        .confirmationDialog(L10n.format("사진 %ld장을 삭제할까요?",pendingTrashIDs.count),isPresented: $showTrashConfirm,titleVisibility: .visible) {
+            Button(L10n.tr("휴지통으로 이동"),role: .destructive) {
+                let ids = pendingTrashIDs
+                Task { await organizer.update(ids: ids,trash: true) }
+            }
+            Button(L10n.tr("취소"),role: .cancel) { pendingTrashIDs = [] }
+        } message: { Text(L10n.tr("Velyn의 휴지통으로 이동합니다. 사진 앱과 파일의 원본은 그대로이며, 언제든 복원할 수 있습니다.")) }
+        .onChange(of: photos.map(\.id)) { _, ids in organizer.reconcileSelection(visibleIDs: ids) }
         .onChange(of: organizer.revision) { _, _ in libraryRevision += 1 }
         .sheet(isPresented: $showSettings) { LibrarySettingsView(count: store.recent.count) }
         .fullScreenCover(item: Binding(get: { store.selected }, set: { if $0 == nil { store.dismissSelection() } })) { asset in
@@ -100,12 +107,17 @@ struct ContentView: View {
             await store.loadRecent()
             await organizer.load()
             #if DEBUG && targetEnvironment(simulator)
+            if ProcessInfo.processInfo.arguments.contains("--library-smoke-test") {
+                await LibrarySmokeFixture.exercise(store: store,organizer: organizer)
+                if ProcessInfo.processInfo.arguments.contains("--library-smoke-albums") { showOrganizer = true }
+                if ProcessInfo.processInfo.arguments.contains("--library-smoke-confirm") { requestTrash(organizer.selectedIDs) }
+            }
             if ProcessInfo.processInfo.arguments.contains("--settings-smoke-test") { showSettings = true }
             if ProcessInfo.processInfo.arguments.contains("--import-source-smoke-test") { showImportSources = true }
             if ProcessInfo.processInfo.arguments.contains("--photo-library-smoke-test") { showPhotos = true }
             if ProcessInfo.processInfo.arguments.contains("--editor-smoke-test") {
                 let useRAW = ProcessInfo.processInfo.arguments.contains("--editor-smoke-raw")
-                if let asset = store.recent.first(where: { $0.isRAW == useRAW }) { store.open(asset) }
+                if let asset = store.recent.first(where: { $0.isRAW == useRAW && (!ProcessInfo.processInfo.arguments.contains("--editor-smoke-gain") || $0.originalFilename == "Editor test chart.jpg") }) { store.open(asset) }
                 else {
                     do { store.importFile(try await EditorSmokeFixture.shared.create()) }
                     catch { store.pickerFailed(error) }
@@ -118,41 +130,72 @@ struct ContentView: View {
         }
     }
 
+    @ViewBuilder private var operationStatus: some View {
+                if organizer.isWorking { HStack { ProgressView(); Text(organizer.status ?? L10n.tr("처리 중")).font(.caption); Spacer(); if organizer.canCancel { Button(L10n.tr("취소")) { organizer.cancel() } } }.padding() }
+                else if let status = organizer.status ?? store.status {
+                    HStack {
+                        Text(status).font(.caption).frame(maxWidth: .infinity,alignment: .leading)
+                        if !organizer.lastTrashedIDs.isEmpty { Button(L10n.tr("실행 취소")) { Task { await organizer.undoTrash() } }.font(.caption.weight(.semibold)) }
+                        Button { organizer.status = nil; store.dismissStatus(); organizer.lastTrashedIDs = [] } label: { Image(systemName: "xmark").frame(width: 44,height: 44) }.accessibilityLabel(L10n.tr("알림 닫기"))
+                    }.padding(.leading,20).background(LibraryStyle.raised)
+                }
+    }
+
     private var header: some View {
-        HStack(spacing: 0) {
-            Text("Velyn").font(.system(size: 22, weight: .bold)).tracking(-0.7)
-            Spacer()
-            Button {
-                showSearch.toggle()
-                if showSearch { searchFocused = true } else { query = "" }
-            } label: { LibraryIcon(symbol: showSearch ? "xmark" : "magnifyingglass") }
-                .accessibilityLabel(showSearch ? L10n.tr("검색 닫기") : L10n.tr("파일명 검색"))
-            Menu {
-                Button(L10n.tr("앨범·필터")) { showOrganizer = true }
-                Button(organizer.selecting ? L10n.tr("선택 완료") : L10n.tr("사진 선택")) { organizer.selecting.toggle(); if !organizer.selecting { organizer.selectedIDs = [] } }
-                Button(L10n.tr("설정")) { showSettings = true }
-            } label: { LibraryIcon(symbol: "ellipsis") }
-                .accessibilityLabel(L10n.tr("라이브러리 설정"))
-        }
-        .foregroundStyle(.white)
-        .padding(.leading, 20).padding(.trailing, 6).padding(.vertical, 5)
-        .background(LibraryStyle.bar)
+        HStack(spacing: 8) {
+            if organizer.selecting {
+                Button(L10n.tr("취소")) { organizer.endSelection() }.frame(minHeight: 44)
+                Spacer()
+                Text(L10n.format("%ld장 선택됨",organizer.selectedIDs.count)).font(.headline)
+                Spacer()
+                Button(organizer.selectedIDs.count == photos.count ? L10n.tr("선택 해제") : L10n.tr("전체 선택")) {
+                    organizer.selectedIDs = organizer.selectedIDs.count == photos.count ? [] : Set(photos.map(\.id))
+                }.frame(minHeight: 44).disabled(photos.isEmpty)
+            } else {
+                Text("Velyn").font(.system(size: 26,weight: .bold)).tracking(-0.7)
+                Spacer()
+                Button(L10n.tr("선택하기")) { organizer.selecting = true; searchFocused = false }
+                    .font(.subheadline.weight(.semibold)).frame(minHeight: 44).disabled(photos.isEmpty || store.isWorking)
+                    .accessibilityIdentifier("library-select")
+                Button {
+                    showSearch.toggle()
+                    if showSearch { searchFocused = true } else { query = "" }
+                } label: { LibraryIcon(symbol: showSearch ? "xmark" : "magnifyingglass") }
+                    .accessibilityLabel(showSearch ? L10n.tr("검색 닫기") : L10n.tr("파일명 검색"))
+                Button { showSettings = true } label: { LibraryIcon(symbol: "gearshape") }.accessibilityLabel(L10n.tr("설정"))
+            }
+        }.padding(.leading,20).padding(.trailing,8).padding(.vertical,6).background(LibraryStyle.bar)
+            .disabled(organizer.isWorking)
+    }
+
+    private var collectionBar: some View {
+        HStack(spacing: 8) {
+            collectionButton(L10n.tr("모든 사진"),icon: "photo.on.rectangle",active: !organizer.showTrash && organizer.album == nil) { organizer.resetFilters(); filter = .all; query = "" }
+            collectionButton(L10n.tr("앨범"),icon: "rectangle.stack",active: organizer.album != nil && !organizer.showTrash) { showOrganizer = true }
+            collectionButton(L10n.tr("휴지통"),icon: "trash",active: organizer.showTrash) {
+                organizer.resetFilters(); organizer.showTrash = true; filter = .all; query = ""
+            }
+        }.padding(.horizontal,20).padding(.bottom,10).background(LibraryStyle.bar).disabled(organizer.isWorking)
+    }
+    private func collectionButton(_ title: String,icon: String,active: Bool,action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Label(title,systemImage: icon).font(.system(size: 12,weight: .semibold)).frame(maxWidth: .infinity,minHeight: 40)
+                .background(active ? LibraryStyle.blue.opacity(0.18) : Color.white.opacity(0.05),in: Capsule())
+                .foregroundStyle(active ? LibraryStyle.blue : LibraryStyle.secondary)
+        }.buttonStyle(.plain).accessibilityAddTraits(active ? .isSelected : [])
     }
 
     private var libraryToolbar: some View {
         HStack(spacing: 6) {
-            Menu {
-                Picker(L10n.tr("사진 형식"), selection: $filter) {
-                    ForEach(PhotoFilter.allCases, id: \.self) { Text(L10n.tr($0.rawValue)).tag($0) }
-                }
-            } label: {
-                HStack(spacing: 8) {
-                    Text(organizer.showTrash ? L10n.tr("휴지통") : (organizer.catalog.albums.first(where: { $0.id == organizer.album })?.name ?? L10n.tr(filter.rawValue))).font(.system(size: 16, weight: .semibold))
-                    Image(systemName: "chevron.down").font(.system(size: 10, weight: .semibold))
-                }.frame(minHeight: 44)
-            }.foregroundStyle(.white)
+            Text(organizer.showTrash ? L10n.tr("휴지통") : (organizer.catalog.albums.first(where: { $0.id == organizer.album })?.name ?? L10n.tr("모든 사진")))
+                .font(.system(size: 16,weight: .semibold)).lineLimit(1)
             Text("\(photos.count)").font(.system(size: 13)).foregroundStyle(LibraryStyle.secondary).padding(.leading, 4)
             Spacer()
+            Menu {
+                Picker(L10n.tr("사진 형식"),selection: $filter) { ForEach(PhotoFilter.allCases,id: \.self) { Text(L10n.tr($0.rawValue)).tag($0) } }
+                Button(L10n.tr("별점·선별 필터")) { showOrganizer = true }
+                Button(L10n.tr("필터 초기화")) { resetAllFilters() }
+            } label: { Image(systemName: filter != .all || organizer.minimumRating > 0 || organizer.onlyPicks ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle").frame(width: 44,height: 44) }.accessibilityLabel(L10n.tr("필터"))
             Menu {
                 Picker(L10n.tr("정렬"), selection: $newestFirst) {
                     Text(L10n.tr("최근 추가한 순")).tag(true)
@@ -203,10 +246,18 @@ struct ContentView: View {
     }
 
     private var noResults: some View {
-        VStack(spacing: 12) {
-            Text(L10n.tr("일치하는 사진이 없습니다")).font(.headline)
-            Button(L10n.tr("필터 초기화")) { filter = .all; query = "" }.frame(minHeight: 44)
-        }
+        let unfiltered = query.isEmpty && filter == .all && organizer.minimumRating == 0 && !organizer.onlyPicks
+        let emptyTrash = organizer.showTrash && unfiltered
+        let allTrashed = !organizer.showTrash && organizer.album == nil && unfiltered
+        return VStack(spacing: 12) {
+            Image(systemName: emptyTrash || allTrashed ? "trash" : "magnifyingglass").font(.largeTitle).foregroundStyle(.secondary)
+            Text(emptyTrash ? L10n.tr("휴지통이 비어 있습니다") : (allTrashed ? L10n.tr("모든 사진이 휴지통에 있습니다") : L10n.tr("일치하는 사진이 없습니다"))).font(.headline)
+            Text(emptyTrash ? L10n.tr("삭제한 사진은 여기에 보관됩니다.") : (allTrashed ? L10n.tr("휴지통에서 복원하거나 새 사진을 추가하세요.") : L10n.tr("검색어나 필터를 바꿔보세요."))).font(.subheadline).foregroundStyle(.secondary)
+            Button(allTrashed ? L10n.tr("휴지통") : (emptyTrash ? L10n.tr("모든 사진으로 돌아가기") : L10n.tr("필터 초기화"))) {
+                resetAllFilters()
+                if allTrashed { organizer.showTrash = true }
+            }.frame(minHeight: 44)
+        }.padding(.horizontal,20)
     }
 
     private func photoGrid(width: CGFloat) -> some View {
@@ -217,6 +268,7 @@ struct ContentView: View {
                 ForEach(photos) { asset in
                     Button { searchFocused = false; if organizer.selecting { organizer.toggle(asset.id) } else { store.open(asset) } } label: {
                         PhotoThumbnail(asset: asset, store: store, revision: libraryRevision)
+                            .overlay { if organizer.selecting && organizer.selectedIDs.contains(asset.id) { Rectangle().strokeBorder(LibraryStyle.blue,lineWidth: 3) } }
                             .overlay(alignment: .topTrailing) {
                                 if organizer.selecting { Image(systemName: organizer.selectedIDs.contains(asset.id) ? "checkmark.circle.fill" : "circle").foregroundStyle(organizer.selectedIDs.contains(asset.id) ? LibraryStyle.blue : .white).font(.title3).padding(8).shadow(radius: 2) }
                             }
@@ -233,7 +285,17 @@ struct ContentView: View {
                                         .foregroundStyle(.white).padding(7)
                                 }
                             }
-                    }.buttonStyle(.plain).disabled(store.isWorking || organizer.isWorking)
+                    }.buttonStyle(.plain)
+                        .contextMenu {
+                            if organizer.showTrash {
+                                Button(L10n.tr("복원"),systemImage: "arrow.uturn.backward") { Task { await organizer.update(ids: [asset.id],trash: false) } }
+                            } else {
+                                Button(L10n.tr("사진 선택"),systemImage: "checkmark.circle") { organizer.selecting = true; organizer.selectedIDs = [asset.id] }
+                                Button(L10n.tr("삭제"),systemImage: "trash",role: .destructive) { requestTrash([asset.id]) }
+                            }
+                        }
+                        .accessibilityAddTraits(organizer.selectedIDs.contains(asset.id) ? .isSelected : [])
+                        .disabled(store.isWorking || organizer.isWorking)
                         .accessibilityLabel("\(asset.originalFilename), \(asset.formatLabel)")
                 }
             }.padding(.top, 2)
@@ -273,26 +335,31 @@ struct ContentView: View {
     }
 
     private var selectionBar: some View {
-        HStack {
-            Button(L10n.tr("전체")) { organizer.selectedIDs = Set(photos.map(\.id)) }
-            Text(L10n.format("%ld장",organizer.selectedIDs.count)).font(.caption)
-            Spacer()
-            Menu(L10n.tr("작업")) {
-                if organizer.showTrash { Button(L10n.tr("복원")) { Task { await organizer.update(trash: false) } } }
-                else {
-                    Menu(L10n.tr("별점")) { ForEach(0...5,id: \.self) { value in Button(L10n.format("%ld점",value)) { Task { await organizer.update(rating: value) } } } }
-                    Menu(L10n.tr("선별")) { ForEach(PhotoFlag.allCases,id: \.self) { flag in Button(L10n.tr(flag.rawValue)) { Task { await organizer.update(flag: flag) } } } }
-                    Menu(L10n.tr("앨범에 추가")) { ForEach(organizer.catalog.albums) { album in Button(album.name) { Task { await organizer.update(album: album.id) } } } }
-                    if organizer.selectedIDs.count == 1, let asset = photos.first(where: { organizer.selectedIDs.contains($0.id) }) { Button(L10n.tr("색·톤 보정 복사")) { Task { await organizer.copy(asset) } } }
-                    Button(L10n.tr("색·톤 보정 붙여넣기")) { organizer.run(.paste,assets: photos) }.disabled(organizer.copiedEdits == nil)
-                    Button(L10n.tr("일괄 내보내기")) { showBatchExport = true }
-                    Button(L10n.tr("사진 내용 분석 · 기기 내")) { organizer.run(.classify,assets: photos) }
-                    Button(L10n.tr("휴지통으로 이동"),role: .destructive) { showTrashConfirm = true }
+        VStack(spacing: 8) {
+            if organizer.selectedIDs.isEmpty { Text(L10n.tr("사진을 눌러 선택하세요")).font(.caption).foregroundStyle(.secondary) }
+            HStack(spacing: 0) {
+                if organizer.showTrash {
+                    Button { Task { await organizer.update(trash: false) } } label: { selectionLabel(L10n.tr("복원"),icon: "arrow.uturn.backward") }
+                } else {
+                    Button { showBatchExport = true } label: { selectionLabel(L10n.tr("내보내기"),icon: "square.and.arrow.up") }
+                    Button { showAddToAlbum = true } label: { selectionLabel(L10n.tr("앨범에 추가"),icon: "rectangle.stack.badge.plus") }
+                    Menu {
+                        Menu(L10n.tr("별점")) { ForEach(0...5,id: \.self) { value in Button(L10n.format("%ld점",value)) { Task { await organizer.update(rating: value) } } } }
+                        Menu(L10n.tr("선별")) { ForEach(PhotoFlag.allCases,id: \.self) { flag in Button(L10n.tr(flag.rawValue)) { Task { await organizer.update(flag: flag) } } } }
+                        if organizer.selectedIDs.count == 1,let asset = photos.first(where: { organizer.selectedIDs.contains($0.id) }) { Button(L10n.tr("색·톤 보정 복사")) { Task { await organizer.copy(asset) } } }
+                        Button(L10n.tr("색·톤 보정 붙여넣기")) { organizer.run(.paste,assets: photos) }.disabled(organizer.copiedEdits == nil)
+                        Button(L10n.tr("사진 내용 분석 · 기기 내")) { organizer.run(.classify,assets: photos) }
+                    } label: { selectionLabel(L10n.tr("더 보기"),icon: "ellipsis.circle") }
+                    Button(role: .destructive) { requestTrash(organizer.selectedIDs) } label: { selectionLabel(L10n.tr("삭제"),icon: "trash") }.tint(.red)
                 }
-            }.disabled(organizer.selectedIDs.isEmpty || organizer.isWorking)
-            Button(L10n.tr("완료")) { organizer.selecting = false; organizer.selectedIDs = [] }
-        }.font(.subheadline).padding().background(LibraryStyle.raised)
+            }.disabled(organizer.selectedIDs.isEmpty || organizer.isWorking || store.isWorking)
+        }.padding(.horizontal,12).padding(.vertical,12).background(LibraryStyle.raised)
     }
+    private func selectionLabel(_ title: String,icon: String) -> some View {
+        VStack(spacing: 6) { Image(systemName: icon).font(.system(size: 20)); Text(title).font(.system(size: 11,weight: .medium)).lineLimit(1) }.frame(maxWidth: .infinity,minHeight: 48)
+    }
+    private func requestTrash(_ ids: Set<UUID>) { pendingTrashIDs = ids; showTrashConfirm = true }
+    private func resetAllFilters() { organizer.resetFilters(); filter = .all; query = "" }
 
     private func performImportAction() {
         defer { pendingImportAction = nil }

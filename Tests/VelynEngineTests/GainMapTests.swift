@@ -138,6 +138,7 @@ struct GainMapTests {
         #expect(try await service.sourceDynamicRange() == .sdr)
         let expansion = try await service.estimateHDRExpansion(document,recipe: EditRecipe(),modelURL: compiled)
         #expect(expansion.isValid)
+        #expect(expansion.predictionFingerprint == EditRecipe().gainPredictionFingerprint)
         var recipe = EditRecipe(); recipe.enhancements.hdrExpansion = expansion; recipe.enhancements.hdr = true
         let map = try #require(await service.maskResources(recipe)[expansion.resourceID])
         #expect(map.extent.size == CGSize(width: 512,height: 384))
@@ -179,6 +180,25 @@ struct GainMapTests {
         await #expect(throws: EditorFailure.self) { try await hdrService.estimateHDRExpansion(hdrDocument,recipe: EditRecipe(),modelURL: compiled) }
         _ = try await OriginalImportService(root: projects).verify(asset)
         await service.discardUncommittedGainMap(HDRExpansion(resourceID: UUID()))
+    }
+
+    @Test func predictionFingerprintTracksColorButNotGainOrGeometry() async throws {
+        var recipe = EditRecipe()
+        let fingerprint = try #require(recipe.gainPredictionFingerprint)
+        var expansion = HDRExpansion(resourceID: UUID()); expansion.predictionFingerprint = fingerprint
+        recipe.enhancements.hdrExpansion = expansion; recipe.enhancements.hdr = true
+        recipe.aspect = .square; recipe.quarterTurns = 1; recipe[.cropScale] = 0.8; recipe[.vignette] = 10; recipe[.vignetteFeather] = 25
+        #expect(recipe.gainPredictionFingerprint == fingerprint)
+        recipe.enhancements.hdrExpansion?.strength = 0.2
+        #expect(recipe.gainPredictionFingerprint == fingerprint)
+        #expect(try await GainPredictionContext.shared.matches(recipe))
+        recipe[.exposure] = 0.5
+        #expect(try await !GainPredictionContext.shared.matches(recipe))
+        #expect(recipe.gainPredictionFingerprint != fingerprint)
+        recipe[.exposure] = 0
+        #expect(recipe.gainPredictionFingerprint == fingerprint)
+        let legacy = Data("{\"resourceID\":\"\(UUID().uuidString)\",\"strength\":0.75,\"maximumBoostEV\":2}".utf8)
+        #expect(try JSONDecoder().decode(HDRExpansion.self,from: legacy).predictionFingerprint == nil)
     }
 
     @Test func canceledPredictionCreatesNoMap() async throws {

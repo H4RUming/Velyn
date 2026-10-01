@@ -1,0 +1,15 @@
+{
+  "addToAlbum" : true,
+  "environment" : "iOS Simulator; generated test chart; programmatic view-model actions",
+  "error" : "",
+  "failedActionKeepsSelection" : true,
+  "hiddenPhotosExcluded" : true,
+  "onlyChosenPhotoTrashed" : true,
+  "originalsVerified" : true,
+  "removeAlbumKeepsPhoto" : true,
+  "resetClearsAllOrganizerFilters" : true,
+  "selectionEndsAfterDelete" : true,
+  "trashHiddenFromLibrary" : true,
+  "trashVisibleInTrash" : true,
+  "undoRestoresPhoto" : true
+}

@@ -16,6 +16,7 @@ final class LibraryOrganizer {
     var status: String?
     var error: String?
     var revision = 0
+    var lastTrashedIDs = Set<UUID>()
     private let service: LibraryService?
     private var task: Task<Void,Never>?
     init() { service = (try? OriginalImportService.applicationRoot()).map { LibraryService(root: $0) } }
@@ -29,22 +30,41 @@ final class LibraryOrganizer {
             (album == nil || entry.albumIDs.contains(album!)) && (query.isEmpty || asset.originalFilename.localizedCaseInsensitiveContains(query) || entry.keywords.contains { $0.localizedCaseInsensitiveContains(query) })
     }
     func toggle(_ id: UUID) { if selectedIDs.contains(id) { selectedIDs.remove(id) } else { selectedIDs.insert(id) } }
-    func update(rating: Int? = nil,flag: PhotoFlag? = nil,album: UUID? = nil,trash: Bool? = nil) async {
+    func endSelection() { selecting = false; selectedIDs = [] }
+    func reconcileSelection(visibleIDs: [UUID]) { selectedIDs.formIntersection(visibleIDs) }
+    func resetFilters() { minimumRating = 0; onlyPicks = false; album = nil; showTrash = false; endSelection() }
+    func update(ids: Set<UUID>? = nil,rating: Int? = nil,flag: PhotoFlag? = nil,album: UUID? = nil,trash: Bool? = nil) async {
         guard let service, !isWorking else { return }
-        do { catalog = try await service.update(ids: Array(selectedIDs),rating: rating,flag: flag,album: album,trash: trash); if trash != nil { selectedIDs = []; selecting = false } }
-        catch { self.error = error.localizedDescription }
+        let chosen = ids ?? selectedIDs
+        guard !chosen.isEmpty else { return }
+        isWorking = true; error = nil
+        defer { isWorking = false }
+        do {
+            catalog = try await service.update(ids: Array(chosen),rating: rating,flag: flag,album: album,trash: trash)
+            if let trash {
+                lastTrashedIDs = trash ? chosen : []
+                status = trash ? L10n.format("%ld장을 휴지통으로 옮겼습니다",chosen.count) : L10n.format("%ld장을 복원했습니다",chosen.count)
+                endSelection()
+            } else { lastTrashedIDs = []; status = L10n.tr("사진 정보를 업데이트했습니다") }
+        } catch { self.error = error.localizedDescription }
+    }
+    func undoTrash() async {
+        guard !lastTrashedIDs.isEmpty else { return }
+        await update(ids: lastTrashedIDs,trash: false)
     }
     func createAlbum(_ name: String) async {
-        guard let service else { return }
+        guard let service, !isWorking else { return }
+        isWorking = true; error = nil; defer { isWorking = false }
         do { catalog = try await service.createAlbum(name) } catch { self.error = error.localizedDescription }
     }
     func removeAlbum(_ id: UUID) async {
-        guard let service else { return }
+        guard let service, !isWorking else { return }
+        isWorking = true; error = nil; defer { isWorking = false }
         do { catalog = try await service.removeAlbum(id); if album == id { album = nil } } catch { self.error = error.localizedDescription }
     }
     func copy(_ asset: SourceAsset) async {
         guard let service else { return }
-        do { copiedEdits = try await service.copyEdits(from: asset); status = L10n.tr("색·톤 보정을 복사했습니다") } catch { self.error = error.localizedDescription }
+        do { copiedEdits = try await service.copyEdits(from: asset); lastTrashedIDs = []; status = L10n.tr("색·톤 보정을 복사했습니다") } catch { self.error = error.localizedDescription }
     }
     enum BatchAction { case paste, export, classify }
     func run(_ action: BatchAction,assets: [SourceAsset],settings: ExportSettings = ExportSettings()) {
@@ -52,6 +72,7 @@ final class LibraryOrganizer {
         let chosen = assets.filter { selectedIDs.contains($0.id) }
         guard !chosen.isEmpty else { return }
         let copied = copiedEdits
+        lastTrashedIDs = []
         if action == .paste && copied == nil { return }
         isWorking = true
         task = Task {
@@ -76,5 +97,6 @@ final class LibraryOrganizer {
             if !urls.isEmpty { sharing = ShareableFiles(urls: urls) }
         }
     }
+    var canCancel: Bool { task != nil }
     func cancel() { task?.cancel() }
 }

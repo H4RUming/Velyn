@@ -22,12 +22,8 @@ extension EditingService {
         guard try sourceDynamicRange() == .sdr else { throw EditorFailure.hdrExpansionRequiresSDR }
         guard let url = modelURL ?? Bundle.main.url(forResource: "VelynGainMap", withExtension: "mlmodelc") else { throw EditorFailure.modelUnavailable }
         let model = try checkedGainModel(at: url,useCache: modelURL == nil)
-        var base = recipe
-        base.enhancements.hdr = false; base.enhancements.hdrExpansion = nil
-        base.aspect = .original; base.quarterTurns = 0; base.flipHorizontal = false
-        for key in [Adjustment.straighten, .cropScale, .cropX, .cropY, .perspectiveVertical, .perspectiveHorizontal, .lensDistortion] { base[key] = key.defaultValue }
-        // Gain is applied before geometry and vignette, so prediction uses the same coordinates.
-        base[.vignette] = 0
+        // Use the same color/retouch state that the map will multiply, before geometry.
+        let base = recipe.gainPredictionBase
         let image = try processed(document, recipe: base, maxPixelSize: 1536)
         let scale = 512 / max(image.extent.width, image.extent.height)
         let width = max(1, Int((image.extent.width * scale).rounded()))
@@ -73,7 +69,9 @@ extension EditingService {
             try JSONSerialization.data(withJSONObject: report,options: [.prettyPrinted,.sortedKeys]).write(to: root.appendingPathComponent("gain-inference-debug.json"))
         }
         #endif
-        return HDRExpansion(resourceID: id)
+        var expansion = HDRExpansion(resourceID: id)
+        expansion.predictionFingerprint = recipe.gainPredictionFingerprint
+        return expansion
     }
 
     /// Check against a pinned PyTorch conversion reference before trusting a backend.
@@ -111,7 +109,7 @@ extension EditingService {
         throw EditorFailure.gainModelValidation
     }
 
-    private func gainMapTensor(_ image: CIImage, size: Int) throws -> MLMultiArray {
+    func gainMapTensor(_ image: CIImage, size: Int) throws -> MLMultiArray {
         var bytes = [UInt8](repeating: 0, count: size*size*4)
         bytes.withUnsafeMutableBytes {
             context.render(image, toBitmap: $0.baseAddress!, rowBytes: size*4,

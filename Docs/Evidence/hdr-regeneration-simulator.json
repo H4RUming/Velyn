@@ -1,0 +1,33 @@
+{
+  "actualHDRPixels" : true,
+  "detectsStaleMap" : true,
+  "error" : "",
+  "generated" : true,
+  "hdrPeak" : 2.9311273097991943,
+  "heic" : true,
+  "jpeg" : true,
+  "neutralRGB" : [
+    [
+      0.477783203125,
+      0.477783203125,
+      0.477783203125
+    ],
+    [
+      1.298828125,
+      1.298828125,
+      1.298828125
+    ],
+    [
+      2.76171875,
+      2.76171875,
+      2.76171875
+    ]
+  ],
+  "neutralRGBPassed" : true,
+  "preservesGainSettings" : true,
+  "redo" : true,
+  "refreshesFingerprint" : true,
+  "saved" : true,
+  "sdrComparisonKeepsRecipe" : true,
+  "undo" : true
+}

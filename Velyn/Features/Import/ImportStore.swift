@@ -17,6 +17,8 @@ final class ImportStore {
         catch { service = nil; errorMessage = ImportFailure.storageFailure.localizedDescription }
     }
 
+    func dismissStatus() { if !isWorking { status = nil } }
+
     func loadRecent() async {
         guard let service else { return }
         do { recent = try await service.recentImports() }

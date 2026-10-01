@@ -479,10 +479,15 @@ extension EditorStore {
         let task = Task { try await service.estimateHDRExpansion(document, recipe: snapshot) }
         gainTask = task
         do {
-            let result = try await task.value
+            var result = try await task.value
             guard !task.isCancelled, recipe == snapshot, !isExporting else {
                 await service.discardUncommittedGainMap(result)
                 return
+            }
+            if let previous = snapshot.enhancements.hdrExpansion {
+                result.strength = previous.strength
+                result.maximumBoostEV = previous.maximumBoostEV
+                result.protectMidtones = previous.protectMidtones
             }
             mutate { $0.enhancements.hdrExpansion = result; $0.enhancements.hdr = true }
         } catch is CancellationError { } catch { errorMessage = error.localizedDescription }

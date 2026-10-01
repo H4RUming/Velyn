@@ -35,3 +35,9 @@ Gain-map tensors use Rf, which expands to (R,0,0,1). Always broadcast R to RGB b
 ## Localization (2026-09-29)
 
 App language is System / Korean / English, stored under `appLanguage`. Use `L10n.tr` or `L10n.format` for app text and add matching keys to both `Engine/Resources/{en,ko}.lproj/Localizable.strings`. Keep persisted enum raw values and user-entered names unchanged; localize labels at display time. Native permission and picker language follows iOS settings. See Docs/Evidence/localization-verification.md.
+
+## Library actions and HDR reference audit (2026-10-01)
+
+Library selection must reconcile with visible IDs; deletion captures IDs before confirmation, remains reversible, and offers Undo/Trash restoration. Keep failed-operation selections. Import source changes must not silently discard selected photos.
+
+Gain-map fingerprints track the recipe used for prediction, excluding geometry, vignette, and gain controls. Old maps remain readable; regenerate explicitly and preserve user gain settings. A native HDR/embedded SDR pair showed reconstruction error despite close PyTorch/Core ML output agreement. Do not treat neutral RGB/valid gain-map export as native HDR fidelity. See Docs/Evidence/library-hdr-audit.md (72 engine tests; synthetic simulator workflows; one real photo on macOS; no new physical-device acceptance).

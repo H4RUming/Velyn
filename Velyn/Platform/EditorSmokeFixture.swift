@@ -41,6 +41,13 @@ actor EditorSmokeFixture {
         let undone = editor.recipe.enhancements.hdrExpansion == nil
         editor.redo()
         let redone = editor.recipe == predicted
+        editor.mutate { $0.enhancements.hdrExpansion?.strength = 0.42; $0.enhancements.hdrExpansion?.maximumBoostEV = 1.4; $0.enhancements.hdrExpansion?.protectMidtones = false; $0[.exposure] = 0.1 }
+        let detectsStaleMap = (try? await GainPredictionContext.shared.matches(editor.recipe)) == false
+        await editor.estimateHDRExpansion()
+        let recalculated = editor.recipe.enhancements.hdrExpansion
+        let preservesGainSettings = recalculated?.strength == 0.42 && recalculated?.maximumBoostEV == 1.4 && recalculated?.protectMidtones == false
+        let refreshesFingerprint = (try? await GainPredictionContext.shared.matches(editor.recipe)) == true
+        editor.mutate { $0.enhancements.hdrExpansion?.strength = 0.75; $0.enhancements.hdrExpansion?.maximumBoostEV = 2; $0.enhancements.hdrExpansion?.protectMidtones = true }
         var settings = ExportSettings(); settings.hdr = true
         let jpeg = await editor.export(settings: settings)
         settings.format = .heic
@@ -58,7 +65,7 @@ actor EditorSmokeFixture {
         let report: [String: Any] = ["generated": generated,"undo": undone,"redo": redone,
             "jpeg": jpeg != nil,"heic": heic != nil,"saved": saved,"hdrPeak": hdrPeak,"actualHDRPixels": hdrPeak > 1.2,
             "neutralRGB": neutral,"neutralRGBPassed": !neutral.isEmpty && neutral.allSatisfy { abs($0[0]-$0[1]) < 0.01 && abs($0[0]-$0[2]) < 0.01 },
-            "sdrComparisonKeepsRecipe": comparedSDR,"error": editor.errorMessage ?? ""]
+            "sdrComparisonKeepsRecipe": comparedSDR,"detectsStaleMap": detectsStaleMap,"preservesGainSettings": preservesGainSettings,"refreshesFingerprint": refreshesFingerprint,"error": editor.errorMessage ?? ""]
         if let data = try? JSONSerialization.data(withJSONObject: report,options: [.prettyPrinted,.sortedKeys]) {
             await shared.writeGainMapReport(data)
         }

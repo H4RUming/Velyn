@@ -7,6 +7,8 @@ enum PhotoImportAction {
 
 struct PhotoImportSheet: View {
     let completion: (PhotoImportAction?) -> Void
+    @State private var confirmDiscard = false
+    @State private var pendingSource: PhotoImportAction?
     @State private var photos: [BrowserPhoto] = []
     @State private var selected: [String] = []
     @State private var authorization = PHPhotoLibrary.authorizationStatus(for: .readWrite)
@@ -29,16 +31,17 @@ struct PhotoImportSheet: View {
                     Text(L10n.tr("원본을 그대로 가져옵니다")).font(.caption).foregroundStyle(.secondary)
                 }
                 Spacer()
-                Button { completion(nil) } label: { Image(systemName: "xmark").font(.system(size: 13,weight: .semibold)).frame(width: 32,height: 32).background(.white.opacity(0.08),in: Circle()) }
+                Button { requestSource(nil) } label: { Image(systemName: "xmark").font(.system(size: 13,weight: .semibold)).frame(width: 32,height: 32).background(.white.opacity(0.08),in: Circle()) }
                     .accessibilityLabel(L10n.tr("사진 선택 닫기"))
             }.padding(.horizontal,20).padding(.top,22).padding(.bottom,18)
             HStack(spacing: 10) {
-                sourceButton(L10n.tr("파일"),icon: "folder",subtitle: L10n.tr("PNG · WebP · RAW 등")) { completion(.files) }
-                sourceButton(L10n.tr("카메라"),icon: "camera",subtitle: L10n.tr("새 사진 촬영")) { completion(.camera) }
+                sourceButton(L10n.tr("파일"),icon: "folder",subtitle: L10n.tr("PNG · WebP · RAW 등")) { requestSource(.files) }
+                sourceButton(L10n.tr("카메라"),icon: "camera",subtitle: L10n.tr("새 사진 촬영")) { requestSource(.camera) }
             }.padding(.horizontal,16).padding(.bottom,18)
             if accessible {
                 HStack {
                     Text(L10n.tr("최근 사진")).font(.subheadline.weight(.semibold))
+                    if !selected.isEmpty { Button(L10n.tr("선택 해제")) { selected = [] }.font(.caption) }
                     Spacer()
                     Button(L10n.tr("앨범 · 전체 보기")) { showAll = true }.font(.subheadline)
                 }.padding(.horizontal,20).frame(height: 40)
@@ -72,17 +75,17 @@ struct PhotoImportSheet: View {
                     }.buttonStyle(.borderedProminent).controlSize(.large)
                 }.padding(24).frame(maxWidth: .infinity,maxHeight: .infinity)
             }
-            if let error { Text(error).font(.caption).foregroundStyle(.orange).padding(.horizontal) }
+            if let error { HStack { Text(error).font(.caption).foregroundStyle(.orange); Button(L10n.tr("다시 시도")) { Task { self.error = nil; await reload() } } }.padding(.horizontal) }
         }
         .safeAreaInset(edge: .bottom,spacing: 0) {
             if accessible {
                 HStack(spacing: 14) {
                     VStack(alignment: .leading,spacing: 3) {
                         Text(selected.isEmpty ? L10n.tr("사진을 선택하세요") : L10n.format("%ld장 선택됨",selected.count)).font(.subheadline.weight(.medium))
-                        Text(L10n.tr("움직이는 이미지는 첫 장면을 편집합니다")).font(.caption2).foregroundStyle(.secondary)
+                        Text(L10n.tr("선택한 원본을 Velyn에 복사합니다")).font(.caption2).foregroundStyle(.secondary)
                     }
                     Spacer(minLength: 4)
-                    Button(L10n.tr("추가")) { completion(.selection(selected)) }
+                    Button(selected.isEmpty ? L10n.tr("추가") : L10n.format("%ld장 추가",selected.count)) { completion(.selection(selected)) }
                         .font(.subheadline.weight(.semibold)).padding(.horizontal,22).frame(height: 44)
                         .background(selected.isEmpty ? Color.white.opacity(0.08) : LibraryStyle.blue,in: Capsule())
                         .foregroundStyle(selected.isEmpty ? LibraryStyle.secondary : Color.white).disabled(selected.isEmpty)
@@ -90,6 +93,11 @@ struct PhotoImportSheet: View {
             }
         }
         .background(LibraryStyle.bar).preferredColorScheme(.dark).tint(LibraryStyle.blue)
+        .interactiveDismissDisabled(!selected.isEmpty)
+        .confirmationDialog(L10n.tr("사진 선택을 취소할까요?"),isPresented: $confirmDiscard,titleVisibility: .visible) {
+            Button(L10n.tr("선택 취소"),role: .destructive) { completion(pendingSource) }
+            Button(L10n.tr("계속 선택"),role: .cancel) {}
+        }
         .presentationDetents([.fraction(0.67),.large]).presentationDragIndicator(.visible).presentationCornerRadius(28)
         .task { await reload() }
         .onChange(of: scenePhase) { _, phase in
@@ -97,13 +105,22 @@ struct PhotoImportSheet: View {
         }
         .sheet(isPresented: $showAll,onDismiss: {
             if let pickerResult {
-                switch pickerResult { case .success(let ids): completion(.selection(ids)); case .failure(let error): completion(.failure(error)) }
+                switch pickerResult { case .success(let ids):
+                    var combined = selected
+                    for id in ids where !combined.contains(id) { combined.append(id) }
+                    if combined.count <= 100 { completion(.selection(combined)) }
+                    else { error = L10n.tr("한 번에 최대 100장까지 선택할 수 있습니다.") }
+                     case .failure(let error): completion(.failure(error)) }
                 self.pickerResult = nil
             }
         }) { PhotoLibraryPicker { result in pickerResult = result; showAll = false } }
         .sheet(isPresented: $showLimited,onDismiss: { Task { await reload() } }) {
             LimitedPhotoAccessPicker { showLimited = false }
         }
+    }
+    private func requestSource(_ action: PhotoImportAction?) {
+        if selected.isEmpty { completion(action) }
+        else { pendingSource = action; confirmDiscard = true }
     }
     private func sourceButton(_ title: String,icon: String,subtitle: String,action: @escaping () -> Void) -> some View {
         Button(action: action) {

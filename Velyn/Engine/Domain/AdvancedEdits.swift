@@ -89,6 +89,7 @@ public enum SourceDynamicRange: String, Sendable { case sdr, hdr, raw }
 
 /// Stored samples encode log2 gain / log2(5). UUID resources belong to this photo only.
 public struct HDRExpansion: Codable, Sendable, Equatable {
+    public var predictionFingerprint: String?
     public var protectMidtones: Bool?
     public var resourceID: UUID
     public var strength = 0.75
