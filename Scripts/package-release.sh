@@ -34,7 +34,7 @@ if codesign --verify "$release_app" > /dev/null 2>&1; then
   print -u2 'Unexpected valid app signature; packaging stopped.'
   exit 1
 fi
-for release_model in aotgan DepthAnythingV2SmallF16 VelynGainMap; do
+for release_model in aotgan DepthAnythingV2SmallF16 VelynGainMap VelynGainMap1024; do
   [[ -d "$release_app/$release_model.mlmodelc" ]]
 done
 for release_language in en ko; do

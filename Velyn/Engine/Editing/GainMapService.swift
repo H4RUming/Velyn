@@ -20,43 +20,43 @@ extension EditingService {
         try Task.checkCancellation()
         guard recipe.isValid else { throw EditorFailure.invalidDocument }
         guard try sourceDynamicRange() == .sdr else { throw EditorFailure.hdrExpansionRequiresSDR }
-        guard let url = modelURL ?? Bundle.main.url(forResource: "VelynGainMap", withExtension: "mlmodelc") else { throw EditorFailure.modelUnavailable }
-        let model = try checkedGainModel(at: url,useCache: modelURL == nil)
+        let model = try gainModel(override: modelURL)
+        let size = try GainModelCalibration.sideLength(model)
         // Use the same color/retouch state that the map will multiply, before geometry.
         let base = recipe.gainPredictionBase
         let image = try processed(document, recipe: base, maxPixelSize: 1536)
-        let scale = 512 / max(image.extent.width, image.extent.height)
+        let scale = Double(size) / max(image.extent.width, image.extent.height)
         let width = max(1, Int((image.extent.width * scale).rounded()))
         let height = max(1, Int((image.extent.height * scale).rounded()))
-        let left = (512 - width) / 2, bottom = (512 - height) / 2
+        let left = (size - width) / 2, bottom = (size - height) / 2
         let valid = CGRect(x: left, y: bottom, width: width, height: height)
         let local = image.transformed(by: CGAffineTransform(scaleX: Double(width)/image.extent.width, y: Double(height)/image.extent.height))
             .transformed(by: CGAffineTransform(translationX: CGFloat(left), y: CGFloat(bottom))).clampedToExtent()
-            .cropped(to: CGRect(x: 0, y: 0, width: 512, height: 512))
+            .cropped(to: CGRect(x: 0, y: 0, width: size, height: size))
         let thumbnail = image.transformed(by: CGAffineTransform(scaleX: 256/image.extent.width, y: 256/image.extent.height))
         let inputs = try MLDictionaryFeatureProvider(dictionary: [
-            "image": MLFeatureValue(multiArray: gainMapTensor(local, size: 512)),
+            "image": MLFeatureValue(multiArray: gainMapTensor(local, size: size)),
             "thumbnail": MLFeatureValue(multiArray: gainMapTensor(thumbnail, size: 256))
         ])
         try Task.checkCancellation()
         let output = try model.prediction(from: inputs)
         try Task.checkCancellation()
         guard let tensor = output.featureValue(for: "log_gain")?.multiArrayValue,
-              tensor.shape.map(\.intValue) == [1, 1, 512, 512] else { throw EditorFailure.renderFailed }
+              tensor.shape.map(\.intValue) == [1, 1, size, size] else { throw EditorFailure.renderFailed }
         var rawMinimum = Float.infinity,rawMaximum = -Float.infinity
-        var samples = [Float](repeating: 0, count: 512*512)
+        var samples = [Float](repeating: 0, count: size*size)
         let strides = tensor.strides.map(\.intValue)
-        for y in 0..<512 {
+        for y in 0..<size {
             if y % 32 == 0 { try Task.checkCancellation() }
-            for x in 0..<512 {
+            for x in 0..<size {
                 let value = tensor[y*strides[2]+x*strides[3]].floatValue
                 guard value.isFinite else { throw EditorFailure.renderFailed }
                 rawMinimum = min(rawMinimum,value); rawMaximum = max(rawMaximum,value)
-                samples[y*512+x] = min(1, max(0, value/log2(Float(5))))
+                samples[y*size+x] = min(1, max(0, value/log2(Float(5))))
             }
         }
-        let map = CIImage(bitmapData: samples.withUnsafeBytes { Data($0) }, bytesPerRow: 512*4,
-                          size: CGSize(width: 512,height: 512), format: .Rf, colorSpace: nil)
+        let map = CIImage(bitmapData: samples.withUnsafeBytes { Data($0) }, bytesPerRow: size*4,
+                          size: CGSize(width: size,height: size), format: .Rf, colorSpace: nil)
         let cropped = RenderPipeline.normalized(map.cropped(to: valid))
         let protectionBlend = try gainProtectionBlend(image)
         let id = try storeGainMap(cropped)
@@ -79,29 +79,41 @@ extension EditingService {
 
     /// Check against a pinned PyTorch conversion reference before trusting a backend.
     /// GPU execution can return a correctly shaped but invalid all-zero tensor.
-    private func checkedGainModel(at url: URL,useCache: Bool) throws -> MLModel {
+    private func gainModel(override: URL?) throws -> MLModel {
+        if let override { return try checkedGainModel(at:override,useCache:false) }
+        if let cached = gainMapModel { return cached }
+        // Avoid paying for a larger tensor on small originals or CPU-only devices.
+        // The mixed-precision model keeps its small global branch on CPU.
+        let hasNeuralEngine = MLComputeDevice.allComputeDevices.contains { if case .neuralEngine = $0 { return true }; return false }
+        if hasNeuralEngine, max(asset.pixelWidth,asset.pixelHeight) >= 1024,
+           let high = Bundle.main.url(forResource:"VelynGainMap1024",withExtension:"mlmodelc") {
+            do { return try checkedGainModel(at:high,useCache:true,backends:[.cpuAndNeuralEngine]) }
+            catch is CancellationError { throw CancellationError() }
+            catch { try Task.checkCancellation() }
+        }
+        guard let standard = Bundle.main.url(forResource:"VelynGainMap",withExtension:"mlmodelc") else { throw EditorFailure.modelUnavailable }
+        return try checkedGainModel(at:standard,useCache:true)
+    }
+
+    private func checkedGainModel(at url: URL,useCache: Bool,backends: [MLComputeUnits] = [.cpuAndNeuralEngine,.cpuAndGPU,.cpuOnly]) throws -> MLModel {
         if useCache,let cached = gainMapModel { return cached }
-        for units in [MLComputeUnits.cpuAndGPU,.cpuOnly] {
+        for units in backends {
             try Task.checkCancellation()
             do {
                 let configuration = MLModelConfiguration(); configuration.computeUnits = units
                 let candidate = try MLModel(contentsOf: url,configuration: configuration)
-                let input = try MLMultiArray(shape: [1,3,512,512],dataType: .float32)
-                let thumbnail = try MLMultiArray(shape: [1,3,256,256],dataType: .float32)
-                for tensor in [input,thumbnail] {
-                    let p = tensor.dataPointer.bindMemory(to: Float.self,capacity: tensor.count)
-                    p.initialize(repeating: 0.5,count: tensor.count)
+                let size = try GainModelCalibration.sideLength(candidate)
+                var passed = true
+                for pattern in 0..<2 {
+                    let output = try candidate.prediction(from: GainModelCalibration.input(size:size,pattern:pattern))
+                    try Task.checkCancellation()
+                    guard let values = output.featureValue(for:"log_gain")?.multiArrayValue,
+                          GainModelCalibration.accepts(values,size:size,pattern:pattern) else { passed = false; break }
                 }
-                let output = try candidate.prediction(from: MLDictionaryFeatureProvider(dictionary: ["image": MLFeatureValue(multiArray: input),"thumbnail": MLFeatureValue(multiArray: thumbnail)]))
-                try Task.checkCancellation()
-                guard let values = output.featureValue(for: "log_gain")?.multiArrayValue,values.shape.map(\.intValue) == [1,1,512,512] else { continue }
-                let samples = [64,256,448].flatMap { y in [64,256,448].map { x in values[[0,0,NSNumber(value: y),NSNumber(value: x)]].floatValue } }
-                // Reference range for constant 0.5 input: 0.303...0.384 EV (FP16 tolerance).
-                let passed = samples.allSatisfy { $0.isFinite && (0.24...0.45).contains($0) }
                 #if DEBUG && targetEnvironment(simulator)
                 if ProcessInfo.processInfo.arguments.contains("--editor-smoke-test") {
-                    let name = units == .cpuOnly ? "cpu" : "cpu-gpu"
-                    let report: [String: Any] = ["backend": name,"passed": passed,"samples": samples.map { String($0) }]
+                    let name = units == .cpuOnly ? "cpu" : units == .cpuAndNeuralEngine ? "cpu-ne" : "cpu-gpu"
+                    let report: [String: Any] = ["backend": name,"passed": passed,"size": size]
                     try JSONSerialization.data(withJSONObject: report,options: [.prettyPrinted,.sortedKeys]).write(to: root.appendingPathComponent("gain-backend-\(name).json"))
                 }
                 #endif

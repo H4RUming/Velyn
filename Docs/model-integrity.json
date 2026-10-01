@@ -19,9 +19,26 @@
     "checkpoint_sha256": "83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f",
     "conversion": "Scripts/Models/convert_gain_map.py",
     "sha256": {
-      "VelynGainMap.mlpackage/Data/com.apple.CoreML/model.mlmodel": "46a6a9217347c10667297f1962b1c3b2ae295d45f32d2a5ced4fc4d3ece0cf76",
-      "VelynGainMap.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "d85c49ce7e8861ea781a27e666056e2b8d865bda10bd5e288b1473e1c84901a6",
-      "VelynGainMap.mlpackage/Manifest.json": "b0cea4a424b84c670b7ab07455117369f3fd6d9f96342f05694ef30f8f442cd3"
-    }
+      "VelynGainMap.mlpackage/Data/com.apple.CoreML/model.mlmodel": "154011ec599355611594afa63862b479b4c1bee1914a623530361ac9f90b2249",
+      "VelynGainMap.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "147762c796081d2247044f0184228ab9a94c2c9a6e7778dddb0d83990d3279fa",
+      "VelynGainMap.mlpackage/Manifest.json": "ee7dcdf663eef074d4ef6f4571dbab7565543c1b058296e29f33f36ebb4f8982",
+      "VelynGainMap1024.mlpackage/Data/com.apple.CoreML/model.mlmodel": "e555de3fead6e5b58960c94f6b5ddfaeda00e05066a21fd71af910352fc2a28b",
+      "VelynGainMap1024.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "147762c796081d2247044f0184228ab9a94c2c9a6e7778dddb0d83990d3279fa",
+      "VelynGainMap1024.mlpackage/Manifest.json": "bfac62271b4c124589f80371ef4b5ad476267e6393c952edbe57b399c3cb178b"
+    },
+    "conversion_arguments": [
+      "--size",
+      "512",
+      "--precise-global",
+      "--static-kernel"
+    ],
+    "high_resolution_conversion_arguments": [
+      "--size",
+      "1024",
+      "--precise-global",
+      "--static-kernel",
+      "--output",
+      "Velyn/Models/VelynGainMap1024.mlpackage"
+    ]
   }
 }

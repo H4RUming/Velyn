@@ -6,6 +6,47 @@ import ImageIO
 @testable import VelynEngine
 
 struct GainMapTests {
+    @Test func acceleratorCalibrationRejectsSilentDriftAndWrongGeometry() throws {
+        for size in [512,1024] { for pattern in 0..<2 {
+            let output = try MLMultiArray(shape:[1,1,NSNumber(value:size),NSNumber(value:size)],dataType:.float32)
+            output.dataPointer.bindMemory(to:Float.self,capacity:output.count).initialize(repeating:0,count:output.count)
+            #expect(!GainModelCalibration.accepts(output,size:size,pattern:pattern))
+            let positions = [size/8,size/2,size*7/8]
+            let reference = GainModelCalibration.reference(size:size,pattern:pattern)
+            for (i,y) in positions.enumerated() { for (j,x) in positions.enumerated() {
+                output[[0,0,NSNumber(value:y),NSNumber(value:x)]] = NSNumber(value:reference[i*3+j])
+            } }
+            #expect(GainModelCalibration.accepts(output,size:size,pattern:pattern))
+            output[[0,0,NSNumber(value:size/2),NSNumber(value:size/2)]] = NSNumber(value:Float.nan)
+            #expect(!GainModelCalibration.accepts(output,size:size,pattern:pattern))
+            output[[0,0,NSNumber(value:size/2),NSNumber(value:size/2)]] = NSNumber(value:reference[4]-0.1)
+            #expect(!GainModelCalibration.accepts(output,size:size,pattern:pattern))
+        } }
+        let wrong = try MLMultiArray(shape:[1,1,128,128],dataType:.float32)
+        #expect(!GainModelCalibration.accepts(wrong,size:512,pattern:0))
+    }
+
+    @Test func neuralEngineConversionMatchesCPUOnAsymmetricTensor() async throws {
+        guard MLComputeDevice.allComputeDevices.contains(where: { if case .neuralEngine = $0 { return true }; return false }) else { return }
+        let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        let compiled = try await MLModel.compileModel(at:root.appendingPathComponent("Velyn/Models/VelynGainMap.mlpackage"))
+        defer { try? FileManager.default.removeItem(at:compiled) }
+        let input = try GainModelCalibration.input(size:512,pattern:1)
+        // A synchronous helper keeps the prediction and mutable Core ML objects off MainActor.
+        func evaluate(_ units: MLComputeUnits) throws -> [Float] {
+            let config = MLModelConfiguration(); config.computeUnits = units
+            let model = try MLModel(contentsOf:compiled,configuration:config)
+            let output = try #require(model.prediction(from:input).featureValue(for:"log_gain")?.multiArrayValue)
+            #expect(GainModelCalibration.accepts(output,size:512,pattern:1))
+            return (0..<output.count).map { output[$0].floatValue }
+        }
+        let cpu = try evaluate(.cpuOnly),neural = try evaluate(.cpuAndNeuralEngine)
+        let errors = zip(cpu,neural).map { abs($0-$1) }
+        #expect(neural.allSatisfy { $0.isFinite })
+        #expect((errors.max() ?? .infinity) < 0.06)
+        #expect(errors.reduce(0,+)/Float(errors.count) < 0.015)
+    }
+
     private let context = CIContext(options: [.workingColorSpace: RenderPipeline.linearSpace, .workingFormat: CIFormat.RGBAf])
     private func pixel(_ image: CIImage, x: Double = 1, y: Double = 1) -> [Float] {
         var result = [Float](repeating: 0, count: 4)
@@ -129,9 +170,10 @@ struct GainMapTests {
         #expect(try JSONDecoder().decode(AdvancedEdits.self,from: data).hdrExpansion == nil)
     }
 
-    @Test(arguments: [ExportFormat.jpeg,.heic]) func realModelPersistsExportsHDRAndKeepsSDRBase(format: ExportFormat) async throws {
+    @Test(arguments: [ExportFormat.jpeg,.heic], [512,1024]) func realModelPersistsExportsHDRAndKeepsSDRBase(format: ExportFormat, size: Int) async throws {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
-        let compiled = try await MLModel.compileModel(at: root.appendingPathComponent("Velyn/Models/VelynGainMap.mlpackage"))
+        let modelName = size == 1024 ? "VelynGainMap1024" : "VelynGainMap"
+        let compiled = try await MLModel.compileModel(at: root.appendingPathComponent("Velyn/Models/\(modelName).mlpackage"))
         defer { try? FileManager.default.removeItem(at: compiled) }
         let (base,projects,asset,service) = try await fixture(); defer { try? FileManager.default.removeItem(at: base) }
         var document = try await service.load()
@@ -141,9 +183,9 @@ struct GainMapTests {
         #expect(expansion.predictionFingerprint == EditRecipe().gainPredictionFingerprint)
         var recipe = EditRecipe(); recipe.enhancements.hdrExpansion = expansion; recipe.enhancements.hdr = true
         let map = try #require(await service.maskResources(recipe)[expansion.resourceID])
-        #expect(map.extent.size == CGSize(width: 512,height: 384))
+        #expect(map.extent.size == CGSize(width: size,height: size*3/4))
         // Asymmetric fixture catches top/bottom inversion through tensor and PNG conversion.
-        #expect(pixel(map,x: 200,y: 340)[0] > pixel(map,x: 200,y: 40)[0]+0.1)
+        #expect(pixel(map,x: Double(size)*0.4,y: Double(size)*0.66)[0] > pixel(map,x: Double(size)*0.4,y: Double(size)*0.08)[0]+0.1)
         let hdr = try await service.processed(document,recipe: recipe,maxPixelSize: nil)
         #expect(pixel(hdr,x: 100,y: 150)[0] > 1.2)
         let neutral = pixel(hdr,x: 100,y: 150)

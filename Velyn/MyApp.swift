@@ -6,6 +6,13 @@ import SwiftUI
         WindowGroup {
             ContentView()
                 .environment(\.locale,Locale(identifier: (AppLanguage(rawValue: language) ?? .system).resolvedCode()))
+                #if DEBUG
+                .task {
+                    if ProcessInfo.processInfo.arguments.contains("--gain-benchmark") {
+                        await GainMapBenchmark.shared.runBundled()
+                    }
+                }
+                #endif
         }
     }
 }
