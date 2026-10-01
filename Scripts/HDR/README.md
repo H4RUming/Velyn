@@ -116,3 +116,11 @@ readback crash encountered during this experiment. This workaround is confined
 to the research reader, not the app. Use a new output directory for each run.
 
 [Signed model findings and limitations](../../Docs/Evidence/hdr-signed-model-verification.md).
+
+## Training a Velyn predictor
+
+[SignedGainNet research](Training/README.md) provides explicit public CC0 data
+preparation, a scene-grouped split, training from scratch, a frozen synthetic test,
+a local camera audit and Core ML conversion. It does not replace the app model.
+The [first results](../../Docs/Evidence/hdr-own-model-verification.md) explain why
+better synthetic scores did not yet translate to better camera HDR.

@@ -1,0 +1,12 @@
+{
+  "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "torch": "2.7.0+cu128",
+  "cuda": "12.8",
+  "parameters": 595201,
+  "batch": 24,
+  "size": 256,
+  "measuredSteps": 100,
+  "meanStepSeconds": 0.006808935044682584,
+  "peakAllocatedMiB": 803.2490234375,
+  "scope": "Synthetic forward/backward and pair generation only; excludes data download, validation, checkpointing and conversion."
+}

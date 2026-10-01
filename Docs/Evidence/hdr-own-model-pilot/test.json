@@ -1,0 +1,4137 @@
+{
+  "scope": "Frozen synthetic test, no camera ground truth or app codec/display path",
+  "checkpointSHA256": "982c19314a4c93096c2bf5ca1734013ee5964a69de917be4ea0e3464e0abcc4f",
+  "selectedStep": 5000,
+  "manifestSHA256": "07475fbaff1ce9305d5179c9638e19de7f057ce289ab920aa21feb7f7b1e29bd",
+  "views": 132,
+  "groups": 44,
+  "pooledPixels": {
+    "identity": {
+      "maeEV": 0.3686884343624115,
+      "positiveMAE": 0.4066099524497986,
+      "negativeMAE": 0.666083574295044,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0,
+      "negativeFraction": 0.1769881546497345
+    },
+    "signed": {
+      "maeEV": 0.26119565963745117,
+      "positiveMAE": 0.17030732333660126,
+      "negativeMAE": 0.7566244602203369,
+      "negativePrecision": 0.4199051260948181,
+      "negativeRecall": 0.05875111371278763,
+      "negativeFraction": 0.1769881546497345
+    },
+    "gmnet": {
+      "maeEV": 0.3360197842121124,
+      "positiveMAE": 0.18585185706615448,
+      "negativeMAE": 0.9345482587814331,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0,
+      "negativeFraction": 0.1769881546497345
+    }
+  },
+  "meanSceneMAE": {
+    "identity": 0.36900713302505506,
+    "signed": 0.26036206793717365,
+    "gmnet": 0.3358804730585579
+  },
+  "signedMinusGMNetSceneBootstrap95": [
+    -0.10925456651303016,
+    -0.04464189977046442
+  ],
+  "samples": [
+    {
+      "id": "abandoned_bakery-0",
+      "group": "abandoned_bakery",
+      "unrepresentableFraction": 0.000335693359375,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.010750003159046173,
+          "positiveMAE": 1.2969473600387573,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.2790910303592682,
+          "positiveMAE": 0.5733439922332764,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.4322124719619751,
+          "positiveMAE": 0.5922804474830627,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "abandoned_bakery-1",
+      "group": "abandoned_bakery",
+      "unrepresentableFraction": 0.00274658203125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4718036353588104,
+          "positiveMAE": 0.47323065996170044,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.13369637727737427,
+          "positiveMAE": 0.1338820904493332,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.06980441510677338,
+          "positiveMAE": 0.06973671913146973,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "abandoned_bakery-2",
+      "group": "abandoned_bakery",
+      "unrepresentableFraction": 0.01336669921875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2291773557662964,
+          "positiveMAE": 0.24572819471359253,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.18387830257415771,
+          "positiveMAE": 0.19339270889759064,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.09445221722126007,
+          "positiveMAE": 0.0959974005818367,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "abandoned_construction-0",
+      "group": "abandoned_construction",
+      "unrepresentableFraction": 0.0244293212890625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.22053295373916626,
+          "positiveMAE": 0.23348462581634521,
+          "negativeMAE": 0.06610758602619171,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        },
+        "signed": {
+          "maeEV": 0.19965077936649323,
+          "positiveMAE": 0.20803837478160858,
+          "negativeMAE": 0.0024229437112808228,
+          "negativePrecision": 6.591089186258614e-05,
+          "negativeRecall": 1.0,
+          "negativeFraction": 1.52587890625e-05
+        },
+        "gmnet": {
+          "maeEV": 0.1134343296289444,
+          "positiveMAE": 0.11524226516485214,
+          "negativeMAE": 0.151313915848732,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        }
+      }
+    },
+    {
+      "id": "abandoned_construction-1",
+      "group": "abandoned_construction",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5762834548950195,
+          "positiveMAE": 0.6028825044631958,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.407870888710022,
+          "positiveMAE": 0.4241391718387604,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.253447949886322,
+          "positiveMAE": 0.26042595505714417,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "abandoned_construction-2",
+      "group": "abandoned_construction",
+      "unrepresentableFraction": 0.008941650390625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4796873927116394,
+          "positiveMAE": 0.3929077386856079,
+          "negativeMAE": 0.5561277866363525,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.6837921142578125
+        },
+        "signed": {
+          "maeEV": 0.5758081674575806,
+          "positiveMAE": 0.3282555043697357,
+          "negativeMAE": 0.6833587884902954,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.001383527065627277,
+          "negativeFraction": 0.6837921142578125
+        },
+        "gmnet": {
+          "maeEV": 0.6582797765731812,
+          "positiveMAE": 0.33321595191955566,
+          "negativeMAE": 0.7999095320701599,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.6837921142578125
+        }
+      }
+    },
+    {
+      "id": "abandoned_greenhouse-0",
+      "group": "abandoned_greenhouse",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.011430885642766953,
+          "positiveMAE": 0.058838024735450745,
+          "negativeMAE": 0.059439681470394135,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00274658203125
+        },
+        "signed": {
+          "maeEV": 0.10443224012851715,
+          "positiveMAE": 0.09777321666479111,
+          "negativeMAE": 0.026256171986460686,
+          "negativePrecision": 0.015840571373701096,
+          "negativeRecall": 0.3444444537162781,
+          "negativeFraction": 0.00274658203125
+        },
+        "gmnet": {
+          "maeEV": 0.2702820897102356,
+          "positiveMAE": 0.05143871530890465,
+          "negativeMAE": 0.17294374108314514,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00274658203125
+        }
+      }
+    },
+    {
+      "id": "abandoned_greenhouse-1",
+      "group": "abandoned_greenhouse",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.12584561109542847,
+          "positiveMAE": 0.15197217464447021,
+          "negativeMAE": 0.05593615025281906,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001068115234375
+        },
+        "signed": {
+          "maeEV": 0.06325655430555344,
+          "positiveMAE": 0.06844667345285416,
+          "negativeMAE": 0.03434332460165024,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001068115234375
+        },
+        "gmnet": {
+          "maeEV": 0.08521969616413116,
+          "positiveMAE": 0.08752305060625076,
+          "negativeMAE": 0.11930744349956512,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001068115234375
+        }
+      }
+    },
+    {
+      "id": "abandoned_greenhouse-2",
+      "group": "abandoned_greenhouse",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2704176604747772,
+          "positiveMAE": 0.28749313950538635,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.22218720614910126,
+          "positiveMAE": 0.23185734450817108,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.12084975838661194,
+          "positiveMAE": 0.12166047096252441,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "abandoned_slipway-0",
+      "group": "abandoned_slipway",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.3161696493625641,
+          "positiveMAE": 0.47659409046173096,
+          "negativeMAE": 0.07066994160413742,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.02691650390625
+        },
+        "signed": {
+          "maeEV": 0.09692543745040894,
+          "positiveMAE": 0.09274053573608398,
+          "negativeMAE": 0.09828224033117294,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.02691650390625
+        },
+        "gmnet": {
+          "maeEV": 0.1415385901927948,
+          "positiveMAE": 0.12530207633972168,
+          "negativeMAE": 0.19078874588012695,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.02691650390625
+        }
+      }
+    },
+    {
+      "id": "abandoned_slipway-1",
+      "group": "abandoned_slipway",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.46394723653793335,
+          "positiveMAE": 0.5433602929115295,
+          "negativeMAE": 0.42189499735832214,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.6402435302734375
+        },
+        "signed": {
+          "maeEV": 0.3989258110523224,
+          "positiveMAE": 0.1796361356973648,
+          "negativeMAE": 0.5215263962745667,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.00014299673784989864,
+          "negativeFraction": 0.6402435302734375
+        },
+        "gmnet": {
+          "maeEV": 0.4294668436050415,
+          "positiveMAE": 0.1094684824347496,
+          "negativeMAE": 0.6083226203918457,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.6402435302734375
+        }
+      }
+    },
+    {
+      "id": "abandoned_slipway-2",
+      "group": "abandoned_slipway",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.21305063366889954,
+          "positiveMAE": 0.2699698805809021,
+          "negativeMAE": 0.05932823196053505,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0007510614232160151
+        },
+        "signed": {
+          "maeEV": 0.07181097567081451,
+          "positiveMAE": 0.07973320782184601,
+          "negativeMAE": 0.038578636944293976,
+          "negativePrecision": 0.0476190485060215,
+          "negativeRecall": 0.020408162847161293,
+          "negativeFraction": 0.0007510614232160151
+        },
+        "gmnet": {
+          "maeEV": 0.14441227912902832,
+          "positiveMAE": 0.167158305644989,
+          "negativeMAE": 0.10360877215862274,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0007510614232160151
+        }
+      }
+    },
+    {
+      "id": "aircraft_workshop_01-0",
+      "group": "aircraft_workshop_01",
+      "unrepresentableFraction": 0.018280029296875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.18119347095489502,
+          "positiveMAE": 0.588158905506134,
+          "negativeMAE": 0.0915522351861,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.52947998046875
+        },
+        "signed": {
+          "maeEV": 0.10821953415870667,
+          "positiveMAE": 0.2752569615840912,
+          "negativeMAE": 0.07324011623859406,
+          "negativePrecision": 0.7389277219772339,
+          "negativeRecall": 0.009135446511209011,
+          "negativeFraction": 0.52947998046875
+        },
+        "gmnet": {
+          "maeEV": 0.228123277425766,
+          "positiveMAE": 0.30224114656448364,
+          "negativeMAE": 0.20749761164188385,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.52947998046875
+        }
+      }
+    },
+    {
+      "id": "aircraft_workshop_01-1",
+      "group": "aircraft_workshop_01",
+      "unrepresentableFraction": 0.006378173828125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.33620691299438477,
+          "positiveMAE": 0.5166532397270203,
+          "negativeMAE": 0.2896307706832886,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.640350341796875
+        },
+        "signed": {
+          "maeEV": 0.2699055075645447,
+          "positiveMAE": 0.135488823056221,
+          "negativeMAE": 0.3398289680480957,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.06481437385082245,
+          "negativeFraction": 0.640350341796875
+        },
+        "gmnet": {
+          "maeEV": 0.5502139329910278,
+          "positiveMAE": 0.3569960296154022,
+          "negativeMAE": 0.6442989110946655,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.640350341796875
+        }
+      }
+    },
+    {
+      "id": "aircraft_workshop_01-2",
+      "group": "aircraft_workshop_01",
+      "unrepresentableFraction": 0.0084686279296875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.39770886301994324,
+          "positiveMAE": 0.4001644253730774,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.1396513283252716,
+          "positiveMAE": 0.140412375330925,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.18120940029621124,
+          "positiveMAE": 0.18196794390678406,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "art_studio-0",
+      "group": "art_studio",
+      "unrepresentableFraction": 0.0123443603515625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.30653005838394165,
+          "positiveMAE": 0.3412249982357025,
+          "negativeMAE": 0.32456982135772705,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.4185943603515625
+        },
+        "signed": {
+          "maeEV": 0.2566765248775482,
+          "positiveMAE": 0.21960976719856262,
+          "negativeMAE": 0.32254672050476074,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.22972331941127777,
+          "negativeFraction": 0.4185943603515625
+        },
+        "gmnet": {
+          "maeEV": 0.6253823041915894,
+          "positiveMAE": 0.5274892449378967,
+          "negativeMAE": 0.7428029775619507,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.4185943603515625
+        }
+      }
+    },
+    {
+      "id": "art_studio-1",
+      "group": "art_studio",
+      "unrepresentableFraction": 0.0017242431640625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.7164167165756226,
+          "positiveMAE": 0.7169439792633057,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.2667815089225769,
+          "positiveMAE": 0.26693838834762573,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.2503199577331543,
+          "positiveMAE": 0.2504364252090454,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "art_studio-2",
+      "group": "art_studio",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.11275722086429596,
+          "positiveMAE": 0.19342772662639618,
+          "negativeMAE": 0.07073329389095306,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.009152370505034924
+        },
+        "signed": {
+          "maeEV": 0.07073461264371872,
+          "positiveMAE": 0.09699322283267975,
+          "negativeMAE": 0.0526733323931694,
+          "negativePrecision": 0.012000000104308128,
+          "negativeRecall": 0.005025125574320555,
+          "negativeFraction": 0.009152370505034924
+        },
+        "gmnet": {
+          "maeEV": 0.07516303658485413,
+          "positiveMAE": 0.07929595559835434,
+          "negativeMAE": 0.11647968739271164,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.009152370505034924
+        }
+      }
+    },
+    {
+      "id": "auto_service-0",
+      "group": "auto_service",
+      "unrepresentableFraction": 0.0040283203125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.9061466455459595,
+          "positiveMAE": 0.9061598181724548,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.37331217527389526,
+          "positiveMAE": 0.37331631779670715,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.2753191292285919,
+          "positiveMAE": 0.2753206193447113,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "auto_service-1",
+      "group": "auto_service",
+      "unrepresentableFraction": 0.01034972257912159,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.08247743546962738,
+          "positiveMAE": 1.1584773063659668,
+          "negativeMAE": 0.05935310199856758,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.002259231638163328
+        },
+        "signed": {
+          "maeEV": 0.09274514764547348,
+          "positiveMAE": 0.7781296372413635,
+          "negativeMAE": 0.02680075541138649,
+          "negativePrecision": 0.0009977384470403194,
+          "negativeRecall": 0.10135135054588318,
+          "negativeFraction": 0.002259231638163328
+        },
+        "gmnet": {
+          "maeEV": 0.2576052248477936,
+          "positiveMAE": 0.6877416968345642,
+          "negativeMAE": 0.14376956224441528,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.002259231638163328
+        }
+      }
+    },
+    {
+      "id": "auto_service-2",
+      "group": "auto_service",
+      "unrepresentableFraction": 0.006663406267762184,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.13530735671520233,
+          "positiveMAE": 0.2101985067129135,
+          "negativeMAE": 0.05469801276922226,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 4.5849126763641834e-05
+        },
+        "signed": {
+          "maeEV": 0.1154397502541542,
+          "positiveMAE": 0.1531796157360077,
+          "negativeMAE": 0.019725188612937927,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 4.5849126763641834e-05
+        },
+        "gmnet": {
+          "maeEV": 0.10105648636817932,
+          "positiveMAE": 0.1232282966375351,
+          "negativeMAE": 0.09931515902280807,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 4.5849126763641834e-05
+        }
+      }
+    },
+    {
+      "id": "autumn_field-0",
+      "group": "autumn_field_puresky",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5591294169425964,
+          "positiveMAE": 0.5753649473190308,
+          "negativeMAE": 0.12831561267375946,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.013702392578125
+        },
+        "signed": {
+          "maeEV": 0.22178992629051208,
+          "positiveMAE": 0.2250642031431198,
+          "negativeMAE": 0.18317469954490662,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.013702392578125
+        },
+        "gmnet": {
+          "maeEV": 0.17607125639915466,
+          "positiveMAE": 0.17318333685398102,
+          "negativeMAE": 0.33379948139190674,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.013702392578125
+        }
+      }
+    },
+    {
+      "id": "autumn_field-1",
+      "group": "autumn_field_puresky",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.3241547644138336,
+          "positiveMAE": 0.3958660960197449,
+          "negativeMAE": 0.08936388045549393,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.061492919921875
+        },
+        "signed": {
+          "maeEV": 0.10619805753231049,
+          "positiveMAE": 0.09174355119466782,
+          "negativeMAE": 0.18845579028129578,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.01215880922973156,
+          "negativeFraction": 0.061492919921875
+        },
+        "gmnet": {
+          "maeEV": 0.46864065527915955,
+          "positiveMAE": 0.43653300404548645,
+          "negativeMAE": 0.5878082513809204,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.061492919921875
+        }
+      }
+    },
+    {
+      "id": "autumn_field-2",
+      "group": "autumn_field_puresky",
+      "unrepresentableFraction": 0.0048828125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4057278037071228,
+          "positiveMAE": 0.6540877819061279,
+          "negativeMAE": 0.09905574470758438,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.1199188232421875
+        },
+        "signed": {
+          "maeEV": 0.2483208179473877,
+          "positiveMAE": 0.2919664978981018,
+          "negativeMAE": 0.18535715341567993,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.1199188232421875
+        },
+        "gmnet": {
+          "maeEV": 0.32601064443588257,
+          "positiveMAE": 0.40387195348739624,
+          "negativeMAE": 0.2550243139266968,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.1199188232421875
+        }
+      }
+    },
+    {
+      "id": "beach_cloudy_bridge-0",
+      "group": "beach_cloudy_bridge",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.00755486823618412,
+          "positiveMAE": 0.05675828084349632,
+          "negativeMAE": 0.05712449178099632,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0005093457293696702
+        },
+        "signed": {
+          "maeEV": 0.168436199426651,
+          "positiveMAE": 0.07510250806808472,
+          "negativeMAE": 0.036991845816373825,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0005093457293696702
+        },
+        "gmnet": {
+          "maeEV": 0.44759517908096313,
+          "positiveMAE": 0.02667096257209778,
+          "negativeMAE": 0.08569071441888809,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0005093457293696702
+        }
+      }
+    },
+    {
+      "id": "beach_cloudy_bridge-1",
+      "group": "beach_cloudy_bridge",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.15827782452106476,
+          "positiveMAE": 0.23314303159713745,
+          "negativeMAE": 0.05651537701487541,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0008739516488276422
+        },
+        "signed": {
+          "maeEV": 0.045173279941082,
+          "positiveMAE": 0.05335972458124161,
+          "negativeMAE": 0.04946269094944,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0008739516488276422
+        },
+        "gmnet": {
+          "maeEV": 0.061479996889829636,
+          "positiveMAE": 0.06959956139326096,
+          "negativeMAE": 0.0863223522901535,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0008739516488276422
+        }
+      }
+    },
+    {
+      "id": "beach_cloudy_bridge-2",
+      "group": "beach_cloudy_bridge",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.10984471440315247,
+          "positiveMAE": 0.22860366106033325,
+          "negativeMAE": 0.060112614184617996,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0009497119463048875
+        },
+        "signed": {
+          "maeEV": 0.07996251434087753,
+          "positiveMAE": 0.16540703177452087,
+          "negativeMAE": 0.05291590094566345,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0009497119463048875
+        },
+        "gmnet": {
+          "maeEV": 0.06298863142728806,
+          "positiveMAE": 0.06531272083520889,
+          "negativeMAE": 0.09694944322109222,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0009497119463048875
+        }
+      }
+    },
+    {
+      "id": "cloudy_cliffside_road-0",
+      "group": "vignaioli_night",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2948038578033447,
+          "positiveMAE": 0.3299328088760376,
+          "negativeMAE": 0.06343701481819153,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0009528786176815629
+        },
+        "signed": {
+          "maeEV": 0.17206202447414398,
+          "positiveMAE": 0.18988272547721863,
+          "negativeMAE": 0.052296265959739685,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0009528786176815629
+        },
+        "gmnet": {
+          "maeEV": 0.1232110783457756,
+          "positiveMAE": 0.13439476490020752,
+          "negativeMAE": 0.10420817881822586,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0009528786176815629
+        }
+      }
+    },
+    {
+      "id": "cloudy_cliffside_road-1",
+      "group": "vignaioli_night",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.27612313628196716,
+          "positiveMAE": 0.5890165567398071,
+          "negativeMAE": 0.1727265566587448,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.7354607582092285
+        },
+        "signed": {
+          "maeEV": 0.17670446634292603,
+          "positiveMAE": 0.1164473295211792,
+          "negativeMAE": 0.19544242322444916,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.0014157817931845784,
+          "negativeFraction": 0.7354607582092285
+        },
+        "gmnet": {
+          "maeEV": 0.23775210976600647,
+          "positiveMAE": 0.05878245085477829,
+          "negativeMAE": 0.2983512878417969,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.7354607582092285
+        }
+      }
+    },
+    {
+      "id": "cloudy_cliffside_road-2",
+      "group": "vignaioli_night",
+      "unrepresentableFraction": 0.0097198486328125,
+      "metrics": {
+        "identity": {
+          "maeEV": 1.0103719234466553,
+          "positiveMAE": 0.7826888561248779,
+          "negativeMAE": 1.193146824836731,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.564666748046875
+        },
+        "signed": {
+          "maeEV": 0.7469667196273804,
+          "positiveMAE": 0.1966574639081955,
+          "negativeMAE": 1.1707242727279663,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.4559260606765747,
+          "negativeFraction": 0.564666748046875
+        },
+        "gmnet": {
+          "maeEV": 0.9951401948928833,
+          "positiveMAE": 0.32756587862968445,
+          "negativeMAE": 1.5059643983840942,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.564666748046875
+        }
+      }
+    },
+    {
+      "id": "country_club-0",
+      "group": "country_club",
+      "unrepresentableFraction": 0.0210723876953125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2628384828567505,
+          "positiveMAE": 0.316417932510376,
+          "negativeMAE": 0.05761248245835304,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        },
+        "signed": {
+          "maeEV": 0.17090469598770142,
+          "positiveMAE": 0.19740524888038635,
+          "negativeMAE": 0.02426723763346672,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        },
+        "gmnet": {
+          "maeEV": 0.10545802861452103,
+          "positiveMAE": 0.11478524655103683,
+          "negativeMAE": 0.10374514758586884,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        }
+      }
+    },
+    {
+      "id": "country_club-1",
+      "group": "country_club",
+      "unrepresentableFraction": 0.0022430419921875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2942385673522949,
+          "positiveMAE": 0.30865857005119324,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.07436737418174744,
+          "positiveMAE": 0.07663814723491669,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.0791957750916481,
+          "positiveMAE": 0.080477774143219,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "country_club-2",
+      "group": "country_club",
+      "unrepresentableFraction": 0.0176544189453125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4549987316131592,
+          "positiveMAE": 0.5278579592704773,
+          "negativeMAE": 0.4480689764022827,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.3980712890625
+        },
+        "signed": {
+          "maeEV": 0.4149981737136841,
+          "positiveMAE": 0.2763526439666748,
+          "negativeMAE": 0.6044204831123352,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.0014182765735313296,
+          "negativeFraction": 0.3980712890625
+        },
+        "gmnet": {
+          "maeEV": 0.4466937184333801,
+          "positiveMAE": 0.271423876285553,
+          "negativeMAE": 0.694136917591095,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.3980712890625
+        }
+      }
+    },
+    {
+      "id": "crossfit_gym-0",
+      "group": "crossfit_gym",
+      "unrepresentableFraction": 0.0174713134765625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4022992253303528,
+          "positiveMAE": 0.40352728962898254,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.19350314140319824,
+          "positiveMAE": 0.19400575757026672,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.16791361570358276,
+          "positiveMAE": 0.168264240026474,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "crossfit_gym-1",
+      "group": "crossfit_gym",
+      "unrepresentableFraction": 0.0125274658203125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.8542406558990479,
+          "positiveMAE": 1.1047637462615967,
+          "negativeMAE": 0.8429567217826843,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.9240570068359375
+        },
+        "signed": {
+          "maeEV": 0.9315669536590576,
+          "positiveMAE": 0.4405442178249359,
+          "negativeMAE": 0.9715074896812439,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.00016512822185177356,
+          "negativeFraction": 0.9240570068359375
+        },
+        "gmnet": {
+          "maeEV": 1.0415905714035034,
+          "positiveMAE": 0.5457884073257446,
+          "negativeMAE": 1.082674264907837,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.9240570068359375
+        }
+      }
+    },
+    {
+      "id": "crossfit_gym-2",
+      "group": "crossfit_gym",
+      "unrepresentableFraction": 0.023651123046875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.47362592816352844,
+          "positiveMAE": 0.47714000940322876,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.27234452962875366,
+          "positiveMAE": 0.27399876713752747,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.1678401231765747,
+          "positiveMAE": 0.16857598721981049,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "dancing_hall-0",
+      "group": "dancing_hall",
+      "unrepresentableFraction": 0.012939453125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2381683886051178,
+          "positiveMAE": 0.3118593990802765,
+          "negativeMAE": 0.06434907764196396,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0036163330078125
+        },
+        "signed": {
+          "maeEV": 0.15327192842960358,
+          "positiveMAE": 0.19125114381313324,
+          "negativeMAE": 0.041429553180933,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0036163330078125
+        },
+        "gmnet": {
+          "maeEV": 0.1134817898273468,
+          "positiveMAE": 0.12600383162498474,
+          "negativeMAE": 0.12992116808891296,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0036163330078125
+        }
+      }
+    },
+    {
+      "id": "dancing_hall-1",
+      "group": "dancing_hall",
+      "unrepresentableFraction": 0.006988525390625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.6436737179756165,
+          "positiveMAE": 0.7278652191162109,
+          "negativeMAE": 0.6392644047737122,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.925506591796875
+        },
+        "signed": {
+          "maeEV": 0.6353293657302856,
+          "positiveMAE": 0.37933990359306335,
+          "negativeMAE": 0.656099259853363,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.011310053989291191,
+          "negativeFraction": 0.925506591796875
+        },
+        "gmnet": {
+          "maeEV": 0.8042653203010559,
+          "positiveMAE": 0.3899017870426178,
+          "negativeMAE": 0.8371149897575378,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.925506591796875
+        }
+      }
+    },
+    {
+      "id": "dancing_hall-2",
+      "group": "dancing_hall",
+      "unrepresentableFraction": 0.0198211669921875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5271103978157043,
+          "positiveMAE": 0.5420445203781128,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.2198197841644287,
+          "positiveMAE": 0.2253478318452835,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.2412872314453125,
+          "positiveMAE": 0.2465619295835495,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "debris_basement_corridor-0",
+      "group": "debris_basement_corridor",
+      "unrepresentableFraction": 0.0048980712890625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.35013943910598755,
+          "positiveMAE": 0.35043635964393616,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.23645687103271484,
+          "positiveMAE": 0.23660248517990112,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.0958317443728447,
+          "positiveMAE": 0.09580323845148087,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "debris_basement_corridor-1",
+      "group": "debris_basement_corridor",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4317609965801239,
+          "positiveMAE": 0.12111631780862808,
+          "negativeMAE": 0.5982440710067749,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.671905517578125
+        },
+        "signed": {
+          "maeEV": 0.925957202911377,
+          "positiveMAE": 0.7202088236808777,
+          "negativeMAE": 1.0152491331100464,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.671905517578125
+        },
+        "gmnet": {
+          "maeEV": 0.8173936605453491,
+          "positiveMAE": 0.5326011776924133,
+          "negativeMAE": 0.9472190737724304,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.671905517578125
+        }
+      }
+    },
+    {
+      "id": "debris_basement_corridor-2",
+      "group": "debris_basement_corridor",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.39656999707221985,
+          "positiveMAE": 0.39666256308555603,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.0465368926525116,
+          "positiveMAE": 0.04654157906770706,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.04890361800789833,
+          "positiveMAE": 0.04888244345784187,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "decor_shop-0",
+      "group": "decor_shop",
+      "unrepresentableFraction": 0.0025574665050953627,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2702973186969757,
+          "positiveMAE": 0.6196714639663696,
+          "negativeMAE": 0.22843623161315918,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8173938393592834
+        },
+        "signed": {
+          "maeEV": 0.30688562989234924,
+          "positiveMAE": 0.32319191098213196,
+          "negativeMAE": 0.30516934394836426,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.0031850116793066263,
+          "negativeFraction": 0.8173938393592834
+        },
+        "gmnet": {
+          "maeEV": 0.3774825632572174,
+          "positiveMAE": 0.33456215262413025,
+          "negativeMAE": 0.3892689049243927,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8173938393592834
+        }
+      }
+    },
+    {
+      "id": "decor_shop-1",
+      "group": "decor_shop",
+      "unrepresentableFraction": 0.0112762451171875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.6041921973228455,
+          "positiveMAE": 0.613502562046051,
+          "negativeMAE": 0.06442336738109589,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001678466796875
+        },
+        "signed": {
+          "maeEV": 0.2719908356666565,
+          "positiveMAE": 0.2754937708377838,
+          "negativeMAE": 0.02689938247203827,
+          "negativePrecision": 0.008875739760696888,
+          "negativeRecall": 0.27272728085517883,
+          "negativeFraction": 0.0001678466796875
+        },
+        "gmnet": {
+          "maeEV": 0.24800549447536469,
+          "positiveMAE": 0.2508077919483185,
+          "negativeMAE": 0.13385318219661713,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001678466796875
+        }
+      }
+    },
+    {
+      "id": "decor_shop-2",
+      "group": "decor_shop",
+      "unrepresentableFraction": 0.0011906579602509737,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.25518229603767395,
+          "positiveMAE": 0.27862226963043213,
+          "negativeMAE": 0.06167136877775192,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0005647992948070168
+        },
+        "signed": {
+          "maeEV": 0.05491882935166359,
+          "positiveMAE": 0.05699756368994713,
+          "negativeMAE": 0.04100147634744644,
+          "negativePrecision": 0.01666666753590107,
+          "negativeRecall": 0.027027027681469917,
+          "negativeFraction": 0.0005647992948070168
+        },
+        "gmnet": {
+          "maeEV": 0.05731738358736038,
+          "positiveMAE": 0.056748080998659134,
+          "negativeMAE": 0.11879315227270126,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0005647992948070168
+        }
+      }
+    },
+    {
+      "id": "docklands_02-0",
+      "group": "docklands_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2612009346485138,
+          "positiveMAE": 0.27879106998443604,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.050777070224285126,
+          "positiveMAE": 0.05260143056511879,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.05245170742273331,
+          "positiveMAE": 0.05086730048060417,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "docklands_02-1",
+      "group": "docklands_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.3774679899215698,
+          "positiveMAE": 0.3792150318622589,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.06597958505153656,
+          "positiveMAE": 0.06585202366113663,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.14718687534332275,
+          "positiveMAE": 0.1472652107477188,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "docklands_02-2",
+      "group": "docklands_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2931307256221771,
+          "positiveMAE": 0.3012698292732239,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.14453355967998505,
+          "positiveMAE": 0.14825880527496338,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.050537385046482086,
+          "positiveMAE": 0.04930241405963898,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "dry_cracked_lake-0",
+      "group": "dry_cracked_lake",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.009170792065560818,
+          "positiveMAE": 0.05834975838661194,
+          "negativeMAE": 0.05802782252430916,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00201416015625
+        },
+        "signed": {
+          "maeEV": 0.2064819037914276,
+          "positiveMAE": 0.09085948020219803,
+          "negativeMAE": 0.02750183641910553,
+          "negativePrecision": 0.004342431668192148,
+          "negativeRecall": 0.10606060922145844,
+          "negativeFraction": 0.00201416015625
+        },
+        "gmnet": {
+          "maeEV": 0.3463362157344818,
+          "positiveMAE": 0.0190906785428524,
+          "negativeMAE": 0.11582078039646149,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00201416015625
+        }
+      }
+    },
+    {
+      "id": "dry_cracked_lake-1",
+      "group": "dry_cracked_lake",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.16364386677742004,
+          "positiveMAE": 0.20459206402301788,
+          "negativeMAE": 0.27281060814857483,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.281982421875
+        },
+        "signed": {
+          "maeEV": 0.34714359045028687,
+          "positiveMAE": 0.30350056290626526,
+          "negativeMAE": 0.4385773241519928,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.06764069199562073,
+          "negativeFraction": 0.281982421875
+        },
+        "gmnet": {
+          "maeEV": 1.084619164466858,
+          "positiveMAE": 1.0860530138015747,
+          "negativeMAE": 1.1008847951889038,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.281982421875
+        }
+      }
+    },
+    {
+      "id": "dry_cracked_lake-2",
+      "group": "dry_cracked_lake",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.29834210872650146,
+          "positiveMAE": 0.30478182435035706,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.0827493667602539,
+          "positiveMAE": 0.08325598388910294,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.17461486160755157,
+          "positiveMAE": 0.17630283534526825,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "dry_meadow-0",
+      "group": "dry_meadow",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.010325352661311626,
+          "positiveMAE": 0.0681234821677208,
+          "negativeMAE": 0.0535527803003788,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0002595736877992749
+        },
+        "signed": {
+          "maeEV": 0.14436577260494232,
+          "positiveMAE": 0.43826398253440857,
+          "negativeMAE": 0.033426493406295776,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0002595736877992749
+        },
+        "gmnet": {
+          "maeEV": 0.3525775372982025,
+          "positiveMAE": 0.5786502957344055,
+          "negativeMAE": 0.09532497078180313,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0002595736877992749
+        }
+      }
+    },
+    {
+      "id": "dry_meadow-1",
+      "group": "dry_meadow",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4403221607208252,
+          "positiveMAE": 0.4389469623565674,
+          "negativeMAE": 0.5001627206802368,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.5480194091796875
+        },
+        "signed": {
+          "maeEV": 0.3062193989753723,
+          "positiveMAE": 0.14185163378715515,
+          "negativeMAE": 0.45551905035972595,
+          "negativePrecision": 0.9975237250328064,
+          "negativeRecall": 0.40378671884536743,
+          "negativeFraction": 0.5480194091796875
+        },
+        "gmnet": {
+          "maeEV": 0.6916589140892029,
+          "positiveMAE": 0.6272341012954712,
+          "negativeMAE": 0.7444824576377869,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.5480194091796875
+        }
+      }
+    },
+    {
+      "id": "dry_meadow-2",
+      "group": "dry_meadow",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.21695451438426971,
+          "positiveMAE": 0.26787692308425903,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.04929208755493164,
+          "positiveMAE": 0.05427234247326851,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.057549431920051575,
+          "positiveMAE": 0.05713506415486336,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "emmarentia-0",
+      "group": "yellow_field",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.16069163382053375,
+          "positiveMAE": 0.29746389389038086,
+          "negativeMAE": 0.05610419809818268,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.001156282494775951
+        },
+        "signed": {
+          "maeEV": 0.04854528605937958,
+          "positiveMAE": 0.06102239713072777,
+          "negativeMAE": 0.04333977773785591,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.001156282494775951
+        },
+        "gmnet": {
+          "maeEV": 0.057858534157276154,
+          "positiveMAE": 0.06975118070840836,
+          "negativeMAE": 0.09350542724132538,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.001156282494775951
+        }
+      }
+    },
+    {
+      "id": "emmarentia-1",
+      "group": "yellow_field",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.06739216297864914,
+          "positiveMAE": 0.15931537747383118,
+          "negativeMAE": 0.05720517411828041,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001983642578125
+        },
+        "signed": {
+          "maeEV": 0.05789466202259064,
+          "positiveMAE": 0.09998016804456711,
+          "negativeMAE": 0.02529001794755459,
+          "negativePrecision": 0.0005299416952766478,
+          "negativeRecall": 0.1538461595773697,
+          "negativeFraction": 0.0001983642578125
+        },
+        "gmnet": {
+          "maeEV": 0.9240970611572266,
+          "positiveMAE": 1.2587324380874634,
+          "negativeMAE": 0.18228501081466675,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001983642578125
+        }
+      }
+    },
+    {
+      "id": "emmarentia-2",
+      "group": "yellow_field",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.8360471129417419,
+          "positiveMAE": 0.6952796578407288,
+          "negativeMAE": 0.8789401650428772,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8130769729614258
+        },
+        "signed": {
+          "maeEV": 0.7103660106658936,
+          "positiveMAE": 0.10102193057537079,
+          "negativeMAE": 0.8483185768127441,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.0936906486749649,
+          "negativeFraction": 0.8130769729614258
+        },
+        "gmnet": {
+          "maeEV": 0.9178566932678223,
+          "positiveMAE": 0.4788602888584137,
+          "negativeMAE": 1.0175341367721558,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8130769729614258
+        }
+      }
+    },
+    {
+      "id": "laufenurg_church-0",
+      "group": "laufenurg_church",
+      "unrepresentableFraction": 0.001556396484375,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.34035712480545044,
+          "positiveMAE": 0.34063589572906494,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.09083865582942963,
+          "positiveMAE": 0.09087003767490387,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.12255006283521652,
+          "positiveMAE": 0.12251905351877213,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "laufenurg_church-1",
+      "group": "laufenurg_church",
+      "unrepresentableFraction": 0.008026123046875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.3539997339248657,
+          "positiveMAE": 0.4311535954475403,
+          "negativeMAE": 0.30230018496513367,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.2108612060546875
+        },
+        "signed": {
+          "maeEV": 0.21419599652290344,
+          "positiveMAE": 0.18871764838695526,
+          "negativeMAE": 0.33061549067497253,
+          "negativePrecision": 0.9977859854698181,
+          "negativeRecall": 0.09783631563186646,
+          "negativeFraction": 0.2108612060546875
+        },
+        "gmnet": {
+          "maeEV": 0.8511084318161011,
+          "positiveMAE": 0.7425788044929504,
+          "negativeMAE": 1.1033483743667603,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.2108612060546875
+        }
+      }
+    },
+    {
+      "id": "laufenurg_church-2",
+      "group": "laufenurg_church",
+      "unrepresentableFraction": 0.0017242431640625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.8648229837417603,
+          "positiveMAE": 0.6679155230522156,
+          "negativeMAE": 0.921544075012207,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8134765625
+        },
+        "signed": {
+          "maeEV": 0.8154799342155457,
+          "positiveMAE": 0.27324771881103516,
+          "negativeMAE": 0.9375201463699341,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.17371323704719543,
+          "negativeFraction": 0.8134765625
+        },
+        "gmnet": {
+          "maeEV": 1.3109724521636963,
+          "positiveMAE": 0.7407727241516113,
+          "negativeMAE": 1.4352830648422241,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8134765625
+        }
+      }
+    },
+    {
+      "id": "lush_dirt_path-0",
+      "group": "lush_dirt_path",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.20138317346572876,
+          "positiveMAE": 0.23306792974472046,
+          "negativeMAE": 0.05935667082667351,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001678466796875
+        },
+        "signed": {
+          "maeEV": 0.14103423058986664,
+          "positiveMAE": 0.1559481918811798,
+          "negativeMAE": 0.02602565661072731,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001678466796875
+        },
+        "gmnet": {
+          "maeEV": 0.09087800979614258,
+          "positiveMAE": 0.0931549221277237,
+          "negativeMAE": 0.12006901949644089,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001678466796875
+        }
+      }
+    },
+    {
+      "id": "lush_dirt_path-1",
+      "group": "lush_dirt_path",
+      "unrepresentableFraction": 0.006378173828125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.9617359638214111,
+          "positiveMAE": 0.6505134701728821,
+          "negativeMAE": 1.0130388736724854,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.889404296875
+        },
+        "signed": {
+          "maeEV": 1.1071650981903076,
+          "positiveMAE": 0.42250147461891174,
+          "negativeMAE": 1.1894707679748535,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.0010293714003637433,
+          "negativeFraction": 0.889404296875
+        },
+        "gmnet": {
+          "maeEV": 1.279934287071228,
+          "positiveMAE": 0.4562760293483734,
+          "negativeMAE": 1.3783822059631348,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.889404296875
+        }
+      }
+    },
+    {
+      "id": "lush_dirt_path-2",
+      "group": "lush_dirt_path",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.799139142036438,
+          "positiveMAE": 0.16369791328907013,
+          "negativeMAE": 0.83388751745224,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.954498291015625
+        },
+        "signed": {
+          "maeEV": 1.1195144653320312,
+          "positiveMAE": 0.7935122847557068,
+          "negativeMAE": 1.1310389041900635,
+          "negativePrecision": 1.0,
+          "negativeRecall": 6.394475349225104e-05,
+          "negativeFraction": 0.954498291015625
+        },
+        "gmnet": {
+          "maeEV": 1.0896893739700317,
+          "positiveMAE": 0.5196291208267212,
+          "negativeMAE": 1.1127725839614868,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.954498291015625
+        }
+      }
+    },
+    {
+      "id": "lythwood_lounge-0",
+      "group": "lythwood_terrace",
+      "unrepresentableFraction": 0.01106751523911953,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.48985663056373596,
+          "positiveMAE": 0.518466591835022,
+          "negativeMAE": 0.05456506833434105,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00023448125284630805
+        },
+        "signed": {
+          "maeEV": 0.19594748318195343,
+          "positiveMAE": 0.20603851974010468,
+          "negativeMAE": 0.04598191753029823,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00023448125284630805
+        },
+        "gmnet": {
+          "maeEV": 0.2824430763721466,
+          "positiveMAE": 0.2973058223724365,
+          "negativeMAE": 0.11217586696147919,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00023448125284630805
+        }
+      }
+    },
+    {
+      "id": "lythwood_lounge-1",
+      "group": "lythwood_terrace",
+      "unrepresentableFraction": 0.0008599258726462722,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.036681048572063446,
+          "positiveMAE": 0.5432708263397217,
+          "negativeMAE": 0.06474340707063675,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.008208383806049824
+        },
+        "signed": {
+          "maeEV": 0.08159451931715012,
+          "positiveMAE": 0.6087062954902649,
+          "negativeMAE": 0.03365682065486908,
+          "negativePrecision": 0.017375674098730087,
+          "negativeRecall": 0.11047618836164474,
+          "negativeFraction": 0.008208383806049824
+        },
+        "gmnet": {
+          "maeEV": 0.2855280339717865,
+          "positiveMAE": 0.7125608325004578,
+          "negativeMAE": 0.14405296742916107,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.008208383806049824
+        }
+      }
+    },
+    {
+      "id": "lythwood_lounge-2",
+      "group": "lythwood_terrace",
+      "unrepresentableFraction": 0.0009938351577147841,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.16483457386493683,
+          "positiveMAE": 0.21511228382587433,
+          "negativeMAE": 0.06311926990747452,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0028106898535043
+        },
+        "signed": {
+          "maeEV": 0.09223964065313339,
+          "positiveMAE": 0.10885800421237946,
+          "negativeMAE": 0.03909081965684891,
+          "negativePrecision": 0.006938421633094549,
+          "negativeRecall": 0.0441988967359066,
+          "negativeFraction": 0.0028106898535043
+        },
+        "gmnet": {
+          "maeEV": 0.14806345105171204,
+          "positiveMAE": 0.17311356961727142,
+          "negativeMAE": 0.13769462704658508,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0028106898535043
+        }
+      }
+    },
+    {
+      "id": "monbachtal_riverbank-0",
+      "group": "monbachtal_riverbank",
+      "unrepresentableFraction": 0.0010986328125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.6446985006332397,
+          "positiveMAE": 0.5094695091247559,
+          "negativeMAE": 0.690217912197113,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.83172607421875
+        },
+        "signed": {
+          "maeEV": 0.624083936214447,
+          "positiveMAE": 0.25649869441986084,
+          "negativeMAE": 0.6967272758483887,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.2106112837791443,
+          "negativeFraction": 0.83172607421875
+        },
+        "gmnet": {
+          "maeEV": 0.8980562686920166,
+          "positiveMAE": 0.4756524860858917,
+          "negativeMAE": 0.9772670865058899,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.83172607421875
+        }
+      }
+    },
+    {
+      "id": "monbachtal_riverbank-1",
+      "group": "monbachtal_riverbank",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.016606587916612625,
+          "positiveMAE": 0.06688334792852402,
+          "negativeMAE": 0.06552357971668243,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.017679814249277115
+        },
+        "signed": {
+          "maeEV": 0.12985773384571075,
+          "positiveMAE": 0.5516743659973145,
+          "negativeMAE": 0.04178880527615547,
+          "negativePrecision": 0.005638134200125933,
+          "negativeRecall": 0.019247593358159065,
+          "negativeFraction": 0.017679814249277115
+        },
+        "gmnet": {
+          "maeEV": 0.2706121802330017,
+          "positiveMAE": 0.6393522620201111,
+          "negativeMAE": 0.1255040317773819,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.017679814249277115
+        }
+      }
+    },
+    {
+      "id": "monbachtal_riverbank-2",
+      "group": "monbachtal_riverbank",
+      "unrepresentableFraction": 0.013535785488784313,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4767169952392578,
+          "positiveMAE": 0.6924152374267578,
+          "negativeMAE": 0.4299926459789276,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.7008851170539856
+        },
+        "signed": {
+          "maeEV": 0.4124140441417694,
+          "positiveMAE": 0.3061177134513855,
+          "negativeMAE": 0.4631911516189575,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.0010450913105159998,
+          "negativeFraction": 0.7008851170539856
+        },
+        "gmnet": {
+          "maeEV": 0.5015891790390015,
+          "positiveMAE": 0.3618021011352539,
+          "negativeMAE": 0.5670052170753479,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.7008851170539856
+        }
+      }
+    },
+    {
+      "id": "near_the_river_01-0",
+      "group": "near_the_river_02",
+      "unrepresentableFraction": 0.13262939453125,
+      "metrics": {
+        "identity": {
+          "maeEV": 1.261324405670166,
+          "positiveMAE": 0.4700271189212799,
+          "negativeMAE": 1.368162989616394,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.894439697265625
+        },
+        "signed": {
+          "maeEV": 1.3527894020080566,
+          "positiveMAE": 0.3317386507987976,
+          "negativeMAE": 1.466351866722107,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.07473813742399216,
+          "negativeFraction": 0.894439697265625
+        },
+        "gmnet": {
+          "maeEV": 1.5913645029067993,
+          "positiveMAE": 0.645756185054779,
+          "negativeMAE": 1.6954450607299805,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.894439697265625
+        }
+      }
+    },
+    {
+      "id": "near_the_river_01-1",
+      "group": "near_the_river_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5125192999839783,
+          "positiveMAE": 0.5125911235809326,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.18024156987667084,
+          "positiveMAE": 0.1802651286125183,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.24805638194084167,
+          "positiveMAE": 0.2480851411819458,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "near_the_river_01-2",
+      "group": "near_the_river_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.17943596839904785,
+          "positiveMAE": 0.1967501938343048,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.1449163556098938,
+          "positiveMAE": 0.15951040387153625,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.10231545567512512,
+          "positiveMAE": 0.10465878993272781,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "pretville_cinema-0",
+      "group": "pretville_street",
+      "unrepresentableFraction": 0.00029315557912923396,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.02757149562239647,
+          "positiveMAE": 0.43803566694259644,
+          "negativeMAE": 0.06276074051856995,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00945812463760376
+        },
+        "signed": {
+          "maeEV": 0.13465815782546997,
+          "positiveMAE": 0.6694190502166748,
+          "negativeMAE": 0.0383366160094738,
+          "negativePrecision": 0.005841121543198824,
+          "negativeRecall": 0.016313213855028152,
+          "negativeFraction": 0.00945812463760376
+        },
+        "gmnet": {
+          "maeEV": 0.2916695773601532,
+          "positiveMAE": 0.7689512372016907,
+          "negativeMAE": 0.14881424605846405,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00945812463760376
+        }
+      }
+    },
+    {
+      "id": "pretville_cinema-1",
+      "group": "pretville_street",
+      "unrepresentableFraction": 0.00635920325294137,
+      "metrics": {
+        "identity": {
+          "maeEV": 1.1513895988464355,
+          "positiveMAE": 1.0933274030685425,
+          "negativeMAE": 1.1588609218597412,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.9495697021484375
+        },
+        "signed": {
+          "maeEV": 1.135271430015564,
+          "positiveMAE": 0.3917171359062195,
+          "negativeMAE": 1.1740950345993042,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.03728387877345085,
+          "negativeFraction": 0.9495697021484375
+        },
+        "gmnet": {
+          "maeEV": 1.3309963941574097,
+          "positiveMAE": 0.5106527209281921,
+          "negativeMAE": 1.373889446258545,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.9495697021484375
+        }
+      }
+    },
+    {
+      "id": "pretville_cinema-2",
+      "group": "pretville_street",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.3880501687526703,
+          "positiveMAE": 0.6237557530403137,
+          "negativeMAE": 0.07611984014511108,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0559166744351387
+        },
+        "signed": {
+          "maeEV": 0.06033739820122719,
+          "positiveMAE": 0.07883131504058838,
+          "negativeMAE": 0.070279061794281,
+          "negativePrecision": 0.05454545468091965,
+          "negativeRecall": 0.004201680887490511,
+          "negativeFraction": 0.0559166744351387
+        },
+        "gmnet": {
+          "maeEV": 0.22210152447223663,
+          "positiveMAE": 0.32864508032798767,
+          "negativeMAE": 0.12845857441425323,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0559166744351387
+        }
+      }
+    },
+    {
+      "id": "radkow_lake-0",
+      "group": "radkow_lake",
+      "unrepresentableFraction": 0.0004425048828125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.01142941229045391,
+          "positiveMAE": 0.8028912544250488,
+          "negativeMAE": 0.051754966378211975,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        },
+        "signed": {
+          "maeEV": 0.16138046979904175,
+          "positiveMAE": 1.1947922706604004,
+          "negativeMAE": 0.02467578649520874,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        },
+        "gmnet": {
+          "maeEV": 0.41700130701065063,
+          "positiveMAE": 1.0259736776351929,
+          "negativeMAE": 0.09460487961769104,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        }
+      }
+    },
+    {
+      "id": "radkow_lake-1",
+      "group": "radkow_lake",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4647303819656372,
+          "positiveMAE": 0.4685475528240204,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.10352373123168945,
+          "positiveMAE": 0.10376414656639099,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.15092721581459045,
+          "positiveMAE": 0.15131232142448425,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "radkow_lake-2",
+      "group": "radkow_lake",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5542769432067871,
+          "positiveMAE": 0.5602988600730896,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.1660108119249344,
+          "positiveMAE": 0.167122483253479,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.08522120118141174,
+          "positiveMAE": 0.08516759425401688,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "rostock_laage_airport-0",
+      "group": "rostock_laage_airport",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.07858210802078247,
+          "positiveMAE": 0.1765526831150055,
+          "negativeMAE": 0.07149631530046463,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.03333612158894539
+        },
+        "signed": {
+          "maeEV": 0.06734900921583176,
+          "positiveMAE": 0.1286984384059906,
+          "negativeMAE": 0.062118154019117355,
+          "negativePrecision": 0.010526316240429878,
+          "negativeRecall": 0.001505268388427794,
+          "negativeFraction": 0.03333612158894539
+        },
+        "gmnet": {
+          "maeEV": 0.07514449208974838,
+          "positiveMAE": 0.08430138230323792,
+          "negativeMAE": 0.11712666600942612,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.03333612158894539
+        }
+      }
+    },
+    {
+      "id": "rostock_laage_airport-1",
+      "group": "rostock_laage_airport",
+      "unrepresentableFraction": 0.00048828125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.25535184144973755,
+          "positiveMAE": 0.26552432775497437,
+          "negativeMAE": 0.06482755392789841,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001068115234375
+        },
+        "signed": {
+          "maeEV": 0.14176806807518005,
+          "positiveMAE": 0.14496064186096191,
+          "negativeMAE": 0.019878298044204712,
+          "negativePrecision": 0.0014940239489078522,
+          "negativeRecall": 0.4285714328289032,
+          "negativeFraction": 0.0001068115234375
+        },
+        "gmnet": {
+          "maeEV": 0.08798253536224365,
+          "positiveMAE": 0.08721758425235748,
+          "negativeMAE": 0.1382811814546585,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0001068115234375
+        }
+      }
+    },
+    {
+      "id": "rostock_laage_airport-2",
+      "group": "rostock_laage_airport",
+      "unrepresentableFraction": 0.003631591796875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5410820245742798,
+          "positiveMAE": 0.5440090298652649,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.2128385305404663,
+          "positiveMAE": 0.21363231539726257,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.13769540190696716,
+          "positiveMAE": 0.13794562220573425,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "round_platform-0",
+      "group": "round_platform",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2527761459350586,
+          "positiveMAE": 0.26385819911956787,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.12329193949699402,
+          "positiveMAE": 0.12765353918075562,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.06597694009542465,
+          "positiveMAE": 0.06569956988096237,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "round_platform-1",
+      "group": "round_platform",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5770664215087891,
+          "positiveMAE": 0.5877951383590698,
+          "negativeMAE": 0.5710702538490295,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.4843902587890625
+        },
+        "signed": {
+          "maeEV": 0.3708047866821289,
+          "positiveMAE": 0.22461998462677002,
+          "negativeMAE": 0.5282667875289917,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.1840289831161499,
+          "negativeFraction": 0.4843902587890625
+        },
+        "gmnet": {
+          "maeEV": 0.7968143820762634,
+          "positiveMAE": 0.6322246193885803,
+          "negativeMAE": 0.9710702896118164,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.4843902587890625
+        }
+      }
+    },
+    {
+      "id": "round_platform-2",
+      "group": "round_platform",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2757827937602997,
+          "positiveMAE": 0.2908722162246704,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.05670811980962753,
+          "positiveMAE": 0.05798343941569328,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.09357588738203049,
+          "positiveMAE": 0.09630506485700607,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "rustig_koppie_puresky-0",
+      "group": "rustig_koppie_puresky",
+      "unrepresentableFraction": 0.0039215087890625,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4308048188686371,
+          "positiveMAE": 0.4417828321456909,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.24560454487800598,
+          "positiveMAE": 0.2505210041999817,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.08182233572006226,
+          "positiveMAE": 0.08127821236848831,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "rustig_koppie_puresky-1",
+      "group": "rustig_koppie_puresky",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2649294137954712,
+          "positiveMAE": 0.2649294137954712,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.046800173819065094,
+          "positiveMAE": 0.046800173819065094,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.07771877944469452,
+          "positiveMAE": 0.07771877944469452,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "rustig_koppie_puresky-2",
+      "group": "rustig_koppie_puresky",
+      "unrepresentableFraction": 0.001007080078125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.21264289319515228,
+          "positiveMAE": 0.23787221312522888,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.047408200800418854,
+          "positiveMAE": 0.04914940148591995,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.09383392333984375,
+          "positiveMAE": 0.09367120265960693,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "schachen_forest-0",
+      "group": "schachen_forest",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.07736185193061829,
+          "positiveMAE": 0.21340593695640564,
+          "negativeMAE": 0.06364738196134567,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.021966926753520966
+        },
+        "signed": {
+          "maeEV": 0.057467661798000336,
+          "positiveMAE": 0.12537728250026703,
+          "negativeMAE": 0.04850619286298752,
+          "negativePrecision": 0.005464480724185705,
+          "negativeRecall": 0.0006963788182474673,
+          "negativeFraction": 0.021966926753520966
+        },
+        "gmnet": {
+          "maeEV": 0.12968498468399048,
+          "positiveMAE": 0.2836470603942871,
+          "negativeMAE": 0.11711424589157104,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.021966926753520966
+        }
+      }
+    },
+    {
+      "id": "schachen_forest-1",
+      "group": "schachen_forest",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.21996121108531952,
+          "positiveMAE": 0.3483408987522125,
+          "negativeMAE": 0.06414615362882614,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0025660607498139143
+        },
+        "signed": {
+          "maeEV": 0.09423881024122238,
+          "positiveMAE": 0.1335577517747879,
+          "negativeMAE": 0.05304620414972305,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0025660607498139143
+        },
+        "gmnet": {
+          "maeEV": 0.07183774560689926,
+          "positiveMAE": 0.08280948549509048,
+          "negativeMAE": 0.10447254776954651,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0025660607498139143
+        }
+      }
+    },
+    {
+      "id": "schachen_forest-2",
+      "group": "schachen_forest",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.367311954498291,
+          "positiveMAE": 0.9293023943901062,
+          "negativeMAE": 0.09065534919500351,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.5936431884765625
+        },
+        "signed": {
+          "maeEV": 0.16971594095230103,
+          "positiveMAE": 0.3699692189693451,
+          "negativeMAE": 0.07126302272081375,
+          "negativePrecision": 0.8928571343421936,
+          "negativeRecall": 0.004498136695474386,
+          "negativeFraction": 0.5936431884765625
+        },
+        "gmnet": {
+          "maeEV": 0.19641202688217163,
+          "positiveMAE": 0.18102490901947021,
+          "negativeMAE": 0.2040630578994751,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.5936431884765625
+        }
+      }
+    },
+    {
+      "id": "shudu_lake-0",
+      "group": "shudu_lake",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.22462186217308044,
+          "positiveMAE": 0.30220091342926025,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.06457250565290451,
+          "positiveMAE": 0.07704491913318634,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.05806086212396622,
+          "positiveMAE": 0.05764666199684143,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "shudu_lake-1",
+      "group": "shudu_lake",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.23026637732982635,
+          "positiveMAE": 0.3001942038536072,
+          "negativeMAE": 0.05232284590601921,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.5260884538292885e-05
+        },
+        "signed": {
+          "maeEV": 0.08398134261369705,
+          "positiveMAE": 0.09126702696084976,
+          "negativeMAE": 0.007124606519937515,
+          "negativePrecision": 0.0008576329564675689,
+          "negativeRecall": 1.0,
+          "negativeFraction": 1.5260884538292885e-05
+        },
+        "gmnet": {
+          "maeEV": 0.17715662717819214,
+          "positiveMAE": 0.20926113426685333,
+          "negativeMAE": 0.09326629340648651,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.5260884538292885e-05
+        }
+      }
+    },
+    {
+      "id": "shudu_lake-2",
+      "group": "shudu_lake",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.9306257367134094,
+          "positiveMAE": 0.4738931655883789,
+          "negativeMAE": 1.1309080123901367,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.697418212890625
+        },
+        "signed": {
+          "maeEV": 0.8943738341331482,
+          "positiveMAE": 0.2300204187631607,
+          "negativeMAE": 1.1815247535705566,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.0009407955221831799,
+          "negativeFraction": 0.697418212890625
+        },
+        "gmnet": {
+          "maeEV": 1.068127989768982,
+          "positiveMAE": 0.3888035714626312,
+          "negativeMAE": 1.3620250225067139,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.697418212890625
+        }
+      }
+    },
+    {
+      "id": "skukuza_golf-0",
+      "group": "skukuza_golf",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.18729905784130096,
+          "positiveMAE": 0.2626833915710449,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.08339020609855652,
+          "positiveMAE": 0.1004791259765625,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.09520319849252701,
+          "positiveMAE": 0.10331005603075027,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "skukuza_golf-1",
+      "group": "skukuza_golf",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.6055892109870911,
+          "positiveMAE": 0.30831050872802734,
+          "negativeMAE": 0.6866522431373596,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8166888356208801
+        },
+        "signed": {
+          "maeEV": 0.6716022491455078,
+          "positiveMAE": 0.3771529495716095,
+          "negativeMAE": 0.7358611822128296,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.014593507163226604,
+          "negativeFraction": 0.8166888356208801
+        },
+        "gmnet": {
+          "maeEV": 0.8081182837486267,
+          "positiveMAE": 0.45436152815818787,
+          "negativeMAE": 0.8826149702072144,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8166888356208801
+        }
+      }
+    },
+    {
+      "id": "skukuza_golf-2",
+      "group": "skukuza_golf",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.3373297154903412,
+          "positiveMAE": 0.3722294270992279,
+          "negativeMAE": 0.06016821786761284,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00042729824781417847
+        },
+        "signed": {
+          "maeEV": 0.1319132000207901,
+          "positiveMAE": 0.14277753233909607,
+          "negativeMAE": 0.07188551872968674,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00042729824781417847
+        },
+        "gmnet": {
+          "maeEV": 0.15959779918193817,
+          "positiveMAE": 0.17087772488594055,
+          "negativeMAE": 0.12568223476409912,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.00042729824781417847
+        }
+      }
+    },
+    {
+      "id": "small_empty_room_1-0",
+      "group": "small_empty_room_4",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.6713494062423706,
+          "positiveMAE": 0.6820626854896545,
+          "negativeMAE": 0.6766665577888489,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8760946393013
+        },
+        "signed": {
+          "maeEV": 0.5908249616622925,
+          "positiveMAE": 0.15893183648586273,
+          "negativeMAE": 0.6523926258087158,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.03703329712152481,
+          "negativeFraction": 0.8760946393013
+        },
+        "gmnet": {
+          "maeEV": 0.7720605731010437,
+          "positiveMAE": 0.475872278213501,
+          "negativeMAE": 0.8128200173377991,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8760946393013
+        }
+      }
+    },
+    {
+      "id": "small_empty_room_1-1",
+      "group": "small_empty_room_4",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.18841847777366638,
+          "positiveMAE": 0.105357326567173,
+          "negativeMAE": 0.2273329794406891,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.7493896484375
+        },
+        "signed": {
+          "maeEV": 0.8642544150352478,
+          "positiveMAE": 0.7674952745437622,
+          "negativeMAE": 0.8895595073699951,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.7493896484375
+        },
+        "gmnet": {
+          "maeEV": 0.6510162353515625,
+          "positiveMAE": 0.5129804015159607,
+          "negativeMAE": 0.6901100277900696,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.7493896484375
+        }
+      }
+    },
+    {
+      "id": "small_empty_room_1-2",
+      "group": "small_empty_room_4",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.46450576186180115,
+          "positiveMAE": 0.4787501394748688,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.11590391397476196,
+          "positiveMAE": 0.11567240208387375,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.12023042142391205,
+          "positiveMAE": 0.11872242391109467,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "stierberg_sunrise-0",
+      "group": "stierberg_sunrise",
+      "unrepresentableFraction": 0.001739501953125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.6563072204589844,
+          "positiveMAE": 0.662909984588623,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.2706602215766907,
+          "positiveMAE": 0.27313777804374695,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.36032235622406006,
+          "positiveMAE": 0.3635309040546417,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "stierberg_sunrise-1",
+      "group": "stierberg_sunrise",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.31856709718704224,
+          "positiveMAE": 0.37581199407577515,
+          "negativeMAE": 0.23658281564712524,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.039215087890625
+        },
+        "signed": {
+          "maeEV": 0.24364984035491943,
+          "positiveMAE": 0.22588962316513062,
+          "negativeMAE": 0.405657023191452,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.0038910505827516317,
+          "negativeFraction": 0.039215087890625
+        },
+        "gmnet": {
+          "maeEV": 0.16020244359970093,
+          "positiveMAE": 0.12521816790103912,
+          "negativeMAE": 0.46721798181533813,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.039215087890625
+        }
+      }
+    },
+    {
+      "id": "stierberg_sunrise-2",
+      "group": "stierberg_sunrise",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.3167578876018524,
+          "positiveMAE": 0.3335437774658203,
+          "negativeMAE": 0.05907435342669487,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        },
+        "signed": {
+          "maeEV": 0.10052619874477386,
+          "positiveMAE": 0.1034286692738533,
+          "negativeMAE": 0.029699496924877167,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        },
+        "gmnet": {
+          "maeEV": 0.1585627794265747,
+          "positiveMAE": 0.16308017075061798,
+          "negativeMAE": 0.11418972909450531,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        }
+      }
+    },
+    {
+      "id": "suburban_garden-0",
+      "group": "suburban_garden",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.31396010518074036,
+          "positiveMAE": 0.3462969660758972,
+          "negativeMAE": 0.1456148773431778,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0943450927734375
+        },
+        "signed": {
+          "maeEV": 0.23726239800453186,
+          "positiveMAE": 0.2322813868522644,
+          "negativeMAE": 0.24295885860919952,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.001779071637429297,
+          "negativeFraction": 0.0943450927734375
+        },
+        "gmnet": {
+          "maeEV": 0.11328598111867905,
+          "positiveMAE": 0.08446899056434631,
+          "negativeMAE": 0.30895811319351196,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0943450927734375
+        }
+      }
+    },
+    {
+      "id": "suburban_garden-1",
+      "group": "suburban_garden",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.02837470918893814,
+          "positiveMAE": 0.24291472136974335,
+          "negativeMAE": 0.05353826284408569,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        },
+        "signed": {
+          "maeEV": 0.056623540818691254,
+          "positiveMAE": 0.16987867653369904,
+          "negativeMAE": 0.04447537660598755,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        },
+        "gmnet": {
+          "maeEV": 1.1441913843154907,
+          "positiveMAE": 1.4039677381515503,
+          "negativeMAE": 0.257999986410141,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        }
+      }
+    },
+    {
+      "id": "suburban_garden-2",
+      "group": "suburban_garden",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.007489352487027645,
+          "positiveMAE": 0.05903087556362152,
+          "negativeMAE": 0.056304484605789185,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.000457763671875
+        },
+        "signed": {
+          "maeEV": 0.33128997683525085,
+          "positiveMAE": 0.08038429915904999,
+          "negativeMAE": 0.028251292183995247,
+          "negativePrecision": 0.004651162773370743,
+          "negativeRecall": 0.03333333507180214,
+          "negativeFraction": 0.000457763671875
+        },
+        "gmnet": {
+          "maeEV": 0.42315322160720825,
+          "positiveMAE": 0.043705716729164124,
+          "negativeMAE": 0.15304353833198547,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.000457763671875
+        }
+      }
+    },
+    {
+      "id": "summer_stage_01-0",
+      "group": "summer_stage_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.20495575666427612,
+          "positiveMAE": 0.31327706575393677,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.08714550733566284,
+          "positiveMAE": 0.10151053220033646,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.13557633757591248,
+          "positiveMAE": 0.1651444435119629,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "summer_stage_01-1",
+      "group": "summer_stage_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.1967252939939499,
+          "positiveMAE": 0.27945929765701294,
+          "negativeMAE": 0.052086036652326584,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        },
+        "signed": {
+          "maeEV": 0.09613291919231415,
+          "positiveMAE": 0.12971509993076324,
+          "negativeMAE": 0.03792256861925125,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        },
+        "gmnet": {
+          "maeEV": 0.09258036315441132,
+          "positiveMAE": 0.10408341884613037,
+          "negativeMAE": 0.10958883166313171,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 1.52587890625e-05
+        }
+      }
+    },
+    {
+      "id": "summer_stage_01-2",
+      "group": "summer_stage_02",
+      "unrepresentableFraction": 3.0517578125e-05,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.3741983473300934,
+          "positiveMAE": 0.42504897713661194,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.15465864539146423,
+          "positiveMAE": 0.16926030814647675,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.0752306804060936,
+          "positiveMAE": 0.07721002399921417,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "tv_studio-0",
+      "group": "tv_studio",
+      "unrepresentableFraction": 0.0033721923828125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.36595094203948975,
+          "positiveMAE": 0.3822201192378998,
+          "negativeMAE": 0.052113719284534454,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        },
+        "signed": {
+          "maeEV": 0.12900619208812714,
+          "positiveMAE": 0.1328599750995636,
+          "negativeMAE": 0.020315997302532196,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        },
+        "gmnet": {
+          "maeEV": 0.11880052089691162,
+          "positiveMAE": 0.12143149971961975,
+          "negativeMAE": 0.12343280017375946,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        }
+      }
+    },
+    {
+      "id": "tv_studio-1",
+      "group": "tv_studio",
+      "unrepresentableFraction": 1.52587890625e-05,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.38936281204223633,
+          "positiveMAE": 0.3964197635650635,
+          "negativeMAE": 0.057998619973659515,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        },
+        "signed": {
+          "maeEV": 0.14680209755897522,
+          "positiveMAE": 0.14845693111419678,
+          "negativeMAE": 0.030909571796655655,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        },
+        "gmnet": {
+          "maeEV": 0.08541601896286011,
+          "positiveMAE": 0.0855473205447197,
+          "negativeMAE": 0.10104867815971375,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 3.0517578125e-05
+        }
+      }
+    },
+    {
+      "id": "tv_studio-2",
+      "group": "tv_studio",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.009388988837599754,
+          "positiveMAE": 0.12112550437450409,
+          "negativeMAE": 0.05627889931201935,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.000503809074871242
+        },
+        "signed": {
+          "maeEV": 0.1478998363018036,
+          "positiveMAE": 1.4364525079727173,
+          "negativeMAE": 0.02279665879905224,
+          "negativePrecision": 0.0009727626456879079,
+          "negativeRecall": 0.1515151560306549,
+          "negativeFraction": 0.000503809074871242
+        },
+        "gmnet": {
+          "maeEV": 0.32673749327659607,
+          "positiveMAE": 1.3343223333358765,
+          "negativeMAE": 0.11030135303735733,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.000503809074871242
+        }
+      }
+    },
+    {
+      "id": "urban_courtyard_02-0",
+      "group": "urban_courtyard_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.1510181427001953,
+          "positiveMAE": 0.1995619386434555,
+          "negativeMAE": 0.06342927366495132,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0035251029767096043
+        },
+        "signed": {
+          "maeEV": 0.05901450663805008,
+          "positiveMAE": 0.06681129336357117,
+          "negativeMAE": 0.050931256264448166,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0035251029767096043
+        },
+        "gmnet": {
+          "maeEV": 0.04929453507065773,
+          "positiveMAE": 0.044169727712869644,
+          "negativeMAE": 0.10482337325811386,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0035251029767096043
+        }
+      }
+    },
+    {
+      "id": "urban_courtyard_02-1",
+      "group": "urban_courtyard_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.19399264454841614,
+          "positiveMAE": 0.2163059413433075,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.05739397928118706,
+          "positiveMAE": 0.05993345379829407,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.04947630316019058,
+          "positiveMAE": 0.04853002354502678,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "urban_courtyard_02-2",
+      "group": "urban_courtyard_02",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5097002983093262,
+          "positiveMAE": 0.5115758776664734,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.1707749366760254,
+          "positiveMAE": 0.17118704319000244,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.12671953439712524,
+          "positiveMAE": 0.1268709897994995,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "urban_street_03-0",
+      "group": "urban_street_04",
+      "unrepresentableFraction": 0.0024641852360218763,
+      "metrics": {
+        "identity": {
+          "maeEV": 1.0247209072113037,
+          "positiveMAE": 0.21205450594425201,
+          "negativeMAE": 1.1214125156402588,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8986775875091553
+        },
+        "signed": {
+          "maeEV": 1.1282827854156494,
+          "positiveMAE": 0.6254647374153137,
+          "negativeMAE": 1.184930443763733,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.00430887658149004,
+          "negativeFraction": 0.8986775875091553
+        },
+        "gmnet": {
+          "maeEV": 1.284914493560791,
+          "positiveMAE": 0.7786650657653809,
+          "negativeMAE": 1.3415627479553223,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.8986775875091553
+        }
+      }
+    },
+    {
+      "id": "urban_street_03-1",
+      "group": "urban_street_04",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.16615790128707886,
+          "positiveMAE": 0.23603302240371704,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.07821927219629288,
+          "positiveMAE": 0.08725707978010178,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.12714694440364838,
+          "positiveMAE": 0.1494893729686737,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "urban_street_03-2",
+      "group": "urban_street_04",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5272465944290161,
+          "positiveMAE": 0.5888994336128235,
+          "negativeMAE": 0.06699667870998383,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.002613879507407546
+        },
+        "signed": {
+          "maeEV": 0.3338180184364319,
+          "positiveMAE": 0.36993029713630676,
+          "negativeMAE": 0.04818350449204445,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.002613879507407546
+        },
+        "gmnet": {
+          "maeEV": 0.21130035817623138,
+          "positiveMAE": 0.23157577216625214,
+          "negativeMAE": 0.11013441532850266,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.002613879507407546
+        }
+      }
+    },
+    {
+      "id": "waterbuck_trail-0",
+      "group": "waterbuck_trail",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.13816946744918823,
+          "positiveMAE": 0.23372085392475128,
+          "negativeMAE": 0.06486084312200546,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.010810315608978271
+        },
+        "signed": {
+          "maeEV": 0.14430004358291626,
+          "positiveMAE": 0.2440909594297409,
+          "negativeMAE": 0.05529326573014259,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.010810315608978271
+        },
+        "gmnet": {
+          "maeEV": 0.11132427304983139,
+          "positiveMAE": 0.15835295617580414,
+          "negativeMAE": 0.10660203546285629,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.010810315608978271
+        }
+      }
+    },
+    {
+      "id": "waterbuck_trail-1",
+      "group": "waterbuck_trail",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2825353145599365,
+          "positiveMAE": 0.3692673444747925,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.07804013788700104,
+          "positiveMAE": 0.08015197515487671,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.16211652755737305,
+          "positiveMAE": 0.19293832778930664,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "waterbuck_trail-2",
+      "group": "waterbuck_trail",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.33926403522491455,
+          "positiveMAE": 0.432005912065506,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.07368110120296478,
+          "positiveMAE": 0.08449774980545044,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.09376813471317291,
+          "positiveMAE": 0.1078076958656311,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "wildflower_field-0",
+      "group": "wildflower_field",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.28076857328414917,
+          "positiveMAE": 0.4915976822376251,
+          "negativeMAE": 0.0705057680606842,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.02980712056159973
+        },
+        "signed": {
+          "maeEV": 0.10670692473649979,
+          "positiveMAE": 0.17095057666301727,
+          "negativeMAE": 0.0650922879576683,
+          "negativePrecision": 0.02857142873108387,
+          "negativeRecall": 0.0005243838531896472,
+          "negativeFraction": 0.02980712056159973
+        },
+        "gmnet": {
+          "maeEV": 0.1368444263935089,
+          "positiveMAE": 0.21651308238506317,
+          "negativeMAE": 0.1041918620467186,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.02980712056159973
+        }
+      }
+    },
+    {
+      "id": "wildflower_field-1",
+      "group": "wildflower_field",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.36050862073898315,
+          "positiveMAE": 0.38982510566711426,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.13288673758506775,
+          "positiveMAE": 0.1387472301721573,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.08523491024971008,
+          "positiveMAE": 0.08543720096349716,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "wildflower_field-2",
+      "group": "wildflower_field",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.6901276111602783,
+          "positiveMAE": 0.703872561454773,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.39746272563934326,
+          "positiveMAE": 0.4044834077358246,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.23192867636680603,
+          "positiveMAE": 0.2355480194091797,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "winter_river-0",
+      "group": "winter_river",
+      "unrepresentableFraction": 0.001953125,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.6208559274673462,
+          "positiveMAE": 0.5566660165786743,
+          "negativeMAE": 0.6344742178916931,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.921905517578125
+        },
+        "signed": {
+          "maeEV": 0.8209508657455444,
+          "positiveMAE": 0.366912305355072,
+          "negativeMAE": 0.8571637868881226,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.01595550961792469,
+          "negativeFraction": 0.921905517578125
+        },
+        "gmnet": {
+          "maeEV": 1.0197105407714844,
+          "positiveMAE": 0.6381509304046631,
+          "negativeMAE": 1.0493886470794678,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.921905517578125
+        }
+      }
+    },
+    {
+      "id": "winter_river-1",
+      "group": "winter_river",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.5848520994186401,
+          "positiveMAE": 0.5848520994186401,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.11730726063251495,
+          "positiveMAE": 0.11730726063251495,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.2605840563774109,
+          "positiveMAE": 0.2605840563774109,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "winter_river-2",
+      "group": "winter_river",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.4616129398345947,
+          "positiveMAE": 0.46686863899230957,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.038195207715034485,
+          "positiveMAE": 0.038240425288677216,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.1734875738620758,
+          "positiveMAE": 0.17500418424606323,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "witsand_woolshop-0",
+      "group": "witsand_woolshop",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.8060144782066345,
+          "positiveMAE": 1.0242836475372314,
+          "negativeMAE": 0.8007894158363342,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.9369237422943115
+        },
+        "signed": {
+          "maeEV": 0.7384175658226013,
+          "positiveMAE": 0.2634371817111969,
+          "negativeMAE": 0.7709342241287231,
+          "negativePrecision": 1.0,
+          "negativeRecall": 0.039792902767658234,
+          "negativeFraction": 0.9369237422943115
+        },
+        "gmnet": {
+          "maeEV": 0.9172719717025757,
+          "positiveMAE": 0.33214184641838074,
+          "negativeMAE": 0.9540168046951294,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.9369237422943115
+        }
+      }
+    },
+    {
+      "id": "witsand_woolshop-1",
+      "group": "witsand_woolshop",
+      "unrepresentableFraction": 0.01776653714478016,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.19506493210792542,
+          "positiveMAE": 0.26988956332206726,
+          "negativeMAE": 0.0668187141418457,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.003970261197537184
+        },
+        "signed": {
+          "maeEV": 0.13466879725456238,
+          "positiveMAE": 0.1746693253517151,
+          "negativeMAE": 0.04474974796175957,
+          "negativePrecision": 0.01272727269679308,
+          "negativeRecall": 0.027027027681469917,
+          "negativeFraction": 0.003970261197537184
+        },
+        "gmnet": {
+          "maeEV": 0.07310187816619873,
+          "positiveMAE": 0.08317095041275024,
+          "negativeMAE": 0.11067541688680649,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.003970261197537184
+        }
+      }
+    },
+    {
+      "id": "witsand_woolshop-2",
+      "group": "witsand_woolshop",
+      "unrepresentableFraction": 0.01068115234375,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.7475461959838867,
+          "positiveMAE": 0.7526625394821167,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.3764263689517975,
+          "positiveMAE": 0.37859025597572327,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.3280261754989624,
+          "positiveMAE": 0.32986682653427124,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "zwartkops_straight_sunset-0",
+      "group": "zwartkops_straight_sunset",
+      "unrepresentableFraction": 0.00115966796875,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.20462101697921753,
+          "positiveMAE": 0.3665444850921631,
+          "negativeMAE": 0.06153064966201782,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0044403076171875
+        },
+        "signed": {
+          "maeEV": 0.07327423244714737,
+          "positiveMAE": 0.10020195692777634,
+          "negativeMAE": 0.03932008892297745,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0044403076171875
+        },
+        "gmnet": {
+          "maeEV": 0.16176515817642212,
+          "positiveMAE": 0.2390889972448349,
+          "negativeMAE": 0.12146806716918945,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0044403076171875
+        }
+      }
+    },
+    {
+      "id": "zwartkops_straight_sunset-1",
+      "group": "zwartkops_straight_sunset",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.390239417552948,
+          "positiveMAE": 0.4402831494808197,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.13939017057418823,
+          "positiveMAE": 0.1491665244102478,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.13475942611694336,
+          "positiveMAE": 0.14064106345176697,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "zwartkops_straight_sunset-2",
+      "group": "zwartkops_straight_sunset",
+      "unrepresentableFraction": 0.0,
+      "metrics": {
+        "identity": {
+          "maeEV": 0.2528115510940552,
+          "positiveMAE": 0.38979262113571167,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "signed": {
+          "maeEV": 0.04880210757255554,
+          "positiveMAE": 0.04792395606637001,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        },
+        "gmnet": {
+          "maeEV": 0.08754923939704895,
+          "positiveMAE": 0.09537690132856369,
+          "negativeMAE": null,
+          "negativePrecision": 0.0,
+          "negativeRecall": 0.0,
+          "negativeFraction": 0.0
+        }
+      }
+    }
+  ]
+}

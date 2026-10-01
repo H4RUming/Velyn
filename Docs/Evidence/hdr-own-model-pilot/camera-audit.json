@@ -1,0 +1,2693 @@
+{
+  "scope": "Local macOS CPU; 15 previously used camera scenes, not fresh validation. Candidate float simulation, baseline actual app 1024px NE render. No export or device display claim.",
+  "checkpointSHA256": "982c19314a4c93096c2bf5ca1734013ee5964a69de917be4ea0e3464e0abcc4f",
+  "summary": {
+    "SDR": {
+      "meanMAE_EV": 0.6134395032746615,
+      "improvedScenes": 0,
+      "worstRegressionEV": 0.2815188173600276,
+      "meanBaseColorShift": 0.0
+    },
+    "currentGMNet": {
+      "meanMAE_EV": 0.4630323958090415,
+      "improvedScenes": 0,
+      "worstRegressionEV": 0.0,
+      "meanBaseColorShift": 0.00044464179129320025
+    },
+    "signedRaw": {
+      "meanMAE_EV": 0.49203620737539716,
+      "improvedScenes": 4,
+      "worstRegressionEV": 0.16238275350623468,
+      "meanBaseColorShift": 6.022543250083199e-17
+    },
+    "signedProtected": {
+      "meanMAE_EV": 0.530663193496948,
+      "improvedScenes": 0,
+      "worstRegressionEV": 0.1548539279593497,
+      "meanBaseColorShift": 5.276964703694392e-17
+    },
+    "boundedScalarOracle": {
+      "meanMAE_EV": 0.0015642605512158013,
+      "improvedScenes": 15,
+      "worstRegressionEV": -0.05195762035112565,
+      "meanBaseColorShift": 6.08282154276374e-17
+    }
+  },
+  "samples": [
+    {
+      "id": "DJI_1_0226_D",
+      "secondsCPU": 0.16123320900078397,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.6939161555322664,
+          "p95EV": 0.8921346770422689,
+          "meanRatio": 0.5931626367633501,
+          "gainCorrelation": null,
+          "puPSNR": 26.323719255971177,
+          "puSSIM": 0.9869604174922209,
+          "uvError": 2.690227048426447e-06,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 39355,
+              "maeEV": 0.6697184470898847
+            },
+            "mid": {
+              "pixels": 133399,
+              "maeEV": 0.6657007294312351
+            },
+            "bright": {
+              "pixels": 23652,
+              "maeEV": 0.8933162249640856
+            },
+            "hdr": {
+              "pixels": 16109,
+              "maeEV": 0.9588430805873235
+            },
+            "edges": {
+              "pixels": 19514,
+              "maeEV": 0.6707659659557055
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.4628015041806317,
+          "p95EV": 0.7195175041254804,
+          "meanRatio": 0.893388230945759,
+          "gainCorrelation": 0.6267558177102625,
+          "puPSNR": 29.58237928371899,
+          "puSSIM": 0.9874336825306724,
+          "uvError": 0.0003028629376875142,
+          "baseColorShift": 0.0003011816712974169,
+          "aboveSDR": 0.093780517578125,
+          "regions": {
+            "dark": {
+              "pixels": 39355,
+              "maeEV": 0.6675922074154147
+            },
+            "mid": {
+              "pixels": 133399,
+              "maeEV": 0.46980916131333345
+            },
+            "bright": {
+              "pixels": 23652,
+              "maeEV": 0.08252277174150702
+            },
+            "hdr": {
+              "pixels": 16109,
+              "maeEV": 0.0732439481023926
+            },
+            "edges": {
+              "pixels": 19514,
+              "maeEV": 0.646054970811495
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.5395609456566461,
+          "p95EV": 0.723639102359497,
+          "meanRatio": 0.8170790167383202,
+          "gainCorrelation": 0.7228844157272594,
+          "puPSNR": 28.53573242886901,
+          "puSSIM": 0.9883446676371124,
+          "uvError": 2.6902270484265094e-06,
+          "baseColorShift": 5.875533566040204e-17,
+          "aboveSDR": 0.07108052571614583,
+          "regions": {
+            "dark": {
+              "pixels": 39355,
+              "maeEV": 0.7066952571526489
+            },
+            "mid": {
+              "pixels": 133399,
+              "maeEV": 0.5664797854086151
+            },
+            "bright": {
+              "pixels": 23652,
+              "maeEV": 0.10963886156235869
+            },
+            "hdr": {
+              "pixels": 16109,
+              "maeEV": 0.10178639128133281
+            },
+            "edges": {
+              "pixels": 19514,
+              "maeEV": 0.696558296882182
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.5704344958911604,
+          "p95EV": 0.679074352664937,
+          "meanRatio": 0.7445998850186181,
+          "gainCorrelation": 0.7685117540058193,
+          "puPSNR": 28.308188915243914,
+          "puSSIM": 0.9891454507771371,
+          "uvError": 2.690227048426484e-06,
+          "baseColorShift": 5.665265485702384e-17,
+          "aboveSDR": 0.039093017578125,
+          "regions": {
+            "dark": {
+              "pixels": 39355,
+              "maeEV": 0.670018130305321
+            },
+            "mid": {
+              "pixels": 133399,
+              "maeEV": 0.5901293813306363
+            },
+            "bright": {
+              "pixels": 23652,
+              "maeEV": 0.2936548597035268
+            },
+            "hdr": {
+              "pixels": 16109,
+              "maeEV": 0.30344261231367764
+            },
+            "edges": {
+              "pixels": 19514,
+              "maeEV": 0.6677656894002313
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 1.1306086464667388e-16,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 1.0,
+          "gainCorrelation": 1.0,
+          "puPSNR": 255.49608790902087,
+          "puSSIM": 1.0,
+          "uvError": 2.6902270484265048e-06,
+          "baseColorShift": 5.913393681326415e-17,
+          "aboveSDR": 0.08193461100260417,
+          "regions": {
+            "dark": {
+              "pixels": 39355,
+              "maeEV": 1.1651339594868942e-16
+            },
+            "mid": {
+              "pixels": 133399,
+              "maeEV": 1.1071235452936758e-16
+            },
+            "bright": {
+              "pixels": 23652,
+              "maeEV": 1.205619018421634e-16
+            },
+            "hdr": {
+              "pixels": 16109,
+              "maeEV": 1.1566658550772531e-16
+            },
+            "edges": {
+              "pixels": 19514,
+              "maeEV": 1.131475718845153e-16
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0,
+        "predictedFraction": 0.06796126391250776,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "DJI_1_0616_D",
+      "secondsCPU": 0.11152083300112281,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.6788487894887926,
+          "p95EV": 0.7679870900652521,
+          "meanRatio": 0.6121025161385751,
+          "gainCorrelation": null,
+          "puPSNR": 26.57967782587617,
+          "puSSIM": 0.9882787739223579,
+          "uvError": 2.7221069096496973e-06,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 21681,
+              "maeEV": 0.6704609690488265
+            },
+            "mid": {
+              "pixels": 152370,
+              "maeEV": 0.6647423567465769
+            },
+            "bright": {
+              "pixels": 20415,
+              "maeEV": 0.7930419558806783
+            },
+            "hdr": {
+              "pixels": 12323,
+              "maeEV": 0.851168301616419
+            },
+            "edges": {
+              "pixels": 18595,
+              "maeEV": 0.6701567232080357
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.47896491603909147,
+          "p95EV": 0.7367730284390477,
+          "meanRatio": 0.885066471354645,
+          "gainCorrelation": 0.5443323223412992,
+          "puPSNR": 29.28062387749655,
+          "puSSIM": 0.9860163439811537,
+          "uvError": 0.0004154960892575609,
+          "baseColorShift": 0.00041372718569659327,
+          "aboveSDR": 0.0765838623046875,
+          "regions": {
+            "dark": {
+              "pixels": 21681,
+              "maeEV": 0.6649244956989386
+            },
+            "mid": {
+              "pixels": 152370,
+              "maeEV": 0.5001096754636635
+            },
+            "bright": {
+              "pixels": 20415,
+              "maeEV": 0.12365672891554703
+            },
+            "hdr": {
+              "pixels": 12323,
+              "maeEV": 0.13594895614633357
+            },
+            "edges": {
+              "pixels": 18595,
+              "maeEV": 0.648091136810063
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.5767392848987513,
+          "p95EV": 0.7254324122502679,
+          "meanRatio": 0.7976186926801483,
+          "gainCorrelation": 0.7151295849400919,
+          "puPSNR": 27.952700345423878,
+          "puSSIM": 0.9883606995905444,
+          "uvError": 2.7221069096496977e-06,
+          "baseColorShift": 6.152138139518882e-17,
+          "aboveSDR": 0.051534016927083336,
+          "regions": {
+            "dark": {
+              "pixels": 21681,
+              "maeEV": 0.7081438903146393
+            },
+            "mid": {
+              "pixels": 152370,
+              "maeEV": 0.6152407207733114
+            },
+            "bright": {
+              "pixels": 20415,
+              "maeEV": 0.14982539637420766
+            },
+            "hdr": {
+              "pixels": 12323,
+              "maeEV": 0.13012042025436407
+            },
+            "edges": {
+              "pixels": 18595,
+              "maeEV": 0.7044229659757896
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.5856244717209798,
+          "p95EV": 0.6840224957427068,
+          "meanRatio": 0.7393448706309196,
+          "gainCorrelation": 0.7612768064216436,
+          "puPSNR": 27.94207066625452,
+          "puSSIM": 0.989293957037933,
+          "uvError": 2.7221069096497252e-06,
+          "baseColorShift": 5.981271420054125e-17,
+          "aboveSDR": 0.0413665771484375,
+          "regions": {
+            "dark": {
+              "pixels": 21681,
+              "maeEV": 0.6707693198828986
+            },
+            "mid": {
+              "pixels": 152370,
+              "maeEV": 0.6193236930146524
+            },
+            "bright": {
+              "pixels": 20415,
+              "maeEV": 0.24368100850689978
+            },
+            "hdr": {
+              "pixels": 12323,
+              "maeEV": 0.1967632943273678
+            },
+            "edges": {
+              "pixels": 18595,
+              "maeEV": 0.6719244446927948
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 1.141665255418144e-16,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 1.0,
+          "gainCorrelation": 0.9999999999999999,
+          "puPSNR": 255.49608790902087,
+          "puSSIM": 1.0,
+          "uvError": 2.722106909649702e-06,
+          "baseColorShift": 6.23639028567847e-17,
+          "aboveSDR": 0.06267801920572917,
+          "regions": {
+            "dark": {
+              "pixels": 21681,
+              "maeEV": 1.1644391068938408e-16
+            },
+            "mid": {
+              "pixels": 152370,
+              "maeEV": 1.137650554403313e-16
+            },
+            "bright": {
+              "pixels": 20415,
+              "maeEV": 1.1474433656206997e-16
+            },
+            "hdr": {
+              "pixels": 12323,
+              "maeEV": 1.0667256884203938e-16
+            },
+            "edges": {
+              "pixels": 18595,
+              "maeEV": 1.1489783848988219e-16
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0,
+        "predictedFraction": 0.09544084827167731,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "DJI_1_0927_D",
+      "secondsCPU": 0.10751954199804459,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.6693319936541653,
+          "p95EV": 0.6715827337512851,
+          "meanRatio": 0.6285668768588318,
+          "gainCorrelation": null,
+          "puPSNR": 26.97153316920106,
+          "puSSIM": 0.9884508030202604,
+          "uvError": 3.036017893582176e-06,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 30870,
+              "maeEV": 0.6681618816500893
+            },
+            "mid": {
+              "pixels": 163762,
+              "maeEV": 0.6686601941734693
+            },
+            "bright": {
+              "pixels": 1976,
+              "maeEV": 0.743287754850286
+            },
+            "hdr": {
+              "pixels": 294,
+              "maeEV": 0.8145096844126073
+            },
+            "edges": {
+              "pixels": 19661,
+              "maeEV": 0.6707209704589957
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.5754678187723733,
+          "p95EV": 0.699685596775939,
+          "meanRatio": 0.7212435270764825,
+          "gainCorrelation": 0.11594674535318125,
+          "puPSNR": 28.2230476273336,
+          "puSSIM": 0.9863242903451697,
+          "uvError": 0.00046636725455639623,
+          "baseColorShift": 0.0004646126993163443,
+          "aboveSDR": 0.0019938151041666665,
+          "regions": {
+            "dark": {
+              "pixels": 30870,
+              "maeEV": 0.6670770583827349
+            },
+            "mid": {
+              "pixels": 163762,
+              "maeEV": 0.5645975111765984
+            },
+            "bright": {
+              "pixels": 1976,
+              "maeEV": 0.04518749778420682
+            },
+            "hdr": {
+              "pixels": 294,
+              "maeEV": 0.06503592886350701
+            },
+            "edges": {
+              "pixels": 19661,
+              "maeEV": 0.6161719716282436
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.48256591790526904,
+          "p95EV": 0.6842630687912313,
+          "meanRatio": 0.8257630435849604,
+          "gainCorrelation": 0.041552555276047745,
+          "puPSNR": 29.59904781423749,
+          "puSSIM": 0.9896594120312643,
+          "uvError": 3.036017893582265e-06,
+          "baseColorShift": 6.153569120696125e-17,
+          "aboveSDR": 0.010615030924479166,
+          "regions": {
+            "dark": {
+              "pixels": 30870,
+              "maeEV": 0.6736356467903467
+            },
+            "mid": {
+              "pixels": 163762,
+              "maeEV": 0.44736935144661116
+            },
+            "bright": {
+              "pixels": 1976,
+              "maeEV": 0.41451813739938215
+            },
+            "hdr": {
+              "pixels": 294,
+              "maeEV": 0.5775019255476445
+            },
+            "edges": {
+              "pixels": 19661,
+              "maeEV": 0.5336330087427292
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.5821817169010516,
+          "p95EV": 0.6716174294655496,
+          "meanRatio": 0.725870474657597,
+          "gainCorrelation": 0.09888237638923478,
+          "puPSNR": 28.121534227985766,
+          "puSSIM": 0.989098426903518,
+          "uvError": 3.0360178935824044e-06,
+          "baseColorShift": 6.050889920526124e-17,
+          "aboveSDR": 0.0039215087890625,
+          "regions": {
+            "dark": {
+              "pixels": 30870,
+              "maeEV": 0.6681465632531722
+            },
+            "mid": {
+              "pixels": 163762,
+              "maeEV": 0.5715646027428498
+            },
+            "bright": {
+              "pixels": 1976,
+              "maeEV": 0.1190972239280981
+            },
+            "hdr": {
+              "pixels": 294,
+              "maeEV": 0.23098674923936174
+            },
+            "edges": {
+              "pixels": 19661,
+              "maeEV": 0.6378158576403689
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 1.1440867133159586e-16,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 1.0,
+          "gainCorrelation": 1.0,
+          "puPSNR": 255.49608790902087,
+          "puSSIM": 1.0,
+          "uvError": 3.036017893582418e-06,
+          "baseColorShift": 6.204198978085265e-17,
+          "aboveSDR": 0.001495361328125,
+          "regions": {
+            "dark": {
+              "pixels": 30870,
+              "maeEV": 1.1552363315101901e-16
+            },
+            "mid": {
+              "pixels": 163762,
+              "maeEV": 1.140287365039698e-16
+            },
+            "bright": {
+              "pixels": 1976,
+              "maeEV": 1.2847750527699e-16
+            },
+            "hdr": {
+              "pixels": 294,
+              "maeEV": 1.0351208090558407e-16
+            },
+            "edges": {
+              "pixels": 19661,
+              "maeEV": 1.1433011432414054e-16
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0,
+        "predictedFraction": 0.00020853678385416666,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "apple",
+      "secondsCPU": 0.12577970900019864,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.11684522371997991,
+          "p95EV": 0.634171828849319,
+          "meanRatio": 0.7845088928691292,
+          "gainCorrelation": null,
+          "puPSNR": 34.50276377375994,
+          "puSSIM": 0.9946712179862597,
+          "uvError": 2.035887860184707e-08,
+          "baseColorShift": 0.0,
+          "aboveSDR": 1.0172526041666666e-05,
+          "regions": {
+            "dark": {
+              "pixels": 54459,
+              "maeEV": 0.00032830956335394584
+            },
+            "mid": {
+              "pixels": 72128,
+              "maeEV": 0.07200116787240925
+            },
+            "bright": {
+              "pixels": 19013,
+              "maeEV": 0.620706091980079
+            },
+            "hdr": {
+              "pixels": 6733,
+              "maeEV": 0.877197573416224
+            },
+            "edges": {
+              "pixels": 13962,
+              "maeEV": 0.040697396150789905
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.05195762035112577,
+          "p95EV": 0.22238656386387376,
+          "meanRatio": 0.9949412765816418,
+          "gainCorrelation": 0.8955663635242694,
+          "puPSNR": 42.30139429883703,
+          "puSSIM": 0.9969080339136598,
+          "uvError": 5.518307593332425e-05,
+          "baseColorShift": 5.5181657934364216e-05,
+          "aboveSDR": 0.040349324544270836,
+          "regions": {
+            "dark": {
+              "pixels": 54459,
+              "maeEV": 0.0010253817803226415
+            },
+            "mid": {
+              "pixels": 72128,
+              "maeEV": 0.05061150860091246
+            },
+            "bright": {
+              "pixels": 19013,
+              "maeEV": 0.20294963258731966
+            },
+            "hdr": {
+              "pixels": 6733,
+              "maeEV": 0.2453138411552587
+            },
+            "edges": {
+              "pixels": 13962,
+              "maeEV": 0.03639390229366402
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.07965845837490154,
+          "p95EV": 0.29141869977298496,
+          "meanRatio": 1.0521555107813352,
+          "gainCorrelation": 0.9044395986372573,
+          "puPSNR": 41.88069045394454,
+          "puSSIM": 0.9981099965053835,
+          "uvError": 2.035887859940469e-08,
+          "baseColorShift": 6.681614418644152e-17,
+          "aboveSDR": 0.046274820963541664,
+          "regions": {
+            "dark": {
+              "pixels": 54459,
+              "maeEV": 0.03742110958074825
+            },
+            "mid": {
+              "pixels": 72128,
+              "maeEV": 0.08902605007495595
+            },
+            "bright": {
+              "pixels": 19013,
+              "maeEV": 0.16510200351976406
+            },
+            "hdr": {
+              "pixels": 6733,
+              "maeEV": 0.17451597225307286
+            },
+            "edges": {
+              "pixels": 13962,
+              "maeEV": 0.059098154225370826
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.05767418281291238,
+          "p95EV": 0.33130534516338933,
+          "meanRatio": 0.9138873004674691,
+          "gainCorrelation": 0.9109438196321114,
+          "puPSNR": 41.228903025941904,
+          "puSSIM": 0.9984746202444145,
+          "uvError": 2.0358878601627023e-08,
+          "baseColorShift": 2.790000674610654e-17,
+          "aboveSDR": 0.025919596354166668,
+          "regions": {
+            "dark": {
+              "pixels": 54459,
+              "maeEV": 0.00032830956335394584
+            },
+            "mid": {
+              "pixels": 72128,
+              "maeEV": 0.05492505015525208
+            },
+            "bright": {
+              "pixels": 19013,
+              "maeEV": 0.2323593114948366
+            },
+            "hdr": {
+              "pixels": 6733,
+              "maeEV": 0.26805622103913196
+            },
+            "edges": {
+              "pixels": 13962,
+              "maeEV": 0.01942237697090192
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 1.1855538266350746e-16,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 1.0,
+          "gainCorrelation": 0.9999999999999999,
+          "puPSNR": 255.49608790902087,
+          "puSSIM": 1.0,
+          "uvError": 2.035887859926437e-08,
+          "baseColorShift": 7.021108042977295e-17,
+          "aboveSDR": 0.034245808919270836,
+          "regions": {
+            "dark": {
+              "pixels": 54459,
+              "maeEV": 1.0814262942651418e-16
+            },
+            "mid": {
+              "pixels": 72128,
+              "maeEV": 1.2547360785343713e-16
+            },
+            "bright": {
+              "pixels": 19013,
+              "maeEV": 1.221355847375708e-16
+            },
+            "hdr": {
+              "pixels": 6733,
+              "maeEV": 1.0552799621953792e-16
+            },
+            "edges": {
+              "pixels": 13962,
+              "maeEV": 1.3287956307723892e-16
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0,
+        "predictedFraction": 0.052520604395604395,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "holdout-01",
+      "secondsCPU": 0.10956958399765426,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.2916056826765117,
+          "p95EV": 1.2074006720233488,
+          "meanRatio": 0.5874279969220223,
+          "gainCorrelation": null,
+          "puPSNR": 28.386448304065084,
+          "puSSIM": 0.9529202609337153,
+          "uvError": 0.003175497466728543,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0012511460880195598,
+          "regions": {
+            "dark": {
+              "pixels": 40924,
+              "maeEV": 0.17523620456872038
+            },
+            "mid": {
+              "pixels": 128263,
+              "maeEV": 0.167530255022505
+            },
+            "bright": {
+              "pixels": 23429,
+              "maeEV": 1.1741269639633407
+            },
+            "hdr": {
+              "pixels": 17212,
+              "maeEV": 1.3694560019608426
+            },
+            "edges": {
+              "pixels": 16876,
+              "maeEV": 0.21155355650338287
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.1269072124076455,
+          "p95EV": 0.42165054616364783,
+          "meanRatio": 0.830624515089581,
+          "gainCorrelation": 0.9228842557087342,
+          "puPSNR": 36.160621912686636,
+          "puSSIM": 0.9858238836457979,
+          "uvError": 0.003253683132257206,
+          "baseColorShift": 0.00045659583355149314,
+          "aboveSDR": 0.06870320140586797,
+          "regions": {
+            "dark": {
+              "pixels": 40924,
+              "maeEV": 0.17332491157529736
+            },
+            "mid": {
+              "pixels": 128263,
+              "maeEV": 0.06866840376477586
+            },
+            "bright": {
+              "pixels": 23429,
+              "maeEV": 0.36465898978710687
+            },
+            "hdr": {
+              "pixels": 17212,
+              "maeEV": 0.4538270784020461
+            },
+            "edges": {
+              "pixels": 16876,
+              "maeEV": 0.13516365453932436
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.2892899659138802,
+          "p95EV": 1.0444012361124977,
+          "meanRatio": 0.6196851429411204,
+          "gainCorrelation": 0.7849564485900681,
+          "puPSNR": 29.49989206332898,
+          "puSSIM": 0.9612538519120831,
+          "uvError": 0.0031754974667285427,
+          "baseColorShift": 6.496574288349571e-17,
+          "aboveSDR": 0.021594208435207825,
+          "regions": {
+            "dark": {
+              "pixels": 40924,
+              "maeEV": 0.20405794465692237
+            },
+            "mid": {
+              "pixels": 128263,
+              "maeEV": 0.1873237045321446
+            },
+            "bright": {
+              "pixels": 23429,
+              "maeEV": 0.9963851821640525
+            },
+            "hdr": {
+              "pixels": 17212,
+              "maeEV": 1.1556461392187667
+            },
+            "edges": {
+              "pixels": 16876,
+              "maeEV": 0.23282823784484508
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.27675814987476,
+          "p95EV": 1.0903859283523998,
+          "meanRatio": 0.6119493911782433,
+          "gainCorrelation": 0.7731709796637473,
+          "puPSNR": 29.24803080125052,
+          "puSSIM": 0.9597263907406365,
+          "uvError": 0.0031754974667285427,
+          "baseColorShift": 5.821636438519695e-17,
+          "aboveSDR": 0.01769273380195599,
+          "regions": {
+            "dark": {
+              "pixels": 40924,
+              "maeEV": 0.17530348761703113
+            },
+            "mid": {
+              "pixels": 128263,
+              "maeEV": 0.1685083100438753
+            },
+            "bright": {
+              "pixels": 23429,
+              "maeEV": 1.0465895470519355
+            },
+            "hdr": {
+              "pixels": 17212,
+              "maeEV": 1.2132684154521571
+            },
+            "edges": {
+              "pixels": 16876,
+              "maeEV": 0.21225638153734055
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 0.00018409053997856773,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.9983013333350594,
+          "gainCorrelation": 0.9999418886818069,
+          "puPSNR": 68.29051147150095,
+          "puSSIM": 0.9999884874867127,
+          "uvError": 0.0031754974667285427,
+          "baseColorShift": 6.538717719434912e-17,
+          "aboveSDR": 0.08219361246943765,
+          "regions": {
+            "dark": {
+              "pixels": 40924,
+              "maeEV": 1.271030149929008e-16
+            },
+            "mid": {
+              "pixels": 128263,
+              "maeEV": 1.2806662937567149e-16
+            },
+            "bright": {
+              "pixels": 23429,
+              "maeEV": 0.0015134569741982232
+            },
+            "hdr": {
+              "pixels": 17212,
+              "maeEV": 0.002060119884295221
+            },
+            "edges": {
+              "pixels": 16876,
+              "maeEV": 1.2780677085912442e-16
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.007844623499605432,
+        "predictedFraction": 0.1129189683100054,
+        "precision": 0.005655172413793103,
+        "recall": 0.0814030443414957
+      }
+    },
+    {
+      "id": "holdout-02",
+      "secondsCPU": 0.10931333300686674,
+      "metrics": {
+        "SDR": {
+          "maeEV": 1.1004608976861026,
+          "p95EV": 1.70410520434776,
+          "meanRatio": 0.39670465818070655,
+          "gainCorrelation": null,
+          "puPSNR": 21.76479008309571,
+          "puSSIM": 0.9515088213618131,
+          "uvError": 0.003361153546474521,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 39877,
+              "maeEV": 0.9278170667396001
+            },
+            "mid": {
+              "pixels": 127581,
+              "maeEV": 1.0963702356385683
+            },
+            "bright": {
+              "pixels": 9747,
+              "maeEV": 1.8603263743804879
+            },
+            "hdr": {
+              "pixels": 18117,
+              "maeEV": 1.703412167199037
+            },
+            "edges": {
+              "pixels": 17748,
+              "maeEV": 0.8448278004318867
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.9194994558469416,
+          "p95EV": 1.375488864408107,
+          "meanRatio": 0.5103223618046777,
+          "gainCorrelation": 0.5839343721804994,
+          "puPSNR": 23.582492709709932,
+          "puSSIM": 0.9607337892270262,
+          "uvError": 0.003628333787736627,
+          "baseColorShift": 0.0009003718859257907,
+          "aboveSDR": 0.02217724336592179,
+          "regions": {
+            "dark": {
+              "pixels": 39877,
+              "maeEV": 0.9254148409754968
+            },
+            "mid": {
+              "pixels": 127581,
+              "maeEV": 0.9018719991672967
+            },
+            "bright": {
+              "pixels": 9747,
+              "maeEV": 1.1260287200179095
+            },
+            "hdr": {
+              "pixels": 18117,
+              "maeEV": 1.055838623518142
+            },
+            "edges": {
+              "pixels": 17748,
+              "maeEV": 0.7357581898194796
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.9405530688782653,
+          "p95EV": 1.396396349595641,
+          "meanRatio": 0.5150495018360541,
+          "gainCorrelation": 0.6254493275085042,
+          "puPSNR": 23.47398640140434,
+          "puSSIM": 0.9646000110789082,
+          "uvError": 0.003361153546474521,
+          "baseColorShift": 5.879371625462323e-17,
+          "aboveSDR": 0.02960784741620112,
+          "regions": {
+            "dark": {
+              "pixels": 39877,
+              "maeEV": 0.9558987250931607
+            },
+            "mid": {
+              "pixels": 127581,
+              "maeEV": 0.9301489766846869
+            },
+            "bright": {
+              "pixels": 9747,
+              "maeEV": 1.013952653701037
+            },
+            "hdr": {
+              "pixels": 18117,
+              "maeEV": 0.9794569894920945
+            },
+            "edges": {
+              "pixels": 17748,
+              "maeEV": 0.7760082207391598
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 1.0056967054730814,
+          "p95EV": 1.4344324550504357,
+          "meanRatio": 0.46609381815064693,
+          "gainCorrelation": 0.635865409223418,
+          "puPSNR": 22.8073116981434,
+          "puSSIM": 0.9652860805350711,
+          "uvError": 0.0033611535464745206,
+          "baseColorShift": 5.2187587607825336e-17,
+          "aboveSDR": 0.015346761522346368,
+          "regions": {
+            "dark": {
+              "pixels": 39877,
+              "maeEV": 0.9278997559066243
+            },
+            "mid": {
+              "pixels": 127581,
+              "maeEV": 1.011768342901529
+            },
+            "bright": {
+              "pixels": 9747,
+              "maeEV": 1.2445069427874218
+            },
+            "hdr": {
+              "pixels": 18117,
+              "maeEV": 1.196284954932913
+            },
+            "edges": {
+              "pixels": 17748,
+              "maeEV": 0.8120562333166826
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 0.00047360821825256157,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.9976279496784515,
+          "gainCorrelation": 0.9993210506249975,
+          "puPSNR": 58.96082101266468,
+          "puSSIM": 0.9999446484259831,
+          "uvError": 0.003361153546474521,
+          "baseColorShift": 5.897431399671441e-17,
+          "aboveSDR": 0.0988346717877095,
+          "regions": {
+            "dark": {
+              "pixels": 39877,
+              "maeEV": 1.1467892533342492e-16
+            },
+            "mid": {
+              "pixels": 127581,
+              "maeEV": 9.967970366361443e-05
+            },
+            "bright": {
+              "pixels": 9747,
+              "maeEV": 0.007305684625252181
+            },
+            "hdr": {
+              "pixels": 18117,
+              "maeEV": 0.004632430552267302
+            },
+            "edges": {
+              "pixels": 17748,
+              "maeEV": 0.0008548352649022213
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0,
+        "predictedFraction": 0.028074828588358115,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "holdout-03",
+      "secondsCPU": 0.11032387500017649,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.33233920034394643,
+          "p95EV": 0.6627483482976304,
+          "meanRatio": 0.6343494205039542,
+          "gainCorrelation": null,
+          "puPSNR": 30.541026511922954,
+          "puSSIM": 0.9820066445250804,
+          "uvError": 0.0017679563785225332,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 52863,
+              "maeEV": 0.3466856179718756
+            },
+            "mid": {
+              "pixels": 114351,
+              "maeEV": 0.2689012255886425
+            },
+            "bright": {
+              "pixels": 5996,
+              "maeEV": 1.4156949668847298
+            },
+            "hdr": {
+              "pixels": 5463,
+              "maeEV": 1.4942926602088096
+            },
+            "edges": {
+              "pixels": 16562,
+              "maeEV": 0.3804208478165656
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.24952592984894115,
+          "p95EV": 0.4707904617506601,
+          "meanRatio": 0.7801851412574174,
+          "gainCorrelation": 0.7660668718845671,
+          "puPSNR": 34.342805195217394,
+          "puSSIM": 0.987814628725817,
+          "uvError": 0.0019385786028825595,
+          "baseColorShift": 0.0006409740566554462,
+          "aboveSDR": 0.019845736228813558,
+          "regions": {
+            "dark": {
+              "pixels": 52863,
+              "maeEV": 0.34773558507148217
+            },
+            "mid": {
+              "pixels": 114351,
+              "maeEV": 0.18366031760439405
+            },
+            "bright": {
+              "pixels": 5996,
+              "maeEV": 0.6398097226686565
+            },
+            "hdr": {
+              "pixels": 5463,
+              "maeEV": 0.7034780608104544
+            },
+            "edges": {
+              "pixels": 16562,
+              "maeEV": 0.26924111817102725
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.2465247943968463,
+          "p95EV": 0.450423512079502,
+          "meanRatio": 0.8927837462168232,
+          "gainCorrelation": 0.763008388096908,
+          "puPSNR": 35.20803194541844,
+          "puSSIM": 0.9893634051444069,
+          "uvError": 0.0017679563785225328,
+          "baseColorShift": 6.531368236876062e-17,
+          "aboveSDR": 0.03147069209039548,
+          "regions": {
+            "dark": {
+              "pixels": 52863,
+              "maeEV": 0.3717541616268398
+            },
+            "mid": {
+              "pixels": 114351,
+              "maeEV": 0.1815885723201379
+            },
+            "bright": {
+              "pixels": 5996,
+              "maeEV": 0.38086800500634077
+            },
+            "hdr": {
+              "pixels": 5463,
+              "maeEV": 0.4038896419027042
+            },
+            "edges": {
+              "pixels": 16562,
+              "maeEV": 0.24190051589889702
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.2612801111865427,
+          "p95EV": 0.4400958828716423,
+          "meanRatio": 0.7893724643431796,
+          "gainCorrelation": 0.8351395309917105,
+          "puPSNR": 34.434782954829586,
+          "puSSIM": 0.9907238135401029,
+          "uvError": 0.0017679563785225332,
+          "baseColorShift": 5.787502896418707e-17,
+          "aboveSDR": 0.024226474223163843,
+          "regions": {
+            "dark": {
+              "pixels": 52863,
+              "maeEV": 0.3468412798908903
+            },
+            "mid": {
+              "pixels": 114351,
+              "maeEV": 0.20777312609224555
+            },
+            "bright": {
+              "pixels": 5996,
+              "maeEV": 0.5273837121371839
+            },
+            "hdr": {
+              "pixels": 5463,
+              "maeEV": 0.5834967179347675
+            },
+            "edges": {
+              "pixels": 16562,
+              "maeEV": 0.29122418574318737
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 0.0005928467601571822,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.9888866839196673,
+          "gainCorrelation": 0.9981827129721142,
+          "puPSNR": 57.08764054157031,
+          "puSSIM": 0.9999118017177613,
+          "uvError": 0.0017679563785225328,
+          "baseColorShift": 6.570039099730573e-17,
+          "aboveSDR": 0.030141022245762712,
+          "regions": {
+            "dark": {
+              "pixels": 52863,
+              "maeEV": 1.2403331948637748e-16
+            },
+            "mid": {
+              "pixels": 114351,
+              "maeEV": 1.2296315838532245e-16
+            },
+            "bright": {
+              "pixels": 5996,
+              "maeEV": 0.017125915164577198
+            },
+            "hdr": {
+              "pixels": 5463,
+              "maeEV": 0.01879681261702449
+            },
+            "edges": {
+              "pixels": 16562,
+              "maeEV": 0.0001140753136374258
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0,
+        "predictedFraction": 0.004739911090583685,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "sunset",
+      "secondsCPU": 0.1148802089956007,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.23597965325312134,
+          "p95EV": 0.5207858691221258,
+          "meanRatio": 0.8069932770728778,
+          "gainCorrelation": null,
+          "puPSNR": 33.587104368521494,
+          "puSSIM": 0.991394043888055,
+          "uvError": 1.9027701451326703e-05,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 9795,
+              "maeEV": 0.014899011451564415
+            },
+            "mid": {
+              "pixels": 157826,
+              "maeEV": 0.21612645210951656
+            },
+            "bright": {
+              "pixels": 13034,
+              "maeEV": 0.642519181420746
+            },
+            "hdr": {
+              "pixels": 3453,
+              "maeEV": 0.9674446135281722
+            },
+            "edges": {
+              "pixels": 13590,
+              "maeEV": 0.12384121980581073
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.09047140968521795,
+          "p95EV": 0.21843816229499144,
+          "meanRatio": 1.067760482227757,
+          "gainCorrelation": 0.9050971691692047,
+          "puPSNR": 41.63956664924842,
+          "puSSIM": 0.9965971387359676,
+          "uvError": 0.0003519335472559257,
+          "baseColorShift": 0.00035262852137620985,
+          "aboveSDR": 0.025044759114583332,
+          "regions": {
+            "dark": {
+              "pixels": 9795,
+              "maeEV": 0.012747586376544058
+            },
+            "mid": {
+              "pixels": 157826,
+              "maeEV": 0.08828485571430522
+            },
+            "bright": {
+              "pixels": 13034,
+              "maeEV": 0.175357086861966
+            },
+            "hdr": {
+              "pixels": 3453,
+              "maeEV": 0.168268912995966
+            },
+            "edges": {
+              "pixels": 13590,
+              "maeEV": 0.06054241707051988
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.10895629488140472,
+          "p95EV": 0.2171749218038431,
+          "meanRatio": 0.9431281122503855,
+          "gainCorrelation": 0.8785088113317222,
+          "puPSNR": 40.845151747918806,
+          "puSSIM": 0.995018401456233,
+          "uvError": 1.902770145132657e-05,
+          "baseColorShift": 6.290647831056415e-17,
+          "aboveSDR": 0.014094034830729166,
+          "regions": {
+            "dark": {
+              "pixels": 9795,
+              "maeEV": 0.053178877795229576
+            },
+            "mid": {
+              "pixels": 157826,
+              "maeEV": 0.10900456147644166
+            },
+            "bright": {
+              "pixels": 13034,
+              "maeEV": 0.15028835539473784
+            },
+            "hdr": {
+              "pixels": 3453,
+              "maeEV": 0.2612547785013067
+            },
+            "edges": {
+              "pixels": 13590,
+              "maeEV": 0.13037712777294702
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.14015831745331722,
+          "p95EV": 0.2522182368494246,
+          "meanRatio": 0.8967013077895423,
+          "gainCorrelation": 0.8794820158253672,
+          "puPSNR": 38.84127214226271,
+          "puSSIM": 0.9957192376924728,
+          "uvError": 1.9027701451326707e-05,
+          "baseColorShift": 6.115663371767116e-17,
+          "aboveSDR": 0.00384521484375,
+          "regions": {
+            "dark": {
+              "pixels": 9795,
+              "maeEV": 0.014973252796497442
+            },
+            "mid": {
+              "pixels": 157826,
+              "maeEV": 0.14144254729905664
+            },
+            "bright": {
+              "pixels": 13034,
+              "maeEV": 0.21868393113138118
+            },
+            "hdr": {
+              "pixels": 3453,
+              "maeEV": 0.43208406199297283
+            },
+            "edges": {
+              "pixels": 13590,
+              "maeEV": 0.11495939721994647
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 1.2515714914008062e-16,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 1.0,
+          "gainCorrelation": 0.9999999999999998,
+          "puPSNR": 255.49608790902087,
+          "puSSIM": 1.0,
+          "uvError": 1.9027701451326666e-05,
+          "baseColorShift": 6.304373641951721e-17,
+          "aboveSDR": 0.0175628662109375,
+          "regions": {
+            "dark": {
+              "pixels": 9795,
+              "maeEV": 1.3096601770828826e-16
+            },
+            "mid": {
+              "pixels": 157826,
+              "maeEV": 1.2450406362529552e-16
+            },
+            "bright": {
+              "pixels": 13034,
+              "maeEV": 1.286998840511494e-16
+            },
+            "hdr": {
+              "pixels": 3453,
+              "maeEV": 1.2194914970358265e-16
+            },
+            "edges": {
+              "pixels": 13590,
+              "maeEV": 1.2778348106829042e-16
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0,
+        "predictedFraction": 0.06402258448423791,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "validation-04",
+      "secondsCPU": 0.11118579100002535,
+      "metrics": {
+        "SDR": {
+          "maeEV": 1.2012674716109475,
+          "p95EV": 1.7355867000741199,
+          "meanRatio": 0.40606356621848605,
+          "gainCorrelation": null,
+          "puPSNR": 20.86126067759586,
+          "puSSIM": 0.9565119010314541,
+          "uvError": 0.005027492001427209,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 11400,
+              "maeEV": 1.545939915091653
+            },
+            "mid": {
+              "pixels": 151320,
+              "maeEV": 1.1239999521824682
+            },
+            "bright": {
+              "pixels": 9686,
+              "maeEV": 2.0027185540224117
+            },
+            "hdr": {
+              "pixels": 18012,
+              "maeEV": 1.722611340686996
+            },
+            "edges": {
+              "pixels": 16241,
+              "maeEV": 1.2103434311372574
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.9197486542509199,
+          "p95EV": 1.5337433366289228,
+          "meanRatio": 0.5395981177357372,
+          "gainCorrelation": 0.26181094779496145,
+          "puPSNR": 23.101632083959448,
+          "puSSIM": 0.9555637390925983,
+          "uvError": 0.005248116724839137,
+          "baseColorShift": 0.0008990430501414575,
+          "aboveSDR": 0.030090688961988302,
+          "regions": {
+            "dark": {
+              "pixels": 11400,
+              "maeEV": 1.5221366595107813
+            },
+            "mid": {
+              "pixels": 151320,
+              "maeEV": 0.8567803962836945
+            },
+            "bright": {
+              "pixels": 9686,
+              "maeEV": 1.1944888499599982
+            },
+            "hdr": {
+              "pixels": 18012,
+              "maeEV": 0.9998327506334632
+            },
+            "edges": {
+              "pixels": 16241,
+              "maeEV": 1.1310367867467415
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 1.0012103982744784,
+          "p95EV": 1.530888105011224,
+          "meanRatio": 0.5102224427355104,
+          "gainCorrelation": 0.37002906373820654,
+          "puPSNR": 22.523907076493582,
+          "puSSIM": 0.9633452298349071,
+          "uvError": 0.005027492001427209,
+          "baseColorShift": 5.804961326639156e-17,
+          "aboveSDR": 0.02584749634502924,
+          "regions": {
+            "dark": {
+              "pixels": 11400,
+              "maeEV": 1.5846603832795825
+            },
+            "mid": {
+              "pixels": 151320,
+              "maeEV": 0.943358094128982
+            },
+            "bright": {
+              "pixels": 9686,
+              "maeEV": 1.2183155845472793
+            },
+            "hdr": {
+              "pixels": 18012,
+              "maeEV": 1.056981508520571
+            },
+            "edges": {
+              "pixels": 16241,
+              "maeEV": 1.208636543116004
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 1.0746025822102696,
+          "p95EV": 1.5558565958769568,
+          "meanRatio": 0.4709561835541819,
+          "gainCorrelation": 0.4527187741715334,
+          "puPSNR": 21.941673607361505,
+          "puSSIM": 0.9631057589154517,
+          "uvError": 0.00502749200142721,
+          "baseColorShift": 5.683490307309748e-17,
+          "aboveSDR": 0.010707922149122808,
+          "regions": {
+            "dark": {
+              "pixels": 11400,
+              "maeEV": 1.5461137503475766
+            },
+            "mid": {
+              "pixels": 151320,
+              "maeEV": 1.0171317753877196
+            },
+            "bright": {
+              "pixels": 9686,
+              "maeEV": 1.4174949187395907
+            },
+            "hdr": {
+              "pixels": 18012,
+              "maeEV": 1.2371937326372027
+            },
+            "edges": {
+              "pixels": 16241,
+              "maeEV": 1.2027565123506114
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 0.003411317480304114,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.9851181004824265,
+          "gainCorrelation": 0.994043030268639,
+          "puPSNR": 49.79762898073952,
+          "puSSIM": 0.9989045022030464,
+          "uvError": 0.005027492001427209,
+          "baseColorShift": 5.815722910546738e-17,
+          "aboveSDR": 0.10286458333333333,
+          "regions": {
+            "dark": {
+              "pixels": 11400,
+              "maeEV": 1.220393097023525e-16
+            },
+            "mid": {
+              "pixels": 151320,
+              "maeEV": 1.1598978201428718e-16
+            },
+            "bright": {
+              "pixels": 9686,
+              "maeEV": 0.060719760634863944
+            },
+            "hdr": {
+              "pixels": 18012,
+              "maeEV": 0.032652209721812854
+            },
+            "edges": {
+              "pixels": 16241,
+              "maeEV": 1.1571271217677614e-16
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0,
+        "predictedFraction": 0.034708768836351406,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "validation-05",
+      "secondsCPU": 0.11676849999639671,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.3338068504177465,
+          "p95EV": 0.759908837392922,
+          "meanRatio": 0.47941182747210187,
+          "gainCorrelation": null,
+          "puPSNR": 30.565594609003547,
+          "puSSIM": 0.9718063774028705,
+          "uvError": 0.006051702816475481,
+          "baseColorShift": 0.0,
+          "aboveSDR": 3.452493686868687e-05,
+          "regions": {
+            "dark": {
+              "pixels": 104497,
+              "maeEV": 0.32625566101883813
+            },
+            "mid": {
+              "pixels": 41821,
+              "maeEV": 0.226839915501042
+            },
+            "bright": {
+              "pixels": 3590,
+              "maeEV": 1.7996956592671125
+            },
+            "hdr": {
+              "pixels": 3741,
+              "maeEV": 1.8607661890773761
+            },
+            "edges": {
+              "pixels": 11590,
+              "maeEV": 0.34409797287628113
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.28776689990499016,
+          "p95EV": 0.6193344936830513,
+          "meanRatio": 0.6501633747032962,
+          "gainCorrelation": 0.7610158296579198,
+          "puPSNR": 33.62828025355479,
+          "puSSIM": 0.979168916433728,
+          "uvError": 0.006214380094322796,
+          "baseColorShift": 0.0003250447144105336,
+          "aboveSDR": 0.013301964962121212,
+          "regions": {
+            "dark": {
+              "pixels": 104497,
+              "maeEV": 0.326781466355145
+            },
+            "mid": {
+              "pixels": 41821,
+              "maeEV": 0.14796739731119837
+            },
+            "bright": {
+              "pixels": 3590,
+              "maeEV": 0.7807055761259222
+            },
+            "hdr": {
+              "pixels": 3741,
+              "maeEV": 0.8568831646307614
+            },
+            "edges": {
+              "pixels": 11590,
+              "maeEV": 0.2803475625608003
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.306028132467215,
+          "p95EV": 0.6363928472212209,
+          "meanRatio": 0.6471098590580652,
+          "gainCorrelation": 0.665477848093174,
+          "puPSNR": 33.063014821251585,
+          "puSSIM": 0.9752434086973171,
+          "uvError": 0.006051702816475481,
+          "baseColorShift": 5.907493412166722e-17,
+          "aboveSDR": 0.012838344381313132,
+          "regions": {
+            "dark": {
+              "pixels": 104497,
+              "maeEV": 0.3454286696280013
+            },
+            "mid": {
+              "pixels": 41821,
+              "maeEV": 0.1579192498238453
+            },
+            "bright": {
+              "pixels": 3590,
+              "maeEV": 0.8845305417534823
+            },
+            "hdr": {
+              "pixels": 3741,
+              "maeEV": 0.9572480684687443
+            },
+            "edges": {
+              "pixels": 11590,
+              "maeEV": 0.2855848230081375
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.3093567824715963,
+          "p95EV": 0.6769561110424918,
+          "meanRatio": 0.5664199643279121,
+          "gainCorrelation": 0.7390843542783236,
+          "puPSNR": 32.328766964079186,
+          "puSSIM": 0.9766056626044596,
+          "uvError": 0.006051702816475481,
+          "baseColorShift": 3.255491515842548e-17,
+          "aboveSDR": 0.008359966856060606,
+          "regions": {
+            "dark": {
+              "pixels": 104497,
+              "maeEV": 0.3262713250620168
+            },
+            "mid": {
+              "pixels": 41821,
+              "maeEV": 0.1946934492014006
+            },
+            "bright": {
+              "pixels": 3590,
+              "maeEV": 1.152759652561203
+            },
+            "hdr": {
+              "pixels": 3741,
+              "maeEV": 1.2409039468072216
+            },
+            "edges": {
+              "pixels": 11590,
+              "maeEV": 0.32783250341335285
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 0.003918743385018427,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.8771799353532224,
+          "gainCorrelation": 0.9854853228578416,
+          "puPSNR": 46.26261788839649,
+          "puSSIM": 0.9991240302288721,
+          "uvError": 0.006051702816475481,
+          "baseColorShift": 5.983777943807121e-17,
+          "aboveSDR": 0.01845111268939394,
+          "regions": {
+            "dark": {
+              "pixels": 104497,
+              "maeEV": 1.1885819918840923e-16
+            },
+            "mid": {
+              "pixels": 41821,
+              "maeEV": 2.740374018149924e-05
+            },
+            "bright": {
+              "pixels": 3590,
+              "maeEV": 0.16331613692011127
+            },
+            "hdr": {
+              "pixels": 3741,
+              "maeEV": 0.15703046868787085
+            },
+            "edges": {
+              "pixels": 11590,
+              "maeEV": 0.00035446056250364264
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.017777570243082425,
+        "predictedFraction": 0.012821197000827175,
+        "precision": 0.008324661810613945,
+        "recall": 0.00600375234521576
+      }
+    },
+    {
+      "id": "validation-06",
+      "secondsCPU": 0.10827762500412064,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.6583066516421019,
+          "p95EV": 1.2749820686993611,
+          "meanRatio": 0.4904854508658391,
+          "gainCorrelation": null,
+          "puPSNR": 25.328537482602,
+          "puSSIM": 0.9555563176106754,
+          "uvError": 0.004574233121089427,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 42879,
+              "maeEV": 0.6505513240485123
+            },
+            "mid": {
+              "pixels": 134690,
+              "maeEV": 0.5851204727662478
+            },
+            "bright": {
+              "pixels": 9730,
+              "maeEV": 1.705581792924148
+            },
+            "hdr": {
+              "pixels": 11693,
+              "maeEV": 1.6511159390460104
+            },
+            "edges": {
+              "pixels": 14752,
+              "maeEV": 0.430589043115565
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.5327031254253008,
+          "p95EV": 1.0762777360155162,
+          "meanRatio": 0.6097448555691531,
+          "gainCorrelation": 0.6522776377897714,
+          "puPSNR": 27.650082358959654,
+          "puSSIM": 0.9647746352100942,
+          "uvError": 0.004581834962068033,
+          "baseColorShift": 0.00016510211378561773,
+          "aboveSDR": 0.02545270476772616,
+          "regions": {
+            "dark": {
+              "pixels": 42879,
+              "maeEV": 0.6478335271512755
+            },
+            "mid": {
+              "pixels": 134690,
+              "maeEV": 0.4665577347824902
+            },
+            "bright": {
+              "pixels": 9730,
+              "maeEV": 0.9409709743535726
+            },
+            "hdr": {
+              "pixels": 11693,
+              "maeEV": 0.9285280296958938
+            },
+            "edges": {
+              "pixels": 14752,
+              "maeEV": 0.37461972253446035
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.5564595119214493,
+          "p95EV": 1.104736154349738,
+          "meanRatio": 0.6155465235566858,
+          "gainCorrelation": 0.6605258671025054,
+          "puPSNR": 27.520828758373042,
+          "puSSIM": 0.9614901090279608,
+          "uvError": 0.004574233121089427,
+          "baseColorShift": 6.230122603827902e-17,
+          "aboveSDR": 0.02638390128361858,
+          "regions": {
+            "dark": {
+              "pixels": 42879,
+              "maeEV": 0.6851883528985533
+            },
+            "mid": {
+              "pixels": 134690,
+              "maeEV": 0.49213891846877095
+            },
+            "bright": {
+              "pixels": 9730,
+              "maeEV": 0.8795403711078805
+            },
+            "hdr": {
+              "pixels": 11693,
+              "maeEV": 0.8774137340565005
+            },
+            "edges": {
+              "pixels": 14752,
+              "maeEV": 0.4277684502058488
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.5989464071598082,
+          "p95EV": 1.1144018622590952,
+          "meanRatio": 0.5601029465190703,
+          "gainCorrelation": 0.6622353395835963,
+          "puPSNR": 26.678603616868312,
+          "puSSIM": 0.9627553555499963,
+          "uvError": 0.004574233121089427,
+          "baseColorShift": 5.502991698555121e-17,
+          "aboveSDR": 0.018031784841075794,
+          "regions": {
+            "dark": {
+              "pixels": 42879,
+              "maeEV": 0.6506278108315178
+            },
+            "mid": {
+              "pixels": 134690,
+              "maeEV": 0.5445241895193248
+            },
+            "bright": {
+              "pixels": 9730,
+              "maeEV": 1.1245457479570804
+            },
+            "hdr": {
+              "pixels": 11693,
+              "maeEV": 1.1184055165234663
+            },
+            "edges": {
+              "pixels": 14752,
+              "maeEV": 0.42520306929859025
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 0.004217750735463055,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.957838072929667,
+          "gainCorrelation": 0.9941750293606068,
+          "puPSNR": 46.95325862917492,
+          "puSSIM": 0.9973418354138964,
+          "uvError": 0.004574233121089427,
+          "baseColorShift": 6.274304162213207e-17,
+          "aboveSDR": 0.05583836338630807,
+          "regions": {
+            "dark": {
+              "pixels": 42879,
+              "maeEV": 1.1929082464531516e-16
+            },
+            "mid": {
+              "pixels": 134690,
+              "maeEV": 5.410873295578858e-05
+            },
+            "bright": {
+              "pixels": 9730,
+              "maeEV": 0.08044117058167263
+            },
+            "hdr": {
+              "pixels": 11693,
+              "maeEV": 0.0675601210126977
+            },
+            "edges": {
+              "pixels": 14752,
+              "maeEV": 0.0006299229393814352
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.024426184870180834,
+        "predictedFraction": 0.0916449100101976,
+        "precision": 0.022371103990678706,
+        "recall": 0.0839344262295082
+      }
+    },
+    {
+      "id": "validation-07",
+      "secondsCPU": 0.11209325000527315,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.9164365508111891,
+          "p95EV": 1.7506119400863431,
+          "meanRatio": 0.420841995149684,
+          "gainCorrelation": null,
+          "puPSNR": 21.941484315800178,
+          "puSSIM": 0.964914437437325,
+          "uvError": 0.008794048145682505,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 22717,
+              "maeEV": 0.7048957807510075
+            },
+            "mid": {
+              "pixels": 212342,
+              "maeEV": 0.8208373680311724
+            },
+            "bright": {
+              "pixels": 26312,
+              "maeEV": 1.8705750938079744
+            },
+            "hdr": {
+              "pixels": 41568,
+              "maeEV": 1.7036942339738297
+            },
+            "edges": {
+              "pixels": 26122,
+              "maeEV": 0.7190667851231061
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.6564909505514869,
+          "p95EV": 1.2108458920319618,
+          "meanRatio": 0.5945236708769346,
+          "gainCorrelation": 0.7446320161954804,
+          "puPSNR": 25.21321492204994,
+          "puSSIM": 0.9622106438504527,
+          "uvError": 0.008898898573019554,
+          "baseColorShift": 0.0008195988285975709,
+          "aboveSDR": 0.063079833984375,
+          "regions": {
+            "dark": {
+              "pixels": 22717,
+              "maeEV": 0.707533979827116
+            },
+            "mid": {
+              "pixels": 212342,
+              "maeEV": 0.6084804865731709
+            },
+            "bright": {
+              "pixels": 26312,
+              "maeEV": 0.9998739486523203
+            },
+            "hdr": {
+              "pixels": 41568,
+              "maeEV": 0.8969600892373555
+            },
+            "edges": {
+              "pixels": 26122,
+              "maeEV": 0.5984945590064412
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.710512614181871,
+          "p95EV": 1.2702346925147632,
+          "meanRatio": 0.5505648907767439,
+          "gainCorrelation": 0.7529750062369405,
+          "puPSNR": 24.51738462025906,
+          "puSSIM": 0.9729175056981634,
+          "uvError": 0.008794048145682506,
+          "baseColorShift": 5.3807372141048867e-17,
+          "aboveSDR": 0.046184539794921875,
+          "regions": {
+            "dark": {
+              "pixels": 22717,
+              "maeEV": 0.6774755265349753
+            },
+            "mid": {
+              "pixels": 212342,
+              "maeEV": 0.6655140479307439
+            },
+            "bright": {
+              "pixels": 26312,
+              "maeEV": 1.1021813993358431
+            },
+            "hdr": {
+              "pixels": 41568,
+              "maeEV": 1.0431908192189225
+            },
+            "edges": {
+              "pixels": 26122,
+              "maeEV": 0.619816617255573
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.7819015634686283,
+          "p95EV": 1.3492589842811058,
+          "meanRatio": 0.5050690305126503,
+          "gainCorrelation": 0.7078974773895117,
+          "puPSNR": 23.652734699289507,
+          "puSSIM": 0.9727596221151962,
+          "uvError": 0.008794048145682506,
+          "baseColorShift": 5.260031470653021e-17,
+          "aboveSDR": 0.0246429443359375,
+          "regions": {
+            "dark": {
+              "pixels": 22717,
+              "maeEV": 0.7047481859630723
+            },
+            "mid": {
+              "pixels": 212342,
+              "maeEV": 0.7265039745362238
+            },
+            "bright": {
+              "pixels": 26312,
+              "maeEV": 1.2955808013022534
+            },
+            "hdr": {
+              "pixels": 41568,
+              "maeEV": 1.2192884368092998
+            },
+            "edges": {
+              "pixels": 26122,
+              "maeEV": 0.6584965780913191
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 0.010052817538067608,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.9486503110183486,
+          "gainCorrelation": 0.9962234074541367,
+          "puPSNR": 42.99701051890758,
+          "puSSIM": 0.998256189494274,
+          "uvError": 0.008794048145682506,
+          "baseColorShift": 5.424017619062047e-17,
+          "aboveSDR": 0.1585693359375,
+          "regions": {
+            "dark": {
+              "pixels": 22717,
+              "maeEV": 1.1965785798354306e-16
+            },
+            "mid": {
+              "pixels": 212342,
+              "maeEV": 2.6881769143004314e-05
+            },
+            "bright": {
+              "pixels": 26312,
+              "maeEV": 0.09964300866976676
+            },
+            "hdr": {
+              "pixels": 41568,
+              "maeEV": 0.06321004072224413
+            },
+            "edges": {
+              "pixels": 26122,
+              "maeEV": 0.007371649751564513
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.27051968274980775,
+        "predictedFraction": 0.011684540365993167,
+        "precision": 0.5546823837590046,
+        "recall": 0.02395836279806523
+      }
+    },
+    {
+      "id": "validation-08",
+      "secondsCPU": 0.106047708002734,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.8574084202063603,
+          "p95EV": 1.142996899660959,
+          "meanRatio": 0.5617381848552044,
+          "gainCorrelation": null,
+          "puPSNR": 26.004032208575577,
+          "puSSIM": 0.9711185415133108,
+          "uvError": 0.0017674973932401406,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 66776,
+              "maeEV": 0.926381413326166
+            },
+            "mid": {
+              "pixels": 62148,
+              "maeEV": 0.7792968022674402
+            },
+            "bright": {
+              "pixels": 1161,
+              "maeEV": 1.0716549689573256
+            },
+            "hdr": {
+              "pixels": 778,
+              "maeEV": 1.1784274017450318
+            },
+            "edges": {
+              "pixels": 10246,
+              "maeEV": 0.7611212952389669
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.8243068350783425,
+          "p95EV": 1.1738072540130269,
+          "meanRatio": 0.6467531765963354,
+          "gainCorrelation": -0.06986992839469712,
+          "puPSNR": 26.298087212305838,
+          "puSSIM": 0.9666817199299115,
+          "uvError": 0.0019354506339028029,
+          "baseColorShift": 0.0007209423846446115,
+          "aboveSDR": 0.002654072299651568,
+          "regions": {
+            "dark": {
+              "pixels": 66776,
+              "maeEV": 0.9297732144672315
+            },
+            "mid": {
+              "pixels": 62148,
+              "maeEV": 0.7219708653328148
+            },
+            "bright": {
+              "pixels": 1161,
+              "maeEV": 0.23632483479634236
+            },
+            "hdr": {
+              "pixels": 778,
+              "maeEV": 0.3180545244494219
+            },
+            "edges": {
+              "pixels": 10246,
+              "maeEV": 0.7491985118348411
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.7873480449680639,
+          "p95EV": 1.1122408291283914,
+          "meanRatio": 0.7151667163661464,
+          "gainCorrelation": -0.1708884286145848,
+          "puPSNR": 26.67385442852545,
+          "puSSIM": 0.97151534040718,
+          "uvError": 0.0017674973932401406,
+          "baseColorShift": 5.058661159509093e-17,
+          "aboveSDR": 0.010643510452961672,
+          "regions": {
+            "dark": {
+              "pixels": 66776,
+              "maeEV": 0.9109072584825852
+            },
+            "mid": {
+              "pixels": 62148,
+              "maeEV": 0.6629701341172063
+            },
+            "bright": {
+              "pixels": 1161,
+              "maeEV": 0.33863862370485537
+            },
+            "hdr": {
+              "pixels": 778,
+              "maeEV": 0.35242697769781306
+            },
+            "edges": {
+              "pixels": 10246,
+              "maeEV": 0.7076759436942616
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.8286757005805943,
+          "p95EV": 1.1358688823135326,
+          "meanRatio": 0.6446343360045449,
+          "gainCorrelation": -0.06154216012649132,
+          "puPSNR": 26.283829118220527,
+          "puSSIM": 0.970670562646172,
+          "uvError": 0.0017674973932401408,
+          "baseColorShift": 4.6299682601010777e-17,
+          "aboveSDR": 0.004498312282229965,
+          "regions": {
+            "dark": {
+              "pixels": 66776,
+              "maeEV": 0.9261488855395821
+            },
+            "mid": {
+              "pixels": 62148,
+              "maeEV": 0.7354141824640859
+            },
+            "bright": {
+              "pixels": 1161,
+              "maeEV": 0.21467693148791095
+            },
+            "hdr": {
+              "pixels": 778,
+              "maeEV": 0.3127101297634935
+            },
+            "edges": {
+              "pixels": 10246,
+              "maeEV": 0.7465560288847255
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 4.298678644878821e-05,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.9989622989871888,
+          "gainCorrelation": 0.9998053224632267,
+          "puPSNR": 71.01032380028312,
+          "puSSIM": 0.9999966295868438,
+          "uvError": 0.0017674973932401406,
+          "baseColorShift": 5.0810638601168074e-17,
+          "aboveSDR": 0.005294533972125435,
+          "regions": {
+            "dark": {
+              "pixels": 66776,
+              "maeEV": 1.0845912919536893e-16
+            },
+            "mid": {
+              "pixels": 62148,
+              "maeEV": 1.0434795350329727e-16
+            },
+            "bright": {
+              "pixels": 1161,
+              "maeEV": 0.0048164824420128234
+            },
+            "hdr": {
+              "pixels": 778,
+              "maeEV": 0.007187578554211866
+            },
+            "edges": {
+              "pixels": 10246,
+              "maeEV": 0.00023500100570982306
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 5.381096975054772e-05,
+        "predictedFraction": 0.00018449475343044932,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    {
+      "id": "validation-09",
+      "secondsCPU": 0.1106308340022224,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.563082955026509,
+          "p95EV": 1.6536235106104884,
+          "meanRatio": 0.5034724026925589,
+          "gainCorrelation": null,
+          "puPSNR": 23.708319932280702,
+          "puSSIM": 0.9752715511111687,
+          "uvError": 0.0012624418420805388,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 7993,
+              "maeEV": 0.15334203154693718
+            },
+            "mid": {
+              "pixels": 133398,
+              "maeEV": 0.3821724551697634
+            },
+            "bright": {
+              "pixels": 27473,
+              "maeEV": 1.5607227490520017
+            },
+            "hdr": {
+              "pixels": 38448,
+              "maeEV": 1.5097547205540764
+            },
+            "edges": {
+              "pixels": 16533,
+              "maeEV": 0.23624709237890737
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.3595612135092076,
+          "p95EV": 0.9157526228613326,
+          "meanRatio": 0.7267049842186325,
+          "gainCorrelation": 0.874575503244519,
+          "puPSNR": 28.697226374724636,
+          "puSSIM": 0.9867022761752743,
+          "uvError": 0.0012642132669024907,
+          "baseColorShift": 8.851956041208701e-05,
+          "aboveSDR": 0.06859540219033233,
+          "regions": {
+            "dark": {
+              "pixels": 7993,
+              "maeEV": 0.157482952715612
+            },
+            "mid": {
+              "pixels": 133398,
+              "maeEV": 0.29198290074046346
+            },
+            "bright": {
+              "pixels": 27473,
+              "maeEV": 0.7464874066897175
+            },
+            "hdr": {
+              "pixels": 38448,
+              "maeEV": 0.7380006056995246
+            },
+            "edges": {
+              "pixels": 16533,
+              "maeEV": 0.2309903706554948
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.4052500654910436,
+          "p95EV": 1.1769363635879435,
+          "meanRatio": 0.622215153010884,
+          "gainCorrelation": 0.8330731432241091,
+          "puPSNR": 26.66940922208307,
+          "puSSIM": 0.9831052884459137,
+          "uvError": 0.0012624418420805381,
+          "baseColorShift": 5.994793716322502e-17,
+          "aboveSDR": 0.03378729229607251,
+          "regions": {
+            "dark": {
+              "pixels": 7993,
+              "maeEV": 0.1588157909899179
+            },
+            "mid": {
+              "pixels": 133398,
+              "maeEV": 0.3091424607724073
+            },
+            "bright": {
+              "pixels": 27473,
+              "maeEV": 0.9436081410686695
+            },
+            "hdr": {
+              "pixels": 38448,
+              "maeEV": 0.9650931018960467
+            },
+            "edges": {
+              "pixels": 16533,
+              "maeEV": 0.2192126933740222
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.44753147179574065,
+          "p95EV": 1.219276069209382,
+          "meanRatio": 0.5861088171824833,
+          "gainCorrelation": 0.8213221296644062,
+          "puPSNR": 25.803475376495662,
+          "puSSIM": 0.9824063150354279,
+          "uvError": 0.0012624418420805381,
+          "baseColorShift": 5.926241778942761e-17,
+          "aboveSDR": 0.006803483761329305,
+          "regions": {
+            "dark": {
+              "pixels": 7993,
+              "maeEV": 0.15326984688007497
+            },
+            "mid": {
+              "pixels": 133398,
+              "maeEV": 0.3303862857907439
+            },
+            "bright": {
+              "pixels": 27473,
+              "maeEV": 1.1019546032573748
+            },
+            "hdr": {
+              "pixels": 38448,
+              "maeEV": 1.1083330609186746
+            },
+            "edges": {
+              "pixels": 16533,
+              "maeEV": 0.22990800858668173
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 0.0005674171636115528,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.9967244126244921,
+          "gainCorrelation": 0.9997928413438739,
+          "puPSNR": 58.19575059990258,
+          "puSSIM": 0.9998480822107821,
+          "uvError": 0.0012624418420805388,
+          "baseColorShift": 6.046514905191865e-17,
+          "aboveSDR": 0.22686933534743203,
+          "regions": {
+            "dark": {
+              "pixels": 7993,
+              "maeEV": 1.200733867813023e-16
+            },
+            "mid": {
+              "pixels": 133398,
+              "maeEV": 3.063350576132295e-07
+            },
+            "bright": {
+              "pixels": 27473,
+              "maeEV": 0.0034861670524545833
+            },
+            "hdr": {
+              "pixels": 38448,
+              "maeEV": 0.0024921018496693124
+            },
+            "edges": {
+              "pixels": 16533,
+              "maeEV": 4.0885680881057664e-05
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.21031125639567935,
+        "predictedFraction": 0.18991614553723707,
+        "precision": 0.3590271281571562,
+        "recall": 0.3242101706369319
+      }
+    },
+    {
+      "id": "validation-10",
+      "secondsCPU": 0.10933312500128523,
+      "metrics": {
+        "SDR": {
+          "maeEV": 0.5519560530501829,
+          "p95EV": 1.1203911535755406,
+          "meanRatio": 0.57515839564521,
+          "gainCorrelation": null,
+          "puPSNR": 26.311921242467506,
+          "puSSIM": 0.9867592331226108,
+          "uvError": 0.0016789663585884554,
+          "baseColorShift": 0.0,
+          "aboveSDR": 0.0,
+          "regions": {
+            "dark": {
+              "pixels": 31388,
+              "maeEV": 0.2843026080719314
+            },
+            "mid": {
+              "pixels": 142196,
+              "maeEV": 0.590722209438851
+            },
+            "bright": {
+              "pixels": 3651,
+              "maeEV": 1.3431677641250457
+            },
+            "hdr": {
+              "pixels": 6414,
+              "maeEV": 1.2688623896875482
+            },
+            "edges": {
+              "pixels": 16853,
+              "maeEV": 0.36456717058528265
+            }
+          }
+        },
+        "currentGMNet": {
+          "maeEV": 0.40931239128340435,
+          "p95EV": 0.8873227708903692,
+          "meanRatio": 0.6993204679782747,
+          "gainCorrelation": 0.696811314606896,
+          "puPSNR": 29.0891175330271,
+          "puSSIM": 0.990294764217597,
+          "uvError": 0.0016876894974065038,
+          "baseColorShift": 6.610270565246719e-05,
+          "aboveSDR": 0.0029407848011363635,
+          "regions": {
+            "dark": {
+              "pixels": 31388,
+              "maeEV": 0.2826206372178961
+            },
+            "mid": {
+              "pixels": 142196,
+              "maeEV": 0.4314463912920215
+            },
+            "bright": {
+              "pixels": 3651,
+              "maeEV": 0.6364377025359023
+            },
+            "hdr": {
+              "pixels": 6414,
+              "maeEV": 0.6046860278777605
+            },
+            "edges": {
+              "pixels": 16853,
+              "maeEV": 0.31581365254845584
+            }
+          }
+        },
+        "signedRaw": {
+          "maeEV": 0.34988561242087074,
+          "p95EV": 0.8333604617627118,
+          "meanRatio": 0.7723732783453426,
+          "gainCorrelation": 0.6998201717551622,
+          "puPSNR": 30.478025613995786,
+          "puSSIM": 0.9894718751652398,
+          "uvError": 0.0016789663585884554,
+          "baseColorShift": 5.900562092033966e-17,
+          "aboveSDR": 0.015647194602272728,
+          "regions": {
+            "dark": {
+              "pixels": 31388,
+              "maeEV": 0.30150602151783346
+            },
+            "mid": {
+              "pixels": 142196,
+              "maeEV": 0.3617175094794924
+            },
+            "bright": {
+              "pixels": 3651,
+              "maeEV": 0.3049911082074501
+            },
+            "hdr": {
+              "pixels": 6414,
+              "maeEV": 0.30263791390629907
+            },
+            "edges": {
+              "pixels": 16853,
+              "maeEV": 0.30898591481965615
+            }
+          }
+        },
+        "signedProtected": {
+          "maeEV": 0.439125243453778,
+          "p95EV": 0.922077022611165,
+          "meanRatio": 0.6837801570516201,
+          "gainCorrelation": 0.6674083080691998,
+          "puPSNR": 28.58321808335259,
+          "puSSIM": 0.989778800658398,
+          "uvError": 0.0016789663585884554,
+          "baseColorShift": 5.465266555630271e-17,
+          "aboveSDR": 0.004444469105113636,
+          "regions": {
+            "dark": {
+              "pixels": 31388,
+              "maeEV": 0.28434213991934865
+            },
+            "mid": {
+              "pixels": 142196,
+              "maeEV": 0.4698332816918963
+            },
+            "bright": {
+              "pixels": 3651,
+              "maeEV": 0.5738203539525988
+            },
+            "hdr": {
+              "pixels": 6414,
+              "maeEV": 0.5626010377482161
+            },
+            "edges": {
+              "pixels": 16853,
+              "maeEV": 0.3453860535781299
+            }
+          }
+        },
+        "boundedScalarOracle": {
+          "maeEV": 2.329660934575149e-06,
+          "p95EV": 3.203426503814918e-16,
+          "meanRatio": 0.9999778238991649,
+          "gainCorrelation": 0.9999994077173691,
+          "puPSNR": 88.78690001295148,
+          "puSSIM": 0.9999998156203073,
+          "uvError": 0.0016789663585884554,
+          "baseColorShift": 5.931268891662224e-17,
+          "aboveSDR": 0.035589044744318184,
+          "regions": {
+            "dark": {
+              "pixels": 31388,
+              "maeEV": 1.2126645124993262e-16
+            },
+            "mid": {
+              "pixels": 142196,
+              "maeEV": 1.1837241709784455e-16
+            },
+            "bright": {
+              "pixels": 3651,
+              "maeEV": 0.00011309160660607726
+            },
+            "hdr": {
+              "pixels": 6414,
+              "maeEV": 6.437440843764387e-05
+            },
+            "edges": {
+              "pixels": 16853,
+              "maeEV": 1.1911393927583326e-16
+            }
+          }
+        }
+      },
+      "negative": {
+        "targetFraction": 0.0017829435495246425,
+        "predictedFraction": 0.0021891838519479787,
+        "precision": 0.01288659793814433,
+        "recall": 0.015822784810126583
+      }
+    }
+  ]
+}

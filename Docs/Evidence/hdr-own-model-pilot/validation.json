@@ -1,0 +1,116 @@
+[
+  {
+    "step": 1000,
+    "model": {
+      "maeEV": 0.2730960249900818,
+      "positiveMAE": 0.19044068455696106,
+      "negativeMAE": 0.6900733709335327,
+      "negativePrecision": 0.4412970542907715,
+      "negativeRecall": 0.10904933512210846,
+      "negativeFraction": 0.18534398078918457
+    },
+    "identity": {
+      "maeEV": 0.3849087059497833,
+      "positiveMAE": 0.4140479266643524,
+      "negativeMAE": 0.6346111297607422,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0,
+      "negativeFraction": 0.18534398078918457
+    }
+  },
+  {
+    "step": 2000,
+    "model": {
+      "maeEV": 0.26213338971138,
+      "positiveMAE": 0.16901350021362305,
+      "negativeMAE": 0.6950289011001587,
+      "negativePrecision": 0.2030375748872757,
+      "negativeRecall": 0.01257250364869833,
+      "negativeFraction": 0.18534398078918457
+    },
+    "identity": {
+      "maeEV": 0.3849087059497833,
+      "positiveMAE": 0.4140479266643524,
+      "negativeMAE": 0.6346111297607422,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0,
+      "negativeFraction": 0.18534398078918457
+    }
+  },
+  {
+    "step": 3000,
+    "model": {
+      "maeEV": 0.25724300742149353,
+      "positiveMAE": 0.1589292287826538,
+      "negativeMAE": 0.7168552875518799,
+      "negativePrecision": 0.39825308322906494,
+      "negativeRecall": 0.01034637726843357,
+      "negativeFraction": 0.18534398078918457
+    },
+    "identity": {
+      "maeEV": 0.3849087059497833,
+      "positiveMAE": 0.4140479266643524,
+      "negativeMAE": 0.6346111297607422,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0,
+      "negativeFraction": 0.18534398078918457
+    }
+  },
+  {
+    "step": 4000,
+    "model": {
+      "maeEV": 0.25665977597236633,
+      "positiveMAE": 0.16695019602775574,
+      "negativeMAE": 0.6918436288833618,
+      "negativePrecision": 0.5344768762588501,
+      "negativeRecall": 0.06978324055671692,
+      "negativeFraction": 0.18534398078918457
+    },
+    "identity": {
+      "maeEV": 0.3849087059497833,
+      "positiveMAE": 0.4140479266643524,
+      "negativeMAE": 0.6346111297607422,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0,
+      "negativeFraction": 0.18534398078918457
+    }
+  },
+  {
+    "step": 5000,
+    "model": {
+      "maeEV": 0.2532059848308563,
+      "positiveMAE": 0.16050603985786438,
+      "negativeMAE": 0.700901985168457,
+      "negativePrecision": 0.5127816200256348,
+      "negativeRecall": 0.07450612634420395,
+      "negativeFraction": 0.18534398078918457
+    },
+    "identity": {
+      "maeEV": 0.3849087059497833,
+      "positiveMAE": 0.4140479266643524,
+      "negativeMAE": 0.6346111297607422,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0,
+      "negativeFraction": 0.18534398078918457
+    }
+  },
+  {
+    "step": 6000,
+    "model": {
+      "maeEV": 0.25507858395576477,
+      "positiveMAE": 0.16635069251060486,
+      "negativeMAE": 0.6927747130393982,
+      "negativePrecision": 0.5182364583015442,
+      "negativeRecall": 0.12007389962673187,
+      "negativeFraction": 0.18534398078918457
+    },
+    "identity": {
+      "maeEV": 0.3849087059497833,
+      "positiveMAE": 0.4140479266643524,
+      "negativeMAE": 0.6346111297607422,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0,
+      "negativeFraction": 0.18534398078918457
+    }
+  }
+]

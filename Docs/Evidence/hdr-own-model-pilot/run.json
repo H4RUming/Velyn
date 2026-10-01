@@ -1,0 +1,20 @@
+{
+  "seed": 20261001,
+  "steps": 6000,
+  "batch": 24,
+  "width": 24,
+  "parameters": 595201,
+  "torch": "2.7.0+cu128",
+  "cuda": "12.8",
+  "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "manifestSHA256": "07475fbaff1ce9305d5179c9638e19de7f057ce289ab920aa21feb7f7b1e29bd",
+  "trainViews": 1032,
+  "validationViews": 129,
+  "groups": {
+    "train": 344,
+    "validation": 43,
+    "test": 44
+  },
+  "testUsedDuringTraining": false,
+  "protocol": "Synthetic SDR from CC0 HDR panoramas, 256px perspective views. No real camera target and no user photos. Identity initialization; no pretrained weights."
+}

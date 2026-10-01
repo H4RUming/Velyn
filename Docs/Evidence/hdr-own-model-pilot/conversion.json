@@ -1,0 +1,119 @@
+{
+  "scope": "macOS runtime numeric check, synthetic inputs only; not iPhone timing or confirmed operation placement",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "torch": "2.7.0",
+  "coremltools": "9.0",
+  "checkpointSHA256": "982c19314a4c93096c2bf5ca1734013ee5964a69de917be4ea0e3464e0abcc4f",
+  "precision": "FP16",
+  "packageBytes": 1233460,
+  "comparisons": [
+    {
+      "policy": "CPU_ONLY",
+      "case": "noise",
+      "maxEV": 0.0007253289222717285,
+      "meanEV": 0.00013811729149892926,
+      "medianSeconds": 0.010212958004558459,
+      "minGainEV": -0.07525634765625,
+      "maxGainEV": 0.0628662109375
+    },
+    {
+      "policy": "CPU_ONLY",
+      "case": "gradient",
+      "maxEV": 0.008097141981124878,
+      "meanEV": 0.0007204445428214967,
+      "medianSeconds": 0.010223625002254266,
+      "minGainEV": -0.0692138671875,
+      "maxGainEV": 0.65380859375
+    },
+    {
+      "policy": "CPU_ONLY",
+      "case": "neutral-0",
+      "maxEV": 0.0001309514045715332,
+      "meanEV": 2.220270107500255e-05,
+      "medianSeconds": 0.010203165998973418,
+      "minGainEV": -0.021759033203125,
+      "maxGainEV": 0.0150299072265625
+    },
+    {
+      "policy": "CPU_ONLY",
+      "case": "neutral-0.18",
+      "maxEV": 0.0005214735865592957,
+      "meanEV": 6.174530426505953e-05,
+      "medianSeconds": 0.00987275000079535,
+      "minGainEV": -0.006103515625,
+      "maxGainEV": 0.0482177734375
+    },
+    {
+      "policy": "CPU_ONLY",
+      "case": "neutral-0.5",
+      "maxEV": 0.003542959690093994,
+      "meanEV": 0.0026498620864003897,
+      "medianSeconds": 0.01002199999493314,
+      "minGainEV": 0.229736328125,
+      "maxGainEV": 0.61279296875
+    },
+    {
+      "policy": "CPU_ONLY",
+      "case": "neutral-1",
+      "maxEV": 0.00231306254863739,
+      "meanEV": 0.0013382206670939922,
+      "medianSeconds": 0.010012375001679175,
+      "minGainEV": 0.016082763671875,
+      "maxGainEV": 0.1490478515625
+    },
+    {
+      "policy": "CPU_AND_NE",
+      "case": "noise",
+      "maxEV": 0.0004641339182853699,
+      "meanEV": 7.567463762825355e-05,
+      "medianSeconds": 0.002261667003040202,
+      "minGainEV": -0.07476806640625,
+      "maxGainEV": 0.0626220703125
+    },
+    {
+      "policy": "CPU_AND_NE",
+      "case": "gradient",
+      "maxEV": 0.006009459495544434,
+      "meanEV": 0.0006653876043856144,
+      "medianSeconds": 0.0023226249977597035,
+      "minGainEV": -0.0687255859375,
+      "maxGainEV": 0.650390625
+    },
+    {
+      "policy": "CPU_AND_NE",
+      "case": "neutral-0",
+      "maxEV": 0.0003359206020832062,
+      "meanEV": 0.0001921129587572068,
+      "medianSeconds": 0.002394290997472126,
+      "minGainEV": -0.0217132568359375,
+      "maxGainEV": 0.01488494873046875
+    },
+    {
+      "policy": "CPU_AND_NE",
+      "case": "neutral-0.18",
+      "maxEV": 0.0012066792696714401,
+      "meanEV": 0.00026095955399796367,
+      "medianSeconds": 0.002261125002405606,
+      "minGainEV": -0.005718231201171875,
+      "maxGainEV": 0.048309326171875
+    },
+    {
+      "policy": "CPU_AND_NE",
+      "case": "neutral-0.5",
+      "maxEV": 0.003300487995147705,
+      "meanEV": 0.00028465923969633877,
+      "medianSeconds": 0.002289875003043562,
+      "minGainEV": 0.2296142578125,
+      "maxGainEV": 0.61279296875
+    },
+    {
+      "policy": "CPU_AND_NE",
+      "case": "neutral-1",
+      "maxEV": 0.0008725821971893311,
+      "meanEV": 0.0005175253609195352,
+      "medianSeconds": 0.002240500005427748,
+      "minGainEV": 0.0159149169921875,
+      "maxGainEV": 0.1497802734375
+    }
+  ]
+}
