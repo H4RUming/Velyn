@@ -16,26 +16,34 @@
 
 Velyn is an iPhone photo editor with local processing and nondestructive edits. Imported originals are kept byte for byte; edits and exports are saved separately. There is no app server, photo upload, account, or advertising SDK.
 
-**[Download v1.0.0](https://github.com/H4RUming/Velyn/releases/tag/v1.0.0)** — iOS 27 or later. The release includes an unsigned IPA for signing with AltStore Classic or your own signing workflow. Apple Configurator requires an already signed IPA. See the [installation guide](Docs/Releases/INSTALL.md).
+**[Download v1.1.0](https://github.com/H4RUming/Velyn/releases/tag/v1.1.0)** — iOS 27 or later. The release includes an unsigned IPA for signing with AltStore Classic or your own signing workflow. Apple Configurator requires an already signed IPA. See the [installation guide](Docs/Releases/INSTALL.md).
 
 ## Inside the app
 
 <table>
+  <tr><th>Your library</th><th>Select and organize</th><th>Keep the photo in view</th></tr>
   <tr>
-    <th>Keep the photo in view</th>
-    <th>Adjust HDR expansion</th>
-    <th>Choose how to export</th>
+    <td><img src="Docs/Images/app-library.png" width="260" alt="Photo library with visible Select, Albums, and Trash controls"></td>
+    <td><img src="Docs/Images/app-selection.png" width="260" alt="Selected photos with Export, Add to album, More, and Delete actions"></td>
+    <td><img src="Docs/Images/app-editor.png" width="260" alt="A large photo preview with one active adjustment slider"></td>
   </tr>
+  <tr><th>Adjust HDR</th><th>Choose an export</th><th>Make it yours</th></tr>
   <tr>
-    <td><img src="Docs/Images/app-editor.png" width="260" alt="Exposure controls, a large photo preview, and an RGB histogram"></td>
-    <td><img src="Docs/Images/app-hdr.png" width="260" alt="HDR gain map controls with strength and SDR comparison"></td>
-    <td><img src="Docs/Images/app-export.png" width="260" alt="Export options for JPEG, PNG, HEIC, and the original file"></td>
+    <td><img src="Docs/Images/app-hdr.png" width="260" alt="HDR strength, midtone protection, and SDR comparison"></td>
+    <td><img src="Docs/Images/app-export.png" width="260" alt="Export format, quality, dimensions, and estimated file size"></td>
+    <td><img src="Docs/Images/app-language.png" width="260" alt="Language and storage settings"></td>
   </tr>
 </table>
 
-Screenshots are from the app running in the iOS 27 Simulator. The landscape is an **AI-generated sample** made for this README. The edits and HDR files below were produced by **Velyn's editing engine**. No user photos are included.
+These are fresh **v1.1 screenshots from the iOS 27 Simulator**. The landscape is an AI-generated demo image; the library includes crop and color variants made by Velyn. Every edit and HDR export below comes from the app's engine. No user photos are included.
 
-The app supports **English and Korean**. Open the library's **••• → Settings → App language** to choose either language or follow the system setting. Changes take effect immediately. System permission dialogs and photo/file pickers use the language set for the app in iOS. [View language settings](Docs/Images/app-language.png).
+The app supports **English and Korean**. Use the gear icon in the library, then **App language**. System permission dialogs and photo/file pickers follow the app's iOS language setting.
+
+### What's new in v1.1
+
+- **More balanced HDR expansion.** Tone protection adapts to the scene's contrast, and gain-map enlargement follows image edges to reduce bleeding. In a small eight-pair local audit, mean luminance error fell by 15.6%. [Results and limits](Docs/Evidence/hdr-v11-quality.md).
+- **Clearer library actions.** Select, delete, undo, restore, and add to albums are easier to find. Changing a filter no longer leaves hidden photos selected.
+- **Safer regeneration.** The app marks gain maps that no longer match the edits and keeps your strength settings when you predict again. Existing maps keep their previous rendering until regenerated.
 
 ## Before and after
 
@@ -51,7 +59,7 @@ A small exposure lift, more detail in the shadows, and a few color adjustments. 
 
 ## Adding HDR to an SDR photo
 
-The bundled **GMNet** model predicts a gain map. Velyn applies that map to linear RGB, using the same multiplier for all three color channels. You can adjust the strength, cap the gain, and protect midtones.
+The bundled **GMNet** model predicts a gain map. Velyn applies that map to linear RGB, using the same multiplier for all three color channels. In v1.1, tone protection adapts to scene contrast and map enlargement follows the photo’s edges. Strength, maximum gain, and midtone protection remain adjustable.
 
 This example starts with the edited SDR image above: **75% strength**, **4× maximum gain**, **midtone protection on**.
 
@@ -68,7 +76,7 @@ This example starts with the edited SDR image above: **75% strength**, **4× max
 
 Both contain an SDR base image and an HDR gain map. Download them and open them in an HDR-capable viewer. GitHub may show only the SDR version; actual brightness depends on the display and its available HDR headroom.
 
-The gain map is an estimate. It cannot reliably recover clipped detail or the scene's original luminance. [Measured output](Docs/Images/report.json) · [HDR color regression checks](Docs/Evidence/hdr-red-cast-verification.md) · [Comparison with native HDR](Docs/Evidence/library-hdr-audit.md)
+The gain map is an estimate. It cannot reliably recover clipped detail or the scene's original luminance. [Measured output](Docs/Images/report.json) · [HDR color regression checks](Docs/Evidence/hdr-red-cast-verification.md) · [v1.1 comparison with native HDR](Docs/Evidence/hdr-v11-quality.md)
 
 ## Editing tools
 
@@ -124,7 +132,7 @@ open Velyn.xcodeproj
 ./Scripts/verify.sh
 ```
 
-The verification script passes **72 engine tests** and builds the iOS Simulator app. Tests cover original-file preservation, local model inference, HDR gain map round trips, neutral colors, localization, and other engine behavior. Device-target compilation is checked separately. The README examples were rendered on macOS; they are not A17 Pro benchmarks.
+The verification script passes **75 engine tests** and builds the iOS Simulator app. Tests cover original-file preservation, local model inference, HDR gain map round trips, neutral colors, localization, and other engine behavior. Device-target compilation is checked separately. The README examples were rendered on macOS; they are not A17 Pro benchmarks.
 
 Work is still underway on broader physical-device testing: ProRAW variants, camera behavior, display color accuracy, sustained heat, and system import/export flows. The project has not passed all release acceptance gates or established Lightroom feature and quality parity. Most engineering notes linked below are currently in Korean.
 

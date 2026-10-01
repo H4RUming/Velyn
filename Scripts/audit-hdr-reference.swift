@@ -66,9 +66,10 @@ private actor Audit {
         }
         let expansion = try await service.estimateHDRExpansion(document,recipe: EditRecipe(),modelURL: compiled)
         let baseSamples = samples(base),referenceSamples = samples(reference)
-        var report: [String:Any] = ["environment":"macOS engine; one real local HDR/SDR pair; no display measurements","originalSHA256":initialHash,"nativeHeadroom":reference.contentHeadroom,"SDR":compare(baseSamples,referenceSamples,base:baseSamples)]
-        for mode in ["app-default","model-full"] {
+        var report: [String:Any] = ["environment":"macOS engine; one real local HDR/SDR pair; no display measurements","originalSHA256":initialHash,"nativeHeadroom":reference.contentHeadroom,"protectionBlend":expansion.protectionBlend ?? -1,"SDR":compare(baseSamples,referenceSamples,base:baseSamples)]
+        for mode in ["legacy","app-default","model-full"] {
             var recipe = EditRecipe(); recipe.enhancements.hdr = true; recipe.enhancements.hdrExpansion = expansion
+            if mode == "legacy" { recipe.enhancements.hdrExpansion?.protectionBlend = nil; recipe.enhancements.hdrExpansion?.edgeAwareUpsampling = nil }
             if mode == "model-full" { recipe.enhancements.hdrExpansion?.strength = 1; recipe.enhancements.hdrExpansion?.maximumBoostEV = log2(5); recipe.enhancements.hdrExpansion?.protectMidtones = false }
             let image = try await service.processed(document,recipe: recipe,maxPixelSize: nil)
             report[mode] = compare(samples(image),referenceSamples,base:baseSamples)

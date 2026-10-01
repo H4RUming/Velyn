@@ -58,6 +58,7 @@ extension EditingService {
         let map = CIImage(bitmapData: samples.withUnsafeBytes { Data($0) }, bytesPerRow: 512*4,
                           size: CGSize(width: 512,height: 512), format: .Rf, colorSpace: nil)
         let cropped = RenderPipeline.normalized(map.cropped(to: valid))
+        let protectionBlend = try gainProtectionBlend(image)
         let id = try storeGainMap(cropped)
         #if DEBUG && targetEnvironment(simulator)
         if ProcessInfo.processInfo.arguments.contains("--editor-smoke-test") {
@@ -71,6 +72,8 @@ extension EditingService {
         #endif
         var expansion = HDRExpansion(resourceID: id)
         expansion.predictionFingerprint = recipe.gainPredictionFingerprint
+        expansion.protectionBlend = protectionBlend
+        expansion.edgeAwareUpsampling = true
         return expansion
     }
 
@@ -164,6 +167,15 @@ struct GainMapPipeline {
                                                            y: image.extent.height/map.extent.height))
             .transformed(by: CGAffineTransform(translationX: image.extent.minX,y: image.extent.minY))
             .cropped(to: image.extent)
+        if expansion.edgeAwareUpsampling == true && image.extent.width > map.extent.width && image.extent.height > map.extent.height {
+            let guide = RenderPipeline.normalized(image)
+            let refined = guide.applyingFilter("CIEdgePreserveUpsampleFilter",parameters: [
+                "inputSmallImage": RenderPipeline.normalized(scalarMap(map)),
+                "inputSpatialSigma": 3.0,"inputLumaSigma": 0.15
+            ])
+            resized = scalarMap(refined).transformed(by: .init(translationX: image.extent.minX,y: image.extent.minY)).cropped(to: image.extent)
+                .applyingFilter("CIColorClamp",parameters: ["inputMinComponents":CIVector(x:0,y:0,z:0,w:1),"inputMaxComponents":CIVector(x:1,y:1,z:1,w:1)])
+        }
         if expansion.protectMidtones == true {
             // Scalar luminance gating preserves RGB ratios; it does not infer missing detail.
             let luma = CIVector(x: 0.2126,y: 0.7152,z: 0.0722,w: 0)
@@ -172,8 +184,8 @@ struct GainMapPipeline {
                 .applyingFilter("CIColorClamp",parameters: ["inputMinComponents": CIVector(x: 0,y: 0,z: 0,w: 1),"inputMaxComponents": CIVector(x: 1,y: 1,z: 1,w: 1)])
             var protection = [Float]()
             for i in 0..<1024 {
-                let t = min(1,max(0,(Double(i)/1023-0.18)/(0.8-0.18)))
-                let value = Float(t*t*(3-2*t)); protection += [value,value,value]
+                let value = Float(GainMapTonePolicy.protection(luminance:Double(i)/1023,blend:expansion.protectionBlend ?? 0))
+                protection += [value,value,value]
             }
             let gate = luminance.applyingFilter("CIColorCurves",parameters: ["inputCurvesData": protection.withUnsafeBytes { Data($0) },
                 "inputCurvesDomain": CIVector(x: 0,y: 1),"inputColorSpace": RenderPipeline.linearSpace])

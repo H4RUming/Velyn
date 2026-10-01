@@ -90,13 +90,17 @@ public enum SourceDynamicRange: String, Sendable { case sdr, hdr, raw }
 /// Stored samples encode log2 gain / log2(5). UUID resources belong to this photo only.
 public struct HDRExpansion: Codable, Sendable, Equatable {
     public var predictionFingerprint: String?
+    /// Nil retains the pre-1.1 tone curve and bilinear map sampling.
+    public var protectionBlend: Double?
+    public var edgeAwareUpsampling: Bool?
     public var protectMidtones: Bool?
     public var resourceID: UUID
     public var strength = 0.75
     public var maximumBoostEV = 2.0
     public init(resourceID: UUID) { self.resourceID = resourceID; self.protectMidtones = true }
     public var isValid: Bool {
-        strength.isFinite && (0...1).contains(strength) && maximumBoostEV.isFinite && (0...log2(5)).contains(maximumBoostEV)
+        strength.isFinite && (0...1).contains(strength) && maximumBoostEV.isFinite && (0...log2(5)).contains(maximumBoostEV) &&
+        (protectionBlend.map { $0.isFinite && (0...1).contains($0) } ?? true)
     }
 }
 

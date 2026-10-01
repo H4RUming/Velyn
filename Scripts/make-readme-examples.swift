@@ -78,9 +78,20 @@ private actor ExampleRenderer {
         try context.writePNGRepresentation(of:gainImage,to:directory.appendingPathComponent("hdr-applied-gain.png"),format:.RGBA8,colorSpace:CGColorSpace(name:CGColorSpace.sRGB)!)
         let stats=try await service.diagnostics(document,recipe:recipe)
         _ = try await importer.verify(asset)
+        // Gallery variants are genuine engine crops/grades of the same synthetic source.
+        for index in 0..<3 {
+            let galleryAsset = try await importer.importFile(at:input)
+            let galleryService = EditingService(root:projects,asset:galleryAsset)
+            var galleryDocument = try await galleryService.load()
+            var variant = EditRecipe(); variant.aspect = .square; variant[.cropScale] = 55
+            variant[.cropX] = [15,50,85][index]; variant[.cropY] = [30,70,45][index]
+            variant[.warmth] = [-12,5,12][index]; variant[.exposure] = [0.1,0.25,0.15][index]
+            galleryDocument.history.commit(variant); galleryDocument.revision += 1
+            try await galleryService.save(galleryDocument)
+        }
         let report:[String:Any] = ["environment":"macOS production engine; synthetic AI-generated SDR PNG; not RAW or device display validation",
             "sourceSHA256":asset.sha256,"width":w,"height":h,"adjustments":["exposure":0.35,"shadows":24,"highlights":-20,"contrast":-6,"vibrance":16,"warmth":4,"clarity":4],
-            "hdrStrength":0.75,"maximumGain":4,"protectMidtones":true,"measuredPeakGain":peakGain,
+            "adaptiveProtectionBlend":recipe.enhancements.hdrExpansion?.protectionBlend ?? -1,"edgeAwareUpsampling":recipe.enhancements.hdrExpansion?.edgeAwareUpsampling == true,"hdrStrength":0.75,"maximumGain":4,"protectMidtones":true,"measuredPeakGain":peakGain,
             "hdrPeakChannel":stats.peak,"aboveSDRFraction":stats.aboveSDRFraction,"exports":exports,
             "comparisonExposureEV":-2,"gainVisualization":"black=1x, white=4x; log2 scale; effective applied gain",
             "originalPreserved":true,"assetID":asset.id.uuidString]

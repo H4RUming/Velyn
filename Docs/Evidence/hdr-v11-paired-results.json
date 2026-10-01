@@ -1,0 +1,203 @@
+{
+  "environment": "macOS 27 Core Image / Core ML; no physical display measurements",
+  "sampling": "256px long edge; linear-sRGB luminance; EV error excludes values <= 0.01",
+  "limitations": "Small convenience sample; three held-out files from a single source; not an independent camera-quality benchmark",
+  "meanAbsoluteErrorEV": {
+    "legacy": 0.44087499983904777,
+    "v1.1": 0.37195459774718337,
+    "relativeReduction": 0.15632640117272578
+  },
+  "samples": [
+    {
+      "sample": "DJI_1_0226_D",
+      "group": "development",
+      "originalPreserved": true,
+      "protectionBlend": 1,
+      "legacy": {
+        "gainCorrelation": 0.8599530687065869,
+        "meanAbsoluteLuminanceErrorEV": 0.5712846883235444,
+        "meanGainEV": 0.12305536931020458,
+        "meanLuminanceRatio": 0.7591664148061157,
+        "p95AbsoluteLuminanceErrorEV": 0.7183293457074269,
+        "referenceMeanGainEV": 0.6943400576337425
+      },
+      "v1.1": {
+        "gainCorrelation": 0.6283323829854954,
+        "meanAbsoluteLuminanceErrorEV": 0.46266681691778777,
+        "meanGainEV": 0.2469499211947178,
+        "meanLuminanceRatio": 0.8881075947862206,
+        "p95AbsoluteLuminanceErrorEV": 0.7100580865161349,
+        "referenceMeanGainEV": 0.6943400576337425
+      },
+      "sha256": "b486c86b1ba3878968db1336472bc9fd82a10e1bea7d6b48c48f7bf9b7f16128",
+      "source": "https://raw.githubusercontent.com/chemharuka/toGainMapHDR/main/sample/DJI_1_0226_D.heic"
+    },
+    {
+      "sample": "DJI_1_0616_D",
+      "group": "development",
+      "originalPreserved": true,
+      "protectionBlend": 1,
+      "legacy": {
+        "gainCorrelation": 0.809804649325366,
+        "meanAbsoluteLuminanceErrorEV": 0.576097334394491,
+        "meanGainEV": 0.11082604982501425,
+        "meanLuminanceRatio": 0.779228397477943,
+        "p95AbsoluteLuminanceErrorEV": 0.7380724828639972,
+        "referenceMeanGainEV": 0.6792295638546239
+      },
+      "v1.1": {
+        "gainCorrelation": 0.5626630225493826,
+        "meanAbsoluteLuminanceErrorEV": 0.48099445477419006,
+        "meanGainEV": 0.22254044845437945,
+        "meanLuminanceRatio": 0.8811786354928411,
+        "p95AbsoluteLuminanceErrorEV": 0.7219510332935967,
+        "referenceMeanGainEV": 0.6792295638546239
+      },
+      "sha256": "25bae5246e74995f6f92bef747736c86e5eb6936895354819da7c3fe202ea234",
+      "source": "https://raw.githubusercontent.com/chemharuka/toGainMapHDR/main/sample/DJI_1_0616_D.heic"
+    },
+    {
+      "sample": "DJI_1_0927_D",
+      "group": "development",
+      "originalPreserved": true,
+      "protectionBlend": 1,
+      "legacy": {
+        "gainCorrelation": 0.4035580326216342,
+        "meanAbsoluteLuminanceErrorEV": 0.6548120861339346,
+        "meanGainEV": 0.014898190695303562,
+        "meanLuminanceRatio": 0.6509221605429448,
+        "p95AbsoluteLuminanceErrorEV": 0.7245407748513079,
+        "referenceMeanGainEV": 0.6697017427881046
+      },
+      "v1.1": {
+        "gainCorrelation": 0.11381757081292808,
+        "meanAbsoluteLuminanceErrorEV": 0.5749116191069659,
+        "meanGainEV": 0.09481682825522302,
+        "meanLuminanceRatio": 0.718446107406323,
+        "p95AbsoluteLuminanceErrorEV": 0.6859715919518087,
+        "referenceMeanGainEV": 0.6697017427881046
+      },
+      "sha256": "6e3f8f497beaf5d0c1210a8702703f6f34f8ed9b804d4ac1c7aa2e640cd8f913",
+      "source": "https://raw.githubusercontent.com/chemharuka/toGainMapHDR/main/sample/DJI_1_0927_D.heic"
+    },
+    {
+      "sample": "apple",
+      "group": "development",
+      "originalPreserved": true,
+      "protectionBlend": 0,
+      "legacy": {
+        "gainCorrelation": 0.9147053770385265,
+        "meanAbsoluteLuminanceErrorEV": 0.04943452879976446,
+        "meanGainEV": 0.11825924781369679,
+        "meanLuminanceRatio": 0.9797992296810089,
+        "p95AbsoluteLuminanceErrorEV": 0.2083489417862935,
+        "referenceMeanGainEV": 0.11755964911859418
+      },
+      "v1.1": {
+        "gainCorrelation": 0.9147053770385265,
+        "meanAbsoluteLuminanceErrorEV": 0.04943452879976446,
+        "meanGainEV": 0.11825924781369679,
+        "meanLuminanceRatio": 0.9797992296810089,
+        "p95AbsoluteLuminanceErrorEV": 0.2083489417862935,
+        "referenceMeanGainEV": 0.11755964911859418
+      },
+      "sha256": "492a94bd0636bcf15b3f560c68142a7783936c1597e78b0d0461d8be7fddc078",
+      "source": "https://raw.githubusercontent.com/google/libultrahdr/main/tests/data/apple_gainmap_new.jpg"
+    },
+    {
+      "sample": "holdout-01",
+      "group": "holdout",
+      "originalPreserved": true,
+      "protectionBlend": 0.5329505331344265,
+      "legacy": {
+        "gainCorrelation": 0.9532833030664408,
+        "meanAbsoluteLuminanceErrorEV": 0.1854030357873931,
+        "meanGainEV": 0.1308971335172395,
+        "meanLuminanceRatio": 0.7700113033278421,
+        "p95AbsoluteLuminanceErrorEV": 0.560707387464315,
+        "referenceMeanGainEV": 0.3149466180496641
+      },
+      "v1.1": {
+        "gainCorrelation": 0.9279830318632002,
+        "meanAbsoluteLuminanceErrorEV": 0.1453098474974476,
+        "meanGainEV": 0.18470814850668382,
+        "meanLuminanceRatio": 0.8060228389740777,
+        "p95AbsoluteLuminanceErrorEV": 0.5088539648073841,
+        "referenceMeanGainEV": 0.3149466180496641
+      },
+      "sha256": "972c86eb05d785ca8ea14f78c4456ddd1fbc7fdb4c0a806d8f7d90e2c0e577b8",
+      "source": "https://raw.githubusercontent.com/MONOGRID/gainmap-js/main/tests/files/01.jpg"
+    },
+    {
+      "sample": "holdout-02",
+      "group": "holdout",
+      "originalPreserved": true,
+      "protectionBlend": 0.9087529224047108,
+      "legacy": {
+        "gainCorrelation": 0.559805192362467,
+        "meanAbsoluteLuminanceErrorEV": 1.0427064789177516,
+        "meanGainEV": 0.05916132517365813,
+        "meanLuminanceRatio": 0.4450618090523603,
+        "p95AbsoluteLuminanceErrorEV": 1.4557156368910897,
+        "referenceMeanGainEV": 1.1018289069810239
+      },
+      "v1.1": {
+        "gainCorrelation": 0.6139207490398977,
+        "meanAbsoluteLuminanceErrorEV": 0.9191333726771468,
+        "meanGainEV": 0.18273813028729152,
+        "meanLuminanceRatio": 0.5075858178555046,
+        "p95AbsoluteLuminanceErrorEV": 1.3701264172075658,
+        "referenceMeanGainEV": 1.1018289069810239
+      },
+      "sha256": "7390369df01a52560b1d4840b64d77500accc8434ca97a48f86440304ecd7829",
+      "source": "https://raw.githubusercontent.com/MONOGRID/gainmap-js/main/tests/files/02.jpg"
+    },
+    {
+      "sample": "holdout-03",
+      "group": "holdout",
+      "originalPreserved": true,
+      "protectionBlend": 1,
+      "legacy": {
+        "gainCorrelation": 0.7905291805041231,
+        "meanAbsoluteLuminanceErrorEV": 0.3071078405223574,
+        "meanGainEV": 0.03073927727072133,
+        "meanLuminanceRatio": 0.7118332120764099,
+        "p95AbsoluteLuminanceErrorEV": 0.5706621723758012,
+        "referenceMeanGainEV": 0.3366512233671233
+      },
+      "v1.1": {
+        "gainCorrelation": 0.7297746043897108,
+        "meanAbsoluteLuminanceErrorEV": 0.25479248431688584,
+        "meanGainEV": 0.08538335223911517,
+        "meanLuminanceRatio": 0.7696015403298403,
+        "p95AbsoluteLuminanceErrorEV": 0.49802448536545885,
+        "referenceMeanGainEV": 0.3366512233671233
+      },
+      "sha256": "0c7538850bf3b5dbdfeb6bfdbb7c639d867d07bd7d8bf286537cfd23cca8a513",
+      "source": "https://raw.githubusercontent.com/MONOGRID/gainmap-js/main/tests/files/03.jpg"
+    },
+    {
+      "sample": "sunset",
+      "group": "development",
+      "originalPreserved": true,
+      "protectionBlend": 1,
+      "legacy": {
+        "gainCorrelation": 0.9276583663493216,
+        "meanAbsoluteLuminanceErrorEV": 0.14015400583314544,
+        "meanGainEV": 0.09899036603442668,
+        "meanLuminanceRatio": 0.8990789397957663,
+        "p95AbsoluteLuminanceErrorEV": 0.22273142595990425,
+        "referenceMeanGainEV": 0.23783345279121687
+      },
+      "v1.1": {
+        "gainCorrelation": 0.9056119063299644,
+        "meanAbsoluteLuminanceErrorEV": 0.08839365788727865,
+        "meanGainEV": 0.31490454033965826,
+        "meanLuminanceRatio": 1.061879484539267,
+        "p95AbsoluteLuminanceErrorEV": 0.19419984820094743,
+        "referenceMeanGainEV": 0.23783345279121687
+      },
+      "source": "User-provided HDR JPEG; photo and photo-derived tensors excluded from repository"
+    }
+  ]
+}

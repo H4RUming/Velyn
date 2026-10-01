@@ -60,6 +60,9 @@ public actor OriginalImportService: AssetImporting {
         let support = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask,
                                                   appropriateFor: nil, create: true)
         #if DEBUG && targetEnvironment(simulator)
+        if ProcessInfo.processInfo.arguments.contains("--readme-screenshots") {
+            return support.appendingPathComponent("Velyn/ReadmeV11",isDirectory:true)
+        }
         if ProcessInfo.processInfo.arguments.contains("--library-smoke-test") {
             return support.appendingPathComponent("Velyn/LibrarySmoke",isDirectory: true)
         }

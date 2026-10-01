@@ -26,6 +26,9 @@ struct HDRExpansionControls: View {
                     if expansion.predictionFingerprint == nil || stalePrediction {
                         Label(L10n.tr("현재 보정과 밝기 지도가 다를 수 있습니다. 다시 예측해 주세요."),systemImage: "arrow.clockwise").font(.caption).foregroundStyle(.orange)
                     }
+                    if expansion.protectionBlend == nil {
+                        Text(L10n.tr("자동 톤 보호를 적용하려면 밝기 지도를 다시 예측하세요.")).font(.caption2).foregroundStyle(.secondary)
+                    }
                     Picker(L10n.tr("조절 항목"),selection: $parameter) { Text(L10n.tr("확장 강도")).tag(0); Text(L10n.tr("최대 밝기")).tag(1) }.pickerStyle(.segmented)
                     if parameter == 0 { AdjustmentSlider(title: L10n.tr("HDR 확장 강도"), value: Binding(
                         get: { (editor.recipe.enhancements.hdrExpansion?.strength ?? 0.75)*100 },

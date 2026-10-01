@@ -112,6 +112,11 @@ struct ContentView: View {
                 if ProcessInfo.processInfo.arguments.contains("--library-smoke-albums") { showOrganizer = true }
                 if ProcessInfo.processInfo.arguments.contains("--library-smoke-confirm") { requestTrash(organizer.selectedIDs) }
             }
+            if ProcessInfo.processInfo.arguments.contains("--readme-screenshots") {
+                if let argument = ProcessInfo.processInfo.arguments.first(where: { $0.hasPrefix("--readme-asset=") }),
+                   let id = UUID(uuidString:String(argument.dropFirst("--readme-asset=".count))),let asset = store.recent.first(where: { $0.id == id }) { store.open(asset) }
+                if ProcessInfo.processInfo.arguments.contains("--readme-selection") { organizer.selecting = true; organizer.selectedIDs = Set(store.recent.prefix(2).map(\.id)) }
+            }
             if ProcessInfo.processInfo.arguments.contains("--settings-smoke-test") { showSettings = true }
             if ProcessInfo.processInfo.arguments.contains("--import-source-smoke-test") { showImportSources = true }
             if ProcessInfo.processInfo.arguments.contains("--photo-library-smoke-test") { showPhotos = true }

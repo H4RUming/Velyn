@@ -201,6 +201,53 @@ struct GainMapTests {
         #expect(try JSONDecoder().decode(HDRExpansion.self,from: legacy).predictionFingerprint == nil)
     }
 
+    @Test func adaptiveProtectionKeepsLegacyAndRejectsInvalidMetadata() throws {
+        let compressed = (0..<256).map { Float(0.04+Double($0)/255*0.4) }
+        let contrast = (0..<256).map { Float(pow(10,Double($0)/255*3-3)) }
+        #expect(GainMapTonePolicy.blend(luminances: compressed) > 0.95)
+        #expect(GainMapTonePolicy.blend(luminances: contrast) < 0.05)
+        #expect(GainMapTonePolicy.blend(luminances: Array(repeating:0.4,count:256)) == 0)
+        #expect(GainMapTonePolicy.blend(luminances: [.nan,.infinity]) == 0)
+        var expansion = HDRExpansion(resourceID: UUID())
+        expansion.protectionBlend = .nan; #expect(!expansion.isValid)
+        expansion.protectionBlend = 1.1; #expect(!expansion.isValid)
+        expansion.protectionBlend = 1; expansion.edgeAwareUpsampling = true
+        #expect(try JSONDecoder().decode(HDRExpansion.self,from: JSONEncoder().encode(expansion)) == expansion)
+        #expect(GainMapTonePolicy.protection(luminance:0.01,blend:1) == 0)
+        #expect(GainMapTonePolicy.protection(luminance:0.35,blend:1) > GainMapTonePolicy.protection(luminance:0.35,blend:0))
+        #expect(GainMapTonePolicy.protection(luminance:1,blend:1) == 1)
+    }
+
+    @Test func edgeAwareGainReducesBleedAcrossSharpBoundaries() {
+        let rect = CGRect(x:0,y:0,width:128,height:128)
+        let dark = CIImage(color: CIColor(red:0.01,green:0.01,blue:0.01,colorSpace:RenderPipeline.linearSpace)!).cropped(to:rect)
+        let source = CIImage(color:.white).cropped(to:CGRect(x:64,y:0,width:64,height:128)).composited(over:dark)
+        let samples = (0..<256).map { $0 % 16 >= 8 ? Float(1) : Float(0) }
+        let map = CIImage(bitmapData:samples.withUnsafeBytes { Data($0) },bytesPerRow:64,size:CGSize(width:16,height:16),format:.Rf,colorSpace:nil)
+        var expansion = HDRExpansion(resourceID:UUID()); expansion.protectMidtones = false; expansion.strength = 1; expansion.maximumBoostEV = 1
+        let old = GainMapPipeline.apply(source,map:map,expansion:expansion)
+        expansion.edgeAwareUpsampling = true
+        let new = GainMapPipeline.apply(source,map:map,expansion:expansion)
+        let oldLeak = abs(pixel(old,x:62,y:64)[0]-0.01)
+        let newLeak = abs(pixel(new,x:62,y:64)[0]-0.01)
+        #expect(newLeak < oldLeak)
+        let bright = pixel(new,x:96,y:64)
+        #expect(abs(bright[0]-2) < 0.005 && abs(bright[0]-bright[1]) < 0.001)
+    }
+
+    @Test func adaptiveMapPreservesAlphaChromaAndBounds() {
+        let rect = CGRect(x:0,y:0,width:64,height:64)
+        let source = CIImage(color:CIColor(red:0.6,green:0.3,blue:0.15,alpha:0.5,colorSpace:RenderPipeline.linearSpace)!).cropped(to:rect)
+        let map = CIImage(color:.white).cropped(to:CGRect(x:0,y:0,width:16,height:16))
+        var expansion = HDRExpansion(resourceID:UUID()); expansion.protectionBlend = 1; expansion.edgeAwareUpsampling = true; expansion.maximumBoostEV = 1
+        let a = pixel(source),b = pixel(GainMapPipeline.apply(source,map:map,expansion:expansion))
+        #expect(abs(a[3]-b[3]) < 0.001)
+        #expect(abs(b[0]/b[1]-2) < 0.003 && abs(b[1]/b[2]-2) < 0.003)
+        #expect(b[0] <= a[0]*2.001)
+        expansion.strength = 0
+        #expect(pixel(GainMapPipeline.apply(source,map:map,expansion:expansion)) == a)
+    }
+
     @Test func canceledPredictionCreatesNoMap() async throws {
         let (base,projects,asset,service) = try await fixture(); defer { try? FileManager.default.removeItem(at: base) }
         let document = try await service.load()

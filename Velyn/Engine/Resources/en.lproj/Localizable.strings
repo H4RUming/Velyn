@@ -492,3 +492,5 @@
 "선택하기" = "Select";
 "모든 사진이 휴지통에 있습니다" = "All photos are in Trash";
 "휴지통에서 복원하거나 새 사진을 추가하세요." = "Restore photos from Trash or add new ones.";
+
+"자동 톤 보호를 적용하려면 밝기 지도를 다시 예측하세요." = "Predict the gain map again to use adaptive tone protection.";
