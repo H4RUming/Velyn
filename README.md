@@ -117,6 +117,8 @@ While you drag a control, previews use a 768px resolution and update at up to 30
 
 Velyn fine-tunes GMNet and uses the other models alongside its own editing and export code. New HDR predictions use the learned gain at full strength; midtone protection is optional. Existing edits keep their settings. On a repeatedly evaluated collection of 132 photos, the tuned model reduced mean luminance error from 0.488 to 0.328 EV. Some photos still regress, and iPhone display validation remains open. See the [integration checks](Docs/Evidence/hdr-camera-integration.md) and [training results](Docs/Evidence/hdr-gmnet-finetune-verification.md).
 
+Download the [camera-adapted GMNet on Hugging Face](https://huggingface.co/H4RUming/Velyn-GMNet-Camera-v1) for PyTorch weights, Core ML packages, and local inference examples. The training photos remain private.
+
 A separate model trained from scratch remains an experiment in the [research code](Scripts/HDR/Training/README.md). All app photo processing runs on the device. The repository includes converted model weights, without the private training photos or training checkpoint. See the [model sources and licenses](Velyn/Notices/Models-NOTICE.txt).
 
 Apple's tap selection assets are downloaded only when you tap **Prepare model**. Launching the app or importing a photo does not trigger a model download. PhotoKit imports disable network access, so iCloud-only originals must first be downloaded in Photos. File provider downloads, sharing, and saving use the system services you choose.
