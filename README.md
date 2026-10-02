@@ -16,7 +16,7 @@
 
 Velyn is an iPhone photo editor with local processing and nondestructive edits. Imported originals are kept byte for byte; edits and exports are saved separately. There is no app server, photo upload, account, or advertising SDK.
 
-**[Download v1.1.0](https://github.com/H4RUming/Velyn/releases/tag/v1.1.0)** — iOS 27 or later. The release includes an unsigned IPA for signing with AltStore Classic or your own signing workflow. Apple Configurator requires an already signed IPA. See the [installation guide](Docs/Releases/INSTALL.md).
+**[Download v1.2.0](https://github.com/H4RUming/Velyn/releases/tag/v1.2.0)** — iOS 27 or later. The release includes an unsigned IPA for signing with AltStore Classic or your own signing workflow. Apple Configurator requires an already signed IPA. See the [installation guide](Docs/Releases/INSTALL.md).
 
 ## Inside the app
 
@@ -39,7 +39,15 @@ These are fresh **v1.1 screenshots from the iOS 27 Simulator**. The landscape is
 
 The app supports **English and Korean**. Use the gear icon in the library, then **App language**. System permission dialogs and photo/file pickers follow the app's iOS language setting.
 
-### What's new in v1.1
+### What's new in v1.2
+
+- Camera-adapted GMNet, with 1024px inference on supported Neural Engine devices and a calibrated 512px fallback.
+- New predictions use the learned gain without the previous default tone reduction. Strength and midtone protection remain adjustable.
+- Existing edits stay intact. Use **Predict gain map again**, then **Full model gain**, to try the updated model and defaults on an older edit.
+
+[Release notes and installation](Docs/Releases/v1.2.0.md)
+
+### Earlier changes in v1.1
 
 - **More balanced HDR expansion.** Tone protection adapts to the scene's contrast, and gain-map enlargement follows image edges to reduce bleeding. In a small eight-pair local audit, mean luminance error fell by 15.6%. [Results and limits](Docs/Evidence/hdr-v11-quality.md).
 - **Clearer library actions.** Select, delete, undo, restore, and add to albums are easier to find. Changing a filter no longer leaves hidden photos selected.
@@ -59,7 +67,7 @@ A small exposure lift, more detail in the shadows, and a few color adjustments. 
 
 ## Adding HDR to an SDR photo
 
-The bundled **GMNet** model predicts a gain map. Velyn applies that map to linear RGB, using the same multiplier for all three color channels. In v1.1, tone protection adapts to scene contrast and map enlargement follows the photo’s edges. Strength, maximum gain, and midtone protection remain adjustable.
+The bundled **GMNet** model predicts a gain map. Velyn applies that map to linear RGB, using the same multiplier for all three color channels. In v1.2, GMNet is fine-tuned on native camera HDR/SDR pairs. New predictions use full strength, a 5× ceiling, and optional midtone protection. Existing maps keep their saved settings. The examples below were rendered with v1.1; see the [v1.2 measurements](Docs/Evidence/hdr-camera-integration.md) for the new model.
 
 This example starts with the edited SDR image above: **75% strength**, **4× maximum gain**, **midtone protection on**.
 

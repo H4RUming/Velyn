@@ -12,13 +12,13 @@ performed in this change.
   protection **off**. The maximum is a ceiling, not a uniform brightness boost.
 - Bilinear enlargement matches the direct prediction path used in the 132-photo
   comparison. The older edge-aware path remains available to stored recipes.
-- Midtone protection and strength remain adjustable. **Model prediction** restores
+- Midtone protection and strength remain adjustable. **Full model gain** restores
   full strength and the model's cap; **Preserve tones** provides the previous
   protective treatment.
 - Existing maps and their tone/upsampling settings are unchanged. No inference
   runs on launch or import. An older map gets a localized prompt to predict again.
   Explicit regeneration preserves the user's strength, cap and protection values;
-  tap **Model prediction** afterward to use the new defaults on that photo.
+  tap **Full model gain** afterward to use the new defaults on that photo.
 - Optional `predictionModel` records provenance without making old projects depend
   on model availability. The default initializer and missing-key decoding are
   unchanged. RAW and native HDR still use their existing paths.

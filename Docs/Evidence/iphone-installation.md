@@ -10,3 +10,12 @@
 - This confirms installation and initial use, not full device performance, photo quality, or C01–C10 acceptance.
 
 Icon source and generation prompt: [app-icon.md](../app-icon.md).
+
+## v1.2 update — 2026-10-02
+
+- Signed Release **1.2.0 (5)** installed over the existing **1.0.0 (2)** using the
+  same local bundle ID and signing identity, without uninstalling.
+- `devicectl` confirmed successful installation, successful application launch,
+  and the new installed version/build.
+- No test flags were used. HDR display quality and performance remain unverified
+  on the physical phone. See [release verification](v1.2-release-verification.md).
