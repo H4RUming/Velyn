@@ -172,3 +172,50 @@ preservation, anonymous staging and deletion after a failed job, using generated
 sentinel bytes only. Report aggregate metrics without photo names, dates, image
 hashes or per-image results. A successful fine-tune is still subject to app codec,
 color and physical-device acceptance before release.
+
+### Compare fine-tuning the published GMNet
+
+`train_gmnet_camera.py` starts from the pinned published real-world checkpoint
+instead of the Velyn synthetic-data pilot. It keeps GMNet's 1,921,827-parameter
+architecture and positive 0…log2(5) EV convention. The fixed schedule is 6,000
+steps, batch 24, AdamW and a cosine learning rate from 0.00001 to 0.0000005.
+The global branch remains FP32 during training; the local branch uses FP16
+autocast. Validation and comparison run in FP32.
+
+The local training input is a 128px aligned crop from the 512px proxy, resized to
+256px to match the 1024px inference scale. Full-image thumbnails are 256px. This
+preserves the published model's expected thumbnail input. The architecture,
+capacity, input scale and learning rate differ from the own-model experiment, so
+the comparison does not isolate the effect of pretraining alone.
+
+With the same explicitly authorized private workspace and deletion procedure:
+
+```sh
+python Scripts/HDR/Training/run_private_camera_job.py /private/job/workspace \
+  --trainer gmnet --initial /private/path/G_realworld.pth \
+  --gmnet-source Scripts/Models/gmnet
+```
+
+The existing 618/132/132 split stays fixed. Checkpoint selection uses only the
+132-image validation set. The other 132-image comparison set has already been
+examined in earlier work and must not be advertised as fresh final validation.
+The initial checkpoint remains eligible if training fails to improve validation.
+
+After recovering results and verifying full server cleanup, use
+`convert_tuned_gmnet.py CHECKPOINT OUTPUT` on the Mac for a 1024px Core ML package.
+It validates checkpoint provenance, checks the static-kernel conversion against
+the original model, retains global FP32/local FP16, and compares CPU_ONLY and
+CPU_AND_NE policies on generated inputs. No app model is replaced.
+
+`summarize_gmnet_camera.py GMNET_PRIVATE_ROOT OWN_MODEL_PRIVATE_ROOT OUTPUT_JSON`
+checks identical manifests and photo ordering, verifies reproduction of the
+untuned GMNet baseline, and exports aggregate paired comparisons and group-level
+bootstrap intervals. It excludes private photo IDs and per-image scores.
+`test_gmnet_training.py` checks full-precision forward equivalence and gradients
+through both branches using synthetic tensors only.
+
+`evaluate_coreml_gmnet.py PACKAGE PAIRS PRIVATE_SCORES OUTPUT_JSON` runs the same
+comparison locally on a Mac to check whether Core ML conversion preserves model
+quality. It reports aggregate errors and per-image-MAE drift without exporting
+photo identities. This is a repeated quality check, not new final validation or
+physical iPhone evidence. [Recorded GMNet results](../../../Docs/Evidence/hdr-gmnet-finetune-verification.md).

@@ -1,0 +1,400 @@
+{
+  "date": "2026-10-02",
+  "training": {
+    "scope": "Previously examined comparison set; checkpoint chosen only on validation. No app codec/device acceptance.",
+    "configuration": {
+      "family": "GMNet",
+      "parameters": 1921827,
+      "seed": 20261002,
+      "initialSHA256": "83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f",
+      "steps": 6000,
+      "batch": 24,
+      "learningRate": 1e-05,
+      "minimumLearningRate": 5e-07,
+      "trainLocalSize": 256,
+      "inferenceLocalSize": 1024,
+      "thumbnailSize": 256,
+      "cropProtocol": "128px crop from the 512px proxy, upsampled to 256px to match 1024px inference scale",
+      "output": "Unchanged positive-only GMNet: clamp normalized gain 0..1, multiply by log2(5)",
+      "precision": "FP32 global branch, autocast FP16 local branch; full FP32 validation and comparison",
+      "splitImages": {
+        "train": 618,
+        "validation": 132,
+        "test": 132
+      },
+      "splitGroups": {
+        "train": 50,
+        "validation": 29,
+        "test": 30
+      },
+      "testUsedForCheckpointSelection": false,
+      "comparisonSetPreviouslyExamined": true,
+      "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+      "torch": "2.7.0+cu128",
+      "cuda": "12.8"
+    },
+    "selectedStep": 4500,
+    "trainingSeconds": 297.0848516970291,
+    "validation": [
+      {
+        "step": 0,
+        "maeEV": 0.4391586256749702,
+        "boundedMAE_EV": 0.4388966972403454,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 500,
+        "maeEV": 0.2679623286380912,
+        "boundedMAE_EV": 0.26770040200966777,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 1000,
+        "maeEV": 0.2724543722967307,
+        "boundedMAE_EV": 0.27219244312833657,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 1500,
+        "maeEV": 0.2687513298834815,
+        "boundedMAE_EV": 0.26848940486370615,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 2000,
+        "maeEV": 0.26812796712373244,
+        "boundedMAE_EV": 0.2678660409468593,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 2500,
+        "maeEV": 0.26896547456977493,
+        "boundedMAE_EV": 0.2687035469253632,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 3000,
+        "maeEV": 0.26962774836768705,
+        "boundedMAE_EV": 0.26936582100549433,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 3500,
+        "maeEV": 0.26842505936369754,
+        "boundedMAE_EV": 0.26816313346904336,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 4000,
+        "maeEV": 0.2665462110925353,
+        "boundedMAE_EV": 0.2662842841254491,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 4500,
+        "maeEV": 0.2658229666959607,
+        "boundedMAE_EV": 0.2655610383742235,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 5000,
+        "maeEV": 0.266973983101321,
+        "boundedMAE_EV": 0.2667120569808917,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 5500,
+        "maeEV": 0.26635429963017954,
+        "boundedMAE_EV": 0.2660923707440044,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 6000,
+        "maeEV": 0.26614695826940465,
+        "boundedMAE_EV": 0.2658850343502832,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      }
+    ],
+    "comparison": {
+      "pretrainedRaw": {
+        "maeEV": 0.48793130243817967,
+        "boundedMAE_EV": 0.48779307164703356,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      "pretrainedProtectedApprox": {
+        "maeEV": 0.635413528166034,
+        "boundedMAE_EV": 0.6352753031885985,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      "tunedRaw": {
+        "maeEV": 0.32784214768220077,
+        "boundedMAE_EV": 0.3277039185843684,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      "tunedProtectedApprox": {
+        "maeEV": 0.586878262121569,
+        "boundedMAE_EV": 0.5867400388938911,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      }
+    },
+    "meanGroupMAE": {
+      "pretrainedRaw": 0.45546310023044045,
+      "pretrainedProtectedApprox": 0.5961118597589959,
+      "tunedRaw": 0.34699128897672504,
+      "tunedProtectedApprox": 0.5518478608463799
+    },
+    "pairedGroupDifference95": [
+      -0.2100573608380984,
+      -0.0012982989453055554
+    ],
+    "checkpointSHA256": "cc92ee36615c30e4b076215e6bffaba551e3b6351f86174aed8da1e5ed3bcf41"
+  },
+  "ownCameraModel": {
+    "maeEV": 0.34999311122704635,
+    "boundedMAE_EV": 0.34985487992790615,
+    "negativeFraction": 0.022644363803265427,
+    "predictedNegativeFraction": 0.0,
+    "negativePrecision": 0.0,
+    "negativeRecall": 0.0
+  },
+  "meanGroupMAE": {
+    "pretrainedRaw": 0.45546310023044045,
+    "pretrainedProtectedApprox": 0.5961118597589959,
+    "tunedRaw": 0.34699128897672504,
+    "tunedProtectedApprox": 0.5518478608463799,
+    "ownCameraAdapted": 0.3782500158466073
+  },
+  "pairedComparisons": {
+    "pretrainedRaw": {
+      "meanPhotoDifferenceEV": -0.16008915475597887,
+      "meanGroupDifferenceEV": -0.10847181125371544,
+      "improvedPhotos": 95,
+      "worstRegressionEV": 0.5015463829040527,
+      "pairedGroupBootstrap95": [
+        -0.2100573608380984,
+        -0.0012982989453055554
+      ]
+    },
+    "pretrainedProtectedApprox": {
+      "meanPhotoDifferenceEV": -0.3075713804838332,
+      "meanGroupDifferenceEV": -0.24912057078227096,
+      "improvedPhotos": 103,
+      "worstRegressionEV": 0.8411217629909515,
+      "pairedGroupBootstrap95": [
+        -0.4022804585189233,
+        -0.08219252965523413
+      ]
+    },
+    "ownCameraAdapted": {
+      "meanPhotoDifferenceEV": -0.02215096354484558,
+      "meanGroupDifferenceEV": -0.03125872686988226,
+      "improvedPhotos": 93,
+      "worstRegressionEV": 0.3973047733306885,
+      "pairedGroupBootstrap95": [
+        -0.06167631174372163,
+        -0.007819524236506331
+      ]
+    }
+  },
+  "baselineReproductionMaxPhotoMAEDifference": 1.1920928955078125e-07,
+  "coreML": {
+    "scope": "Mac synthetic tensor comparison; not iPhone timing, display acceptance or proof of all-NE placement",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "checkpointSHA256": "cc92ee36615c30e4b076215e6bffaba551e3b6351f86174aed8da1e5ed3bcf41",
+    "inputSize": 1024,
+    "precision": "FP32 global / FP16 local",
+    "packageBytes": 4995828,
+    "staticEquivalence": [
+      {
+        "case": "noise",
+        "maxEV": 0.0
+      },
+      {
+        "case": "gradient",
+        "maxEV": 3.5762786865234375e-07
+      },
+      {
+        "case": "neutral-0",
+        "maxEV": 2.9802322387695312e-08
+      },
+      {
+        "case": "neutral-0.18",
+        "maxEV": 1.1920928955078125e-07
+      },
+      {
+        "case": "neutral-0.5",
+        "maxEV": 2.980232238769531e-07
+      },
+      {
+        "case": "neutral-1",
+        "maxEV": 0.0
+      }
+    ],
+    "comparisons": [
+      {
+        "policy": "CPU_ONLY",
+        "case": "noise",
+        "maxEV": 0.01709139347076416,
+        "meanEV": 0.0020751601550728083,
+        "medianSeconds": 0.5233967090025544
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "gradient",
+        "maxEV": 0.01593029499053955,
+        "meanEV": 0.0019484303193166852,
+        "medianSeconds": 0.528279999998631
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "neutral-0",
+        "maxEV": 0.0008927136659622192,
+        "meanEV": 0.0003898283466696739,
+        "medianSeconds": 0.5243704579988844
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "neutral-0.18",
+        "maxEV": 0.002843320369720459,
+        "meanEV": 0.0004234624793753028,
+        "medianSeconds": 0.5238178750005318
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "neutral-0.5",
+        "maxEV": 0.00786292552947998,
+        "meanEV": 0.0012180773774161935,
+        "medianSeconds": 0.526869290995819
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "neutral-1",
+        "maxEV": 0.028038978576660156,
+        "meanEV": 0.016585281118750572,
+        "medianSeconds": 0.5260534999979427
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "noise",
+        "maxEV": 0.017771482467651367,
+        "meanEV": 0.003497184719890356,
+        "medianSeconds": 0.1057515419961419
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "gradient",
+        "maxEV": 0.029244065284729004,
+        "meanEV": 0.008525860495865345,
+        "medianSeconds": 0.10692908299824921
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "neutral-0",
+        "maxEV": 0.0012643113732337952,
+        "meanEV": 0.0007506170077249408,
+        "medianSeconds": 0.10461095799837494
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "neutral-0.18",
+        "maxEV": 0.002759784460067749,
+        "meanEV": 0.0007466122624464333,
+        "medianSeconds": 0.10424587499437621
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "neutral-0.5",
+        "maxEV": 0.008747696876525879,
+        "meanEV": 0.0032978833187371492,
+        "medianSeconds": 0.10550887499994133
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "neutral-1",
+        "maxEV": 0.05661725997924805,
+        "meanEV": 0.0529547780752182,
+        "medianSeconds": 0.1046034159953706
+      }
+    ]
+  },
+  "cleanup": {
+    "downloadedResultsVerified": true,
+    "uploadedArchiveRemoved": true,
+    "decodedTrainingDataRemoved": true,
+    "entireRemoteWorkspaceRemoved": true,
+    "remotePrivateWeightsAndLogsRemoved": true
+  },
+  "scope": "Repeated comparison on 132 photos/30 groups. No photos used for training or checkpoint selection from this split, but its results have been examined previously. Not fresh final validation.",
+  "limits": [
+    "Architecture, capacity, crop/input scale and learning rate differ from the own-model run; this does not isolate pretraining alone.",
+    "Protected outputs approximate app tone policy; no edge-aware enlargement, codec, display or iPhone acceptance.",
+    "Private checkpoints were not published or installed as app defaults."
+  ],
+  "coreMLCameraComparison": {
+    "scope": "Mac Core ML CPU_AND_NE requested; 132 previously examined private comparison photos; not iPhone or confirmed all-NE placement",
+    "photos": 132,
+    "metrics": {
+      "maeEV": 0.3277226948376858,
+      "boundedMAE_EV": 0.3275844676589424,
+      "negativeFraction": 0.022644363803265427,
+      "predictedNegativeFraction": 0.0,
+      "negativePrecision": 0.0,
+      "negativeRecall": 0.0
+    },
+    "meanPhotoMAEDifferenceFromPyTorch": -0.0001194528445149913,
+    "maxAbsolutePhotoMAEDifferenceFromPyTorch": 0.006684154272079468,
+    "medianPredictionSeconds": 0.10446460399907664,
+    "p95PredictionSeconds": 0.11229151075385743
+  }
+}

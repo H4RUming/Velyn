@@ -28,6 +28,7 @@ def extract(archive,destination):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('workspace',type=Path);p.add_argument('--initial',type=Path,required=True);p.add_argument('--gmnet-source',type=Path,required=True)
+    p.add_argument('--trainer',choices=['signed','gmnet'],default='signed')
     a=p.parse_args();root=a.workspace.resolve()
     if not root.name.startswith('velyn-private-camera-') or not (root/'.private-camera-job').is_file():raise ValueError('Unrecognized private workspace')
     def stopped(*args):raise KeyboardInterrupt('Private job interrupted')
@@ -36,7 +37,8 @@ def main():
     try:
         extract(archive,data)
         with (root/'training.log').open('w') as log:
-            subprocess.run([sys.executable,str(Path(__file__).with_name('train_camera.py')),str(data),str(a.initial),str(root/'results'),
+            trainer='train_camera.py' if a.trainer=='signed' else 'train_gmnet_camera.py'
+            subprocess.run([sys.executable,str(Path(__file__).with_name(trainer)),str(data),str(a.initial),str(root/'results'),
                             '--gmnet-source',str(a.gmnet_source)],check=True,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
         success=True
     finally:
