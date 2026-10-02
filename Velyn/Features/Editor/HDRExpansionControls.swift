@@ -26,8 +26,8 @@ struct HDRExpansionControls: View {
                     if expansion.predictionFingerprint == nil || stalePrediction {
                         Label(L10n.tr("현재 보정과 밝기 지도가 다를 수 있습니다. 다시 예측해 주세요."),systemImage: "arrow.clockwise").font(.caption).foregroundStyle(.orange)
                     }
-                    if expansion.protectionBlend == nil {
-                        Text(L10n.tr("자동 톤 보호를 적용하려면 밝기 지도를 다시 예측하세요.")).font(.caption2).foregroundStyle(.secondary)
+                    if expansion.predictionModel != HDRExpansion.cameraModelID && expansion.gainMapEncoding == nil {
+                        Text(L10n.tr("새 모델을 사용하려면 다시 예측하세요. 조절한 값은 유지됩니다.")).font(.caption2).foregroundStyle(.secondary)
                     }
                     Picker(L10n.tr("조절 항목"),selection: $parameter) {
                         Text(L10n.tr("확장 강도")).tag(0); Text(L10n.tr("최대 밝기")).tag(1)
@@ -36,7 +36,7 @@ struct HDRExpansionControls: View {
                     if parameter == 0 { AdjustmentSlider(title: L10n.tr("HDR 확장 강도"), value: Binding(
                         get: { (editor.recipe.enhancements.hdrExpansion?.strength ?? 0.75)*100 },
                         set: { value in editor.mutate({ $0.enhancements.hdrExpansion?.strength = value/100 }, commit: false) }),
-                        range: 0...100, step: 1, defaultValue: 75, suffix: "%", commit: editor.finishGesture) }
+                        range: 0...100, step: 1, defaultValue: expansion.recommendedStrength*100, suffix: "%", commit: editor.finishGesture) }
                     else if parameter == 2, expansion.gainMapEncoding != nil {
                         AdjustmentSlider(title:L10n.tr("최대 감광"),value:Binding(
                             get:{editor.recipe.enhancements.hdrExpansion?.effectiveMaximumDimmingEV ?? 0},
@@ -46,7 +46,7 @@ struct HDRExpansionControls: View {
                     else { AdjustmentSlider(title: L10n.tr("최대 밝기 배율"), value: Binding(
                         get: { exp2(editor.recipe.enhancements.hdrExpansion?.maximumBoostEV ?? 2) },
                         set: { value in editor.mutate({ $0.enhancements.hdrExpansion?.maximumBoostEV = log2(value) }, commit: false) }),
-                        range: 1...5, step: 0.1, defaultValue: 4, suffix: "×", commit: editor.finishGesture) }
+                        range: 1...5, step: 0.1, defaultValue: exp2(expansion.recommendedMaximumBoostEV), suffix: "×", commit: editor.finishGesture) }
                     Toggle(L10n.tr("중간톤 보호"),isOn: Binding(get: { editor.recipe.enhancements.hdrExpansion?.protectMidtones == true },set: { value in editor.mutate { $0.enhancements.hdrExpansion?.protectMidtones = value } })).font(.caption)
                     if expansion.protectMidtones == true { Text(L10n.tr("어두운 부분과 중간 밝기는 유지하고 밝은 영역을 중심으로 확장합니다.")).font(.caption2).foregroundStyle(.secondary) }
                     if expansion.gainMapEncoding != nil {
@@ -55,12 +55,13 @@ struct HDRExpansionControls: View {
                     HStack {
                         Button(L10n.tr("톤 유지")) { editor.mutate { $0.enhancements.hdrExpansion?.strength = 0.75; $0.enhancements.hdrExpansion?.maximumBoostEV = 2; $0.enhancements.hdrExpansion?.protectMidtones = true } }
                         Button(L10n.tr("모델 예측 그대로")) { editor.mutate {
-                            $0.enhancements.hdrExpansion?.strength = 1
-                            $0.enhancements.hdrExpansion?.maximumBoostEV = log2(5)
-                            $0.enhancements.hdrExpansion?.protectMidtones = false
-                            if $0.enhancements.hdrExpansion?.gainMapEncoding != nil { $0.enhancements.hdrExpansion?.maximumDimmingEV = 2 }
+                            $0.enhancements.hdrExpansion?.useModelPrediction()
                         } }
                     }.font(.caption).buttonStyle(.bordered)
+                    if expansion.predictionModel == HDRExpansion.cameraModelID {
+                        Text(L10n.tr("새 모델은 ‘모델 예측 그대로’가 기본입니다. 중간톤 보호는 효과를 줄이고 싶을 때 켜세요."))
+                            .font(.caption2).foregroundStyle(.secondary)
+                    }
 
                     Button(L10n.tr("밝기 지도 제거")) { editor.mutate { $0.enhancements.hdrExpansion = nil; $0.enhancements.hdr = false } }
                         .frame(minHeight: 44)

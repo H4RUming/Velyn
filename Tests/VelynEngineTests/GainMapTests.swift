@@ -6,6 +6,24 @@ import ImageIO
 @testable import VelynEngine
 
 struct GainMapTests {
+    @Test func cameraDefaultsDoNotChangeStoredLegacyRendering() throws {
+        let legacy = Data("{\"resourceID\":\"\(UUID().uuidString)\",\"strength\":0.75,\"maximumBoostEV\":2,\"protectMidtones\":true,\"protectionBlend\":0.8,\"edgeAwareUpsampling\":true}".utf8)
+        let old = try JSONDecoder().decode(HDRExpansion.self,from:legacy)
+        #expect(old.predictionModel == nil && old.recommendedStrength == 0.75)
+        #expect(old.strength == 0.75 && old.maximumBoostEV == 2 && old.protectMidtones == true)
+        let reloaded = try JSONDecoder().decode(HDRExpansion.self,from:JSONEncoder().encode(old))
+        let rect = CGRect(x:0,y:0,width:64,height:64)
+        let source = CIImage(color:CIColor(red:0.6,green:0.3,blue:0.15,colorSpace:RenderPipeline.linearSpace)!).cropped(to:rect)
+        let map = CIImage(color:.white).cropped(to:CGRect(x:0,y:0,width:16,height:16))
+        #expect(pixel(GainMapPipeline.apply(source,map:map,expansion:old)) == pixel(GainMapPipeline.apply(source,map:map,expansion:reloaded)))
+        var camera = old; camera.predictionModel = HDRExpansion.cameraModelID
+        camera.useModelPrediction(); camera.edgeAwareUpsampling = false
+        #expect(camera.recommendedStrength == 1 && camera.recommendedMaximumBoostEV == log2(5))
+        #expect(try JSONDecoder().decode(HDRExpansion.self,from:JSONEncoder().encode(camera)) == camera)
+        let result = pixel(GainMapPipeline.apply(source,map:map,expansion:camera))
+        #expect(abs(result[0]-3) < 0.003 && abs(result[1]-1.5) < 0.003 && abs(result[2]-0.75) < 0.003)
+    }
+
     @Test func signedEncodingPreservesLegacyAndValidatesCaps() throws {
         let old = Data("{\"resourceID\":\"\(UUID().uuidString)\",\"strength\":0.75,\"maximumBoostEV\":2}".utf8)
         var expansion = try JSONDecoder().decode(HDRExpansion.self,from:old)
@@ -155,6 +173,7 @@ struct GainMapTests {
                 output[[0,0,NSNumber(value:y),NSNumber(value:x)]] = NSNumber(value:reference[i*3+j])
             } }
             #expect(GainModelCalibration.accepts(output,size:size,pattern:pattern))
+            #expect(!GainModelCalibration.accepts(output,size:size,pattern:pattern,profile:.realWorld))
             output[[0,0,NSNumber(value:size/2),NSNumber(value:size/2)]] = NSNumber(value:Float.nan)
             #expect(!GainModelCalibration.accepts(output,size:size,pattern:pattern))
             output[[0,0,NSNumber(value:size/2),NSNumber(value:size/2)]] = NSNumber(value:reference[4]-0.1)
@@ -318,6 +337,9 @@ struct GainMapTests {
         #expect(try await service.sourceDynamicRange() == .sdr)
         let expansion = try await service.estimateHDRExpansion(document,recipe: EditRecipe(),modelURL: compiled)
         #expect(expansion.isValid)
+        #expect(expansion.predictionModel == HDRExpansion.cameraModelID)
+        #expect(expansion.strength == 1 && expansion.maximumBoostEV == log2(5))
+        #expect(expansion.protectMidtones == false && expansion.edgeAwareUpsampling == false)
         #expect(expansion.predictionFingerprint == EditRecipe().gainPredictionFingerprint)
         var recipe = EditRecipe(); recipe.enhancements.hdrExpansion = expansion; recipe.enhancements.hdr = true
         let map = try #require(await service.maskResources(recipe)[expansion.resourceID])
@@ -325,6 +347,14 @@ struct GainMapTests {
         // Asymmetric fixture catches top/bottom inversion through tensor and PNG conversion.
         #expect(pixel(map,x: Double(size)*0.4,y: Double(size)*0.66)[0] > pixel(map,x: Double(size)*0.4,y: Double(size)*0.08)[0]+0.1)
         let hdr = try await service.processed(document,recipe: recipe,maxPixelSize: nil)
+        // The default applies the stored model EV directly, without a second tone gate.
+        let sdrBase = try await service.processed(document,recipe: EditRecipe(),maxPixelSize:nil)
+        let alignedMap = map.transformed(by:CGAffineTransform(scaleX:240/map.extent.width,y:180/map.extent.height))
+        for y in [20.0,150.0] {
+            let expectedGain = exp2(pixel(alignedMap,x:100,y:y)[0]*log2(Float(5)))
+            let actualGain = pixel(hdr,x:100,y:y)[0]/pixel(sdrBase,x:100,y:y)[0]
+            #expect(abs(actualGain-expectedGain) < 0.005)
+        }
         #expect(pixel(hdr,x: 100,y: 150)[0] > 1.2)
         let neutral = pixel(hdr,x: 100,y: 150)
         #expect(abs(neutral[0]-neutral[1]) < 0.005 && abs(neutral[0]-neutral[2]) < 0.005)

@@ -1,5 +1,27 @@
 # GMNet Core ML conversion
 
+## Current bundled model
+
+The app bundles `gmnet-camera-v1`: the published GMNet architecture fine-tuned on
+user-authorized camera HDR/SDR pairs. The selected step-4500 checkpoint has SHA-256
+`cc92ee36615c30e4b076215e6bffaba551e3b6351f86174aed8da1e5ed3bcf41`.
+Only the converted 512/1024 packages are distributed. Private photos, manifests,
+and the PyTorch training checkpoint stay outside the repository. Exact retraining
+is therefore not possible from the public repository alone.
+
+Use `Scripts/HDR/Training/convert_tuned_gmnet.py CHECKPOINT OUTPUT --size 512`
+(and `--size 1024`) with that checkpoint to reproduce the conversion. Copy each
+`GMNetCamera.mlpackage` to the corresponding bundled `VelynGainMap` package.
+`calibrate_gain.py CHECKPOINT` reproduces the pinned FP32 calibration samples.
+The runtime selects references by checkpoint provenance and rejects unknown
+models; the original published model remains supported for explicit comparisons.
+See [integration evidence](../../Docs/Evidence/hdr-camera-integration.md).
+
+## Original published baseline
+
+The following instructions reproduce the earlier, untuned baseline. Running them
+with their default output replaces the current bundle with that baseline.
+
 The app includes the converted model; Python and a server are not needed at runtime.
 
 - Source: https://github.com/qtlark/GMNet/tree/59db6aac16f8fa7071a9447e357d9e7316ce0f8c

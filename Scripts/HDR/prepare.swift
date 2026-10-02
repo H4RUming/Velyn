@@ -56,10 +56,12 @@ private actor Preparation {
             let expansion = try await service.estimateHDRExpansion(document,recipe:EditRecipe(),modelURL:compiled)
             let elapsed = start.duration(to:.now)
             var variants:[String:HDRExpansion] = [:]
-            variants["v11"] = expansion
-            var legacy = expansion; legacy.protectionBlend = nil; legacy.edgeAwareUpsampling = nil; variants["legacy"] = legacy
-            var bilinear = expansion; bilinear.edgeAwareUpsampling = nil; variants["v11-bilinear"] = bilinear
-            var full = expansion; full.protectMidtones = false; full.strength = 1; full.maximumBoostEV = log2(5); variants["full-edge"] = full
+            variants["default"] = expansion
+            var v11 = expansion; v11.strength = 0.75; v11.maximumBoostEV = 2; v11.protectMidtones = true; v11.edgeAwareUpsampling = true
+            variants["v11"] = v11
+            var legacy = v11; legacy.protectionBlend = nil; legacy.edgeAwareUpsampling = nil; variants["legacy"] = legacy
+            var bilinear = v11; bilinear.edgeAwareUpsampling = nil; variants["v11-bilinear"] = bilinear
+            var full = expansion; full.useModelPrediction(); full.edgeAwareUpsampling = true; variants["full-edge"] = full
             full.edgeAwareUpsampling = nil; variants["full-bilinear"] = full
             for (name,value) in variants {
                 var recipe = EditRecipe(); recipe.enhancements.hdr = true; recipe.enhancements.hdrExpansion = value

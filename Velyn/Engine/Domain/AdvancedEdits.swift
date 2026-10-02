@@ -99,6 +99,9 @@ public enum GainMapEncoding: String, Codable, Sendable {
 
 /// UUID resources belong to this photo only. Nil encoding means log2 gain / log2(5).
 public struct HDRExpansion: Codable, Sendable, Equatable {
+    public static let cameraModelID = "gmnet-camera-v1"
+    /// Provenance only. Stored maps render without loading their prediction model.
+    public var predictionModel: String?
     public var predictionFingerprint: String?
     /// Nil retains the pre-1.1 tone curve and bilinear map sampling.
     public var protectionBlend: Double?
@@ -111,6 +114,14 @@ public struct HDRExpansion: Codable, Sendable, Equatable {
     public var strength = 0.75
     public var maximumBoostEV = 2.0
     public init(resourceID: UUID) { self.resourceID = resourceID; self.protectMidtones = true }
+    public var recommendedStrength: Double { predictionModel == Self.cameraModelID ? 1 : 0.75 }
+    public var recommendedMaximumBoostEV: Double { predictionModel == Self.cameraModelID ? log2(5) : 2 }
+    public mutating func useModelPrediction() {
+        strength = 1
+        maximumBoostEV = log2(5)
+        protectMidtones = false
+        if gainMapEncoding != nil { maximumDimmingEV = 2 }
+    }
     public var effectiveMaximumDimmingEV: Double { gainMapEncoding == nil ? 0 : maximumDimmingEV ?? 2 }
     public var isValid: Bool {
         strength.isFinite && (0...1).contains(strength) && maximumBoostEV.isFinite && (0...log2(5)).contains(maximumBoostEV) &&

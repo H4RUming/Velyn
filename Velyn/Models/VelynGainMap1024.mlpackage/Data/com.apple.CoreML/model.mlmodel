@@ -1,4 +1,4 @@
-	≠
+	⁄
 
 image*
 ÄÄêÄ
@@ -6,17 +6,17 @@
 	thumbnail*
 ÄÄêÄR
 log_gain*
-ÄÄêÄ¢◊
-@GMNet real-world SDR-to-HDR log2 gain prediction; on-device only1.0.Yinuo Liao et al.; Core ML conversion by Velyn""MIT; Copyright (c) 2025 Yinuo Liao¢U
-inputLRGB sRGB code values 0...1; local 1024 square edge padded; global 256 square¢?
-source5qtlark/GMNet@59db6aac16f8fa7071a9447e357d9e7316ce0f8c¢:
-,com.github.apple.coremltools.conversion_date
-2026-10-01¢3
+ÄÄêÄ¢Ñ
+=Camera-adapted GMNet for on-device scalar HDR gain predictiongmnet-camera-v16Yinuo Liao et al.; fine-tuning and conversion by Velyn""MIT; Copyright (c) 2025 Yinuo Liao¢H
+output>Positive scalar log2 gain 0..log2(5), broadcast equally to RGB¢:
++com.github.apple.coremltools.source_dialectTorchScript¢3
 #com.github.apple.coremltools.sourcetorch==2.7.0¢:
-+com.github.apple.coremltools.source_dialectTorchScript¢+
-$com.github.apple.coremltools.version9.0¢A
-output7Per-pixel log2 brightness ratio, bounded to 0...log2(5)≤¡Ë”Ê
-main…Ê
+,com.github.apple.coremltools.conversion_date
+2026-10-02¢+
+$com.github.apple.coremltools.version9.0¢T
+checkpointSHA256@cc92ee36615c30e4b076215e6bffaba551e3b6351f86174aed8da1e5ed3bcf41¢U
+inputLsRGB 0..1; 1024px square edge-padded local image; 256px full-image thumbnail≤úËÆÊ
+main§Ê
 )
 image 
 
@@ -32,8 +32,8 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 Ä
-ÄCoreML8‚Â
-CoreML8’Âlog_gain`
+ÄCoreML8ΩÂ
+CoreML8∞Âlog_gain`
 const
 cast_1_dtype_0
 *$
@@ -824,7 +824,7 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 
-jqP<ƒ
+]<ƒ
 const;
 net_sq_qmax_conv_4_weight
 
@@ -923,13 +923,13 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 Å
-cast
-x
-
-	thumbnail
+cast
 dtype
 
-cast_1_dtype_0*
+cast_1_dtype_0
+x
+
+	thumbnail*
 cast_1 
 
 
@@ -941,29 +941,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 "
 cast_6”
-conv"
-pad_type
-
-input_1_pad_type_0
+conv$
+	dilations
+
+input_1_dilations_0
+groups
+
+input_1_groups_0
 x
 
 
-cast_1!
+cast_1"
+pad_type
+
+input_1_pad_type_0!
 bias
 
-net_down1_conv_0_bias$
-	dilations
-
-input_1_dilations_0
-pad
-
-input_1_pad_0 
+net_down1_conv_0_bias 
 strides
 
-input_1_strides_0
-groups
-
-input_1_groups_0%
+input_1_strides_0
+pad
+
+input_1_pad_0%
 weight
 
 net_down1_conv_0_weight+
@@ -1060,28 +1060,28 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‘
-conv"
-pad_type
-
-input_5_pad_type_0
-x
-	
-input_3!
-bias
-
-net_down1_conv_2_bias$
+conv$
 	dilations
 
-input_5_dilations_0
-pad
-
-input_5_pad_0 
-strides
-
-input_5_strides_0
+input_5_dilations_0
 groups
 
-input_5_groups_0%
+input_5_groups_0
+x
+	
+input_3"
+pad_type
+
+input_5_pad_type_0!
+bias
+
+net_down1_conv_2_bias 
+strides
+
+input_5_strides_0
+pad
+
+input_5_pad_0%
 weight
 
 net_down1_conv_2_weight+
@@ -1178,28 +1178,28 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‘
-conv"
-pad_type
-
-input_9_pad_type_0
-x
-	
-input_7!
-bias
-
-net_down1_conv_4_bias$
+conv$
 	dilations
 
-input_9_dilations_0
-pad
-
-input_9_pad_0 
-strides
-
-input_9_strides_0
+input_9_dilations_0
 groups
 
-input_9_groups_0%
+input_9_groups_0
+x
+	
+input_7"
+pad_type
+
+input_9_pad_type_0!
+bias
+
+net_down1_conv_4_bias 
+strides
+
+input_9_strides_0
+pad
+
+input_9_pad_0%
 weight
 
 net_down1_conv_4_weight+
@@ -1297,29 +1297,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ⁄
-conv#
-pad_type
-
-input_13_pad_type_0
+conv%
+	dilations
+
+input_13_dilations_0
+groups
+
+input_13_groups_0
 x
 
 
-input_11!
+input_11#
+pad_type
+
+input_13_pad_type_0!
 bias
 
-net_down2_conv_0_bias%
-	dilations
-
-input_13_dilations_0
-pad
-
-input_13_pad_0!
+net_down2_conv_0_bias!
 strides
 
-input_13_strides_0
-groups
-
-input_13_groups_0%
+input_13_strides_0
+pad
+
+input_13_pad_0%
 weight
 
 net_down2_conv_0_weight*
@@ -1419,29 +1419,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ⁄
-conv#
-pad_type
-
-input_17_pad_type_0
+conv%
+	dilations
+
+input_17_dilations_0
+groups
+
+input_17_groups_0
 x
 
 
-input_15!
+input_15#
+pad_type
+
+input_17_pad_type_0!
 bias
 
-net_down2_conv_2_bias%
-	dilations
-
-input_17_dilations_0
-pad
-
-input_17_pad_0!
+net_down2_conv_2_bias!
 strides
 
-input_17_strides_0
-groups
-
-input_17_groups_0%
+input_17_strides_0
+pad
+
+input_17_pad_0%
 weight
 
 net_down2_conv_2_weight*
@@ -1541,29 +1541,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ⁄
-conv#
-pad_type
-
-input_21_pad_type_0
+conv%
+	dilations
+
+input_21_dilations_0
+groups
+
+input_21_groups_0
 x
 
 
-input_19!
+input_19#
+pad_type
+
+input_21_pad_type_0!
 bias
 
-net_down2_conv_4_bias%
-	dilations
-
-input_21_dilations_0
-pad
-
-input_21_pad_0!
+net_down2_conv_4_bias!
 strides
 
-input_21_strides_0
-groups
-
-input_21_groups_0%
+input_21_strides_0
+pad
+
+input_21_pad_0%
 weight
 
 net_down2_conv_4_weight*
@@ -1663,29 +1663,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‹
-conv#
-pad_type
-
-input_25_pad_type_0
+conv%
+	dilations
+
+input_25_dilations_0
+groups
+
+input_25_groups_0
 x
 
 
-input_23"
+input_23#
+pad_type
+
+input_25_pad_type_0"
 bias
 
-net_res_y_0_conv1_bias%
-	dilations
-
-input_25_dilations_0
-pad
-
-input_25_pad_0!
+net_res_y_0_conv1_bias!
 strides
 
-input_25_strides_0
-groups
-
-input_25_groups_0&
+input_25_strides_0
+pad
+
+input_25_pad_0&
 weight
 
 net_res_y_0_conv1_weight*
@@ -1785,29 +1785,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 «
-conv 
-pad_type
-
-out_1_pad_type_0
+conv"
+	dilations
+
+out_1_dilations_0
+groups
+
+out_1_groups_0
 x
 
 
-input_27"
+input_27 
+pad_type
+
+out_1_pad_type_0"
 bias
 
-net_res_y_0_conv2_bias"
-	dilations
-
-out_1_dilations_0
-pad
-
-out_1_pad_0
+net_res_y_0_conv2_bias
 strides
 
-out_1_strides_0
-groups
-
-out_1_groups_0&
+out_1_strides_0
+pad
+
+out_1_pad_0&
 weight
 
 net_res_y_0_conv2_weight'
@@ -1909,29 +1909,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‹
-conv#
-pad_type
-
-input_31_pad_type_0
+conv%
+	dilations
+
+input_31_dilations_0
+groups
+
+input_31_groups_0
 x
 
 
-input_29"
+input_29#
+pad_type
+
+input_31_pad_type_0"
 bias
 
-net_res_y_1_conv1_bias%
-	dilations
-
-input_31_dilations_0
-pad
-
-input_31_pad_0!
+net_res_y_1_conv1_bias!
 strides
 
-input_31_strides_0
-groups
-
-input_31_groups_0&
+input_31_strides_0
+pad
+
+input_31_pad_0&
 weight
 
 net_res_y_1_conv1_weight*
@@ -2031,29 +2031,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 «
-conv 
-pad_type
-
-out_3_pad_type_0
+conv"
+	dilations
+
+out_3_dilations_0
+groups
+
+out_3_groups_0
 x
 
 
-input_33"
+input_33 
+pad_type
+
+out_3_pad_type_0"
 bias
 
-net_res_y_1_conv2_bias"
-	dilations
-
-out_3_dilations_0
-pad
-
-out_3_pad_0
+net_res_y_1_conv2_bias
 strides
 
-out_3_strides_0
-groups
-
-out_3_groups_0&
+out_3_strides_0
+pad
+
+out_3_pad_0&
 weight
 
 net_res_y_1_conv2_weight'
@@ -2155,29 +2155,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‹
-conv#
-pad_type
-
-input_37_pad_type_0
+conv%
+	dilations
+
+input_37_dilations_0
+groups
+
+input_37_groups_0
 x
 
 
-input_35"
+input_35#
+pad_type
+
+input_37_pad_type_0"
 bias
 
-net_res_y_2_conv1_bias%
-	dilations
-
-input_37_dilations_0
-pad
-
-input_37_pad_0!
+net_res_y_2_conv1_bias!
 strides
 
-input_37_strides_0
-groups
-
-input_37_groups_0&
+input_37_strides_0
+pad
+
+input_37_pad_0&
 weight
 
 net_res_y_2_conv1_weight*
@@ -2277,29 +2277,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 «
-conv 
-pad_type
-
-out_5_pad_type_0
+conv"
+	dilations
+
+out_5_dilations_0
+groups
+
+out_5_groups_0
 x
 
 
-input_39"
+input_39 
+pad_type
+
+out_5_pad_type_0"
 bias
 
-net_res_y_2_conv2_bias"
-	dilations
-
-out_5_dilations_0
-pad
-
-out_5_pad_0
+net_res_y_2_conv2_bias
 strides
 
-out_5_strides_0
-groups
-
-out_5_groups_0&
+out_5_strides_0
+pad
+
+out_5_pad_0&
 weight
 
 net_res_y_2_conv2_weight'
@@ -2401,29 +2401,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‹
-conv#
-pad_type
-
-input_43_pad_type_0
+conv%
+	dilations
+
+input_43_dilations_0
+groups
+
+input_43_groups_0
 x
 
 
-input_41"
+input_41#
+pad_type
+
+input_43_pad_type_0"
 bias
 
-net_res_y_3_conv1_bias%
-	dilations
-
-input_43_dilations_0
-pad
-
-input_43_pad_0!
+net_res_y_3_conv1_bias!
 strides
 
-input_43_strides_0
-groups
-
-input_43_groups_0&
+input_43_strides_0
+pad
+
+input_43_pad_0&
 weight
 
 net_res_y_3_conv1_weight*
@@ -2523,29 +2523,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 «
-conv 
-pad_type
-
-out_7_pad_type_0
+conv"
+	dilations
+
+out_7_dilations_0
+groups
+
+out_7_groups_0
 x
 
 
-input_45"
+input_45 
+pad_type
+
+out_7_pad_type_0"
 bias
 
-net_res_y_3_conv2_bias"
-	dilations
-
-out_7_dilations_0
-pad
-
-out_7_pad_0
+net_res_y_3_conv2_bias
 strides
 
-out_7_strides_0
-groups
-
-out_7_groups_0&
+out_7_strides_0
+pad
+
+out_7_pad_0&
 weight
 
 net_res_y_3_conv2_weight'
@@ -2647,29 +2647,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‹
-conv#
-pad_type
-
-input_49_pad_type_0
+conv%
+	dilations
+
+input_49_dilations_0
+groups
+
+input_49_groups_0
 x
 
 
-input_47"
+input_47#
+pad_type
+
+input_49_pad_type_0"
 bias
 
-net_res_y_4_conv1_bias%
-	dilations
-
-input_49_dilations_0
-pad
-
-input_49_pad_0!
+net_res_y_4_conv1_bias!
 strides
 
-input_49_strides_0
-groups
-
-input_49_groups_0&
+input_49_strides_0
+pad
+
+input_49_pad_0&
 weight
 
 net_res_y_4_conv1_weight*
@@ -2769,29 +2769,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 «
-conv 
-pad_type
-
-out_9_pad_type_0
+conv"
+	dilations
+
+out_9_dilations_0
+groups
+
+out_9_groups_0
 x
 
 
-input_51"
+input_51 
+pad_type
+
+out_9_pad_type_0"
 bias
 
-net_res_y_4_conv2_bias"
-	dilations
-
-out_9_dilations_0
-pad
-
-out_9_pad_0
+net_res_y_4_conv2_bias
 strides
 
-out_9_strides_0
-groups
-
-out_9_groups_0&
+out_9_strides_0
+pad
+
+out_9_pad_0&
 weight
 
 net_res_y_4_conv2_weight'
@@ -2906,29 +2906,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
  “
-avg_pool
-kernel_sizes
-	
-var_181%
-	ceil_mode
-
-input_55_ceil_mode_0#
-pad_type
-
-input_55_pad_type_0
-strides
-	
-var_182K
+avg_poolK
 exclude_padding_from_average+
 )
-'input_55_exclude_padding_from_average_0
-pad
-
-input_55_pad_0
+'input_55_exclude_padding_from_average_0
 x
 
 
-input_53*
+input_53
+kernel_sizes
+	
+var_181
+strides
+	
+var_182
+pad
+
+input_55_pad_0#
+pad_type
+
+input_55_pad_type_0%
+	ceil_mode
+
+input_55_ceil_mode_0*
 input_55
 
 
@@ -3008,29 +3008,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ›
-conv#
-pad_type
-
-input_57_pad_type_0
+conv%
+	dilations
+
+input_57_dilations_0
+groups
+
+input_57_groups_0
 x
 
 
-input_55"
+input_55#
+pad_type
+
+input_57_pad_type_0"
 bias
 
-net_sq_ker_conv_0_bias%
-	dilations
-
-input_57_dilations_0
-pad
-
-input_57_pad_0!
+net_sq_ker_conv_0_bias!
 strides
 
-input_57_strides_0
-groups
-
-input_57_groups_0&
+input_57_strides_0
+pad
+
+input_57_pad_0&
 weight
 
 net_sq_ker_conv_0_weight+
@@ -3129,29 +3129,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‹
-conv#
-pad_type
-
-input_61_pad_type_0
+conv%
+	dilations
+
+input_61_dilations_0
+groups
+
+input_61_groups_0
 x
 
 
-input_59"
+input_59#
+pad_type
+
+input_61_pad_type_0"
 bias
 
-net_sq_ker_conv_2_bias%
-	dilations
-
-input_61_dilations_0
-pad
-
-input_61_pad_0!
+net_sq_ker_conv_2_bias!
 strides
 
-input_61_strides_0
-groups
-
-input_61_groups_0&
+input_61_strides_0
+pad
+
+input_61_pad_0&
 weight
 
 net_sq_ker_conv_2_weight*
@@ -3250,29 +3250,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 Œ
-conv!
-pad_type
-
-kernel_pad_type_0
+conv#
+	dilations
+
+kernel_dilations_0
+groups
+
+kernel_groups_0
 x
 
 
-input_63"
+input_63!
+pad_type
+
+kernel_pad_type_0"
 bias
 
-net_sq_ker_conv_4_bias#
-	dilations
-
-kernel_dilations_0
-pad
-
-kernel_pad_0
+net_sq_ker_conv_4_bias
 strides
 
-kernel_strides_0
-groups
-
-kernel_groups_0&
+kernel_strides_0
+pad
+
+kernel_pad_0&
 weight
 
 net_sq_ker_conv_4_weight(
@@ -3313,14 +3313,14 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ∞
-reduce_mean
+reduce_mean
+axes
+
+input_65_axes_0
 x
 
 
-input_53
-axes
-
-input_65_axes_0%
+input_53%
 	keep_dims
 
 input_65_keep_dims_0*
@@ -3403,29 +3403,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ›
-conv#
-pad_type
-
-input_67_pad_type_0
+conv%
+	dilations
+
+input_67_dilations_0
+groups
+
+input_67_groups_0
 x
 
 
-input_65"
+input_65#
+pad_type
+
+input_67_pad_type_0"
 bias
 
-net_sq_chn_conv_0_bias%
-	dilations
-
-input_67_dilations_0
-pad
-
-input_67_pad_0!
+net_sq_chn_conv_0_bias!
 strides
 
-input_67_strides_0
-groups
-
-input_67_groups_0&
+input_67_strides_0
+pad
+
+input_67_pad_0&
 weight
 
 net_sq_chn_conv_0_weight+
@@ -3524,29 +3524,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ‹
-conv#
-pad_type
-
-input_71_pad_type_0
+conv%
+	dilations
+
+input_71_dilations_0
+groups
+
+input_71_groups_0
 x
 
 
-input_69"
+input_69#
+pad_type
+
+input_71_pad_type_0"
 bias
 
-net_sq_chn_conv_2_bias%
-	dilations
-
-input_71_dilations_0
-pad
-
-input_71_pad_0!
+net_sq_chn_conv_2_bias!
 strides
 
-input_71_strides_0
-groups
-
-input_71_groups_0&
+input_71_strides_0
+pad
+
+input_71_pad_0&
 weight
 
 net_sq_chn_conv_2_weight*
@@ -3645,29 +3645,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 „
-conv$
-pad_type
-
-input_163_pad_type_0
+conv&
+	dilations
+
+input_163_dilations_0 
+groups
+
+input_163_groups_0
 x
 
 
-input_73"
+input_73$
+pad_type
+
+input_163_pad_type_0"
 bias
 
-net_sq_chn_conv_4_bias&
-	dilations
-
-input_163_dilations_0
-pad
-
-input_163_pad_0"
+net_sq_chn_conv_4_bias"
 strides
 
-input_163_strides_0 
-groups
-
-input_163_groups_0&
+input_163_strides_0
+pad
+
+input_163_pad_0&
 weight
 
 net_sq_chn_conv_4_weight+
@@ -3749,29 +3749,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ﬂ
-conv#
-pad_type
-
-input_77_pad_type_0
+conv%
+	dilations
+
+input_77_dilations_0
+groups
+
+input_77_groups_0
 x
 
 
 input_65#
+pad_type
+
+input_77_pad_type_0#
 bias
 
-net_sq_qmax_conv_0_bias%
-	dilations
-
-input_77_dilations_0
-pad
-
-input_77_pad_0!
+net_sq_qmax_conv_0_bias!
 strides
 
-input_77_strides_0
-groups
-
-input_77_groups_0'
+input_77_strides_0
+pad
+
+input_77_pad_0'
 weight
 
 net_sq_qmax_conv_0_weight+
@@ -3870,29 +3870,29 @@ $com.github.apple.coremltools.version9.0¢A
 
 
 ﬁ
-conv#
-pad_type
-
-input_81_pad_type_0
+conv%
+	dilations
+
+input_81_dilations_0
+groups
+
+input_81_groups_0
 x
 
 
 input_79#
+pad_type
+
+input_81_pad_type_0#
 bias
 
-net_sq_qmax_conv_2_bias%
-	dilations
-
-input_81_dilations_0
-pad
-
-input_81_pad_0!
+net_sq_qmax_conv_2_bias!
 strides
 
-input_81_strides_0
-groups
-
-input_81_groups_0'
+input_81_strides_0
+pad
+
+input_81_pad_0'
 weight
 
 net_sq_qmax_conv_2_weight*
@@ -3993,30 +3993,30 @@ qmax_pad_0*!
 
 
 ¬
-conv
-pad_type
-
-qmax_pad_type_0
+conv!
+	dilations
+
+qmax_dilations_0
+groups
+
+qmax_groups_0
 x
 
 
-input_83#
+input_83
+pad_type
+
+qmax_pad_type_0#
 bias
 
-net_sq_qmax_conv_4_bias!
-	dilations
-
-qmax_dilations_0
+net_sq_qmax_conv_4_bias
+strides
+
+qmax_strides_0
 pad
 
 
-qmax_pad_0
-strides
-
-qmax_strides_0
-groups
-
-qmax_groups_0'
+qmax_pad_0'
 weight
 
 net_sq_qmax_conv_4_weight&
@@ -4136,28 +4136,28 @@ $""
 
 @*$
 @model_path/weights/weight.bin¿•~ˇ
-conv#
-pad_type
-
-input_85_pad_type_0
-x	
-
-image*
-bias"
- 
-net_down_x_conv_0_bias_to_fp16%
+conv%
 	dilations
 
-input_85_dilations_0
-pad
-
-input_85_pad_0!
-strides
-
-input_85_strides_0
+input_85_dilations_0
 groups
 
-input_85_groups_0.
+input_85_groups_0
+x	
+
+image#
+pad_type
+
+input_85_pad_type_0*
+bias"
+ 
+net_down_x_conv_0_bias_to_fp16!
+strides
+
+input_85_strides_0
+pad
+
+input_85_pad_0.
 weight$
 "
  net_down_x_conv_0_weight_to_fp166
@@ -4292,28 +4292,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿ÁÇå
-conv#
-pad_type
-
-input_89_pad_type_0
-x
-
-input_87_cast_fp16*
-bias"
- 
-net_down_x_conv_2_bias_to_fp16%
+conv%
 	dilations
 
-input_89_dilations_0
-pad
-
-input_89_pad_0!
-strides
-
-input_89_strides_0
+input_89_dilations_0
 groups
 
-input_89_groups_0.
+input_89_groups_0
+x
+
+input_87_cast_fp16#
+pad_type
+
+input_89_pad_type_0*
+bias"
+ 
+net_down_x_conv_2_bias_to_fp16!
+strides
+
+input_89_strides_0
+pad
+
+input_89_pad_0.
 weight$
 "
  net_down_x_conv_2_weight_to_fp166
@@ -4448,28 +4448,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿©áå
-conv#
-pad_type
-
-input_93_pad_type_0
-x
-
-input_91_cast_fp16*
-bias"
- 
-net_down_x_conv_4_bias_to_fp16%
+conv%
 	dilations
 
-input_93_dilations_0
-pad
-
-input_93_pad_0!
-strides
-
-input_93_strides_0
+input_93_dilations_0
 groups
 
-input_93_groups_0.
+input_93_groups_0
+x
+
+input_91_cast_fp16#
+pad_type
+
+input_93_pad_type_0*
+bias"
+ 
+net_down_x_conv_4_bias_to_fp16!
+strides
+
+input_93_strides_0
+pad
+
+input_93_pad_0.
 weight$
 "
  net_down_x_conv_4_weight_to_fp166
@@ -4604,28 +4604,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿Îãä
-conv#
-pad_type
-
-input_97_pad_type_0
-x
-
-input_95_cast_fp16)
-bias!
-
-net_res1_0_conv1_bias_to_fp16%
+conv%
 	dilations
 
-input_97_dilations_0
-pad
-
-input_97_pad_0!
-strides
-
-input_97_strides_0
+input_97_dilations_0
 groups
 
-input_97_groups_0-
+input_97_groups_0
+x
+
+input_95_cast_fp16#
+pad_type
+
+input_97_pad_type_0)
+bias!
+
+net_res1_0_conv1_bias_to_fp16!
+strides
+
+input_97_strides_0
+pad
+
+input_97_pad_0-
 weight#
 !
 net_res1_0_conv1_weight_to_fp166
@@ -4760,28 +4760,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿≠ê¸
-conv!
-pad_type
-
-out_11_pad_type_0
-x
-
-input_99_cast_fp16)
-bias!
-
-net_res1_0_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_11_dilations_0
-pad
-
-out_11_pad_0
-strides
-
-out_11_strides_0
+out_11_dilations_0
 groups
 
-out_11_groups_0-
+out_11_groups_0
+x
+
+input_99_cast_fp16!
+pad_type
+
+out_11_pad_type_0)
+bias!
+
+net_res1_0_conv2_bias_to_fp16
+strides
+
+out_11_strides_0
+pad
+
+out_11_pad_0-
 weight#
 !
 net_res1_0_conv2_weight_to_fp164
@@ -4919,28 +4919,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿Ôîí
-conv$
-pad_type
-
-input_103_pad_type_0
-x
-
-input_101_cast_fp16)
-bias!
-
-net_res1_1_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_103_dilations_0
-pad
-
-input_103_pad_0"
-strides
-
-input_103_strides_0 
+input_103_dilations_0 
 groups
 
-input_103_groups_0-
+input_103_groups_0
+x
+
+input_101_cast_fp16$
+pad_type
+
+input_103_pad_type_0)
+bias!
+
+net_res1_1_conv1_bias_to_fp16"
+strides
+
+input_103_strides_0
+pad
+
+input_103_pad_0-
 weight#
 !
 net_res1_1_conv1_weight_to_fp167
@@ -5075,28 +5075,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿±ô˝
-conv!
-pad_type
-
-out_13_pad_type_0
-x
-
-input_105_cast_fp16)
-bias!
-
-net_res1_1_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_13_dilations_0
-pad
-
-out_13_pad_0
-strides
-
-out_13_strides_0
+out_13_dilations_0
 groups
 
-out_13_groups_0-
+out_13_groups_0
+x
+
+input_105_cast_fp16!
+pad_type
+
+out_13_pad_type_0)
+bias!
+
+net_res1_1_conv2_bias_to_fp16
+strides
+
+out_13_strides_0
+pad
+
+out_13_pad_0-
 weight#
 !
 net_res1_1_conv2_weight_to_fp164
@@ -5234,28 +5234,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿Ûùí
-conv$
-pad_type
-
-input_109_pad_type_0
-x
-
-input_107_cast_fp16)
-bias!
-
-net_res1_2_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_109_dilations_0
-pad
-
-input_109_pad_0"
-strides
-
-input_109_strides_0 
+input_109_dilations_0 
 groups
 
-input_109_groups_0-
+input_109_groups_0
+x
+
+input_107_cast_fp16$
+pad_type
+
+input_109_pad_type_0)
+bias!
+
+net_res1_2_conv1_bias_to_fp16"
+strides
+
+input_109_strides_0
+pad
+
+input_109_pad_0-
 weight#
 !
 net_res1_2_conv1_weight_to_fp167
@@ -5390,28 +5390,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿µ¢˝
-conv!
-pad_type
-
-out_15_pad_type_0
-x
-
-input_111_cast_fp16)
-bias!
-
-net_res1_2_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_15_dilations_0
-pad
-
-out_15_pad_0
-strides
-
-out_15_strides_0
+out_15_dilations_0
 groups
 
-out_15_groups_0-
+out_15_groups_0
+x
+
+input_111_cast_fp16!
+pad_type
+
+out_15_pad_type_0)
+bias!
+
+net_res1_2_conv2_bias_to_fp16
+strides
+
+out_15_strides_0
+pad
+
+out_15_pad_0-
 weight#
 !
 net_res1_2_conv2_weight_to_fp164
@@ -5549,28 +5549,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿˜¶í
-conv$
-pad_type
-
-input_115_pad_type_0
-x
-
-input_113_cast_fp16)
-bias!
-
-net_res1_3_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_115_dilations_0
-pad
-
-input_115_pad_0"
-strides
-
-input_115_strides_0 
+input_115_dilations_0 
 groups
 
-input_115_groups_0-
+input_115_groups_0
+x
+
+input_113_cast_fp16$
+pad_type
+
+input_115_pad_type_0)
+bias!
+
+net_res1_3_conv1_bias_to_fp16"
+strides
+
+input_115_strides_0
+pad
+
+input_115_pad_0-
 weight#
 !
 net_res1_3_conv1_weight_to_fp167
@@ -5705,28 +5705,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿π´˝
-conv!
-pad_type
-
-out_17_pad_type_0
-x
-
-input_117_cast_fp16)
-bias!
-
-net_res1_3_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_17_dilations_0
-pad
-
-out_17_pad_0
-strides
-
-out_17_strides_0
+out_17_dilations_0
 groups
 
-out_17_groups_0-
+out_17_groups_0
+x
+
+input_117_cast_fp16!
+pad_type
+
+out_17_pad_type_0)
+bias!
+
+net_res1_3_conv2_bias_to_fp16
+strides
+
+out_17_strides_0
+pad
+
+out_17_pad_0-
 weight#
 !
 net_res1_3_conv2_weight_to_fp164
@@ -5864,28 +5864,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿˚Øí
-conv$
-pad_type
-
-input_121_pad_type_0
-x
-
-input_119_cast_fp16)
-bias!
-
-net_res1_4_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_121_dilations_0
-pad
-
-input_121_pad_0"
-strides
-
-input_121_strides_0 
+input_121_dilations_0 
 groups
 
-input_121_groups_0-
+input_121_groups_0
+x
+
+input_119_cast_fp16$
+pad_type
+
+input_121_pad_type_0)
+bias!
+
+net_res1_4_conv1_bias_to_fp16"
+strides
+
+input_121_strides_0
+pad
+
+input_121_pad_0-
 weight#
 !
 net_res1_4_conv1_weight_to_fp167
@@ -6020,28 +6020,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿Ω¥˝
-conv!
-pad_type
-
-out_19_pad_type_0
-x
-
-input_123_cast_fp16)
-bias!
-
-net_res1_4_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_19_dilations_0
-pad
-
-out_19_pad_0
-strides
-
-out_19_strides_0
+out_19_dilations_0
 groups
 
-out_19_groups_0-
+out_19_groups_0
+x
+
+input_123_cast_fp16!
+pad_type
+
+out_19_pad_type_0)
+bias!
+
+net_res1_4_conv2_bias_to_fp16
+strides
+
+out_19_strides_0
+pad
+
+out_19_pad_0-
 weight#
 !
 net_res1_4_conv2_weight_to_fp164
@@ -6118,13 +6118,13 @@ $""
 pad
 mode
 
-padded_mode_0
-x
-
-x_cast_fp16
+padded_mode_0
 pad
 
-padded_pad_0#
+padded_pad_0
+x
+
+x_cast_fp16#
 constant_val
 
 const_2_to_fp164
@@ -6187,16 +6187,16 @@ $""
 
 
  Ê
-slice_by_index
+slice_by_index
+end
+
+var_406_end_0
 begin
 
 var_406_begin_0
 x
 
-padded_cast_fp16
-end
-
-var_406_end_0"
+padded_cast_fp16"
 end_mask
 
 var_406_end_mask_05
@@ -6259,16 +6259,16 @@ $""
 
 
  Á
-slice_by_index
+slice_by_index
+end
+
+var_407_end_0
 begin
 
 var_407_begin_0
 x
 
-var_406_cast_fp16
-end
-
-var_407_end_0"
+var_406_cast_fp16"
 end_mask
 
 var_407_end_mask_05
@@ -6343,14 +6343,14 @@ $""
 
 "
 fp16å
-cast
+cast#
+dtype
+
+kernel_to_fp16_dtype_0
 x
 
 
-kernel#
-dtype
-
-kernel_to_fp16_dtype_00
+kernel0
 kernel_to_fp16
 
 
@@ -6363,16 +6363,16 @@ $""
 
 "
 cast_5‚
-slice_by_index
+slice_by_index
+end
+
+var_410_end_0
 begin
 
 var_410_begin_0
 x
 
-kernel_to_fp16
-end
-
-var_410_end_0"
+kernel_to_fp16"
 end_mask
 
 var_410_end_mask_03
@@ -6435,16 +6435,16 @@ $""
 
 
  Â
-slice_by_index
+slice_by_index
+end
+
+var_411_end_0
 begin
 
 var_411_begin_0
 x
 
-var_410_cast_fp16
-end
-
-var_411_end_0"
+var_410_cast_fp16"
 end_mask
 
 var_411_end_mask_03
@@ -6525,16 +6525,16 @@ $""
 
 
  Á
-slice_by_index
+slice_by_index
+end
+
+var_424_end_0
 begin
 
 var_424_begin_0
 x
 
-var_406_cast_fp16
-end
-
-var_424_end_0"
+var_406_cast_fp16"
 end_mask
 
 var_424_end_mask_05
@@ -6597,16 +6597,16 @@ $""
 
 
  Â
-slice_by_index
+slice_by_index
+end
+
+var_428_end_0
 begin
 
 var_428_begin_0
 x
 
-var_410_cast_fp16
-end
-
-var_428_end_0"
+var_410_cast_fp16"
 end_mask
 
 var_428_end_mask_03
@@ -6704,16 +6704,16 @@ $""
 
 
 Á
-slice_by_index
+slice_by_index
+end
+
+var_440_end_0
 begin
 
 var_440_begin_0
 x
 
-var_406_cast_fp16
-end
-
-var_440_end_0"
+var_406_cast_fp16"
 end_mask
 
 var_440_end_mask_05
@@ -6776,16 +6776,16 @@ $""
 
 
 Â
-slice_by_index
+slice_by_index
+end
+
+var_444_end_0
 begin
 
 var_444_begin_0
 x
 
-var_410_cast_fp16
-end
-
-var_444_end_0"
+var_410_cast_fp16"
 end_mask
 
 var_444_end_mask_03
@@ -6884,16 +6884,16 @@ $""
 
 
  Ê
-slice_by_index
+slice_by_index
+end
+
+var_455_end_0
 begin
 
 var_455_begin_0
 x
 
-padded_cast_fp16
-end
-
-var_455_end_0"
+padded_cast_fp16"
 end_mask
 
 var_455_end_mask_05
@@ -6956,16 +6956,16 @@ $""
 
 
  Á
-slice_by_index
+slice_by_index
+end
+
+var_456_end_0
 begin
 
 var_456_begin_0
 x
 
-var_455_cast_fp16
-end
-
-var_456_end_0"
+var_455_cast_fp16"
 end_mask
 
 var_456_end_mask_05
@@ -7028,16 +7028,16 @@ $""
 
 
  ‚
-slice_by_index
+slice_by_index
+end
+
+var_459_end_0
 begin
 
 var_459_begin_0
 x
 
-kernel_to_fp16
-end
-
-var_459_end_0"
+kernel_to_fp16"
 end_mask
 
 var_459_end_mask_03
@@ -7100,16 +7100,16 @@ $""
 
 
  Â
-slice_by_index
+slice_by_index
+end
+
+var_460_end_0
 begin
 
 var_460_begin_0
 x
 
-var_459_cast_fp16
-end
-
-var_460_end_0"
+var_459_cast_fp16"
 end_mask
 
 var_460_end_mask_03
@@ -7208,16 +7208,16 @@ $""
 
 
  Á
-slice_by_index
+slice_by_index
+end
+
+var_472_end_0
 begin
 
 var_472_begin_0
 x
 
-var_455_cast_fp16
-end
-
-var_472_end_0"
+var_455_cast_fp16"
 end_mask
 
 var_472_end_mask_05
@@ -7280,16 +7280,16 @@ $""
 
 
  Â
-slice_by_index
+slice_by_index
+end
+
+var_476_end_0
 begin
 
 var_476_begin_0
 x
 
-var_459_cast_fp16
-end
-
-var_476_end_0"
+var_459_cast_fp16"
 end_mask
 
 var_476_end_mask_03
@@ -7387,16 +7387,16 @@ $""
 
 
 Á
-slice_by_index
+slice_by_index
+end
+
+var_488_end_0
 begin
 
 var_488_begin_0
 x
 
-var_455_cast_fp16
-end
-
-var_488_end_0"
+var_455_cast_fp16"
 end_mask
 
 var_488_end_mask_05
@@ -7459,16 +7459,16 @@ $""
 
 
 Â
-slice_by_index
+slice_by_index
+end
+
+var_492_end_0
 begin
 
 var_492_begin_0
 x
 
-var_459_cast_fp16
-end
-
-var_492_end_0"
+var_459_cast_fp16"
 end_mask
 
 var_492_end_mask_03
@@ -7566,16 +7566,16 @@ $""
 
 
 Ê
-slice_by_index
+slice_by_index
+end
+
+var_503_end_0
 begin
 
 var_503_begin_0
 x
 
-padded_cast_fp16
-end
-
-var_503_end_0"
+padded_cast_fp16"
 end_mask
 
 var_503_end_mask_05
@@ -7638,16 +7638,16 @@ $""
 
 
  Á
-slice_by_index
+slice_by_index
+end
+
+var_504_end_0
 begin
 
 var_504_begin_0
 x
 
-var_503_cast_fp16
-end
-
-var_504_end_0"
+var_503_cast_fp16"
 end_mask
 
 var_504_end_mask_05
@@ -7710,16 +7710,16 @@ $""
 
 
 ‚
-slice_by_index
+slice_by_index
+end
+
+var_507_end_0
 begin
 
 var_507_begin_0
 x
 
-kernel_to_fp16
-end
-
-var_507_end_0"
+kernel_to_fp16"
 end_mask
 
 var_507_end_mask_03
@@ -7782,16 +7782,16 @@ $""
 
 
  Â
-slice_by_index
+slice_by_index
+end
+
+var_508_end_0
 begin
 
 var_508_begin_0
 x
 
-var_507_cast_fp16
-end
-
-var_508_end_0"
+var_507_cast_fp16"
 end_mask
 
 var_508_end_mask_03
@@ -7890,16 +7890,16 @@ $""
 
 
  Á
-slice_by_index
+slice_by_index
+end
+
+var_520_end_0
 begin
 
 var_520_begin_0
 x
 
-var_503_cast_fp16
-end
-
-var_520_end_0"
+var_503_cast_fp16"
 end_mask
 
 var_520_end_mask_05
@@ -7962,16 +7962,16 @@ $""
 
 
  Â
-slice_by_index
+slice_by_index
+end
+
+var_524_end_0
 begin
 
 var_524_begin_0
 x
 
-var_507_cast_fp16
-end
-
-var_524_end_0"
+var_507_cast_fp16"
 end_mask
 
 var_524_end_mask_03
@@ -8069,16 +8069,16 @@ $""
 
 
 Á
-slice_by_index
+slice_by_index
+end
+
+var_536_end_0
 begin
 
 var_536_begin_0
 x
 
-var_503_cast_fp16
-end
-
-var_536_end_0"
+var_503_cast_fp16"
 end_mask
 
 var_536_end_mask_05
@@ -8141,16 +8141,16 @@ $""
 
 
 Â
-slice_by_index
+slice_by_index
+end
+
+var_540_end_0
 begin
 
 var_540_begin_0
 x
 
-var_507_cast_fp16
-end
-
-var_540_end_0"
+var_507_cast_fp16"
 end_mask
 
 var_540_end_mask_03
@@ -8306,28 +8306,28 @@ $""
 
 @*%
 @model_path/weights/weight.bin¿ˇ∏é
-conv$
-pad_type
-
-input_127_pad_type_0
-x
-
-input_125_cast_fp16'
-bias
-
-net_mask_est_0_bias_to_fp16&
+conv&
 	dilations
 
-input_127_dilations_0
-pad
-
-input_127_pad_0"
-strides
-
-input_127_strides_0 
+input_127_dilations_0 
 groups
 
-input_127_groups_0+
+input_127_groups_0
+x
+
+input_125_cast_fp16$
+pad_type
+
+input_127_pad_type_0'
+bias
+
+net_mask_est_0_bias_to_fp16"
+strides
+
+input_127_strides_0
+pad
+
+input_127_pad_0+
 weight!
 
 net_mask_est_0_weight_to_fp167
@@ -8462,29 +8462,29 @@ $""
 
 
 :
-¢#é
-conv$
-pad_type
-
-input_131_pad_type_0
-x
-
-input_129_cast_fp16'
-bias
-
-net_mask_est_2_bias_to_fp16&
+¶#é
+conv&
 	dilations
 
-input_131_dilations_0
-pad
-
-input_131_pad_0"
-strides
-
-input_131_strides_0 
+input_131_dilations_0 
 groups
 
-input_131_groups_0+
+input_131_groups_0
+x
+
+input_129_cast_fp16$
+pad_type
+
+input_131_pad_type_0'
+bias
+
+net_mask_est_2_bias_to_fp16"
+strides
+
+input_131_strides_0
+pad
+
+input_131_pad_0+
 weight!
 
 net_mask_est_2_weight_to_fp167
@@ -8637,28 +8637,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄÀΩí
-conv$
-pad_type
-
-input_135_pad_type_0
-x
-
-input_133_cast_fp16)
-bias!
-
-net_res2_0_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_135_dilations_0
-pad
-
-input_135_pad_0"
-strides
-
-input_135_strides_0 
+input_135_dilations_0 
 groups
 
-input_135_groups_0-
+input_135_groups_0
+x
+
+input_133_cast_fp16$
+pad_type
+
+input_135_pad_type_0)
+bias!
+
+net_res2_0_conv1_bias_to_fp16"
+strides
+
+input_135_strides_0
+pad
+
+input_135_pad_0-
 weight#
 !
 net_res2_0_conv1_weight_to_fp167
@@ -8793,28 +8793,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄç¬˝
-conv!
-pad_type
-
-out_21_pad_type_0
-x
-
-input_137_cast_fp16)
-bias!
-
-net_res2_0_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_21_dilations_0
-pad
-
-out_21_pad_0
-strides
-
-out_21_strides_0
+out_21_dilations_0
 groups
 
-out_21_groups_0-
+out_21_groups_0
+x
+
+input_137_cast_fp16!
+pad_type
+
+out_21_pad_type_0)
+bias!
+
+net_res2_0_conv2_bias_to_fp16
+strides
+
+out_21_strides_0
+pad
+
+out_21_pad_0-
 weight#
 !
 net_res2_0_conv2_weight_to_fp164
@@ -8952,28 +8952,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄœ∆í
-conv$
-pad_type
-
-input_141_pad_type_0
-x
-
-input_139_cast_fp16)
-bias!
-
-net_res2_1_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_141_dilations_0
-pad
-
-input_141_pad_0"
-strides
-
-input_141_strides_0 
+input_141_dilations_0 
 groups
 
-input_141_groups_0-
+input_141_groups_0
+x
+
+input_139_cast_fp16$
+pad_type
+
+input_141_pad_type_0)
+bias!
+
+net_res2_1_conv1_bias_to_fp16"
+strides
+
+input_141_strides_0
+pad
+
+input_141_pad_0-
 weight#
 !
 net_res2_1_conv1_weight_to_fp167
@@ -9108,28 +9108,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄëÀ˝
-conv!
-pad_type
-
-out_23_pad_type_0
-x
-
-input_143_cast_fp16)
-bias!
-
-net_res2_1_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_23_dilations_0
-pad
-
-out_23_pad_0
-strides
-
-out_23_strides_0
+out_23_dilations_0
 groups
 
-out_23_groups_0-
+out_23_groups_0
+x
+
+input_143_cast_fp16!
+pad_type
+
+out_23_pad_type_0)
+bias!
+
+net_res2_1_conv2_bias_to_fp16
+strides
+
+out_23_strides_0
+pad
+
+out_23_pad_0-
 weight#
 !
 net_res2_1_conv2_weight_to_fp164
@@ -9267,28 +9267,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ”œí
-conv$
-pad_type
-
-input_147_pad_type_0
-x
-
-input_145_cast_fp16)
-bias!
-
-net_res2_2_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_147_dilations_0
-pad
-
-input_147_pad_0"
-strides
-
-input_147_strides_0 
+input_147_dilations_0 
 groups
 
-input_147_groups_0-
+input_147_groups_0
+x
+
+input_145_cast_fp16$
+pad_type
+
+input_147_pad_type_0)
+bias!
+
+net_res2_2_conv1_bias_to_fp16"
+strides
+
+input_147_strides_0
+pad
+
+input_147_pad_0-
 weight#
 !
 net_res2_2_conv1_weight_to_fp167
@@ -9423,28 +9423,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄï‘˝
-conv!
-pad_type
-
-out_25_pad_type_0
-x
-
-input_149_cast_fp16)
-bias!
-
-net_res2_2_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_25_dilations_0
-pad
-
-out_25_pad_0
-strides
-
-out_25_strides_0
+out_25_dilations_0
 groups
 
-out_25_groups_0-
+out_25_groups_0
+x
+
+input_149_cast_fp16!
+pad_type
+
+out_25_pad_type_0)
+bias!
+
+net_res2_2_conv2_bias_to_fp16
+strides
+
+out_25_strides_0
+pad
+
+out_25_pad_0-
 weight#
 !
 net_res2_2_conv2_weight_to_fp164
@@ -9582,28 +9582,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ◊ÿí
-conv$
-pad_type
-
-input_153_pad_type_0
-x
-
-input_151_cast_fp16)
-bias!
-
-net_res2_3_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_153_dilations_0
-pad
-
-input_153_pad_0"
-strides
-
-input_153_strides_0 
+input_153_dilations_0 
 groups
 
-input_153_groups_0-
+input_153_groups_0
+x
+
+input_151_cast_fp16$
+pad_type
+
+input_153_pad_type_0)
+bias!
+
+net_res2_3_conv1_bias_to_fp16"
+strides
+
+input_153_strides_0
+pad
+
+input_153_pad_0-
 weight#
 !
 net_res2_3_conv1_weight_to_fp167
@@ -9738,28 +9738,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄô›˝
-conv!
-pad_type
-
-out_27_pad_type_0
-x
-
-input_155_cast_fp16)
-bias!
-
-net_res2_3_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_27_dilations_0
-pad
-
-out_27_pad_0
-strides
-
-out_27_strides_0
+out_27_dilations_0
 groups
 
-out_27_groups_0-
+out_27_groups_0
+x
+
+input_155_cast_fp16!
+pad_type
+
+out_27_pad_type_0)
+bias!
+
+net_res2_3_conv2_bias_to_fp16
+strides
+
+out_27_strides_0
+pad
+
+out_27_pad_0-
 weight#
 !
 net_res2_3_conv2_weight_to_fp164
@@ -9897,28 +9897,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ€·í
-conv$
-pad_type
-
-input_159_pad_type_0
-x
-
-input_157_cast_fp16)
-bias!
-
-net_res2_4_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_159_dilations_0
-pad
-
-input_159_pad_0"
-strides
-
-input_159_strides_0 
+input_159_dilations_0 
 groups
 
-input_159_groups_0-
+input_159_groups_0
+x
+
+input_157_cast_fp16$
+pad_type
+
+input_159_pad_type_0)
+bias!
+
+net_res2_4_conv1_bias_to_fp16"
+strides
+
+input_159_strides_0
+pad
+
+input_159_pad_0-
 weight#
 !
 net_res2_4_conv1_weight_to_fp167
@@ -10053,28 +10053,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄùÊ˝
-conv!
-pad_type
-
-out_29_pad_type_0
-x
-
-input_161_cast_fp16)
-bias!
-
-net_res2_4_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_29_dilations_0
-pad
-
-out_29_pad_0
-strides
-
-out_29_strides_0
+out_29_dilations_0
 groups
 
-out_29_groups_0-
+out_29_groups_0
+x
+
+input_161_cast_fp16!
+pad_type
+
+out_29_pad_type_0)
+bias!
+
+net_res2_4_conv2_bias_to_fp16
+strides
+
+out_29_strides_0
+pad
+
+out_29_pad_0-
 weight#
 !
 net_res2_4_conv2_weight_to_fp164
@@ -10119,13 +10119,13 @@ $""
 
 "
 fp16ï
-cast
-x
-
-	input_163&
+cast&
 dtype
 
-input_163_to_fp16_dtype_03
+input_163_to_fp16_dtype_0
+x
+
+	input_1633
 input_163_to_fp16
 
 
@@ -10276,28 +10276,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄﬂÍí
-conv$
-pad_type
-
-input_167_pad_type_0
-x
-
-input_165_cast_fp16)
-bias!
-
-net_res3_0_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_167_dilations_0
-pad
-
-input_167_pad_0"
-strides
-
-input_167_strides_0 
+input_167_dilations_0 
 groups
 
-input_167_groups_0-
+input_167_groups_0
+x
+
+input_165_cast_fp16$
+pad_type
+
+input_167_pad_type_0)
+bias!
+
+net_res3_0_conv1_bias_to_fp16"
+strides
+
+input_167_strides_0
+pad
+
+input_167_pad_0-
 weight#
 !
 net_res3_0_conv1_weight_to_fp167
@@ -10432,28 +10432,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ°Ô˝
-conv!
-pad_type
-
-out_31_pad_type_0
-x
-
-input_169_cast_fp16)
-bias!
-
-net_res3_0_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_31_dilations_0
-pad
-
-out_31_pad_0
-strides
-
-out_31_strides_0
+out_31_dilations_0
 groups
 
-out_31_groups_0-
+out_31_groups_0
+x
+
+input_169_cast_fp16!
+pad_type
+
+out_31_pad_type_0)
+bias!
+
+net_res3_0_conv2_bias_to_fp16
+strides
+
+out_31_strides_0
+pad
+
+out_31_pad_0-
 weight#
 !
 net_res3_0_conv2_weight_to_fp164
@@ -10591,28 +10591,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ„Ûí
-conv$
-pad_type
-
-input_173_pad_type_0
-x
-
-input_171_cast_fp16)
-bias!
-
-net_res3_1_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_173_dilations_0
-pad
-
-input_173_pad_0"
-strides
-
-input_173_strides_0 
+input_173_dilations_0 
 groups
 
-input_173_groups_0-
+input_173_groups_0
+x
+
+input_171_cast_fp16$
+pad_type
+
+input_173_pad_type_0)
+bias!
+
+net_res3_1_conv1_bias_to_fp16"
+strides
+
+input_173_strides_0
+pad
+
+input_173_pad_0-
 weight#
 !
 net_res3_1_conv1_weight_to_fp167
@@ -10747,28 +10747,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ•¯˝
-conv!
-pad_type
-
-out_33_pad_type_0
-x
-
-input_175_cast_fp16)
-bias!
-
-net_res3_1_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_33_dilations_0
-pad
-
-out_33_pad_0
-strides
-
-out_33_strides_0
+out_33_dilations_0
 groups
 
-out_33_groups_0-
+out_33_groups_0
+x
+
+input_175_cast_fp16!
+pad_type
+
+out_33_pad_type_0)
+bias!
+
+net_res3_1_conv2_bias_to_fp16
+strides
+
+out_33_strides_0
+pad
+
+out_33_pad_0-
 weight#
 !
 net_res3_1_conv2_weight_to_fp164
@@ -10906,28 +10906,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄÁ¸í
-conv$
-pad_type
-
-input_179_pad_type_0
-x
-
-input_177_cast_fp16)
-bias!
-
-net_res3_2_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_179_dilations_0
-pad
-
-input_179_pad_0"
-strides
-
-input_179_strides_0 
+input_179_dilations_0 
 groups
 
-input_179_groups_0-
+input_179_groups_0
+x
+
+input_177_cast_fp16$
+pad_type
+
+input_179_pad_type_0)
+bias!
+
+net_res3_2_conv1_bias_to_fp16"
+strides
+
+input_179_strides_0
+pad
+
+input_179_pad_0-
 weight#
 !
 net_res3_2_conv1_weight_to_fp167
@@ -11062,28 +11062,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ©Å˝
-conv!
-pad_type
-
-out_35_pad_type_0
-x
-
-input_181_cast_fp16)
-bias!
-
-net_res3_2_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_35_dilations_0
-pad
-
-out_35_pad_0
-strides
-
-out_35_strides_0
+out_35_dilations_0
 groups
 
-out_35_groups_0-
+out_35_groups_0
+x
+
+input_181_cast_fp16!
+pad_type
+
+out_35_pad_type_0)
+bias!
+
+net_res3_2_conv2_bias_to_fp16
+strides
+
+out_35_strides_0
+pad
+
+out_35_pad_0-
 weight#
 !
 net_res3_2_conv2_weight_to_fp164
@@ -11221,28 +11221,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄÎÖí
-conv$
-pad_type
-
-input_185_pad_type_0
-x
-
-input_183_cast_fp16)
-bias!
-
-net_res3_3_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_185_dilations_0
-pad
-
-input_185_pad_0"
-strides
-
-input_185_strides_0 
+input_185_dilations_0 
 groups
 
-input_185_groups_0-
+input_185_groups_0
+x
+
+input_183_cast_fp16$
+pad_type
+
+input_185_pad_type_0)
+bias!
+
+net_res3_3_conv1_bias_to_fp16"
+strides
+
+input_185_strides_0
+pad
+
+input_185_pad_0-
 weight#
 !
 net_res3_3_conv1_weight_to_fp167
@@ -11377,28 +11377,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ≠ä˝
-conv!
-pad_type
-
-out_37_pad_type_0
-x
-
-input_187_cast_fp16)
-bias!
-
-net_res3_3_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_37_dilations_0
-pad
-
-out_37_pad_0
-strides
-
-out_37_strides_0
+out_37_dilations_0
 groups
 
-out_37_groups_0-
+out_37_groups_0
+x
+
+input_187_cast_fp16!
+pad_type
+
+out_37_pad_type_0)
+bias!
+
+net_res3_3_conv2_bias_to_fp16
+strides
+
+out_37_strides_0
+pad
+
+out_37_pad_0-
 weight#
 !
 net_res3_3_conv2_weight_to_fp164
@@ -11536,28 +11536,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄÔéí
-conv$
-pad_type
-
-input_191_pad_type_0
-x
-
-input_189_cast_fp16)
-bias!
-
-net_res3_4_conv1_bias_to_fp16&
+conv&
 	dilations
 
-input_191_dilations_0
-pad
-
-input_191_pad_0"
-strides
-
-input_191_strides_0 
+input_191_dilations_0 
 groups
 
-input_191_groups_0-
+input_191_groups_0
+x
+
+input_189_cast_fp16$
+pad_type
+
+input_191_pad_type_0)
+bias!
+
+net_res3_4_conv1_bias_to_fp16"
+strides
+
+input_191_strides_0
+pad
+
+input_191_pad_0-
 weight#
 !
 net_res3_4_conv1_weight_to_fp167
@@ -11692,28 +11692,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ±ì˝
-conv!
-pad_type
-
-out_39_pad_type_0
-x
-
-input_193_cast_fp16)
-bias!
-
-net_res3_4_conv2_bias_to_fp16#
+conv#
 	dilations
 
-out_39_dilations_0
-pad
-
-out_39_pad_0
-strides
-
-out_39_strides_0
+out_39_dilations_0
 groups
 
-out_39_groups_0-
+out_39_groups_0
+x
+
+input_193_cast_fp16!
+pad_type
+
+out_39_pad_type_0)
+bias!
+
+net_res3_4_conv2_bias_to_fp16
+strides
+
+out_39_strides_0
+pad
+
+out_39_pad_0-
 weight#
 !
 net_res3_4_conv2_weight_to_fp164
@@ -11849,28 +11849,28 @@ $""
 
 Ä*%
 @model_path/weights/weight.binÄ≥•á
-conv$
-pad_type
-
-input_197_pad_type_0
-x
-
-input_195_cast_fp16#
-bias
-
-net_upconv_bias_to_fp16&
+conv&
 	dilations
 
-input_197_dilations_0
-pad
-
-input_197_pad_0"
-strides
-
-input_197_strides_0 
+input_197_dilations_0 
 groups
 
-input_197_groups_0'
+input_197_groups_0
+x
+
+input_195_cast_fp16$
+pad_type
+
+input_197_pad_type_0#
+bias
+
+net_upconv_bias_to_fp16"
+strides
+
+input_197_strides_0
+pad
+
+input_197_pad_0'
 weight
 
 net_upconv_weight_to_fp168
@@ -12024,28 +12024,28 @@ $""
 
 @*%
 @model_path/weights/weight.binÄ¯©Ü
-conv$
-pad_type
-
-input_203_pad_type_0
-x
-
-input_201_cast_fp16#
-bias
-
-net_HRconv_bias_to_fp16&
+conv&
 	dilations
 
-input_203_dilations_0
-pad
-
-input_203_pad_0"
-strides
-
-input_203_strides_0 
+input_203_dilations_0 
 groups
 
-input_203_groups_0'
+input_203_groups_0
+x
+
+input_201_cast_fp16$
+pad_type
+
+input_203_pad_type_0#
+bias
+
+net_HRconv_bias_to_fp16"
+strides
+
+input_203_strides_0
+pad
+
+input_203_pad_0'
 weight
 
 net_HRconv_weight_to_fp167
@@ -12180,29 +12180,29 @@ $""
 
 
 :
-Ò!ﬁ
-conv
-pad_type
-
-out_pad_type_0
-x
-
-input_cast_fp16&
-bias
-
-net_conv_last_bias_to_fp16 
+>"ﬁ
+conv 
 	dilations
 
-out_dilations_0
-pad
-
-	out_pad_0
-strides
-
-out_strides_0
+out_dilations_0
 groups
 
-out_groups_0*
+out_groups_0
+x
+
+input_cast_fp16
+pad_type
+
+out_pad_type_0&
+bias
+
+net_conv_last_bias_to_fp16
+strides
+
+out_strides_0
+pad
+
+	out_pad_0*
 weight 
 
 net_conv_last_weight_to_fp161
@@ -12229,13 +12229,13 @@ $""
 
 "
 fp16Ü
-cast
-x
-
-qmax!
+cast!
 dtype
 
-qmax_to_fp16_dtype_0.
+qmax_to_fp16_dtype_0
+x
+
+qmax.
 qmax_to_fp16
 
 
@@ -12247,25 +12247,25 @@ $""
 
 
 "
-cast_3¨
+cast_3ì
 mul
 y
 
 out_cast_fp16
 x
 
-qmax_to_fp16A
-normalized_log_gain_cast_fp16 
+qmax_to_fp165
+var_778_cast_fp16 
 
 
 
 
 Ä
-Ä*3
-name+
-#
-!"
-normalized_log_gain_cast_fp16q
+Ä*&
+name
+
+"
+op_778_cast_fp16q
 const 
 var_779_promoted_to_fp16
 
@@ -12291,17 +12291,17 @@ $""
 
 
 :
- <Ÿ
-clip&
-x!
-
-normalized_log_gain_cast_fp16$
-beta
-
-var_780_promoted_to_fp16%
+ <Õ
+clip%
 alpha
 
-var_779_promoted_to_fp164
+var_779_promoted_to_fp16
+x
+
+var_778_cast_fp16$
+beta
+
+var_780_promoted_to_fp164
 clip_0_cast_fp16 
 
 

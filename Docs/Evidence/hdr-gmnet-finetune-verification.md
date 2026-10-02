@@ -1,5 +1,9 @@
 # Fine-tuning the published GMNet
 
+Follow-up: the user subsequently requested app adoption. The converted model and
+new-map defaults are now integrated; see [app integration](hdr-camera-integration.md).
+The experiment below records the state before that integration.
+
 2026-10-02. **Fine-tuned GMNet has the lowest mean luminance error in this
 comparison.** It improves over both the published weights and the camera-adapted
 Velyn CNN. The candidate remains private research output; the app's bundled

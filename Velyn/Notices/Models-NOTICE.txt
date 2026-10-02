@@ -27,6 +27,10 @@ Source: https://github.com/qtlark/GMNet
 Revision: 59db6aac16f8fa7071a9447e357d9e7316ce0f8c
 Checkpoint: checkpoints/G_realworld.pth
 Checkpoint SHA-256: 83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f
-Velyn converts the original weights to Core ML FP16, uses fixed input shapes,
-replaces equivalent adaptive pooling, and bounds predicted log2 gain to 0...log2(5).
-Conversion source and reproduction instructions are included in Scripts/Models.
+Velyn fine-tuned these weights on user-authorized native camera HDR/SDR pairs.
+Bundled version: gmnet-camera-v1, selected training step 4500.
+Fine-tuned checkpoint SHA-256: cc92ee36615c30e4b076215e6bffaba551e3b6351f86174aed8da1e5ed3bcf41
+Core ML uses FP32 global / FP16 local operators, fixed 512/1024 input shapes,
+equivalent static kernels/pooling, and scalar log2 gain bounded to 0...log2(5).
+Training and conversion code: Scripts/HDR/Training; calibration: Scripts/Models.
+Private training photographs and the training checkpoint are not distributed.

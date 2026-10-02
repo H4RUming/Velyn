@@ -15,12 +15,13 @@ extension EditingService {
         return image.contentHeadroom > 1.01 ? .hdr : .sdr
     }
 
-    /// GMNet real-world weights are bundled; inference never downloads or transmits photos.
+    /// Camera-adapted GMNet weights are bundled; inference never downloads or transmits photos.
     public func estimateHDRExpansion(_ document: EditDocument, recipe: EditRecipe, modelURL: URL? = nil) throws -> HDRExpansion {
         try Task.checkCancellation()
         guard recipe.isValid else { throw EditorFailure.invalidDocument }
         guard try sourceDynamicRange() == .sdr else { throw EditorFailure.hdrExpansionRequiresSDR }
         let model = try gainModel(override: modelURL)
+        let profile = try GainModelCalibration.profile(model)
         let size = try GainModelCalibration.sideLength(model)
         // Use the same color/retouch state that the map will multiply, before geometry.
         let base = recipe.gainPredictionBase
@@ -74,6 +75,13 @@ extension EditingService {
         expansion.predictionFingerprint = recipe.gainPredictionFingerprint
         expansion.protectionBlend = protectionBlend
         expansion.edgeAwareUpsampling = true
+        if profile == .camera {
+            expansion.predictionModel = HDRExpansion.cameraModelID
+            expansion.useModelPrediction()
+            // Match the interpolation used to evaluate this checkpoint. Legacy maps
+            // keep their stored edge-aware policy and tone controls.
+            expansion.edgeAwareUpsampling = false
+        }
         return expansion
     }
 
@@ -103,12 +111,13 @@ extension EditingService {
                 let configuration = MLModelConfiguration(); configuration.computeUnits = units
                 let candidate = try MLModel(contentsOf: url,configuration: configuration)
                 let size = try GainModelCalibration.sideLength(candidate)
+                let profile = try GainModelCalibration.profile(candidate)
                 var passed = true
                 for pattern in 0..<2 {
                     let output = try candidate.prediction(from: GainModelCalibration.input(size:size,pattern:pattern))
                     try Task.checkCancellation()
                     guard let values = output.featureValue(for:"log_gain")?.multiArrayValue,
-                          GainModelCalibration.accepts(values,size:size,pattern:pattern) else { passed = false; break }
+                          GainModelCalibration.accepts(values,size:size,pattern:pattern,profile:profile) else { passed = false; break }
                 }
                 #if DEBUG && targetEnvironment(simulator)
                 if ProcessInfo.processInfo.arguments.contains("--editor-smoke-test") {

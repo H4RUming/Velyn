@@ -12,9 +12,12 @@ from GMNet import GMNet
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('checkpoint', type=Path)
 args = parser.parse_args()
-assert hashlib.sha256(args.checkpoint.read_bytes()).hexdigest() == '83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f'
+digest = hashlib.sha256(args.checkpoint.read_bytes()).hexdigest()
+assert digest in ['83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f',
+                  'cc92ee36615c30e4b076215e6bffaba551e3b6351f86174aed8da1e5ed3bcf41']
 model = GMNet(in_nc=3, out_nc=1, nf=64, nb=16).eval()
-model.load_state_dict(torch.load(args.checkpoint, weights_only=True, map_location='cpu'), strict=True)
+state = torch.load(args.checkpoint, weights_only=True, map_location='cpu')
+model.load_state_dict(state.get('model', state), strict=True)
 torch.set_num_threads(4)
 
 def tensor(side, pattern):

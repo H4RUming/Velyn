@@ -15,30 +15,26 @@
   "gmnet": {
     "repository": "qtlark/GMNet",
     "revision": "59db6aac16f8fa7071a9447e357d9e7316ce0f8c",
-    "checkpoint": "checkpoints/G_realworld.pth",
-    "checkpoint_sha256": "83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f",
-    "conversion": "Scripts/Models/convert_gain_map.py",
+    "checkpoint": "camera fine-tuning, selected step 4500",
+    "conversion": "Scripts/HDR/Training/convert_tuned_gmnet.py",
     "sha256": {
-      "VelynGainMap.mlpackage/Data/com.apple.CoreML/model.mlmodel": "154011ec599355611594afa63862b479b4c1bee1914a623530361ac9f90b2249",
-      "VelynGainMap.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "147762c796081d2247044f0184228ab9a94c2c9a6e7778dddb0d83990d3279fa",
-      "VelynGainMap.mlpackage/Manifest.json": "ee7dcdf663eef074d4ef6f4571dbab7565543c1b058296e29f33f36ebb4f8982",
-      "VelynGainMap1024.mlpackage/Data/com.apple.CoreML/model.mlmodel": "e555de3fead6e5b58960c94f6b5ddfaeda00e05066a21fd71af910352fc2a28b",
-      "VelynGainMap1024.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "147762c796081d2247044f0184228ab9a94c2c9a6e7778dddb0d83990d3279fa",
-      "VelynGainMap1024.mlpackage/Manifest.json": "bfac62271b4c124589f80371ef4b5ad476267e6393c952edbe57b399c3cb178b"
+      "VelynGainMap.mlpackage/Data/com.apple.CoreML/model.mlmodel": "24f5997983aa8f36ac1bb1074fe5ddd28240cdcb86668d2951fb0a6347c54206",
+      "VelynGainMap.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "204850fbbf9defa33d7507cf629c74815127184fd98b146c687044b7e5dc4e80",
+      "VelynGainMap.mlpackage/Manifest.json": "2489557c0ad63724950c486d4234513333619296c5cf711797dba4fb5949816f",
+      "VelynGainMap1024.mlpackage/Data/com.apple.CoreML/model.mlmodel": "58eba364e180fd5da42598421b9882f339422d3cb7c7f67e395a8d4b79290c20",
+      "VelynGainMap1024.mlpackage/Data/com.apple.CoreML/weights/weight.bin": "204850fbbf9defa33d7507cf629c74815127184fd98b146c687044b7e5dc4e80",
+      "VelynGainMap1024.mlpackage/Manifest.json": "9562eff45159256d25cf997bc3098a4437d4c09d0cbf5298912ec787f39d2d93"
     },
     "conversion_arguments": [
       "--size",
-      "512",
-      "--precise-global",
-      "--static-kernel"
+      "512"
     ],
     "high_resolution_conversion_arguments": [
       "--size",
-      "1024",
-      "--precise-global",
-      "--static-kernel",
-      "--output",
-      "Velyn/Models/VelynGainMap1024.mlpackage"
-    ]
+      "1024"
+    ],
+    "initial_checkpoint_sha256": "83bf27bcdbf6eacfdef37f0e24ed6d79152b7386620c012ae509a59a895c875f",
+    "checkpoint_sha256": "cc92ee36615c30e4b076215e6bffaba551e3b6351f86174aed8da1e5ed3bcf41",
+    "calibration": "Scripts/Models/calibrate_gain.py"
   }
 }

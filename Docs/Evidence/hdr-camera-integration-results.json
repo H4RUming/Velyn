@@ -1,0 +1,71 @@
+{
+  "scope": "macOS Core Image/Core ML actual engine; previously examined private comparison photos; not fresh validation or iPhone display/performance evidence",
+  "photos": 8,
+  "groups": 8,
+  "originalsBytePreserved": true,
+  "maxRepeatedDecodeDifference": 9.5367431640625e-07,
+  "metrics": {
+    "originalDefaults": {
+      "maeEV": 0.4693272208449108,
+      "p95EV": 0.7312931521729129,
+      "puPSNR": 31.14629101957648,
+      "puSSIM": 0.9881694094828924,
+      "uvError": 0.00011858526435669049,
+      "baseColorShift": 0.0002990742075352745,
+      "meanRatio": 0.8355856774515349
+    },
+    "originalDirect": {
+      "maeEV": 0.36940241998450823,
+      "p95EV": 0.653194860882933,
+      "puPSNR": 31.755148030999212,
+      "puSSIM": 0.9917676751544733,
+      "uvError": 0.00011083958361445523,
+      "baseColorShift": 0.00029382511154926684,
+      "meanRatio": 1.0320821157666369
+    },
+    "cameraOldProtection": {
+      "maeEV": 0.42654718431017224,
+      "p95EV": 0.7136017625622088,
+      "puPSNR": 31.51648449956282,
+      "puSSIM": 0.988446292900836,
+      "uvError": 0.00012748008908637222,
+      "baseColorShift": 0.00030386898612465144,
+      "meanRatio": 0.8748705033586235
+    },
+    "cameraDefault": {
+      "maeEV": 0.2853504068012434,
+      "p95EV": 0.5012557984309381,
+      "puPSNR": 34.716395129524415,
+      "puSSIM": 0.9934582790890087,
+      "uvError": 0.00010555708190725717,
+      "baseColorShift": 0.00028840387872363526,
+      "meanRatio": 1.1694423711332929
+    },
+    "cameraEdgeAware": {
+      "maeEV": 0.28509371643070125,
+      "p95EV": 0.5001235078435423,
+      "puPSNR": 34.74720073305852,
+      "puSSIM": 0.9936358125176656,
+      "uvError": 0.00010617729191981582,
+      "baseColorShift": 0.00028907394729285076,
+      "meanRatio": 1.1687100781370887
+    }
+  },
+  "comparisons": {
+    "originalDefaults": {
+      "improvedPhotos": 6,
+      "meanDifferenceEV": -0.1839768140436674,
+      "worstIncreaseEV": 0.6242403236718219
+    },
+    "originalDirect": {
+      "improvedPhotos": 5,
+      "meanDifferenceEV": -0.0840520131832648,
+      "worstIncreaseEV": 0.43467656430255025
+    },
+    "cameraOldProtection": {
+      "improvedPhotos": 6,
+      "meanDifferenceEV": -0.14119677750892887,
+      "worstIncreaseEV": 0.540040355890244
+    }
+  }
+}

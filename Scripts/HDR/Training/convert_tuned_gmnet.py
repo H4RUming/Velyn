@@ -1,4 +1,4 @@
-"""Convert an explicitly selected private GMNet checkpoint, without app install.
+"""Convert an explicitly selected camera GMNet checkpoint, without app install.
 
 Uses the existing equivalent static-kernel implementation and retains the original
 MIT attribution. Global operators stay FP32, as in Velyn's calibrated GMNet path.
@@ -52,8 +52,8 @@ def main():
                          outputs=[ct.TensorType(name='log_gain')],minimum_deployment_target=ct.target.iOS18,
                          compute_precision=ct.transform.FP16ComputePrecision(op_selector=use_half),compute_units=ct.ComputeUnit.CPU_ONLY)
     converted.author='Yinuo Liao et al.; fine-tuning and conversion by Velyn'
-    converted.license='MIT; Copyright (c) 2025 Yinuo Liao';converted.version='research-camera-v1'
-    converted.short_description='Private camera-adapted GMNet; research candidate, not the app default'
+    converted.license='MIT; Copyright (c) 2025 Yinuo Liao';converted.version='gmnet-camera-v1'
+    converted.short_description='Camera-adapted GMNet for on-device scalar HDR gain prediction'
     digest=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest()
     converted.user_defined_metadata['checkpointSHA256']=digest
     converted.user_defined_metadata['input']=f'sRGB 0..1; {a.size}px square edge-padded local image; 256px full-image thumbnail'

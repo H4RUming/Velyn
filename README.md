@@ -103,11 +103,13 @@ While you drag a control, previews use a 768px resolution and update at up to 30
 | --- | --- |
 | Object removal | AOT-GAN, bundled with the app |
 | Depth estimation | Depth Anything V2 Small, bundled with the app |
-| HDR gain map | GMNet, converted to Core ML and bundled with the app |
+| HDR gain map | GMNet fine-tuned on native camera HDR/SDR pairs, bundled as Core ML |
 | Subject and tap selection | Apple Vision; tap selection assets are downloaded on request |
 | P3 gamut expansion | Analytical interpolation, without a neural network |
 
-The app uses these existing models alongside Velyn's editing, compositing, and export code. An experimental gain-map model trained from scratch is available as [research code](Scripts/HDR/Training/README.md). Further training on native camera pairs improved its measured luminance accuracy, but some photos still regress and device validation is incomplete, so the candidate is not bundled in the app. [Results and limits](Docs/Evidence/hdr-private-camera-verification.md). All app photo processing runs on the device. See the [model sources and licenses](Velyn/Notices/Models-NOTICE.txt).
+Velyn fine-tunes GMNet and uses the other models alongside its own editing and export code. New HDR predictions use the learned gain at full strength; midtone protection is optional. Existing edits keep their settings. On a repeatedly evaluated collection of 132 photos, the tuned model reduced mean luminance error from 0.488 to 0.328 EV. Some photos still regress, and iPhone display validation remains open. See the [integration checks](Docs/Evidence/hdr-camera-integration.md) and [training results](Docs/Evidence/hdr-gmnet-finetune-verification.md).
+
+A separate model trained from scratch remains an experiment in the [research code](Scripts/HDR/Training/README.md). All app photo processing runs on the device. The repository includes converted model weights, without the private training photos or training checkpoint. See the [model sources and licenses](Velyn/Notices/Models-NOTICE.txt).
 
 Apple's tap selection assets are downloaded only when you tap **Prepare model**. Launching the app or importing a photo does not trigger a model download. PhotoKit imports disable network access, so iCloud-only originals must first be downloaded in Photos. File provider downloads, sharing, and saving use the system services you choose.
 
@@ -132,7 +134,7 @@ open Velyn.xcodeproj
 ./Scripts/verify.sh
 ```
 
-The verification script passes **75 engine tests** and builds the iOS Simulator app. Tests cover original-file preservation, local model inference, HDR gain map round trips, neutral colors, localization, and other engine behavior. Device-target compilation is checked separately. The README examples were rendered on macOS; they are not A17 Pro benchmarks.
+The verification script passes **83 engine tests** and builds the iOS Simulator app. Tests cover original-file preservation, local model inference, HDR gain map round trips, neutral colors, localization, and other engine behavior. Device-target compilation is checked separately. The README examples were rendered on macOS; they are not A17 Pro benchmarks.
 
 Work is still underway on broader physical-device testing: ProRAW variants, camera behavior, display color accuracy, sustained heat, and system import/export flows. The project has not passed all release acceptance gates or established Lightroom feature and quality parity. Most engineering notes linked below are currently in Korean.
 

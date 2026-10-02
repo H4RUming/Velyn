@@ -219,3 +219,11 @@ comparison locally on a Mac to check whether Core ML conversion preserves model
 quality. It reports aggregate errors and per-image-MAE drift without exporting
 photo identities. This is a repeated quality check, not new final validation or
 physical iPhone evidence. [Recorded GMNet results](../../../Docs/Evidence/hdr-gmnet-finetune-verification.md).
+
+### App adoption (2026-10-02)
+
+At the user's request, the step-4500 camera-adapted GMNet is now bundled in both
+512 and 1024 Core ML variants. The separate SignedGainNet remains experimental.
+New predictions use full scalar gain with optional midtone protection. Private
+training photos and the PyTorch checkpoint remain excluded from Git; only the
+converted inference packages are included. See the [integration checks](../../../Docs/Evidence/hdr-camera-integration.md).
