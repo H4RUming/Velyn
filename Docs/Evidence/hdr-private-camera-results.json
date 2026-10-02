@@ -1,0 +1,432 @@
+{
+  "date": "2026-10-02",
+  "dataset": {
+    "imagesScanned": 999,
+    "acceptedPairs": 882,
+    "rejected": {
+      "no-gain-map": 117
+    },
+    "splitImages": {
+      "train": 618,
+      "validation": 132,
+      "test": 132
+    },
+    "splitGroups": {
+      "train": 50,
+      "validation": 29,
+      "test": 30
+    },
+    "meanNegativeFraction": 0.00842041008422483,
+    "meanOutOfRangeFraction": 0.000968467687004794
+  },
+  "trainingAndTest": {
+    "scope": "Private camera dataset, unseen capture groups. Tensor inference; protected GMNet is an approximation without app edge-aware interpolation or codecs.",
+    "configuration": {
+      "width": 24,
+      "parameters": 595201,
+      "seed": 20261002,
+      "initialSHA256": "982c19314a4c93096c2bf5ca1734013ee5964a69de917be4ea0e3464e0abcc4f",
+      "steps": 6000,
+      "batch": 24,
+      "cropSize": 256,
+      "fullSize": 512,
+      "splitImages": {
+        "train": 618,
+        "validation": 132,
+        "test": 132
+      },
+      "splitGroups": {
+        "train": 50,
+        "validation": 29,
+        "test": 30
+      },
+      "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+      "torch": "2.7.0+cu128",
+      "cuda": "12.8",
+      "testUsedForSelection": false
+    },
+    "selectedStep": 500,
+    "trainingSeconds": 43.345997688011266,
+    "validation": [
+      {
+        "step": 0,
+        "maeEV": 0.7789111296561632,
+        "boundedMAE_EV": 0.7786492012779821,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.1470882714276024,
+        "negativePrecision": 0.004530328762962043,
+        "negativeRecall": 0.15132088698668045
+      },
+      {
+        "step": 500,
+        "maeEV": 0.27506248923865234,
+        "boundedMAE_EV": 0.2748005640213237,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 1000,
+        "maeEV": 0.28072503415133915,
+        "boundedMAE_EV": 0.2804631059989333,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 1500,
+        "maeEV": 0.2806949896004164,
+        "boundedMAE_EV": 0.2804330612222354,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 2000,
+        "maeEV": 0.28106900674262736,
+        "boundedMAE_EV": 0.28080708107374835,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 2500,
+        "maeEV": 0.27893584447376657,
+        "boundedMAE_EV": 0.27867391773245553,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 3000,
+        "maeEV": 0.27833536933317327,
+        "boundedMAE_EV": 0.27807344236608705,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 3500,
+        "maeEV": 0.28094231918679946,
+        "boundedMAE_EV": 0.2806803924454884,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 4000,
+        "maeEV": 0.27780798421890446,
+        "boundedMAE_EV": 0.27754605798558757,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 4500,
+        "maeEV": 0.28033528110068856,
+        "boundedMAE_EV": 0.28007335419004614,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 5000,
+        "maeEV": 0.2788783563583186,
+        "boundedMAE_EV": 0.2786164293912324,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 5500,
+        "maeEV": 0.2806682615456256,
+        "boundedMAE_EV": 0.2804063350865335,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      {
+        "step": 6000,
+        "maeEV": 0.27980397063109913,
+        "boundedMAE_EV": 0.2795420436640129,
+        "negativeFraction": 0.004726929952081457,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      }
+    ],
+    "test": {
+      "gmnetRaw1024": {
+        "maeEV": 0.4879313011964162,
+        "boundedMAE_EV": 0.48779307187280874,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      "gmnetProtectedApprox": {
+        "maeEV": 0.6354135293513536,
+        "boundedMAE_EV": 0.6352753023419416,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      "identity": {
+        "maeEV": 0.839558538444566,
+        "boundedMAE_EV": 0.8394203125075861,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      },
+      "syntheticPilot": {
+        "maeEV": 0.7492210121656006,
+        "boundedMAE_EV": 0.7490827825597741,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.15379882459191405,
+        "negativePrecision": 0.028623911718865924,
+        "negativeRecall": 0.21191126831615092
+      },
+      "cameraAdapted": {
+        "maeEV": 0.34999311122704635,
+        "boundedMAE_EV": 0.34985487992790615,
+        "negativeFraction": 0.022644363803265427,
+        "predictedNegativeFraction": 0.0,
+        "negativePrecision": 0.0,
+        "negativeRecall": 0.0
+      }
+    },
+    "meanGroupMAE": {
+      "gmnetRaw1024": 0.45546310096954057,
+      "gmnetProtectedApprox": 0.5961118593009233,
+      "identity": 0.7946247725218835,
+      "syntheticPilot": 0.7120891891049868,
+      "cameraAdapted": 0.3782500158466073
+    },
+    "pairedGroupDifference95": [
+      -0.38770590991551607,
+      -0.03435716851959353
+    ],
+    "checkpointSHA256": "4dc7a14b0b6a922116efed9febb16fe350982468fad8b16d01f498133066b426",
+    "testImagesImprovedAgainstProtectedGMNet": 97
+  },
+  "pairedComparisons": {
+    "gmnetRaw1024": {
+      "meanGroupDifferenceEV": -0.07721308512293329,
+      "bootstrap95": [
+        -0.19518207826996883,
+        0.04733931151277032
+      ],
+      "improvedImages": 93,
+      "worstImageRegressionEV": 0.5806553065776825
+    },
+    "gmnetProtectedApprox": {
+      "meanGroupDifferenceEV": -0.217861843454316,
+      "bootstrap95": [
+        -0.38770590991551607,
+        -0.034357168519593535
+      ],
+      "improvedImages": 97,
+      "worstImageRegressionEV": 0.8994621932506561
+    },
+    "syntheticPilot": {
+      "meanGroupDifferenceEV": -0.3338391732583794,
+      "bootstrap95": [
+        -0.5119833069446399,
+        -0.13369597576756453
+      ],
+      "improvedImages": 102,
+      "worstImageRegressionEV": 0.859791025519371
+    }
+  },
+  "coreML": {
+    "scope": "macOS runtime numeric check, synthetic inputs only; not iPhone timing or confirmed operation placement",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "torch": "2.7.0",
+    "coremltools": "9.0",
+    "checkpointSHA256": "4dc7a14b0b6a922116efed9febb16fe350982468fad8b16d01f498133066b426",
+    "precision": "FP16",
+    "packageBytes": 1233460,
+    "comparisons": [
+      {
+        "policy": "CPU_ONLY",
+        "case": "noise",
+        "maxEV": 0.006410121917724609,
+        "meanEV": 0.0010810965904965997,
+        "medianSeconds": 0.02873274999728892,
+        "minGainEV": 0.4130859375,
+        "maxGainEV": 1.3818359375
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "gradient",
+        "maxEV": 0.006380319595336914,
+        "meanEV": 0.001186948036774993,
+        "medianSeconds": 0.017714624998916406,
+        "minGainEV": 0.138916015625,
+        "maxGainEV": 1.61328125
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "neutral-0",
+        "maxEV": 0.00256502628326416,
+        "meanEV": 0.0007119782385416329,
+        "medianSeconds": 0.010808584003825672,
+        "minGainEV": 0.14111328125,
+        "maxGainEV": 0.58837890625
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "neutral-0.18",
+        "maxEV": 0.0034217238426208496,
+        "meanEV": 0.0004257290856912732,
+        "medianSeconds": 0.011853999996674247,
+        "minGainEV": 0.1881103515625,
+        "maxGainEV": 0.6875
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "neutral-0.5",
+        "maxEV": 0.004625558853149414,
+        "meanEV": 0.002859938656911254,
+        "medianSeconds": 0.010674958997697104,
+        "minGainEV": 0.33251953125,
+        "maxGainEV": 1.02734375
+      },
+      {
+        "policy": "CPU_ONLY",
+        "case": "neutral-1",
+        "maxEV": 0.008132696151733398,
+        "meanEV": 0.002457874361425638,
+        "medianSeconds": 0.010516415997699369,
+        "minGainEV": 0.62939453125,
+        "maxGainEV": 1.724609375
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "noise",
+        "maxEV": 0.007519721984863281,
+        "meanEV": 0.003094698069617152,
+        "medianSeconds": 0.0023659999933443032,
+        "minGainEV": 0.41162109375,
+        "maxGainEV": 1.3779296875
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "gradient",
+        "maxEV": 0.008085966110229492,
+        "meanEV": 0.003714126069098711,
+        "medianSeconds": 0.002377625001827255,
+        "minGainEV": 0.1378173828125,
+        "maxGainEV": 1.6123046875
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "neutral-0",
+        "maxEV": 0.006161749362945557,
+        "meanEV": 0.005316982977092266,
+        "medianSeconds": 0.0024044999954639934,
+        "minGainEV": 0.1402587890625,
+        "maxGainEV": 0.58740234375
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "neutral-0.18",
+        "maxEV": 0.005131185054779053,
+        "meanEV": 0.0035510696470737457,
+        "medianSeconds": 0.003263917002186645,
+        "minGainEV": 0.1876220703125,
+        "maxGainEV": 0.68310546875
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "neutral-0.5",
+        "maxEV": 0.004780948162078857,
+        "meanEV": 0.0034799210261553526,
+        "medianSeconds": 0.0023428749991580844,
+        "minGainEV": 0.331787109375,
+        "maxGainEV": 1.02734375
+      },
+      {
+        "policy": "CPU_AND_NE",
+        "case": "neutral-1",
+        "maxEV": 0.005887627601623535,
+        "meanEV": 0.004217620939016342,
+        "medianSeconds": 0.0025707499953568913,
+        "minGainEV": 0.62841796875,
+        "maxGainEV": 1.7197265625
+      }
+    ]
+  },
+  "legacyDevelopmentAudit": {
+    "SDR": {
+      "meanMAE_EV": 0.6134395032746615,
+      "improvedScenes": 0,
+      "worstRegressionEV": 0.2815188173600276,
+      "meanBaseColorShift": 0.0
+    },
+    "currentGMNet": {
+      "meanMAE_EV": 0.4630323958090415,
+      "improvedScenes": 0,
+      "worstRegressionEV": 0.0,
+      "meanBaseColorShift": 0.00044464179129320025
+    },
+    "signedRaw": {
+      "meanMAE_EV": 0.44434493945147724,
+      "improvedScenes": 9,
+      "worstRegressionEV": 0.7516189532455326,
+      "meanBaseColorShift": 6.014591718706196e-17
+    },
+    "signedProtected": {
+      "meanMAE_EV": 0.42566396623533925,
+      "improvedScenes": 10,
+      "worstRegressionEV": 0.22571834991368817,
+      "meanBaseColorShift": 5.293858795217647e-17
+    },
+    "boundedScalarOracle": {
+      "meanMAE_EV": 0.0015642605512158013,
+      "improvedScenes": 15,
+      "worstRegressionEV": -0.05195762035112565,
+      "meanBaseColorShift": 6.08282154276374e-17
+    }
+  },
+  "cleanup": {
+    "downloadedResultsVerified": true,
+    "uploadedArchiveRemoved": true,
+    "decodedTrainingDataRemoved": true,
+    "entireRemoteWorkspaceRemoved": true,
+    "remotePrivateWeightsAndLogsRemoved": true
+  },
+  "limitations": [
+    "Single-owner camera collection; capture-day and pHash grouping are heuristics.",
+    "GMNet protected baseline is a tensor approximation, not the full app pipeline.",
+    "Legacy 15-scene audit is exploratory; overlap with the new collection was not ruled out.",
+    "No physical-device display, thermal, or export acceptance; candidate not bundled."
+  ],
+  "attenuationContext": {
+    "scope": "132 final-test photos; scalar camera SDR/HDR luminance ratio, valid luminance > 0.01",
+    "meanNegativeFractions": {
+      "0.02": 0.03200898548798817,
+      "0.05": 0.022644363949380776,
+      "0.1": 0.015109119559721091,
+      "0.25": 0.00663407545727654,
+      "0.5": 0.002760811759529765
+    },
+    "photosWithOverOnePercentNegative": 27,
+    "photosWithOverFivePercentNegative": 12,
+    "medianNegativeFraction": 0.001181879864097624,
+    "zeroGainErrorContributionOnNegativeEV": 0.00554479435533987
+  }
+}

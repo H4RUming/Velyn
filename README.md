@@ -107,7 +107,7 @@ While you drag a control, previews use a 768px resolution and update at up to 30
 | Subject and tap selection | Apple Vision; tap selection assets are downloaded on request |
 | P3 gamut expansion | Analytical interpolation, without a neural network |
 
-The app uses these existing models alongside Velyn's editing, compositing, and export code. An experimental gain-map model trained from scratch is available as [research code](Scripts/HDR/Training/README.md). Its first version improved synthetic test scores but regressed on camera photos, so it is not bundled in the app. All app photo processing runs on the device. See the [model sources and licenses](Velyn/Notices/Models-NOTICE.txt).
+The app uses these existing models alongside Velyn's editing, compositing, and export code. An experimental gain-map model trained from scratch is available as [research code](Scripts/HDR/Training/README.md). Further training on native camera pairs improved its measured luminance accuracy, but some photos still regress and device validation is incomplete, so the candidate is not bundled in the app. [Results and limits](Docs/Evidence/hdr-private-camera-verification.md). All app photo processing runs on the device. See the [model sources and licenses](Velyn/Notices/Models-NOTICE.txt).
 
 Apple's tap selection assets are downloaded only when you tap **Prepare model**. Launching the app or importing a photo does not trigger a model download. PhotoKit imports disable network access, so iCloud-only originals must first be downloaded in Photos. File provider downloads, sharing, and saving use the system services you choose.
 

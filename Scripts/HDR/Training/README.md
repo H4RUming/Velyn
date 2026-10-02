@@ -101,3 +101,74 @@ proof of all operations running on the Neural Engine.
 
 No script copies the candidate into `Velyn/Models`, changes the app model choice,
 or packages it into a release. [Results and adoption gates](../../../Docs/Evidence/hdr-own-model-verification.md).
+
+## Explicitly authorized private camera adaptation
+
+Private camera data requires the owner's explicit authorization for the chosen
+server. This developer workflow does not add uploads or a backend to the app.
+Keep all pixel data, manifests, source hashes, dates, per-image scores and trained
+private checkpoints in ignored directories. Do not publish the checkpoints as
+part of a code change.
+
+On a Mac, preserve the source archive and create anonymous byte-verified copies:
+
+```sh
+python Scripts/HDR/Training/stage_camera_archive.py /private/path/photos.zip \
+  .work/private-camera/originals
+swiftc -module-cache-path .work/clang-cache -parse-as-library \
+  Scripts/HDR/Training/decode_camera.swift -o .work/private-camera/decode-camera
+.work/private-camera/decode-camera .work/private-camera/originals/inputs.json \
+  .work/private-camera/decoded
+python Scripts/HDR/Training/prepare_camera_pairs.py \
+  .work/private-camera/decoded .work/private-camera/pairs
+```
+
+The decoder needs access to macOS ImageIO's system decoders. A restricted execution
+environment may return missing metadata/auxiliary images even when the container
+contains a gain map; investigate all-missing results before rejecting the data.
+It reads the embedded default SDR and HDR representations, applies orientation,
+and draws both into explicit linear-sRGB float bitmaps at a 512px long edge.
+Neither representation is independently exposure-normalized. Photos without
+readable gain maps, corrupt pairs and numerically identical representations are
+excluded. Video is skipped. This measures the camera/system's HDR rendition,
+not the original scene's absolute luminance.
+
+Pair preparation groups the same capture day and perceptual hashes within six
+bits before assigning approximately 70/15/15 percent to train/validation/test.
+This prevents known same-day and visual duplicates crossing splits; it cannot
+guarantee every recurring subject is detected. EXIF and original names are omitted
+from transferable pairs. Each NPZ contains only encoded RGB, a thumbnail, luminance,
+the signed target, a validity mask and dimensions. The manifest carries anonymous
+IDs, group/split and integrity hashes. These pixels are still private photos.
+
+For an authorized server, create a **new mode-0700** directory whose name begins
+`velyn-private-camera-`, and place a `.private-camera-job` marker inside. Transfer
+only a flat `pairs.tar` containing the prepared NPZ files and JSON manifests.
+Check its SHA-256 after transfer. The bounded job accepts:
+
+```sh
+python Scripts/HDR/Training/run_private_camera_job.py /private/job/workspace \
+  --initial /private/path/public-pilot-best.pt --gmnet-source Scripts/Models/gmnet
+```
+
+The workspace argument must name that newly created private directory. The
+GMNet folder must contain its pinned public `G_realworld.pth` checkpoint.
+`train_camera.py` fine-tunes the existing public-data pilot with aligned 256px
+crops from 512px pairs, full-image thumbnails, horizontal flips, AdamW and a
+fixed 6,000-step schedule. It does not invent HDR labels from the model's own
+predictions. Validation selects a checkpoint every 500 steps. The final test is
+loaded only after that selection; the selected checkpoint is then frozen.
+
+`run_private_camera_job.py` limits training to 20 minutes and removes the uploaded
+archive and unpacked tensors in `finally`, including failure/termination paths.
+An uncatchable process/host failure still requires caller cleanup. Download
+`results` and `cleanup.json`, then remove the **entire private job directory** and
+verify its absence. Do not treat the first cleanup record as proof that weights,
+logs and per-image scores were also removed. Training code and pre-existing
+public-data experiments may remain on the server.
+
+Run `test_camera_privacy.py` to check archive traversal/link rejection, byte
+preservation, anonymous staging and deletion after a failed job, using generated
+sentinel bytes only. Report aggregate metrics without photo names, dates, image
+hashes or per-image results. A successful fine-tune is still subject to app codec,
+color and physical-device acceptance before release.
